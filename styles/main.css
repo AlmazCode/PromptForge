@@ -221,18 +221,18 @@ nav ul li a.active:before {
 }
 
 .hero-ambient-glow {
-  position: absolute;
-  top: 5%;
+  position: fixed;
+  top: -5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 1000px;
-  height: 700px;
+  width: 120vw;
+  height: 70vh;
   background: var(--accent-color);
   opacity: 0.18;
-  filter: blur(180px);
+  filter: blur(200px);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   animation: pulse-glow 6s ease-in-out infinite alternate;
 }
 
