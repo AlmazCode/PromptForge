@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User profile on PromptForge — achievements, statistics, and progress in prompt engineering">
+    <meta name="author" content="Student B">
+    <title>Profile — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/student-b.css">
+</head>
+<body>
+
+    <!-- Author: Student B
+         Section: User Profile
+         Comment: profile-container uses the same app-content grid as my-solutions for visual consistency
+         Comment: table uses scope="row" on th cells so screen readers announce row headers correctly -->
+
+    <header>
+        <div class="container header-container">
+            <span class="logo">
+                <span class="logo-icon">⚡</span> Prompt Forge
+            </span>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="colophon.html">Colophon</a></li>
+                    <li><a href="tasks.html">Tasks</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="my-solutions.html">My Solutions</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
+                    <li><a href="profile.html" class="active">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-ghost">Log in</a>
+                <a href="register.html" class="btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-layout">
+        <div class="container">
+
+            <!-- PAGE HEADER -->
+            <div class="app-header">
+                <div class="app-header-left">
+                    <h1>Alexandra Thompson</h1>
+                    <span class="app-header-meta">Member since Oct 2024 · Copywriting & Content</span>
+                </div>
+                <div class="app-header-right">
+                    <span class="badge-small">● Active</span>
+                </div>
+            </div>
+
+            <!-- PROFILE CARD — bio -->
+            <article class="profile-bio">
+                <figure class="profile-avatar">
+                    <img src="src/avatar-thompson.jpg" alt="Profile photo of Alexandra Thompson">
+                </figure>
+                <div class="profile-bio-text">
+                    <p><strong>About me:</strong> I love writing clear instructions for AI models. An experienced copywriter interested in automating text processes.</p>
+                    <p><em>Currently learning:</em> Chain-of-thought prompts and few-shot learning techniques.</p>
+                    <p>
+                        <a href="mailto:alexandra.thompson@example.com">alexandra.thompson@example.com</a> ·
+                        <a href="tel:+14155551234">+1 (415) 555-1234</a>
+                    </p>
+                </div>
+            </article>
+
+            <!-- STATS ROW -->
+            <div class="rank-legend profile-stats">
+                <div class="rank-legend-item">
+                    <span class="rank-dot rank-grandmaster"></span>
+                    <strong class="mono">42</strong> Tasks Solved
+                </div>
+                <div class="rank-legend-item">
+                    <span class="rank-dot rank-master"></span>
+                    <strong class="mono">8.7</strong> Avg. Score
+                </div>
+                <div class="rank-legend-item">
+                    <span class="rank-dot rank-practitioner"></span>
+                    <strong class="mono">18h</strong> Time Spent
+                </div>
+                <div class="rank-legend-item">
+                    <span class="rank-dot rank-newcomer"></span>
+                    <strong class="mono">#17</strong> Global Rank
+                </div>
+            </div>
+
+            <!-- STATS TABLE + ACHIEVEMENTS -->
+            <div class="app-content">
+
+                <!-- LEFT: stats table + mentor quote -->
+                <aside class="app-sidebar">
+
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Statistics</h3>
+                        <div class="table-container">
+                            <table id="stats-table" class="table-dense">
+                                <caption class="visually-hidden">Progress metrics over all time</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Metric</th>
+                                        <th scope="col">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Tasks Solved</th>
+                                        <td class="mono">42</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Avg. Score</th>
+                                        <td class="mono">8.7 / 10</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Time Spent</th>
+                                        <td class="mono">18h</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Global Rank</th>
+                                        <td class="mono">#17 / 543</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Mentor Feedback</h3>
+                        <blockquote class="quote-dense">
+                            <p>"Alexandra demonstrates excellent understanding of prompt structure. Particularly impressed with her work on Sentiment Analysis — she used few-shot examples effectively."</p>
+                            <footer>— <cite>John Mitchell</cite>, Mentor, Nov 2025</footer>
+                        </blockquote>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Badge Guide</h3>
+                        <dl class="glossary-dense">
+                            <dt>⭐ Bronze</dt>
+                            <dd>Solved first task in a category</dd>
+                            <dt>🥈 Silver</dt>
+                            <dd>Solved 10 tasks in a category</dd>
+                            <dt>🥇 Gold</dt>
+                            <dd>Avg. score 8+ on 15+ tasks</dd>
+                            <dt>💎 Diamond</dt>
+                            <dd>Top-100 in global leaderboard</dd>
+                        </dl>
+                    </div>
+
+                </aside>
+
+                <!-- RIGHT: achievements + recent attempts -->
+                <div class="app-main">
+
+                    <section id="achievements" class="doc-section">
+                        <h2 class="doc-section-title">Achievements</h2>
+                        <p class="doc-text"><small>Badges appear at certain milestones in your progress</small></p>
+
+                        <div class="process-list">
+                            <div class="process-item">
+                                <span class="process-num">🎯</span>
+                                <div class="process-body">
+                                    <strong>First Steps</strong>
+                                    <span>Solved your first task</span>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <span class="process-num">✍️</span>
+                                <div class="process-body">
+                                    <strong>Copywriter</strong>
+                                    <span>Solved 10 copywriting tasks</span>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <span class="process-num">📊</span>
+                                <div class="process-body">
+                                    <strong>Data Master</strong>
+                                    <span>Solved 5 data analysis tasks with score 9+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="sidebar-title" style="margin-top:16px">Upcoming</h3>
+                        <div class="process-list">
+                            <div class="process-item" style="opacity:0.45">
+                                <span class="process-num">💎</span>
+                                <div class="process-body">
+                                    <strong>Diamond</strong>
+                                    <span>Reach Top-10 in leaderboard — 3 places to go</span>
+                                </div>
+                            </div>
+                            <div class="process-item" style="opacity:0.45">
+                                <span class="process-num">🏆</span>
+                                <div class="process-body">
+                                    <strong>Master's Apprentice</strong>
+                                    <span>Solve 50 tasks with 8.5+ score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="doc-divider">
+
+                    <section id="recent" class="doc-section">
+                        <h2 class="doc-section-title">Recent Attempts</h2>
+
+                        <div class="table-container">
+                            <table class="table-dense">
+                                <thead>
+                                    <tr>
+                                        <th class="col-task">Task</th>
+                                        <th class="col-score">Score</th>
+                                        <th class="col-status">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>"TED-Style Summary"</td>
+                                        <td class="mono">9.2</td>
+                                        <td><span class="status-solved">solved</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>"Object Classification"</td>
+                                        <td class="mono">8.8</td>
+                                        <td><span class="status-solved">solved</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>"Content Idea Generation"</td>
+                                        <td class="mono">9.0</td>
+                                        <td><span class="status-solved">solved</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <aside style="margin-top:16px">
+                            <div class="sidebar-section">
+                                <h3 class="sidebar-title">Suggestions for Improvement</h3>
+                                <ul class="tips-compact">
+                                    <li><em>Structure</em>: add explicit role definition at the beginning</li>
+                                    <li><em>Examples</em>: use few-shot for classification tasks</li>
+                                    <li><em>Format</em>: specify output format (<abbr title="JavaScript Object Notation">JSON</abbr>, Markdown)</li>
+                                    <li><em>Difficulty</em>: ready to try "advanced" level tasks?</li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </section>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

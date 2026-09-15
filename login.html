@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in to your PromptForge account — a platform for training prompt engineering skills">
+    <meta name="author" content="Student B">
+    <title>Login — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/student-b.css">
+</head>
+<body>
+
+    <!-- Author: Student B
+         Section: Login
+         Comment: Minimal login page — keeps form focused, no distractions
+         Comment: autofocus on email field so the user can start typing immediately -->
+
+    <header>
+        <div class="container header-container">
+            <span class="logo">
+                <span class="logo-icon">⚡</span> Prompt Forge
+            </span>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="colophon.html">Colophon</a></li>
+                    <li><a href="tasks.html">Tasks</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="my-solutions.html">My Solutions</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-ghost">Log in</a>
+                <a href="register.html" class="btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-layout">
+        <div class="container">
+
+            <div class="app-header">
+                <div class="app-header-left">
+                    <h1>Log In</h1>
+                    <span class="app-header-meta">Welcome back — enter your credentials</span>
+                </div>
+            </div>
+
+            <div class="auth-wrap auth-wrap--narrow">
+                <!-- Comment: demonstration form — does not submit; server will be added later -->
+                <form method="post" action="#" class="form-dense">
+                    <fieldset>
+                        <legend>Your Credentials</legend>
+
+                        <div class="form-field">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required autofocus>
+                        </div>
+
+                        <div class="form-field" style="margin-top:12px">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Log In</button>
+                        <button type="reset" class="btn-ghost">Clear</button>
+                    </div>
+                </form>
+
+                <p class="auth-switch">Don't have an account? <a href="register.html">Create one here</a></p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

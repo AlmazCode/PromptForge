@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register a new account on PromptForge — a platform for training prompt engineering skills">
+    <meta name="author" content="Student B">
+    <title>Register — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/student-b.css">
+</head>
+<body>
+
+    <!-- Author: Student B
+         Section: Registration
+         Comment: fieldset/legend groups related fields so the form stays readable without extra wrappers
+         Comment: all name attributes match future JS field-reading conventions -->
+
+    <header>
+        <div class="container header-container">
+            <span class="logo">
+                <span class="logo-icon">⚡</span> Prompt Forge
+            </span>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="colophon.html">Colophon</a></li>
+                    <li><a href="tasks.html">Tasks</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="my-solutions.html">My Solutions</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-ghost">Log in</a>
+                <a href="register.html" class="btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-layout">
+        <div class="container">
+
+            <div class="app-header">
+                <div class="app-header-left">
+                    <h1>Create an Account</h1>
+                    <span class="app-header-meta">Free · No credit card required</span>
+                </div>
+                <div class="app-header-right">
+                    <span class="badge-small">⚡ Join 15,000+ engineers</span>
+                </div>
+            </div>
+
+            <div class="auth-wrap">
+                <!-- Comment: demonstration form — does not submit; server will be added later -->
+                <form method="post" action="#" class="form-dense">
+                    <fieldset>
+                        <legend>Account Information</legend>
+
+                        <div class="form-grid-2col">
+                            <div class="form-field">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="full_name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="tel">Phone Number</label>
+                                <input type="tel" id="tel" name="phone" placeholder="+1 (XXX) XXX-XXXX">
+                            </div>
+                            <div class="form-field">
+                                <label for="experience">Experience (years)</label>
+                                <input type="number" id="experience" name="experience_years" min="0" max="100">
+                            </div>
+                            <div class="form-field">
+                                <label for="birthdate">Date of Birth</label>
+                                <input type="date" id="birthdate" name="birth_date">
+                            </div>
+                            <div class="form-field">
+                                <label for="interest">Area of Interest *</label>
+                                <select id="interest" name="interest_area" required>
+                                    <option value="">— Select —</option>
+                                    <option value="copywriting">Copywriting</option>
+                                    <option value="data">Data Analysis</option>
+                                    <option value="dev">Development</option>
+                                    <option value="education">Education</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-field" style="margin-bottom:12px">
+                            <label for="about">About You</label>
+                            <textarea id="about" name="bio" rows="3" placeholder="Tell us why PromptForge interests you..."></textarea>
+                        </div>
+
+                        <div class="form-inline">
+                            <label><input type="radio" name="level" value="beginner" required> Beginner</label>
+                            <label><input type="radio" name="level" value="intermediate"> Intermediate</label>
+                            <label><input type="radio" name="level" value="advanced"> Advanced</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Agreements</legend>
+                        <div class="form-inline" style="flex-direction:column; gap:8px; align-items:flex-start">
+                            <label>
+                                <input type="checkbox" name="accept_rules" required>
+                                I agree with the <a href="how-it-works.html#faq">community guidelines</a> and understand that <abbr title="Artificial Intelligence">AI</abbr> can make mistakes
+                            </label>
+                            <label>
+                                <input type="checkbox" name="accept_privacy" required>
+                                I accept the <strong>privacy policy</strong>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="subscribe_newsletter">
+                                Subscribe to weekly task updates
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Register</button>
+                        <button type="reset" class="btn-ghost">Clear</button>
+                    </div>
+                </form>
+
+                <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
