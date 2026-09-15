@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prompt Forge — AI Prompt Training Platform</title>
+    <meta name="description" content="PromptForge — AI prompt engineering training platform. Practice, compete, and master prompt crafting." />
+    <meta name="author" content="Emil Sabirzhanov" />
+    <title>PromptForge — AI Prompt Training Platform</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
@@ -15,13 +17,13 @@
         </span>
         <nav>
           <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Colophon</a></li>
-            <li><a href="#">Tasks</a></li>
-            <li><a href="#">Leaderboard</a></li>
-            <li><a href="#">My Solutions</a></li>
-            <li><a href="#">How it works</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="colophon.html">Colophon</a></li>
+            <li><a href="tasks.html">Tasks</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="my-solutions.html">My Solutions</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
@@ -32,37 +34,94 @@
     </header>
 
     <main>
-      <!-- HERO SECTION -->
+      <!-- HERO SECTION — with terminal editor preview -->
       <section class="hero">
         <div class="container">
-          <div class="hero-content">
-            <span class="badge">🔥 New: GPT-5 Challenges Available</span>
-            <h1>
-              Master the Art of
-              <span class="highlight">Prompt Engineering</span>
-            </h1>
-            <p class="subtitle">
-              Train your AI communication skills through practical challenges.
-              Compete with others, climb the leaderboard, and forge your path to
-              becoming a prompt master.
-            </p>
-            <div class="hero-buttons">
-              <button class="btn-primary btn-large">Start Training</button>
-              <button class="btn-outline btn-large">View Tasks</button>
+          <div class="hero-layout">
+            <div class="hero-content">
+              <span class="badge">⚡ New: GPT-5 Challenges Available</span>
+              <h1>
+                Master the Art of
+                <span class="highlight">Prompt Engineering</span>
+              </h1>
+              <p class="subtitle">
+                Train your AI communication skills through practical challenges.
+                Compete with others, climb the leaderboard, and forge your path
+                to becoming a prompt master.
+              </p>
+              <div class="hero-buttons">
+                <button class="btn-primary btn-large">Start Training</button>
+                <button class="btn-outline btn-large">View Tasks</button>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-card">
+                  <span class="stat-number" data-target="15420">0</span>
+                  <span class="stat-label">Active Users</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-number" data-target="847">0</span>
+                  <span class="stat-label">Challenges</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-number" data-target="96">0</span>
+                  <span class="stat-label">Success Rate %</span>
+                </div>
+              </div>
             </div>
 
-            <div class="hero-stats">
-              <div class="stat-card">
-                <span class="stat-number" data-target="15420">0</span>
-                <span class="stat-label">Active Users</span>
+            <!-- TERMINAL EDITOR — hero visual -->
+            <div class="hero-editor">
+              <div class="editor-chrome">
+                <div class="editor-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="editor-title">prompt.txt</span>
               </div>
-              <div class="stat-card">
-                <span class="stat-number" data-target="847">0</span>
-                <span class="stat-label">Challenges</span>
+              <div class="editor-body">
+                <div class="editor-line">
+                  <span class="line-num">1</span>
+                  <span class="line-content"><span class="kw">You are</span> a senior data analyst.</span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">2</span>
+                  <span class="line-content"><span class="kw">Task:</span> Summarize the Q3 sales data.</span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">3</span>
+                  <span class="line-content"><span class="kw">Format:</span> numbered list, 5 items max.</span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">4</span>
+                  <span class="line-content"><span class="kw">Tone:</span> professional, concise.</span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">5</span>
+                  <span class="line-content"><span class="kw">Constraint:</span> no more than 120 words.</span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">6</span>
+                  <span class="line-content"></span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">7</span>
+                  <span class="line-content"><span class="kw">Example:</span></span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">8</span>
+                  <span class="line-content">  1. Revenue increased 12% MoM.</span>
+                </div>
+                <div class="editor-line">
+                  <span class="line-num">9</span>
+                  <span class="line-content">  2. Top SKU accounts for 34%...</span>
+                </div>
+                <div class="editor-cursor"></div>
               </div>
-              <div class="stat-card">
-                <span class="stat-number" data-target="96">0</span>
-                <span class="stat-label">Success Rate %</span>
+              <div class="editor-footer">
+                <span class="editor-badge">Score: <strong>9.2</strong>/10</span>
+                <span class="editor-badge editor-badge-pass">✓ Passed</span>
               </div>
             </div>
           </div>
@@ -70,108 +129,154 @@
         <div class="hero-glow"></div>
       </section>
 
-      <!-- FEATURES SECTION -->
+      <!-- FEATURES SECTION — mono symbols -->
       <section class="features">
         <div class="container">
           <h2 class="section-title">
             Why Choose <span class="highlight">Prompt Forge?</span>
           </h2>
           <p class="section-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt.
+            A purpose-built training ground for prompt engineers — not another
+            generic coding challenge platform.
           </p>
 
           <div class="features-grid">
             <div class="feature-card">
-              <div class="feature-icon">🎯</div>
+              <div class="feature-icon-mono">[ _ ]</div>
               <h3>Practical Tasks</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Real-world prompt challenges across copywriting, data analysis,
+                code generation, and system design. No toy examples.
               </p>
-              <a href="#" class="card-link">Learn more →</a>
+              <a href="tasks.html" class="card-link">Browse tasks →</a>
             </div>
 
             <div class="feature-card">
-              <div class="feature-icon">🏆</div>
-              <h3>Competitive Leaderboard</h3>
+              <div class="feature-icon-mono">{ }</div>
+              <h3>Atomic Scoring</h3>
               <p>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                Each prompt is evaluated against 4–6 independent criteria with
+                weighted scores — not a single vague "good/bad" rating.
               </p>
-              <a href="#" class="card-link">View rankings →</a>
+              <a href="how-it-works.html" class="card-link">See how it works →</a>
             </div>
 
             <div class="feature-card">
-              <div class="feature-icon">⚡</div>
+              <div class="feature-icon-mono">/&gt;</div>
               <h3>Instant Feedback</h3>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.
+                Get detailed breakdowns of what worked and what didn't — with
+                concrete tips for improvement on every attempt.
               </p>
-              <a href="#" class="card-link">Try now →</a>
+              <a href="my-solutions.html" class="card-link">View solutions →</a>
             </div>
 
             <div class="feature-card">
-              <div class="feature-icon">📊</div>
-              <h3>Progress Analytics</h3>
+              <div class="feature-icon-mono">▲</div>
+              <h3>Competitive Ranks</h3>
               <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.
+                Climb from Newcomer to Grandmaster. The leaderboard updates
+                daily — every solved task moves you up.
               </p>
-              <a href="#" class="card-link">See stats →</a>
+              <a href="leaderboard.html" class="card-link">View rankings →</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- HOW IT WORKS -->
+      <!-- HOW IT WORKS — mini criteria table -->
       <section class="how-it-works">
         <div class="container">
           <h2 class="section-title">
             How It <span class="highlight">Works</span>
           </h2>
+          <p class="section-subtitle">
+            Your prompt is evaluated by an LLM judge against strict atomic criteria.
+            Here's what happens under the hood:
+          </p>
 
-          <div class="steps">
-            <div class="step-card">
-              <div class="step-number">01</div>
-              <h3>Choose a Task</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor.
-              </p>
+          <div class="how-layout">
+            <!-- Left: steps -->
+            <div class="how-steps">
+              <div class="how-step">
+                <span class="how-step-num">01</span>
+                <div>
+                  <strong>Submit</strong>
+                  <span>Write your prompt and hit "Check"</span>
+                </div>
+              </div>
+              <div class="how-step">
+                <span class="how-step-num">02</span>
+                <div>
+                  <strong>Parse</strong>
+                  <span>System extracts role, format, constraints</span>
+                </div>
+              </div>
+              <div class="how-step">
+                <span class="how-step-num">03</span>
+                <div>
+                  <strong>Evaluate</strong>
+                  <span>Each criterion scored 0–10 independently</span>
+                </div>
+              </div>
+              <div class="how-step">
+                <span class="how-step-num">04</span>
+                <div>
+                  <strong>Result</strong>
+                  <span>Weighted score + personalized tips</span>
+                </div>
+              </div>
             </div>
 
-            <div class="step-connector"></div>
-
-            <div class="step-card">
-              <div class="step-number">02</div>
-              <h3>Write Your Prompt</h3>
-              <p>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris.
-              </p>
-            </div>
-
-            <div class="step-connector"></div>
-
-            <div class="step-card">
-              <div class="step-number">03</div>
-              <h3>Get Scored</h3>
-              <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum.
-              </p>
-            </div>
-
-            <div class="step-connector"></div>
-
-            <div class="step-card">
-              <div class="step-number">04</div>
-              <h3>Climb Ranks</h3>
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa.
-              </p>
+            <!-- Right: mini criteria table -->
+            <div class="how-table-wrap">
+              <div class="code-block-label">Example evaluation</div>
+              <table class="table-dense table-mini">
+                <thead>
+                  <tr>
+                    <th>Criterion</th>
+                    <th>Weight</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Role defined</td>
+                    <td class="mono">0.20</td>
+                    <td class="mono">10</td>
+                  </tr>
+                  <tr>
+                    <td>Format specified</td>
+                    <td class="mono">0.25</td>
+                    <td class="mono">8</td>
+                  </tr>
+                  <tr>
+                    <td>Length constraint</td>
+                    <td class="mono">0.15</td>
+                    <td class="mono">6</td>
+                  </tr>
+                  <tr>
+                    <td>Examples given</td>
+                    <td class="mono">0.20</td>
+                    <td class="mono">10</td>
+                  </tr>
+                  <tr>
+                    <td>Tone specified</td>
+                    <td class="mono">0.10</td>
+                    <td class="mono">8</td>
+                  </tr>
+                  <tr>
+                    <td>Task clarity</td>
+                    <td class="mono">0.10</td>
+                    <td class="mono">9</td>
+                  </tr>
+                  <tr class="row-total">
+                    <td><strong>Final</strong></td>
+                    <td class="mono">1.00</td>
+                    <td class="mono"><strong>8.35</strong></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -183,8 +288,7 @@
           <div class="cta-box">
             <h2>Ready to Forge Your Skills?</h2>
             <p>
-              Join thousands of prompt engineers competing and learning
-              together. Lorem ipsum dolor sit amet.
+              Join thousands of prompt engineers competing and learning together.
             </p>
             <button class="btn-primary btn-large">
               Get Started — It's Free
@@ -200,25 +304,24 @@
         <div class="footer-content">
           <div class="footer-logo">
             <span class="logo-icon">⚡</span> Prompt Forge
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Train your AI communication skills through practical challenges.</p>
           </div>
           <div class="footer-links">
             <div class="link-group">
               <h4>Platform</h4>
-              <a href="#">Tasks</a>
-              <a href="#">Leaderboard</a>
-              <a href="#">Solutions</a>
+              <a href="tasks.html">Tasks</a>
+              <a href="leaderboard.html">Leaderboard</a>
+              <a href="my-solutions.html">Solutions</a>
             </div>
             <div class="link-group">
               <h4>Resources</h4>
-              <a href="#">Documentation</a>
-              <a href="#">Blog</a>
-              <a href="#">Community</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="colophon.html">Colophon</a>
             </div>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2026 Prompt Forge. All rights reserved.</p>
+          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
         </div>
       </div>
     </footer>

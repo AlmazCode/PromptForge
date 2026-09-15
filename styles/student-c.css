@@ -1,0 +1,822 @@
+/* ============================================
+   PromptForge — student-c.css
+   Dashboard / app-style layout for C pages
+   Author: Emil Sabirzhanov
+   ============================================ */
+
+/* --- Smooth scroll + anchor offset --- */
+html {
+  scroll-behavior: smooth;
+}
+
+.doc-section {
+  scroll-margin-top: 100px;
+}
+
+/* --- App layout override --- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-layout {
+  flex: 1;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.app-layout .container {
+  max-width: 1200px;
+}
+
+/* --- App header (replaces hero) --- */
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 0 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--outline-color);
+}
+
+.app-header h1 {
+  font-size: 22px;
+  margin: 0 0 4px;
+  letter-spacing: -0.5px;
+}
+
+.app-header-meta {
+  font-size: 12px;
+  color: var(--secondary-color);
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+.badge-small {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(255, 95, 1, 0.1);
+  border: 1px solid rgba(255, 95, 1, 0.25);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-color);
+  white-space: nowrap;
+}
+
+/* --- Compact footer --- */
+.footer-compact {
+  border-top: 1px solid var(--outline-color);
+  padding: 16px 0;
+}
+
+.footer-compact .footer-bottom {
+  border-top: none;
+  padding-top: 0;
+  font-size: 12px;
+}
+
+/* ===========================================
+   TABLES — dense, data-focused
+   =========================================== */
+
+.table-container {
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: var(--radius-md, 12px);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.table-dense {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table-dense thead {
+  background: var(--surface-hover);
+}
+
+.table-dense th {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary-color);
+  text-align: left;
+  border-bottom: 1px solid var(--outline-color);
+  white-space: nowrap;
+}
+
+.table-dense td {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(58, 50, 51, 0.5);
+  vertical-align: middle;
+}
+
+.table-dense tbody tr {
+  transition: background 0.15s ease;
+}
+
+.table-dense tbody tr:hover {
+  background: rgba(255, 95, 1, 0.04);
+}
+
+.table-dense tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Tabular nums for all numeric columns */
+.mono,
+.col-score,
+.col-solved,
+.col-winrate,
+.col-date,
+.col-rank {
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Column widths */
+.col-rank { width: 48px; text-align: center; }
+.col-score { width: 72px; text-align: right; }
+.col-solved { width: 72px; text-align: right; }
+.col-winrate { width: 80px; text-align: right; }
+.col-date { width: 100px; }
+.col-status { width: 80px; }
+
+/* Top-3 row highlights */
+.row-gold { background: rgba(255, 209, 102, 0.06); }
+.row-gold .col-rank { color: #ffd166; font-weight: 700; }
+.row-silver { background: rgba(192, 192, 192, 0.04); }
+.row-silver .col-rank { color: #c0c0c0; font-weight: 700; }
+.row-bronze { background: rgba(205, 127, 50, 0.04); }
+.row-bronze .col-rank { color: #cd7f32; font-weight: 700; }
+
+.user-badge {
+  color: #ffd166;
+  margin-right: 4px;
+}
+
+/* Status badges */
+.status-solved {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(74, 222, 128, 0.12);
+  color: var(--success-color);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  text-transform: lowercase;
+}
+
+.status-progress {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(255, 209, 102, 0.12);
+  color: var(--warning-color, #ffd166);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  text-transform: lowercase;
+}
+
+/* ===========================================
+   LEADERBOARD — rank legend
+   =========================================== */
+
+.rank-legend {
+  display: flex;
+  gap: 20px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: var(--radius-md, 12px);
+  font-size: 12px;
+  color: var(--secondary-color);
+  flex-wrap: wrap;
+}
+
+.rank-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rank-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.rank-newcomer { background: var(--secondary-color); }
+.rank-practitioner { background: var(--success-color); }
+.rank-master { background: var(--accent-color); }
+.rank-grandmaster { background: #ffd166; }
+
+/* ===========================================
+   MY-SOLUTIONS — sidebar layout
+   =========================================== */
+
+.app-content {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Sidebar */
+.app-sidebar {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-section {
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: var(--radius-md, 12px);
+  padding: 12px;
+}
+
+.sidebar-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--secondary-color);
+  margin: 0 0 8px;
+  padding: 0 4px;
+}
+
+/* Stats grid */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-mini {
+  background: var(--surface-hover);
+  border-radius: 6px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.stat-mini-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.stat-mini-label {
+  display: block;
+  font-size: 10px;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+/* Filter list */
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.filter-item:hover {
+  background: var(--surface-hover);
+}
+
+.filter-item.active {
+  background: var(--accent-light, rgba(255, 95, 1, 0.1));
+  color: var(--accent-color);
+}
+
+.filter-count {
+  font-size: 11px;
+}
+
+/* Tips compact */
+.tips-compact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-compact li {
+  padding: 4px 0;
+  font-size: 11px;
+  color: var(--secondary-color);
+  border-bottom: 1px solid rgba(58, 50, 51, 0.4);
+  line-height: 1.5;
+}
+
+.tips-compact li:last-child {
+  border-bottom: none;
+}
+
+/* ===========================================
+   HOW-IT-WORKS — docs layout
+   =========================================== */
+
+.app-main {
+  min-width: 0;
+}
+
+/* Doc navigation */
+.doc-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-nav li a {
+  display: block;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: var(--secondary-color);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.doc-nav li a:hover {
+  background: var(--surface-hover);
+  color: var(--primary-color);
+}
+
+.doc-nav li a.active {
+  background: var(--accent-light, rgba(255, 95, 1, 0.1));
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.doc-subnav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-subnav li a {
+  display: block;
+  padding: 3px 8px 3px 16px;
+  font-size: 11px;
+  color: var(--secondary-color);
+  text-decoration: none;
+  border-left: 2px solid var(--outline-color);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.doc-subnav li a:hover {
+  color: var(--primary-color);
+  border-left-color: var(--secondary-color);
+}
+
+/* Doc sections */
+.doc-section {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.doc-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.3px;
+}
+
+.doc-text {
+  font-size: 13px;
+  color: var(--secondary-color);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.doc-divider {
+  border: none;
+  border-top: 1px solid var(--outline-color);
+  margin: 24px 0;
+}
+
+/* Process list */
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.process-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  transition: border-color 0.15s ease;
+}
+
+.process-item:hover {
+  border-color: var(--accent-color);
+}
+
+.process-num {
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-color);
+  background: var(--surface-hover);
+  padding: 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  min-width: 24px;
+  text-align: center;
+}
+
+.process-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.process-body strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.process-body span {
+  font-size: 12px;
+  color: var(--secondary-color);
+  line-height: 1.5;
+}
+
+/* Glossary dense */
+.glossary-dense {
+  margin: 0;
+}
+
+.glossary-dense dt {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  background: var(--surface-hover);
+  border-radius: 4px;
+  border-left: 2px solid var(--accent-color);
+  margin-top: 8px;
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+.glossary-dense dd {
+  margin: 2px 0 0 12px;
+  font-size: 12px;
+  color: var(--secondary-color);
+  line-height: 1.5;
+}
+
+/* Terminal code blocks */
+.code-block-label {
+  font-size: 10px;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  color: var(--secondary-color);
+  background: var(--surface-hover);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px 4px 0 0;
+  border: 1px solid var(--outline-color);
+  border-bottom: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.terminal-block {
+  background: #0a0809;
+  color: #e0d8d9;
+  padding: 14px 16px;
+  border-radius: 0 6px 6px 6px;
+  border: 1px solid var(--outline-color);
+  overflow-x: auto;
+  margin: 0 0 16px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.terminal-block code {
+  background: none;
+  padding: 0;
+  font-size: 12px;
+}
+
+/* Quote dense */
+.quote-dense {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent-color);
+  background: var(--surface-color);
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--secondary-color);
+}
+
+.quote-dense footer {
+  margin-top: 6px;
+  font-size: 11px;
+  font-style: normal;
+}
+
+/* FAQ — details/summary */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faq-item {
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: "▸";
+  margin-right: 8px;
+  color: var(--accent-color);
+  font-size: 11px;
+}
+
+.faq-item[open] summary::before {
+  content: "▾";
+}
+
+.faq-item summary:hover {
+  background: var(--surface-hover);
+}
+
+.faq-item p {
+  padding: 0 12px 12px;
+  font-size: 12px;
+  color: var(--secondary-color);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Form dense */
+.form-dense fieldset {
+  padding: 16px;
+}
+
+.form-dense legend {
+  font-size: 13px;
+}
+
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-size: 13px;
+  padding: 7px 10px;
+  background: var(--background-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  color: var(--primary-color);
+  font-family: var(--font-main);
+  transition: border-color 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(255, 95, 1, 0.15);
+}
+
+/* Hide number input spin buttons */
+.form-field input[type="number"]::-webkit-outer-spin-button,
+.form-field input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Select arrow override */
+.form-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23cabfc2' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+/* Date input */
+.form-field input[type="date"] {
+  color-scheme: dark;
+}
+
+/* Radio & checkbox — custom styling */
+.form-inline {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.form-inline label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--secondary-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Custom radio */
+.form-inline input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--outline-color);
+  border-radius: 50%;
+  background: var(--background-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.form-inline input[type="radio"]:checked {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+  box-shadow: inset 0 0 0 2px var(--background-color);
+}
+
+.form-inline input[type="radio"]:hover {
+  border-color: var(--accent-color);
+}
+
+/* Custom checkbox */
+.form-inline input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--outline-color);
+  border-radius: 3px;
+  background: var(--background-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.form-inline input[type="checkbox"]:checked {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+}
+
+.form-inline input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 10px;
+  color: var(--background-color);
+  font-weight: 700;
+}
+
+.form-inline input[type="checkbox"]:hover {
+  border-color: var(--accent-color);
+}
+
+/* Textarea */
+.form-field textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.form-actions button {
+  font-size: 13px;
+  padding: 7px 18px;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 900px) {
+  .app-content {
+    grid-template-columns: 1fr;
+  }
+
+  .app-sidebar {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .sidebar-section {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .rank-legend {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .table-dense {
+    font-size: 12px;
+  }
+
+  .table-dense th,
+  .table-dense td {
+    padding: 6px 10px;
+  }
+
+  .app-sidebar {
+    flex-direction: column;
+  }
+}

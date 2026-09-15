@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="How prompt evaluation works in PromptForge." />
+    <meta name="author" content="Emil Sabirzhanov" />
+    <title>How It Works — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/student-c.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-container">
+        <span class="logo">
+          <span class="logo-icon">⚡</span> Prompt Forge
+        </span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="colophon.html">Colophon</a></li>
+            <li><a href="tasks.html">Tasks</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="my-solutions.html">My Solutions</a></li>
+            <li><a href="how-it-works.html" class="active">How it works</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <button class="btn-ghost">Log in</button>
+          <button class="btn-primary">Register</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <div class="container">
+        <!-- PAGE HEADER -->
+        <div class="app-header">
+          <div class="app-header-left">
+            <h1>How Evaluation Works</h1>
+            <span class="app-header-meta">Documentation · Last updated Aug 2026</span>
+          </div>
+        </div>
+
+        <!-- DOCS LAYOUT: sidebar nav + content -->
+        <div class="app-content">
+
+          <!-- SIDEBAR NAV — sticky, section links -->
+          <aside class="app-sidebar">
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Sections</h3>
+              <ul class="doc-nav">
+                <li><a href="#process" class="active">Evaluation Process</a></li>
+                <li><a href="#scoring">Scoring</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+                <li><a href="#example">Prompt Example</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">On this page</h3>
+              <ul class="doc-subnav">
+                <li><a href="#step-1">1. Submission</a></li>
+                <li><a href="#step-2">2. Parsing</a></li>
+                <li><a href="#step-3">3. Comparison</a></li>
+                <li><a href="#step-4">4. Scoring</a></li>
+                <li><a href="#step-5">5. Aggregation</a></li>
+                <li><a href="#step-6">6. Tips</a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- MAIN CONTENT -->
+          <div class="app-main">
+
+            <!-- EVALUATION PROCESS — dense, numbered list -->
+            <section id="process" class="doc-section">
+              <h2 class="doc-section-title">Evaluation Process</h2>
+              <p class="doc-text">Every prompt goes through six stages before you see the final score.</p>
+
+              <div class="process-list">
+                <div class="process-item" id="step-1">
+                  <span class="process-num">01</span>
+                  <div class="process-body">
+                    <strong>Submission</strong>
+                    <span>You enter the prompt text in the task form and click "Check". The prompt is sent to the server.</span>
+                  </div>
+                </div>
+                <div class="process-item" id="step-2">
+                  <span class="process-num">02</span>
+                  <div class="process-body">
+                    <strong>Parsing</strong>
+                    <span>The system analyzes the prompt structure: role, output format, constraints, examples.</span>
+                  </div>
+                </div>
+                <div class="process-item" id="step-3">
+                  <span class="process-num">03</span>
+                  <div class="process-body">
+                    <strong>Comparison</strong>
+                    <span>Your prompt is checked against reference examples using atomic criteria.</span>
+                  </div>
+                </div>
+                <div class="process-item" id="step-4">
+                  <span class="process-num">04</span>
+                  <div class="process-body">
+                    <strong>Scoring</strong>
+                    <span>Each criterion is scored 0–10 independently. Criteria are not compared to each other.</span>
+                  </div>
+                </div>
+                <div class="process-item" id="step-5">
+                  <span class="process-num">05</span>
+                  <div class="process-body">
+                    <strong>Aggregation</strong>
+                    <span>Scores are weighted and summed. The system runs 2–3 passes and takes the median.</span>
+                  </div>
+                </div>
+                <div class="process-item" id="step-6">
+                  <span class="process-num">06</span>
+                  <div class="process-body">
+                    <strong>Tips</strong>
+                    <span>Personalized suggestions on what to improve and how.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <hr class="doc-divider">
+
+            <!-- SCORING -->
+            <section id="scoring" class="doc-section">
+              <h2 class="doc-section-title">How Scores Are Calculated</h2>
+              <p class="doc-text">
+                Each solution is evaluated on <strong>4–6 atomic criteria</strong> — independent
+                checks like "is there a role?" or "is the format specified?". Each is scored 0–10.
+              </p>
+              <p class="doc-text">
+                The final score is a <strong>weighted average</strong>. The system runs 2–3
+                evaluation passes and takes the <strong>median</strong> to reduce noise from
+                the LLM judge.
+              </p>
+
+              <div class="code-block-label">Example criteria breakdown</div>
+              <pre class="terminal-block"><code>{
+  "task_id": "summarize_sales",
+  "criteria": [
+    { "name": "role_defined",    "weight": 0.20, "score": 10 },
+    { "name": "format_specified", "weight": 0.25, "score": 8  },
+    { "name": "length_constraint", "weight": 0.15, "score": 6  },
+    { "name": "examples_given",  "weight": 0.20, "score": 10 },
+    { "name": "tone_specified",  "weight": 0.10, "score": 8  },
+    { "name": "task_clarity",    "weight": 0.10, "score": 9  }
+  ],
+  "final_score": 8.35
+}</code></pre>
+            </section>
+
+            <hr class="doc-divider">
+
+            <!-- GLOSSARY -->
+            <section id="glossary" class="doc-section">
+              <h2 class="doc-section-title">Glossary</h2>
+
+              <dl class="glossary-dense">
+                <dt>Zero-shot</dt>
+                <dd>No examples — just a task and a response. Simplest approach.</dd>
+
+                <dt>Few-shot</dt>
+                <dd>1–5 examples to guide the model's output format and style.</dd>
+
+                <dt>Chain-of-thought</dt>
+                <dd>Step-by-step reasoning. Improves accuracy on complex problems.</dd>
+
+                <dt>Temperature</dt>
+                <dd>0 = deterministic, 1 = creative. Controls response diversity.</dd>
+
+                <dt>System prompt</dt>
+                <dd>Hidden instruction setting role, tone, and constraints.</dd>
+              </dl>
+            </section>
+
+            <hr class="doc-divider">
+
+            <!-- PROMPT EXAMPLE -->
+            <section id="example" class="doc-section">
+              <h2 class="doc-section-title">Prompt Example</h2>
+              <p class="doc-text">A quality prompt for "Sales data summarization":</p>
+
+              <div class="code-block-label">prompt.txt</div>
+              <pre class="terminal-block"><code>You are a data analyst. Write a brief summary
+of the sales table for September 2026.
+
+Format: numbered list of 5 items.
+Tone: professional, no filler.
+Constraint: no more than 150 words.
+
+Example:
+1. Revenue grew 12% compared to August.
+2. Top 3 products account for 60% of sales...</code></pre>
+
+              <blockquote class="quote-dense">
+                <p>"Prompt engineering is about clarity of thinking. The more precisely you formulate a task, the better the result."</p>
+                <footer>— <cite>Ivan Petrov</cite>, <time datetime="2026-08-20">Aug 20, 2026</time></footer>
+              </blockquote>
+            </section>
+
+            <hr class="doc-divider">
+
+            <!-- FAQ -->
+            <section id="faq" class="doc-section">
+              <h2 class="doc-section-title">FAQ</h2>
+
+              <div class="faq-list">
+                <details class="faq-item">
+                  <summary>Why did my prompt get a low score?</summary>
+                  <p>You may have missed the output format or the model's role. Check the tips after evaluation — they show which criteria scored low.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>Can I submit a prompt multiple times?</summary>
+                  <p>Yes — improve and resubmit. All attempts are saved in history.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>Which model is used for evaluation?</summary>
+                  <p>OpenAI and Anthropic LLMs. The target model is listed per task.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>What are "atomic criteria"?</summary>
+                  <p>Separate yes/no checks: role present? format specified? length limited?</p>
+                </details>
+                <details class="faq-item">
+                  <summary>Why does the score differ on retry?</summary>
+                  <p>CoT judges vary slightly. The system takes the median of 2–3 runs.</p>
+                </details>
+              </div>
+            </section>
+
+            <hr class="doc-divider">
+
+            <!-- FEEDBACK FORM -->
+            <section id="feedback" class="doc-section">
+              <h2 class="doc-section-title">Feedback</h2>
+
+              <form id="feedback-form" method="post" action="#" class="form-dense">
+                <fieldset>
+                  <legend>Your Message</legend>
+                  <div class="form-grid-2col">
+                    <div class="form-field">
+                      <label for="fb-name">Name</label>
+                      <input type="text" id="fb-name" name="name" required />
+                    </div>
+                    <div class="form-field">
+                      <label for="fb-email">Email</label>
+                      <input type="email" id="fb-email" name="email" required />
+                    </div>
+                    <div class="form-field">
+                      <label for="fb-phone">Phone</label>
+                      <input type="tel" id="fb-phone" name="phone" />
+                    </div>
+                    <div class="form-field">
+                      <label for="fb-priority">Priority</label>
+                      <input type="number" id="fb-priority" name="priority" min="1" max="5" value="3" />
+                    </div>
+                    <div class="form-field">
+                      <label for="fb-date">Date</label>
+                      <input type="date" id="fb-date" name="preferred_date" />
+                    </div>
+                    <div class="form-field">
+                      <label for="fb-topic">Subject</label>
+                      <select id="fb-topic" name="topic">
+                        <option value="">— Select —</option>
+                        <option value="bug">Report a bug</option>
+                        <option value="feature">Suggest a feature</option>
+                        <option value="task">Question about a task</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-inline">
+                    <label><input type="radio" name="urgency" value="low" /> Low</label>
+                    <label><input type="radio" name="urgency" value="medium" checked /> Medium</label>
+                    <label><input type="radio" name="urgency" value="high" /> High</label>
+                    <label><input type="checkbox" name="subscribe" /> Subscribe</label>
+                  </div>
+                  <div class="form-field">
+                    <label for="fb-message">Message</label>
+                    <textarea id="fb-message" name="message" rows="4" required></textarea>
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit">Send</button>
+                    <button type="reset" class="btn-ghost">Clear</button>
+                  </div>
+                </fieldset>
+              </form>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer-compact">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
