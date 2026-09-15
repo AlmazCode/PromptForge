@@ -141,7 +141,14 @@ body {
 
 /* Column widths */
 .col-rank { width: 48px; text-align: center; }
-.col-score { width: 72px; text-align: right; }
+.col-score {
+  width: 72px;
+  text-align: right;
+  background: linear-gradient(135deg, #FFD166 0%, #FF9F1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .col-solved { width: 72px; text-align: right; }
 .col-winrate { width: 80px; text-align: right; }
 .col-date { width: 100px; }
