@@ -222,34 +222,34 @@ nav ul li a.active:before {
 
 .hero-ambient-glow {
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 600px;
+  width: 1000px;
+  height: 700px;
   background: var(--accent-color);
-  opacity: 0.12;
-  filter: blur(150px);
+  opacity: 0.18;
+  filter: blur(180px);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   animation: pulse-glow 6s ease-in-out infinite alternate;
 }
 
 @keyframes pulse-glow {
   0% {
-    opacity: 0.08;
+    opacity: 0.12;
     transform: translateX(-50%) scale(0.95);
   }
   100% {
-    opacity: 0.15;
+    opacity: 0.22;
     transform: translateX(-50%) scale(1.05);
   }
 }
 
 .hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-content {
@@ -1296,6 +1296,7 @@ hr {
   );
   animation: scanline 8s linear infinite;
   pointer-events: none;
+  z-index: 3;
 }
 
 @keyframes scanline {
