@@ -1190,6 +1190,12 @@ hr {
   border-radius: 0;
   border: none;
   border-bottom: 1px solid var(--outline-color);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 10px 14px;
+  background: var(--surface-hover);
 }
 
 .table-mini {
