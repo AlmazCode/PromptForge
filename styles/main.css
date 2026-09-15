@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Momo Trust Display", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 :root {
@@ -12,6 +15,8 @@
   --outline-color: #241e1f;
   --primary-color: #f2f3f4;
   --secondary-color: #cabfc2;
+  --secondary-color-hover: #f2f3f4;
+  --accent-color: #ff5f01;
 }
 
 .container {
@@ -44,7 +49,7 @@ nav {
   width: 70%;
 }
 
-.auth-buttins {
+.auth-buttons {
   width: 15%;
 }
 
@@ -54,11 +59,57 @@ nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 nav ul li a {
+  position: relative;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--secondary-color);
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: var(--secondary-color-hover);
+}
+
+nav ul li a:hover:before {
+  width: 100%;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-buttons button {
+  padding: 10px 20px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 20px;
+  background-color: transparent;
+  color: var(--secondary-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.auth-buttons button:last-child {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
 }
