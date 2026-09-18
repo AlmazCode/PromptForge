@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse all prompt engineering training tasks — filter by category, difficulty, and topic." />
+    <meta name="author" content="Emil Sabirzhanov" />
+    <title>Tasks — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/student-c.css" />
+    <link rel="stylesheet" href="styles/student-a.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="container header-container">
+        <span class="logo">
+          <span class="logo-icon">⚡</span> Prompt Forge
+        </span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="colophon.html">Colophon</a></li>
+            <li><a href="tasks.html" class="active">Tasks</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="my-solutions.html">My Solutions</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <button class="btn-ghost">Log in</button>
+          <button class="btn-primary">Register</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <div class="container">
+        <!-- PAGE HEADER -->
+        <div class="app-header">
+          <div class="app-header-left">
+            <h1>Training Tasks</h1>
+            <span class="app-header-meta">847 challenges · 12 categories · Updated weekly</span>
+          </div>
+          <div class="app-header-right">
+            <span class="badge-small">📚 Catalog</span>
+          </div>
+        </div>
+
+        <!-- SEARCH + STATS BAR -->
+        <div class="tasks-search-bar">
+          <div class="search-field">
+            <span class="search-icon">⌕</span>
+            <input
+              type="text"
+              id="task-search"
+              placeholder="Search tasks by name, tag, or keyword..."
+              aria-label="Search tasks"
+            />
+          </div>
+          <div class="tasks-stats-row">
+            <span class="tasks-stat"><span class="mono">847</span> total</span>
+            <span class="tasks-stat"><span class="mono">124</span> beginner</span>
+            <span class="tasks-stat"><span class="mono">402</span> intermediate</span>
+            <span class="tasks-stat"><span class="mono">321</span> advanced</span>
+          </div>
+        </div>
+
+        <!-- SIDEBAR + CONTENT layout -->
+        <div class="app-content">
+
+          <!-- SIDEBAR — filters -->
+          <aside class="app-sidebar">
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Category</h3>
+              <ul class="filter-list" id="filter-category">
+                <li class="filter-item active">All <span class="filter-count mono">847</span></li>
+                <li class="filter-item">Copywriting <span class="filter-count mono">156</span></li>
+                <li class="filter-item">Data Analysis <span class="filter-count mono">112</span></li>
+                <li class="filter-item">Code Generation <span class="filter-count mono">134</span></li>
+                <li class="filter-item">System Design <span class="filter-count mono">98</span></li>
+                <li class="filter-item">Translation <span class="filter-count mono">67</span></li>
+                <li class="filter-item">Summarization <span class="filter-count mono">89</span></li>
+                <li class="filter-item">Brainstorming <span class="filter-count mono">74</span></li>
+                <li class="filter-item">Role-play <span class="filter-count mono">52</span></li>
+                <li class="filter-item">Extraction <span class="filter-count mono">65</span></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Difficulty</h3>
+              <ul class="filter-list" id="filter-difficulty">
+                <li class="filter-item active">All <span class="filter-count mono">847</span></li>
+                <li class="filter-item filter-beginner">Beginner <span class="filter-count mono">124</span></li>
+                <li class="filter-item filter-intermediate">Intermediate <span class="filter-count mono">402</span></li>
+                <li class="filter-item filter-advanced">Advanced <span class="filter-count mono">321</span></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Target Model</h3>
+              <ul class="filter-list" id="filter-model">
+                <li class="filter-item active">All</li>
+                <li class="filter-item">GPT-4o</li>
+                <li class="filter-item">Claude 3.5</li>
+                <li class="filter-item">Gemini Pro</li>
+                <li class="filter-item">Llama 3</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Status</h3>
+              <ul class="filter-list" id="filter-status">
+                <li class="filter-item active">All</li>
+                <li class="filter-item">Available <span class="filter-count mono">801</span></li>
+                <li class="filter-item">Solved <span class="filter-count mono">7</span></li>
+                <li class="filter-item">In Progress <span class="filter-count mono">1</span></li>
+                <li class="filter-item">Locked <span class="filter-count mono">38</span></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Sort By</h3>
+              <ul class="filter-list" id="filter-sort">
+                <li class="filter-item active">Newest</li>
+                <li class="filter-item">Most Popular</li>
+                <li class="filter-item">Difficulty ↑</li>
+                <li class="filter-item">Difficulty ↓</li>
+                <li class="filter-item">Success Rate</li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- MAIN — task catalog -->
+          <div class="app-main">
+
+            <!-- ACTIVE FILTERS BAR -->
+            <div class="active-filters" id="active-filters">
+              <span class="active-filter-tag">All categories ×</span>
+              <span class="active-filter-tag">All difficulty ×</span>
+              <button class="clear-filters-btn" id="clear-filters">Clear all</button>
+            </div>
+
+            <!-- TASK CARDS GRID -->
+            <div class="task-grid" id="task-grid">
+
+              <!-- TASK CARD 1 -->
+              <article class="task-card" data-task-id="1" data-category="copywriting" data-difficulty="beginner">
+                <div class="task-card-header">
+                  <span class="task-id mono">#001</span>
+                  <span class="task-difficulty diff-beginner">beginner</span>
+                </div>
+                <h3 class="task-card-title">Social Media Post Copywriting</h3>
+                <p class="task-card-desc">
+                  Write a LinkedIn post announcing a new product feature. The prompt must include tone,
+                  audience, hashtags, and a call to action.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">copywriting</span>
+                  <span class="task-tag">social media</span>
+                  <span class="task-tag">marketing</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">1,240</span> solved</span>
+                    <span title="Success rate"><span class="mono">89%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 2 -->
+              <article class="task-card" data-task-id="2" data-category="data-analysis" data-difficulty="intermediate">
+                <div class="task-card-header">
+                  <span class="task-id mono">#002</span>
+                  <span class="task-difficulty diff-intermediate">intermediate</span>
+                </div>
+                <h3 class="task-card-title">Sales Data Summarization</h3>
+                <p class="task-card-desc">
+                  Summarize a quarterly sales dataset into a 5-item numbered list. Specify role,
+                  format, length constraint, and provide a quality example.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">data analysis</span>
+                  <span class="task-tag">summarization</span>
+                  <span class="task-tag">business</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">987</span> solved</span>
+                    <span title="Success rate"><span class="mono">82%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 3 -->
+              <article class="task-card" data-task-id="3" data-category="system-design" data-difficulty="advanced">
+                <div class="task-card-header">
+                  <span class="task-id mono">#003</span>
+                  <span class="task-difficulty diff-advanced">advanced</span>
+                </div>
+                <h3 class="task-card-title">Chatbot System Instruction</h3>
+                <p class="task-card-desc">
+                  Design a system prompt for a customer support chatbot that handles refunds,
+                  escalations, and maintains brand tone across 50+ scenarios.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">system design</span>
+                  <span class="task-tag">chatbot</span>
+                  <span class="task-tag">instruction</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">654</span> solved</span>
+                    <span title="Success rate"><span class="mono">71%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 4 -->
+              <article class="task-card" data-task-id="4" data-category="code-generation" data-difficulty="intermediate">
+                <div class="task-card-header">
+                  <span class="task-id mono">#004</span>
+                  <span class="task-difficulty diff-intermediate">intermediate</span>
+                </div>
+                <h3 class="task-card-title">Code Generation from Spec</h3>
+                <p class="task-card-desc">
+                  Write a prompt that generates a REST API endpoint in Python (FastAPI) from a
+                  natural language specification. Include validation, error handling, and tests.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">code generation</span>
+                  <span class="task-tag">API</span>
+                  <span class="task-tag">Python</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">823</span> solved</span>
+                    <span title="Success rate"><span class="mono">76%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 5 -->
+              <article class="task-card" data-task-id="5" data-category="translation" data-difficulty="beginner">
+                <div class="task-card-header">
+                  <span class="task-id mono">#005</span>
+                  <span class="task-difficulty diff-beginner">beginner</span>
+                </div>
+                <h3 class="task-card-title">Technical Documentation Translation</h3>
+                <p class="task-card-desc">
+                  Translate a technical API documentation page from English to Japanese, preserving
+                  formatting, code blocks, and terminology consistency.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">translation</span>
+                  <span class="task-tag">documentation</span>
+                  <span class="task-tag">i18n</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">412</span> solved</span>
+                    <span title="Success rate"><span class="mono">92%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 6 -->
+              <article class="task-card" data-task-id="6" data-category="brainstorming" data-difficulty="beginner">
+                <div class="task-card-header">
+                  <span class="task-id mono">#006</span>
+                  <span class="task-difficulty diff-beginner">beginner</span>
+                </div>
+                <h3 class="task-card-title">Product Brainstorming</h3>
+                <p class="task-card-desc">
+                  Generate 10 startup ideas for an AI-powered fitness app. Each idea must include
+                  target audience, key feature, and monetization model.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">brainstorming</span>
+                  <span class="task-tag">product</span>
+                  <span class="task-tag">startup</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">1,560</span> solved</span>
+                    <span title="Success rate"><span class="mono">94%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 7 -->
+              <article class="task-card" data-task-id="7" data-category="summarization" data-difficulty="intermediate">
+                <div class="task-card-header">
+                  <span class="task-id mono">#007</span>
+                  <span class="task-difficulty diff-intermediate">intermediate</span>
+                </div>
+                <h3 class="task-card-title">Meeting Notes Compression</h3>
+                <p class="task-card-desc">
+                  Condense a 3-hour meeting transcript into 8 bullet points with action items,
+                  decisions, and responsible persons. Maintain factual accuracy.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">summarization</span>
+                  <span class="task-tag">meetings</span>
+                  <span class="task-tag">productivity</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">734</span> solved</span>
+                    <span title="Success rate"><span class="mono">85%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 8 -->
+              <article class="task-card" data-task-id="8" data-category="extraction" data-difficulty="intermediate">
+                <div class="task-card-header">
+                  <span class="task-id mono">#008</span>
+                  <span class="task-difficulty diff-intermediate">intermediate</span>
+                </div>
+                <h3 class="task-card-title">Structured Data Extraction</h3>
+                <p class="task-card-desc">
+                  Extract product information from unstructured reviews into a JSON schema with
+                  fields: name, price, rating, pros, cons, and recommendation.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">extraction</span>
+                  <span class="task-tag">JSON</span>
+                  <span class="task-tag">NLP</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">589</span> solved</span>
+                    <span title="Success rate"><span class="mono">78%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 9 -->
+              <article class="task-card" data-task-id="9" data-category="role-play" data-difficulty="advanced">
+                <div class="task-card-header">
+                  <span class="task-id mono">#009</span>
+                  <span class="task-difficulty diff-advanced">advanced</span>
+                </div>
+                <h3 class="task-card-title">Interview Simulation</h3>
+                <p class="task-card-desc">
+                  Create a prompt that makes an AI act as a senior technical interviewer for a
+                  backend engineer position. Include scoring rubric and feedback format.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">role-play</span>
+                  <span class="task-tag">interview</span>
+                  <span class="task-tag">evaluation</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">345</span> solved</span>
+                    <span title="Success rate"><span class="mono">64%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 10 -->
+              <article class="task-card" data-task-id="10" data-category="copywriting" data-difficulty="advanced">
+                <div class="task-card-header">
+                  <span class="task-id mono">#010</span>
+                  <span class="task-difficulty diff-advanced">advanced</span>
+                </div>
+                <h3 class="task-card-title">Email Sequence Design</h3>
+                <p class="task-card-desc">
+                  Write a 5-email onboarding sequence for a SaaS product. Each email must have
+                  a subject line, CTA, and maintain progressive engagement.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">copywriting</span>
+                  <span class="task-tag">email</span>
+                  <span class="task-tag">SaaS</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">478</span> solved</span>
+                    <span title="Success rate"><span class="mono">69%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 11 -->
+              <article class="task-card" data-task-id="11" data-category="code-generation" data-difficulty="advanced">
+                <div class="task-card-header">
+                  <span class="task-id mono">#011</span>
+                  <span class="task-difficulty diff-advanced">advanced</span>
+                </div>
+                <h3 class="task-card-title">Database Schema from Requirements</h3>
+                <p class="task-card-desc">
+                  Design a PostgreSQL schema for an e-commerce platform from natural language
+                  requirements. Include migrations, indexes, and seed data.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">code generation</span>
+                  <span class="task-tag">database</span>
+                  <span class="task-tag">SQL</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">298</span> solved</span>
+                    <span title="Success rate"><span class="mono">58%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 12 -->
+              <article class="task-card" data-task-id="12" data-category="data-analysis" data-difficulty="beginner">
+                <div class="task-card-header">
+                  <span class="task-id mono">#012</span>
+                  <span class="task-difficulty diff-beginner">beginner</span>
+                </div>
+                <h3 class="task-card-title">CSV Data Interpretation</h3>
+                <p class="task-card-desc">
+                  Analyze a sales CSV file and produce a natural language report with trends,
+                  outliers, and year-over-year comparisons in under 200 words.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">data analysis</span>
+                  <span class="task-tag">CSV</span>
+                  <span class="task-tag">reporting</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">1,087</span> solved</span>
+                    <span title="Success rate"><span class="mono">91%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 13 -->
+              <article class="task-card" data-task-id="13" data-category="system-design" data-difficulty="intermediate">
+                <div class="task-card-header">
+                  <span class="task-id mono">#013</span>
+                  <span class="task-difficulty diff-intermediate">intermediate</span>
+                </div>
+                <h3 class="task-card-title">Multi-Agent Orchestration</h3>
+                <p class="task-card-desc">
+                  Design a prompt system for three collaborating AI agents: researcher, writer,
+                  and editor. Define handoff protocols and quality gates.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">system design</span>
+                  <span class="task-tag">multi-agent</span>
+                  <span class="task-tag">orchestration</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">412</span> solved</span>
+                    <span title="Success rate"><span class="mono">73%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 14 -->
+              <article class="task-card" data-task-id="14" data-category="brainstorming" data-difficulty="intermediate">
+                <div class="task-card-header">
+                  <span class="task-id mono">#014</span>
+                  <span class="task-difficulty diff-intermediate">intermediate</span>
+                </div>
+                <h3 class="task-card-title">Competitive Analysis Framework</h3>
+                <p class="task-card-desc">
+                  Create a structured competitive analysis of 3 AI writing tools. Use SWOT format
+                  with quantified strengths and market positioning data.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">brainstorming</span>
+                  <span class="task-tag">analysis</span>
+                  <span class="task-tag">strategy</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">567</span> solved</span>
+                    <span title="Success rate"><span class="mono">80%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 15 -->
+              <article class="task-card" data-task-id="15" data-category="summarization" data-difficulty="advanced">
+                <div class="task-card-header">
+                  <span class="task-id mono">#015</span>
+                  <span class="task-difficulty diff-advanced">advanced</span>
+                </div>
+                <h3 class="task-card-title">Legal Contract Clause Extraction</h3>
+                <p class="task-card-desc">
+                  Extract key clauses from a 20-page legal contract and produce a risk-rated
+                  summary table with clause type, obligations, and deadlines.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">summarization</span>
+                  <span class="task-tag">legal</span>
+                  <span class="task-tag">extraction</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">234</span> solved</span>
+                    <span title="Success rate"><span class="mono">62%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+              <!-- TASK CARD 16 -->
+              <article class="task-card" data-task-id="16" data-category="role-play" data-difficulty="beginner">
+                <div class="task-card-header">
+                  <span class="task-id mono">#016</span>
+                  <span class="task-difficulty diff-beginner">beginner</span>
+                </div>
+                <h3 class="task-card-title">Customer Support Persona</h3>
+                <p class="task-card-desc">
+                  Write a system prompt for a friendly customer support agent that handles
+                  complaints with empathy, offers solutions, and knows when to escalate.
+                </p>
+                <div class="task-card-meta">
+                  <span class="task-tag">role-play</span>
+                  <span class="task-tag">support</span>
+                  <span class="task-tag">persona</span>
+                </div>
+                <div class="task-card-footer">
+                  <div class="task-card-stats">
+                    <span title="Submissions"><span class="mono">892</span> solved</span>
+                    <span title="Success rate"><span class="mono">88%</span> rate</span>
+                  </div>
+                  <a href="task.html" class="task-card-btn btn-primary">
+                    Start →
+                  </a>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- PAGINATION -->
+            <div class="pagination" id="pagination">
+              <button class="pagination-btn" disabled data-page="prev">← Prev</button>
+              <div class="pagination-pages">
+                <button class="pagination-page active" data-page="1">1</button>
+                <button class="pagination-page" data-page="2">2</button>
+                <button class="pagination-page" data-page="3">3</button>
+                <span class="pagination-dots">…</span>
+                <button class="pagination-page" data-page="53">53</button>
+              </div>
+              <button class="pagination-btn" data-page="next">Next →</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-compact">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS placeholder — ready for server integration -->
+    <script>
+      // Task data store — will be replaced by server API calls
+      window.TaskCatalog = {
+        filters: {
+          category: 'all',
+          difficulty: 'all',
+          model: 'all',
+          status: 'all',
+          sort: 'newest',
+          search: ''
+        },
+        currentPage: 1,
+        perPage: 16,
+        init: function() {
+          console.log('[TaskCatalog] Initialized');
+          this.bindEvents();
+        },
+        bindEvents: function() {
+          // Filter clicks
+          document.querySelectorAll('.filter-list').forEach(function(list) {
+            list.addEventListener('click', function(e) {
+              var item = e.target.closest('.filter-item');
+              if (!item) return;
+              var siblings = list.querySelectorAll('.filter-item');
+              siblings.forEach(function(s) { s.classList.remove('active'); });
+              item.classList.add('active');
+              console.log('[TaskCatalog] Filter updated');
+            });
+          });
+
+          // Search input
+          var searchInput = document.getElementById('task-search');
+          if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+              console.log('[TaskCatalog] Search:', e.target.value);
+            });
+          }
+
+          // Start buttons
+          document.querySelectorAll('[data-action="start-task"]').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+              var taskId = e.target.dataset.taskId;
+              console.log('[TaskCatalog] Start task:', taskId);
+              // window.location.href = '/task/' + taskId;
+            });
+          });
+
+          // Pagination
+          document.querySelectorAll('.pagination-page, .pagination-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+              console.log('[TaskCatalog] Page:', e.target.dataset.page);
+            });
+          });
+
+          // Clear filters
+          var clearBtn = document.getElementById('clear-filters');
+          if (clearBtn) {
+            clearBtn.addEventListener('click', function() {
+              console.log('[TaskCatalog] Clear filters');
+            });
+          }
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        window.TaskCatalog.init();
+      });
+    </script>
+  </body>
+</html>

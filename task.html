@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Solve a prompt engineering training task — write, test, and improve your prompts." />
+    <meta name="author" content="Emil Sabirzhanov" />
+    <title>#002 Sales Data Summarization — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/student-c.css" />
+    <link rel="stylesheet" href="styles/student-a.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="container header-container">
+        <span class="logo">
+          <span class="logo-icon">⚡</span> Prompt Forge
+        </span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="colophon.html">Colophon</a></li>
+            <li><a href="tasks.html" class="active">Tasks</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="my-solutions.html">My Solutions</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <button class="btn-ghost">Log in</button>
+          <button class="btn-primary">Register</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <div class="container">
+
+        <!-- BREADCRUMB -->
+        <nav class="task-breadcrumb" aria-label="Breadcrumb">
+          <a href="tasks.html">Tasks</a>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">Sales Data Summarization</span>
+        </nav>
+
+        <!-- TASK HEADER -->
+        <div class="task-header">
+          <div class="task-header-left">
+            <div class="task-header-row">
+              <span class="task-id-large mono">#002</span>
+              <span class="task-difficulty diff-intermediate">intermediate</span>
+              <span class="task-category-tag">data analysis</span>
+            </div>
+            <h1 class="task-title">Sales Data Summarization</h1>
+            <p class="task-subtitle">
+              Write a prompt that instructs an AI to summarize quarterly sales data into a concise numbered list.
+            </p>
+          </div>
+          <div class="task-header-right">
+            <div class="task-quick-stats">
+              <div class="quick-stat">
+                <span class="quick-stat-value mono">987</span>
+                <span class="quick-stat-label">solved</span>
+              </div>
+              <div class="quick-stat">
+                <span class="quick-stat-value mono">82%</span>
+                <span class="quick-stat-label">rate</span>
+              </div>
+              <div class="quick-stat">
+                <span class="quick-stat-value mono">8.1</span>
+                <span class="quick-stat-label">avg score</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN TRAINING LAYOUT -->
+        <div class="task-layout">
+
+          <!-- LEFT COLUMN — editor + description -->
+          <div class="task-editor-col">
+
+            <!-- TASK DESCRIPTION -->
+            <div class="task-desc-panel">
+              <div class="panel-header">
+                <span class="panel-icon">📋</span>
+                <h2 class="panel-title">Task</h2>
+              </div>
+              <div class="panel-body">
+                <p>
+                  You are given a <strong>quarterly sales dataset</strong> for a SaaS company.
+                  Your goal is to write a prompt that will make an AI produce a <strong>brief summary</strong>
+                  of the key findings.
+                </p>
+
+                <h3 class="desc-heading">Requirements</h3>
+                <ul class="desc-list">
+                  <li>Define the AI's <strong>role</strong> (e.g., data analyst)</li>
+                  <li>Specify the <strong>output format</strong> — numbered list, max 5 items</li>
+                  <li>Set a <strong>length constraint</strong> — no more than 150 words</li>
+                  <li>Include a <strong>tone</strong> — professional, concise</li>
+                  <li>Provide at least <strong>1 example</strong> of desired output</li>
+                </ul>
+
+                <h3 class="desc-heading">Input Data</h3>
+                <div class="data-preview">
+                  <div class="code-block-label">sales_q3_2026.csv</div>
+                  <pre class="terminal-block"><code>month,revenue,orders,top_sku,region
+Jul,142000,1840,Widget Pro A,NA
+Aug,158000,2100,Widget Pro A,EU
+Sep,135000,1720,Widget Lite B,APAC
+---
+Total Q3: $435,000 | 5,660 orders
+Top SKU: Widget Pro A (34% of revenue)
+Best region: NA (42% of total)</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROMPT EDITOR -->
+            <div class="task-prompt-editor">
+              <div class="panel-header">
+                <span class="panel-icon">✏️</span>
+                <h2 class="panel-title">Your Prompt</h2>
+                <span class="editor-line-count" id="char-count">0 / 2000</span>
+              </div>
+              <div class="editor-chrome">
+                <div class="editor-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="editor-title">prompt.txt</span>
+              </div>
+              <div class="editor-body-wrap">
+                <textarea
+                  id="prompt-input"
+                  class="prompt-textarea"
+                  placeholder="Write your prompt here...
+
+Example structure:
+You are a [role].
+Task: [what to do].
+Format: [output format].
+Constraint: [limitations].
+Tone: [style].
+Example: [sample output]."
+                  maxlength="2000"
+                  rows="18"
+                  spellcheck="false"
+                ></textarea>
+              </div>
+              <div class="api-params-bar">
+                <span class="param"><span class="mono">T=0.7</span> Creativity</span>
+                <span class="param"><span class="mono">Tokens:</span> <span id="token-estimate">~0</span> / 4096</span>
+                <span class="param badge-small">Target: GPT-4o</span>
+              </div>
+            </div>
+
+            <!-- SUBMIT -->
+            <div class="task-submit-row">
+              <button class="btn-primary btn-large" id="submit-btn" data-action="submit-prompt">
+                Check Prompt
+              </button>
+              <button class="btn-ghost" id="reset-btn" data-action="reset-prompt">
+                Clear
+              </button>
+              <button class="btn-ghost" id="hint-btn" data-action="show-hint">
+                💡 Hint
+              </button>
+            </div>
+
+            <!-- HINT (hidden by default) -->
+            <div class="task-hint-panel" id="hint-panel" hidden>
+              <div class="panel-header">
+                <span class="panel-icon">💡</span>
+                <h2 class="panel-title">Hint</h2>
+                <button class="hint-close" id="hint-close" aria-label="Close hint">×</button>
+              </div>
+              <div class="panel-body">
+                <p>
+                  A strong prompt for this task typically follows the <strong>ROLE → TASK → FORMAT → CONSTRAINT → EXAMPLE</strong> pattern.
+                  Make sure you explicitly tell the AI <em>who</em> it is, <em>what</em> to produce,
+                  and <em>how</em> to structure the output.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN — criteria + results + history -->
+          <div class="task-side-col">
+
+            <!-- CRITERIA -->
+            <div class="task-criteria-panel">
+              <div class="panel-header">
+                <span class="panel-icon">🎯</span>
+                <h2 class="panel-title">Evaluation Criteria</h2>
+              </div>
+              <div class="panel-body">
+                <p class="criteria-intro">
+                  Your prompt will be scored on these criteria. Each is weighted and scored 0–10.
+                </p>
+                <ul class="criteria-list" id="criteria-list">
+                  <li class="criteria-item" data-criterion="role">
+                    <div class="criteria-check">
+                      <span class="criteria-icon" id="icon-role">○</span>
+                    </div>
+                    <div class="criteria-info">
+                      <strong>Role Defined</strong>
+                      <span class="criteria-weight mono">weight: 0.20</span>
+                      <span class="criteria-desc">Does the prompt assign a clear role to the AI?</span>
+                    </div>
+                  </li>
+                  <li class="criteria-item" data-criterion="format">
+                    <div class="criteria-check">
+                      <span class="criteria-icon" id="icon-format">○</span>
+                    </div>
+                    <div class="criteria-info">
+                      <strong>Format Specified</strong>
+                      <span class="criteria-weight mono">weight: 0.25</span>
+                      <span class="criteria-desc">Is the output format clearly defined?</span>
+                    </div>
+                  </li>
+                  <li class="criteria-item" data-criterion="length">
+                    <div class="criteria-check">
+                      <span class="criteria-icon" id="icon-length">○</span>
+                    </div>
+                    <div class="criteria-info">
+                      <strong>Length Constraint</strong>
+                      <span class="criteria-weight mono">weight: 0.15</span>
+                      <span class="criteria-desc">Is there a word/length limit?</span>
+                    </div>
+                  </li>
+                  <li class="criteria-item" data-criterion="examples">
+                    <div class="criteria-check">
+                      <span class="criteria-icon" id="icon-examples">○</span>
+                    </div>
+                    <div class="criteria-info">
+                      <strong>Examples Given</strong>
+                      <span class="criteria-weight mono">weight: 0.20</span>
+                      <span class="criteria-desc">Does the prompt include at least one example?</span>
+                    </div>
+                  </li>
+                  <li class="criteria-item" data-criterion="tone">
+                    <div class="criteria-check">
+                      <span class="criteria-icon" id="icon-tone">○</span>
+                    </div>
+                    <div class="criteria-info">
+                      <strong>Tone Specified</strong>
+                      <span class="criteria-weight mono">weight: 0.10</span>
+                      <span class="criteria-desc">Is the desired tone/style mentioned?</span>
+                    </div>
+                  </li>
+                  <li class="criteria-item" data-criterion="clarity">
+                    <div class="criteria-check">
+                      <span class="criteria-icon" id="icon-clarity">○</span>
+                    </div>
+                    <div class="criteria-info">
+                      <strong>Task Clarity</strong>
+                      <span class="criteria-weight mono">weight: 0.10</span>
+                      <span class="criteria-desc">Is the task unambiguous and well-structured?</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- RESULTS (hidden until submitted) -->
+            <div class="task-results-panel" id="results-panel" hidden>
+              <div class="panel-header">
+                <span class="panel-icon">📊</span>
+                <h2 class="panel-title">Results</h2>
+              </div>
+              <div class="panel-body">
+                <div class="results-score-block">
+                  <span class="results-final-label">Final Score</span>
+                  <span class="results-final-score" id="final-score">—</span>
+                  <span class="results-final-max">/ 10</span>
+                </div>
+
+                <div class="results-breakdown" id="results-breakdown">
+                  <div class="result-row">
+                    <span>Role Defined</span>
+                    <span class="mono result-weight">0.20</span>
+                    <span class="mono result-score" id="score-role">—</span>
+                  </div>
+                  <div class="result-row">
+                    <span>Format Specified</span>
+                    <span class="mono result-weight">0.25</span>
+                    <span class="mono result-score" id="score-format">—</span>
+                  </div>
+                  <div class="result-row">
+                    <span>Length Constraint</span>
+                    <span class="mono result-weight">0.15</span>
+                    <span class="mono result-score" id="score-length">—</span>
+                  </div>
+                  <div class="result-row">
+                    <span>Examples Given</span>
+                    <span class="mono result-weight">0.20</span>
+                    <span class="mono result-score" id="score-examples">—</span>
+                  </div>
+                  <div class="result-row">
+                    <span>Tone Specified</span>
+                    <span class="mono result-weight">0.10</span>
+                    <span class="mono result-score" id="score-tone">—</span>
+                  </div>
+                  <div class="result-row">
+                    <span>Task Clarity</span>
+                    <span class="mono result-weight">0.10</span>
+                    <span class="mono result-score" id="score-clarity">—</span>
+                  </div>
+                  <div class="result-row result-row-total">
+                    <span><strong>Final</strong></span>
+                    <span class="mono">1.00</span>
+                    <span class="mono" id="score-total"><strong>—</strong></span>
+                  </div>
+                </div>
+
+                <div class="results-tips" id="results-tips">
+                  <h3 class="tips-heading">Personalized Tips</h3>
+                  <ul class="tips-list" id="tips-list">
+                    <!-- populated by JS -->
+                  </ul>
+                </div>
+
+                <div class="results-actions">
+                  <button class="btn-primary" id="retry-btn" data-action="retry">Try Again</button>
+                  <button class="btn-ghost" id="next-task-btn" data-action="next-task">Next Task →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ATTEMPT HISTORY -->
+            <div class="task-history-panel">
+              <div class="panel-header">
+                <span class="panel-icon">🕐</span>
+                <h2 class="panel-title">Your Attempts</h2>
+              </div>
+              <div class="panel-body">
+                <div class="history-empty" id="history-empty">
+                  <span class="history-empty-icon">📝</span>
+                  <p>No attempts yet. Write your first prompt above!</p>
+                </div>
+                <ul class="history-list" id="history-list" hidden>
+                  <!-- populated by JS -->
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-compact">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS — task trainer logic -->
+    <script>
+      (function() {
+        'use strict';
+
+        // =========================================
+        // CONFIG — task data (will come from server)
+        // =========================================
+        var TASK = {
+          id: 2,
+          title: 'Sales Data Summarization',
+          criteria: [
+            { key: 'role',     name: 'Role Defined',      weight: 0.20 },
+            { key: 'format',   name: 'Format Specified',   weight: 0.25 },
+            { key: 'length',   name: 'Length Constraint',  weight: 0.15 },
+            { key: 'examples', name: 'Examples Given',     weight: 0.20 },
+            { key: 'tone',     name: 'Tone Specified',     weight: 0.10 },
+            { key: 'clarity',  name: 'Task Clarity',       weight: 0.10 }
+          ],
+          tips: {
+            role:     'Add "You are a [role]" at the start of your prompt.',
+            format:   'Specify the output format, e.g., "Format: numbered list, max 5 items."',
+            length:   'Add a word limit, e.g., "No more than 150 words."',
+            examples: 'Include at least one example of the desired output.',
+            tone:     'Mention the tone, e.g., "Tone: professional, concise."',
+            clarity:  'Make the task description more specific and structured.'
+          }
+        };
+
+        var attempts = [];
+        var hintVisible = false;
+
+        // =========================================
+        // DOM REFS
+        // =========================================
+        var promptInput   = document.getElementById('prompt-input');
+        var charCount     = document.getElementById('char-count');
+        var tokenEstimate = document.getElementById('token-estimate');
+        var submitBtn     = document.getElementById('submit-btn');
+        var resetBtn      = document.getElementById('reset-btn');
+        var hintBtn       = document.getElementById('hint-btn');
+        var hintPanel     = document.getElementById('hint-panel');
+        var hintClose     = document.getElementById('hint-close');
+        var resultsPanel  = document.getElementById('results-panel');
+        var finalScore    = document.getElementById('final-score');
+        var scoreTotal    = document.getElementById('score-total');
+        var tipsList      = document.getElementById('tips-list');
+        var historyEmpty  = document.getElementById('history-empty');
+        var historyList   = document.getElementById('history-list');
+        var retryBtn      = document.getElementById('retry-btn');
+        var nextTaskBtn   = document.getElementById('next-task-btn');
+
+        // =========================================
+        // CHAR COUNT + TOKEN ESTIMATE
+        // =========================================
+        promptInput.addEventListener('input', function() {
+          var len = promptInput.value.length;
+          charCount.textContent = len + ' / 2000';
+          // rough estimate: ~4 chars per token
+          var tokens = Math.ceil(len / 4);
+          tokenEstimate.textContent = '~' + tokens;
+
+          // live criteria check (basic keyword detection)
+          checkCriteria(promptInput.value);
+        });
+
+        // =========================================
+        // CRITERIA CHECK (basic heuristic)
+        // =========================================
+        function checkCriteria(text) {
+          var lower = text.toLowerCase();
+          var checks = {
+            role:     /\b(you are|act as|role|persona|expert|analyst|specialist)\b/i.test(text),
+            format:   /\b(format|output|structure|list|table|json|bullet|numbered|markdown)\b/i.test(text),
+            length:   /\b(\d+)\s*(words?|chars?|tokens?|items?|max|no more than|limit)\b/i.test(text) ||
+                      /\b(short|brief|concise|under|within|maximum)\b/i.test(text),
+            examples: /\b(example|e\.g\.|for instance|sample|such as:|like:)\b/i.test(text),
+            tone:     /\b(tone|style|voice|professional|formal|casual|concise|friendly)\b/i.test(text),
+            clarity:  text.length > 50
+          };
+
+          TASK.criteria.forEach(function(c) {
+            var icon = document.getElementById('icon-' + c.key);
+            var item = document.querySelector('[data-criterion="' + c.key + '"]');
+            if (checks[c.key]) {
+              icon.textContent = '✓';
+              icon.classList.add('criteria-met');
+              item.classList.add('criteria-met');
+            } else {
+              icon.textContent = '○';
+              icon.classList.remove('criteria-met');
+              item.classList.remove('criteria-met');
+            }
+          });
+        }
+
+        // =========================================
+        // SUBMIT — mock scoring
+        // =========================================
+        submitBtn.addEventListener('click', function() {
+          var text = promptInput.value.trim();
+          if (text.length < 10) {
+            promptInput.focus();
+            promptInput.classList.add('editor-error');
+            setTimeout(function() { promptInput.classList.remove('editor-error'); }, 1500);
+            return;
+          }
+
+          // Simulate evaluation (will be replaced by server call)
+          var scores = {};
+          var total = 0;
+          TASK.criteria.forEach(function(c) {
+            var s = Math.random() * 4 + 6; // 6–10 range for demo
+            s = Math.round(s * 10) / 10;
+            scores[c.key] = s;
+            total += s * c.weight;
+          });
+          total = Math.round(total * 100) / 100;
+
+          displayResults(scores, total);
+          saveAttempt(text, scores, total);
+        });
+
+        // =========================================
+        // DISPLAY RESULTS
+        // =========================================
+        function displayResults(scores, total) {
+          resultsPanel.hidden = false;
+          finalScore.textContent = total.toFixed(2);
+          scoreTotal.innerHTML = '<strong>' + total.toFixed(2) + '</strong>';
+
+          TASK.criteria.forEach(function(c) {
+            var el = document.getElementById('score-' + c.key);
+            el.textContent = scores[c.key].toFixed(1);
+          });
+
+          // tips for low-scoring criteria
+          tipsList.innerHTML = '';
+          var hasTips = false;
+          TASK.criteria.forEach(function(c) {
+            if (scores[c.key] < 8) {
+              var li = document.createElement('li');
+              li.className = 'tip-item';
+              li.innerHTML = '<strong>' + c.name + ' (' + scores[c.key].toFixed(1) + '):</strong> ' + TASK.tips[c.key];
+              tipsList.appendChild(li);
+              hasTips = true;
+            }
+          });
+          if (!hasTips) {
+            var li = document.createElement('li');
+            li.className = 'tip-item tip-success';
+            li.textContent = 'Excellent! All criteria scored 8+. Great prompt!';
+            tipsList.appendChild(li);
+          }
+
+          // scroll to results
+          resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // =========================================
+        // SAVE ATTEMPT
+        // =========================================
+        function saveAttempt(text, scores, total) {
+          var attempt = {
+            id: attempts.length + 1,
+            text: text,
+            scores: scores,
+            total: total,
+            time: new Date().toLocaleTimeString()
+          };
+          attempts.push(attempt);
+          renderHistory();
+        }
+
+        // =========================================
+        // RENDER HISTORY
+        // =========================================
+        function renderHistory() {
+          if (attempts.length === 0) {
+            historyEmpty.hidden = false;
+            historyList.hidden = true;
+            return;
+          }
+          historyEmpty.hidden = true;
+          historyList.hidden = false;
+          historyList.innerHTML = '';
+
+          // render in reverse order (newest first)
+          for (var i = attempts.length - 1; i >= 0; i--) {
+            var a = attempts[i];
+            var li = document.createElement('li');
+            li.className = 'history-item';
+            li.innerHTML =
+              '<div class="history-item-header">' +
+                '<span class="history-attempt-num mono">Attempt #' + a.id + '</span>' +
+                '<span class="history-time">' + a.time + '</span>' +
+              '</div>' +
+              '<div class="history-score">' +
+                '<span class="history-final mono">' + a.total.toFixed(2) + '</span>' +
+                '<span class="history-max">/ 10</span>' +
+              '</div>' +
+              '<div class="history-preview">' + escapeHtml(a.text.substring(0, 120)) + (a.text.length > 120 ? '…' : '') + '</div>';
+            historyList.appendChild(li);
+          }
+        }
+
+        // =========================================
+        // RESET
+        // =========================================
+        resetBtn.addEventListener('click', function() {
+          promptInput.value = '';
+          charCount.textContent = '0 / 2000';
+          tokenEstimate.textContent = '~0';
+          resultsPanel.hidden = true;
+          // reset criteria icons
+          TASK.criteria.forEach(function(c) {
+            var icon = document.getElementById('icon-' + c.key);
+            var item = document.querySelector('[data-criterion="' + c.key + '"]');
+            icon.textContent = '○';
+            icon.classList.remove('criteria-met');
+            item.classList.remove('criteria-met');
+          });
+          promptInput.focus();
+        });
+
+        // =========================================
+        // HINT TOGGLE
+        // =========================================
+        hintBtn.addEventListener('click', function() {
+          hintVisible = !hintVisible;
+          hintPanel.hidden = !hintVisible;
+          hintBtn.textContent = hintVisible ? '💡 Hide Hint' : '💡 Hint';
+        });
+
+        hintClose.addEventListener('click', function() {
+          hintVisible = false;
+          hintPanel.hidden = true;
+          hintBtn.textContent = '💡 Hint';
+        });
+
+        // =========================================
+        // RETRY
+        // =========================================
+        retryBtn.addEventListener('click', function() {
+          resultsPanel.hidden = true;
+          promptInput.focus();
+          promptInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // =========================================
+        // NEXT TASK (placeholder)
+        // =========================================
+        nextTaskBtn.addEventListener('click', function() {
+          // window.location.href = '/task/' + (TASK.id + 1);
+          alert('Next task coming soon!');
+        });
+
+        // =========================================
+        // UTILS
+        // =========================================
+        function escapeHtml(str) {
+          var div = document.createElement('div');
+          div.appendChild(document.createTextNode(str));
+          return div.innerHTML;
+        }
+
+        // =========================================
+        // INIT
+        // =========================================
+        console.log('[TaskTrainer] Initialized — Task #' + TASK.id);
+      })();
+    </script>
+  </body>
+</html>

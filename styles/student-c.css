@@ -140,27 +140,55 @@ body {
 }
 
 /* Column widths */
-.col-rank { width: 48px; text-align: center; }
+.col-rank {
+  width: 48px;
+  text-align: center;
+}
 .col-score {
   width: 72px;
   text-align: right;
-  background: linear-gradient(135deg, #FFD166 0%, #FF9F1C 100%);
+  background: linear-gradient(135deg, #ffd166 0%, #ff9f1c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.col-solved { width: 72px; text-align: right; }
-.col-winrate { width: 80px; text-align: right; }
-.col-date { width: 100px; }
-.col-status { width: 80px; }
+.col-solved {
+  width: 72px;
+  text-align: right;
+}
+.col-winrate {
+  width: 80px;
+  text-align: right;
+}
+.col-date {
+  width: 100px;
+}
+.col-status {
+  width: 80px;
+}
 
 /* Top-3 row highlights */
-.row-gold { background: rgba(255, 209, 102, 0.06); }
-.row-gold .col-rank { color: #ffd166; font-weight: 700; }
-.row-silver { background: rgba(192, 192, 192, 0.04); }
-.row-silver .col-rank { color: #c0c0c0; font-weight: 700; }
-.row-bronze { background: rgba(205, 127, 50, 0.04); }
-.row-bronze .col-rank { color: #cd7f32; font-weight: 700; }
+.row-gold {
+  background: rgba(255, 209, 102, 0.06);
+}
+.row-gold .col-rank {
+  color: #ffd166;
+  font-weight: 700;
+}
+.row-silver {
+  background: rgba(192, 192, 192, 0.04);
+}
+.row-silver .col-rank {
+  color: #c0c0c0;
+  font-weight: 700;
+}
+.row-bronze {
+  background: rgba(205, 127, 50, 0.04);
+}
+.row-bronze .col-rank {
+  color: #cd7f32;
+  font-weight: 700;
+}
 
 .user-badge {
   color: #ffd166;
@@ -222,10 +250,18 @@ body {
   flex-shrink: 0;
 }
 
-.rank-newcomer { background: var(--secondary-color); }
-.rank-practitioner { background: var(--success-color); }
-.rank-master { background: var(--accent-color); }
-.rank-grandmaster { background: #ffd166; }
+.rank-newcomer {
+  background: var(--secondary-color);
+}
+.rank-practitioner {
+  background: var(--success-color);
+}
+.rank-master {
+  background: var(--accent-color);
+}
+.rank-grandmaster {
+  background: #ffd166;
+}
 
 /* ===========================================
    MY-SOLUTIONS — sidebar layout
@@ -239,12 +275,16 @@ body {
 }
 
 /* Sidebar */
+.sidebar-nav {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
 .app-sidebar {
-  position: sticky;
-  top: 100px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 28px;
 }
 
 .sidebar-section {
@@ -370,7 +410,9 @@ body {
   color: var(--secondary-color);
   text-decoration: none;
   border-radius: 4px;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .doc-nav li a:hover {
@@ -397,7 +439,9 @@ body {
   color: var(--secondary-color);
   text-decoration: none;
   border-left: 2px solid var(--outline-color);
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .doc-subnav li a:hover {
@@ -711,7 +755,9 @@ body {
   border-radius: 50%;
   background: var(--background-color);
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
   flex-shrink: 0;
 }
 
@@ -735,7 +781,9 @@ body {
   border-radius: 3px;
   background: var(--background-color);
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
   flex-shrink: 0;
   position: relative;
 }

@@ -1,0 +1,1091 @@
+/* ============================================
+   PromptForge — student-a.css
+   Tasks catalog page styles
+   Author: Student A
+   Requires: main.css + student-c.css loaded first
+   ============================================ */
+
+/* --- Wide layout override (95%) --- */
+.app-layout {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.app-layout > .container,
+.app-layout .container {
+  width: 95% !important;
+  max-width: none !important;
+  margin: 0 auto;
+}
+
+.app-layout .app-content {
+  width: 100% !important;
+}
+
+/* --- Search Bar --- */
+.tasks-search-bar {
+  margin-bottom: 20px;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: var(--radius-md, 12px);
+  padding: 0 16px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.search-field:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(255, 95, 1, 0.1);
+}
+
+.search-icon {
+  font-size: 18px;
+  color: var(--secondary-color);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.search-field input {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  color: var(--primary-color);
+  font-family: var(--font-main);
+  font-size: 14px;
+  outline: none;
+}
+
+.search-field input::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.6;
+}
+
+/* --- Tasks Stats Row --- */
+.tasks-stats-row {
+  display: flex;
+  gap: 24px;
+  padding: 8px 0;
+  flex-wrap: wrap;
+}
+
+.tasks-stat {
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.tasks-stat .mono {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* --- Active Filters Bar --- */
+.active-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: rgba(255, 95, 1, 0.1);
+  border: 1px solid rgba(255, 95, 1, 0.25);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-color);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.active-filter-tag:hover {
+  background: rgba(255, 95, 1, 0.2);
+}
+
+.clear-filters-btn {
+  margin-left: auto;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid var(--outline-color);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-main);
+}
+
+.clear-filters-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* --- Task Grid --- */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* Extra wide: show more columns */
+@media (min-width: 1400px) {
+  .task-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1800px) {
+  .task-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* --- Task Card --- */
+.task-card {
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: var(--radius-md, 12px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 95, 1, 0.3);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 95, 1, 0.08);
+}
+
+.task-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Header */
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-id {
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.task-difficulty {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+.diff-beginner {
+  background: rgba(74, 222, 128, 0.12);
+  color: var(--success-color, #4ade80);
+}
+
+.diff-intermediate {
+  background: rgba(255, 209, 102, 0.12);
+  color: var(--warning-color, #ffd166);
+}
+
+.diff-advanced {
+  background: rgba(239, 71, 111, 0.12);
+  color: var(--danger-color, #ef476f);
+}
+
+/* Card Title */
+.task-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+/* Card Description */
+.task-card-desc {
+  font-size: 13px;
+  color: var(--secondary-color);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Card Tags */
+.task-card-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.task-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--surface-hover);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+/* Card Footer */
+.task-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--outline-color);
+}
+
+.task-card-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+  color: var(--secondary-color);
+}
+
+.task-card-stats .mono {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.task-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--accent-color), #ff8c42);
+  box-shadow: 0 4px 15px rgba(255, 95, 1, 0.3);
+}
+
+.task-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 95, 1, 0.5);
+}
+
+/* --- Difficulty filter colors in sidebar --- */
+.filter-beginner::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success-color, #4ade80);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.filter-intermediate::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warning-color, #ffd166);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.filter-advanced::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger-color, #ef476f);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* --- Pagination --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.pagination-btn {
+  padding: 8px 16px;
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-main);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 4px;
+}
+
+.pagination-page {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-main);
+}
+
+.pagination-page:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.pagination-page.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.pagination-dots {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+/* ===========================================
+   TASK PAGE — single task trainer
+   =========================================== */
+
+/* --- Breadcrumb --- */
+.task-breadcrumb {
+  padding: 16px 0 8px;
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.task-breadcrumb a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.task-breadcrumb a:hover {
+  color: var(--accent-color);
+}
+
+.breadcrumb-sep {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+.breadcrumb-current {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* --- Task Header --- */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 8px 0 20px;
+  border-bottom: 1px solid var(--outline-color);
+  margin-bottom: 24px;
+}
+
+.task-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.task-id-large {
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+.task-category-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: var(--surface-hover);
+  border-radius: 4px;
+  color: var(--secondary-color);
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+.task-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0 0 6px;
+}
+
+.task-subtitle {
+  font-size: 14px;
+  color: var(--secondary-color);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Quick stats */
+.task-quick-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.quick-stat {
+  text-align: center;
+}
+
+.quick-stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.quick-stat-label {
+  font-size: 10px;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Two-column layout --- */
+.task-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* --- Left column --- */
+.task-editor-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* --- Right column --- */
+.task-side-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 100px;
+}
+
+/* --- Panel base --- */
+.task-desc-panel,
+.task-prompt-editor,
+.task-criteria-panel,
+.task-results-panel,
+.task-history-panel,
+.task-hint-panel {
+  background: var(--surface-color);
+  border: 1px solid var(--outline-color);
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--surface-hover);
+  border-bottom: 1px solid var(--outline-color);
+}
+
+.panel-icon {
+  font-size: 14px;
+}
+
+.panel-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin: 0;
+  flex: 1;
+}
+
+.panel-body {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--secondary-color);
+  line-height: 1.7;
+}
+
+.panel-body p {
+  margin: 0 0 12px;
+}
+
+.panel-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Task Description --- */
+.desc-heading {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 16px 0 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--outline-color);
+}
+
+.desc-heading:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.desc-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.desc-list li {
+  padding: 3px 0;
+  font-size: 13px;
+  color: var(--secondary-color);
+  line-height: 1.6;
+}
+
+.desc-list li strong {
+  color: var(--primary-color);
+}
+
+/* Data preview */
+.data-preview {
+  margin-top: 8px;
+}
+
+/* --- Prompt Editor --- */
+.editor-line-count {
+  font-size: 11px;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  color: var(--secondary-color);
+  margin-left: auto;
+}
+
+.editor-body-wrap {
+  position: relative;
+}
+
+.prompt-textarea {
+  width: 100%;
+  min-height: 320px;
+  padding: 16px;
+  background: #0d0a0b;
+  border: none;
+  border-bottom: 1px solid var(--outline-color);
+  color: #e0d8d9;
+  font-family: var(--font-main);
+  font-size: 13px;
+  line-height: 1.8;
+  resize: vertical;
+  outline: none;
+  tab-size: 2;
+  transition: box-shadow 0.2s ease;
+}
+
+.prompt-textarea::placeholder {
+  color: #555;
+}
+
+.prompt-textarea:focus {
+  box-shadow: inset 0 0 0 2px rgba(255, 95, 1, 0.2);
+}
+
+.prompt-textarea.editor-error {
+  box-shadow: inset 0 0 0 2px rgba(239, 71, 111, 0.5);
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* --- Submit row --- */
+.task-submit-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.task-submit-row .btn-ghost {
+  font-size: 13px;
+}
+
+/* --- Hint panel --- */
+.task-hint-panel {
+  border-color: rgba(255, 209, 102, 0.3);
+  background: rgba(255, 209, 102, 0.04);
+}
+
+.task-hint-panel .panel-header {
+  background: rgba(255, 209, 102, 0.08);
+  border-bottom-color: rgba(255, 209, 102, 0.2);
+}
+
+.hint-close {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.hint-close:hover {
+  color: var(--primary-color);
+}
+
+/* --- Criteria panel --- */
+.criteria-intro {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.criteria-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  background: var(--background-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.criteria-item:hover {
+  border-color: var(--accent-color);
+}
+
+.criteria-item.criteria-met {
+  border-color: rgba(74, 222, 128, 0.4);
+  background: rgba(74, 222, 128, 0.04);
+}
+
+.criteria-icon {
+  font-size: 14px;
+  color: var(--secondary-color);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.criteria-met .criteria-icon,
+.criteria-icon.criteria-met {
+  color: var(--success-color, #4ade80);
+}
+
+.criteria-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.criteria-info strong {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.criteria-weight {
+  font-size: 10px;
+  color: var(--accent-color);
+}
+
+.criteria-desc {
+  font-size: 11px;
+  color: var(--secondary-color);
+  line-height: 1.4;
+}
+
+/* --- Results panel --- */
+.task-results-panel {
+  border-color: rgba(255, 95, 1, 0.3);
+  background: rgba(255, 95, 1, 0.02);
+}
+
+.results-score-block {
+  text-align: center;
+  padding: 16px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--outline-color);
+}
+
+.results-final-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--secondary-color);
+  margin-bottom: 4px;
+}
+
+.results-final-score {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  background: linear-gradient(135deg, #ffd166 0%, #ff9f1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.results-final-max {
+  font-size: 16px;
+  color: var(--secondary-color);
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+.results-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: 1fr 50px 50px;
+  gap: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.result-row:hover {
+  background: var(--surface-hover);
+}
+
+.result-weight {
+  text-align: right;
+  color: var(--secondary-color);
+  font-size: 11px;
+}
+
+.result-score {
+  text-align: right;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.result-row-total {
+  border-top: 1px solid var(--outline-color);
+  margin-top: 4px;
+  padding-top: 8px;
+  background: var(--surface-hover);
+  font-weight: 700;
+}
+
+/* Tips */
+.results-tips {
+  margin-bottom: 16px;
+}
+
+.tips-heading {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tip-item {
+  padding: 8px 10px;
+  background: var(--background-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--secondary-color);
+  line-height: 1.5;
+}
+
+.tip-item strong {
+  color: var(--primary-color);
+}
+
+.tip-success {
+  border-color: rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.06);
+  color: var(--success-color, #4ade80);
+}
+
+.results-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.results-actions .btn-primary {
+  font-size: 13px;
+  padding: 8px 20px;
+}
+
+.results-actions .btn-ghost {
+  font-size: 13px;
+  padding: 8px 20px;
+}
+
+/* --- History panel --- */
+.history-empty {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.history-empty-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.history-empty p {
+  font-size: 12px;
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  padding: 10px 12px;
+  background: var(--background-color);
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  transition: border-color 0.15s ease;
+}
+
+.history-item:hover {
+  border-color: var(--accent-color);
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.history-attempt-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.history-time {
+  font-size: 10px;
+  color: var(--secondary-color);
+  font-family: var(--font-mono, "Fira Code", monospace);
+}
+
+.history-score {
+  margin-bottom: 6px;
+}
+
+.history-final {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.history-max {
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.history-preview {
+  font-size: 11px;
+  color: var(--secondary-color);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-main);
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 900px) {
+  .task-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .tasks-stats-row {
+    gap: 12px;
+  }
+
+  .task-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .task-side-col {
+    position: static;
+  }
+
+  .task-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .task-card-footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .task-card-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .pagination-pages {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .tasks-stats-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .task-title {
+    font-size: 20px;
+  }
+
+  .task-quick-stats {
+    gap: 12px;
+  }
+
+  .task-submit-row {
+    flex-wrap: wrap;
+  }
+
+  .results-actions {
+    flex-direction: column;
+  }
+
+  .results-actions .btn-primary,
+  .results-actions .btn-ghost {
+    width: 100%;
+    text-align: center;
+  }
+}
