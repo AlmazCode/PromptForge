@@ -5,6 +5,17 @@
    Requires: main.css + student-c.css loaded first
    ============================================ */
 
+/* --- Sticky footer — pushes footer to bottom when content is short --- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 /* --- Auth page centering wrapper --- */
 .auth-wrap {
   max-width: 680px;
