@@ -7,194 +7,168 @@
     <meta name="author" content="Student B">
     <title>Profile — PromptForge</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/student-c.css">
     <link rel="stylesheet" href="styles/student-b.css">
 </head>
 <body>
 
-    <!-- Author: Student B
-         Section: User Profile
-         Comment: app-content grid reused from student-c so sidebar+main layout stays consistent across pages
-         Comment: Recent Attempts links to my-solutions.html instead of duplicating the table that already lives there -->
-
     <header>
-        <div class="container header-container">
-            <span class="logo">
-                <span class="logo-icon">⚡</span> Prompt Forge
-            </span>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="colophon.html">Colophon</a></li>
-                    <li><a href="tasks.html">Tasks</a></li>
-                    <li><a href="leaderboard.html">Leaderboard</a></li>
-                    <li><a href="my-solutions.html">My Solutions</a></li>
-                    <li><a href="how-it-works.html">How it works</a></li>
-                    <li><a href="profile.html" class="active">Profile</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn-ghost">Log in</a>
-                <a href="register.html" class="btn-primary">Register</a>
-            </div>
+      <div class="container header-container">
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html" class="active" aria-current="page">Profile</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
+      </div>
     </header>
 
     <main class="app-layout">
         <div class="container">
 
-            <!-- PAGE HEADER -->
-            <div class="app-header">
-                <div class="app-header-left">
-                    <h1>Alexandra Thompson</h1>
-                    <span class="app-header-meta">Member since Oct 2024 · Copywriting &amp; Content</span>
+            <!-- PROFILE HERO -->
+            <section class="profile-hero">
+                <div class="profile-hero-avatar">
+                    <img src="src/avatar-thompson.jpg" alt="Profile photo of Thomas Mcallister">
+                    <span class="profile-status-dot" aria-hidden="true"></span>
                 </div>
-                <div class="app-header-right">
-                    <span class="badge-small">● Active</span>
+                <div class="profile-hero-info">
+                    <div class="profile-hero-name-row">
+                        <h1>Thomas Mcallister</h1>
+                        <span class="profile-role-badge">Copywriting &amp; Content</span>
+                    </div>
+                    <p class="profile-hero-meta">Member since Sep 2026 · <a href="mailto:thomas.mcallister@example.com">thomas.mcallister@example.com</a></p>
+                    <p class="profile-hero-bio">I love writing clear instructions for AI models. An experienced copywriter interested in automating text processes. Currently learning Chain-of-thought prompts and few-shot learning techniques.</p>
                 </div>
-            </div>
+            </section>
 
-            <!-- BIO CARD -->
-            <article class="profile-bio">
-                <figure class="profile-avatar">
-                    <img src="src/avatar-thompson.jpg" alt="Profile photo of Alexandra Thompson">
-                </figure>
-                <div class="profile-bio-text">
-                    <p><strong>About me:</strong> I love writing clear instructions for AI models. An experienced copywriter interested in automating text processes.</p>
-                    <p><em>Currently learning:</em> Chain-of-thought prompts and few-shot learning techniques.</p>
-                    <p>
-                        <a href="mailto:alexandra.thompson@example.com">alexandra.thompson@example.com</a> ·
-                        <a href="tel:+14155551234">+1 (415) 555-1234</a>
-                    </p>
+            <!-- STATS CARDS -->
+            <div class="profile-stats-grid">
+                <div class="profile-stat-card">
+                    <span class="profile-stat-value mono">42</span>
+                    <span class="profile-stat-label">Tasks Solved</span>
                 </div>
-            </article>
-
-            <!-- STATS ROW -->
-            <div class="rank-legend profile-stats">
-                <div class="rank-legend-item">
-                    <span class="rank-dot rank-grandmaster"></span>
-                    <strong class="mono">42</strong> Tasks Solved
+                <div class="profile-stat-card">
+                    <span class="profile-stat-value mono">8.7</span>
+                    <span class="profile-stat-label">Avg. Score</span>
                 </div>
-                <div class="rank-legend-item">
-                    <span class="rank-dot rank-master"></span>
-                    <strong class="mono">8.7</strong> Avg. Score
+                <div class="profile-stat-card">
+                    <span class="profile-stat-value mono">18h</span>
+                    <span class="profile-stat-label">Time Spent</span>
                 </div>
-                <div class="rank-legend-item">
-                    <span class="rank-dot rank-practitioner"></span>
-                    <strong class="mono">18h</strong> Time Spent
-                </div>
-                <div class="rank-legend-item">
-                    <span class="rank-dot rank-newcomer"></span>
-                    <strong class="mono">#17</strong> Global Rank
+                <div class="profile-stat-card profile-stat-card--accent">
+                    <span class="profile-stat-value mono">#17</span>
+                    <span class="profile-stat-label">Global Rank</span>
                 </div>
             </div>
 
             <!-- SIDEBAR + MAIN -->
             <div class="app-content">
 
-                <!-- SIDEBAR: stats table, mentor quote, badge guide -->
+                <!-- SIDEBAR -->
                 <aside class="app-sidebar">
-
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">Statistics</h3>
-                        <div class="table-container">
-                            <table id="stats-table" class="table-dense">
-                                <caption class="visually-hidden">Progress metrics over all time</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Metric</th>
-                                        <th scope="col">Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Tasks Solved</th>
-                                        <td class="mono">42</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Avg. Score</th>
-                                        <td class="mono">8.7 / 10</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Time Spent</th>
-                                        <td class="mono">18h</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Global Rank</th>
-                                        <td class="mono">#17 / 543</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
 
                     <div class="sidebar-section">
                         <h3 class="sidebar-title">Mentor Feedback</h3>
                         <blockquote class="quote-dense">
-                            <p>"Alexandra demonstrates excellent understanding of prompt structure. Particularly impressed with her work on Sentiment Analysis — she used few-shot examples effectively."</p>
-                            <footer>— <cite>John Mitchell</cite>, Mentor, Nov 2025</footer>
+                            <p>"Thomas demonstrates excellent understanding of prompt structure. Particularly impressed with her work on Sentiment Analysis — the use of few-shot examples is particularly effective."</p>
+                            <footer>— <cite>John Mitchell</cite>, Mentor, Sep 2026</footer>
                         </blockquote>
                     </div>
 
                     <div class="sidebar-section">
                         <h3 class="sidebar-title">Badge Guide</h3>
                         <dl class="glossary-dense">
-                            <dt>⭐ Bronze</dt>
+                            <dt>Bronze</dt>
                             <dd>Solved first task in a category</dd>
-                            <dt>🥈 Silver</dt>
+                            <dt>Silver</dt>
                             <dd>Solved 10 tasks in a category</dd>
-                            <dt>🥇 Gold</dt>
+                            <dt>Gold</dt>
                             <dd>Avg. score 8+ on 15+ tasks</dd>
-                            <dt>💎 Diamond</dt>
+                            <dt>Diamond</dt>
                             <dd>Top-100 in global leaderboard</dd>
                         </dl>
                     </div>
 
                 </aside>
 
-                <!-- MAIN: achievements + links to other pages -->
+                <!-- MAIN -->
                 <div class="app-main">
 
                     <!-- ACHIEVEMENTS -->
                     <section id="achievements" class="doc-section">
-                        <h2 class="doc-section-title">Achievements</h2>
-                        <p class="doc-text"><small>Badges are awarded automatically at certain milestones.</small></p>
+                        <div class="section-heading-row">
+                            <div>
+                                <span class="section-eyebrow">MILESTONES</span>
+                                <h2 class="workspace-section-title">Achievements</h2>
+                            </div>
+                        </div>
 
-                        <div class="process-list">
-                            <div class="process-item">
-                                <span class="process-num">🎯</span>
-                                <div class="process-body">
+                        <div class="profile-badges-grid">
+                            <div class="profile-badge-card">
+                                <div class="profile-badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                </div>
+                                <div class="profile-badge-info">
                                     <strong>First Steps</strong>
                                     <span>Solved your first task</span>
                                 </div>
                             </div>
-                            <div class="process-item">
-                                <span class="process-num">✍️</span>
-                                <div class="process-body">
+                            <div class="profile-badge-card">
+                                <div class="profile-badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                                </div>
+                                <div class="profile-badge-info">
                                     <strong>Copywriter</strong>
                                     <span>Solved 10 copywriting tasks</span>
                                 </div>
                             </div>
-                            <div class="process-item">
-                                <span class="process-num">📊</span>
-                                <div class="process-body">
+                            <div class="profile-badge-card">
+                                <div class="profile-badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                                </div>
+                                <div class="profile-badge-info">
                                     <strong>Data Master</strong>
                                     <span>Solved 5 data analysis tasks with score 9+</span>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="sidebar-title profile-upcoming-label">Upcoming</h3>
-                        <div class="process-list">
-                            <div class="process-item profile-locked">
-                                <span class="process-num">💎</span>
-                                <div class="process-body">
+                        <h3 class="profile-upcoming-heading">Upcoming</h3>
+                        <div class="profile-badges-grid">
+                            <div class="profile-badge-card profile-badge-locked">
+                                <div class="profile-badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+                                </div>
+                                <div class="profile-badge-info">
                                     <strong>Diamond</strong>
-                                    <span>Reach Top-10 in leaderboard — 3 places to go</span>
+                                    <span>Reach Top-10 — 3 places to go</span>
                                 </div>
                             </div>
-                            <div class="process-item profile-locked">
-                                <span class="process-num">🏆</span>
-                                <div class="process-body">
+                            <div class="profile-badge-card profile-badge-locked">
+                                <div class="profile-badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+                                </div>
+                                <div class="profile-badge-info">
                                     <strong>Master's Apprentice</strong>
                                     <span>Solve 50 tasks with 8.5+ score</span>
                                 </div>
@@ -204,29 +178,71 @@
 
                     <hr class="doc-divider">
 
-                    <!-- RECENT ATTEMPTS — links out, no duplicate table -->
+                    <!-- RECENT ATTEMPTS -->
                     <section id="recent" class="doc-section">
-                        <h2 class="doc-section-title">Recent Attempts</h2>
-                        <p class="doc-text">
-                            Your last 3 submissions: <strong>"TED-Style Summary"</strong> (9.2),
-                            <strong>"Object Classification"</strong> (8.8),
-                            <strong>"Content Idea Generation"</strong> (9.0).
-                        </p>
-                        <a href="my-solutions.html" class="profile-cta-link">View full history in My Solutions →</a>
+                        <div class="section-heading-row">
+                            <div>
+                                <span class="section-eyebrow">LATEST</span>
+                                <h2 class="workspace-section-title">Recent Attempts</h2>
+                            </div>
+                            <a href="my-solutions.html" class="profile-cta-link">View all <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+
+                        <div class="profile-recent-grid">
+                            <div class="profile-recent-card">
+                                <div class="profile-recent-score mono">9.2</div>
+                                <div class="profile-recent-info">
+                                    <strong>TED-Style Summary</strong>
+                                    <span>Copywriting · Advanced</span>
+                                </div>
+                            </div>
+                            <div class="profile-recent-card">
+                                <div class="profile-recent-score mono">8.8</div>
+                                <div class="profile-recent-info">
+                                    <strong>Object Classification</strong>
+                                    <span>Data Analysis · Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="profile-recent-card">
+                                <div class="profile-recent-score mono">9.0</div>
+                                <div class="profile-recent-info">
+                                    <strong>Content Idea Generation</strong>
+                                    <span>Brainstorming · Advanced</span>
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
                     <hr class="doc-divider">
 
                     <!-- SUGGESTIONS -->
                     <section id="tips" class="doc-section">
-                        <h2 class="doc-section-title">Suggestions for Improvement</h2>
-                        <ul class="tips-compact">
-                            <li><em>Structure</em>: add an explicit role definition at the start of every prompt</li>
-                            <li><em>Examples</em>: use few-shot examples for classification tasks</li>
-                            <li><em>Format</em>: always specify the output format (<abbr title="JavaScript Object Notation">JSON</abbr>, Markdown, plain text)</li>
-                            <li><em>Difficulty</em>: your scores suggest you're ready for "advanced" tasks</li>
-                        </ul>
-                        <a href="tasks.html" class="profile-cta-link">Browse advanced tasks →</a>
+                        <div class="section-heading-row">
+                            <div>
+                                <span class="section-eyebrow">RECOMMENDATIONS</span>
+                                <h2 class="workspace-section-title">Suggestions for Improvement</h2>
+                            </div>
+                        </div>
+
+                        <div class="profile-tips-grid">
+                            <div class="profile-tip-card">
+                                <span class="profile-tip-tag">Structure</span>
+                                <p>Add an explicit role definition at the start of every prompt</p>
+                            </div>
+                            <div class="profile-tip-card">
+                                <span class="profile-tip-tag">Examples</span>
+                                <p>Use few-shot examples for classification tasks</p>
+                            </div>
+                            <div class="profile-tip-card">
+                                <span class="profile-tip-tag">Format</span>
+                                <p>Always specify the output format (<abbr title="JavaScript Object Notation">JSON</abbr>, Markdown, plain text)</p>
+                            </div>
+                            <div class="profile-tip-card">
+                                <span class="profile-tip-tag">Difficulty</span>
+                                <p>Your scores suggest you're ready for "advanced" tasks</p>
+                            </div>
+                        </div>
+                        <a href="tasks.html" class="profile-cta-link">Browse advanced tasks <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </section>
 
                 </div>

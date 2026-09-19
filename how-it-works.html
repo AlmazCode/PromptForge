@@ -3,193 +3,209 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="How prompt evaluation works in PromptForge." />
+    <meta name="description" content="How prompt evaluation works in PromptForge — scoring criteria, glossary, and feedback form." />
     <meta name="author" content="Emil Sabirzhanov" />
     <title>How It Works — PromptForge</title>
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/student-c.css" />
   </head>
-  <body>
+  <body class="how-page">
+    <!-- Author: Emil Sabirzhanov
+         Redesign: documentation workspace with clearer hierarchy, persistent page
+         navigation, readable examples, and less visual noise between sections. -->
+
     <header>
       <div class="container header-container">
-        <span class="logo">
-          <span class="logo-icon">⚡</span> Prompt Forge
-        </span>
-        <nav>
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-            <li><a href="tasks.html">Tasks</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="my-solutions.html">My Solutions</a></li>
-            <li><a href="how-it-works.html" class="active">How it works</a></li>
-            <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html" class="active" aria-current="page">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
-          <button class="btn-ghost">Log in</button>
-          <button class="btn-primary">Register</button>
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
       </div>
     </header>
 
-    <main class="app-layout">
+    <main class="app-layout how-layout-page">
       <div class="container">
-        <!-- PAGE HEADER -->
-        <div class="app-header">
-          <div class="app-header-left">
+        <div class="workspace-heading">
+          <div class="workspace-heading-copy">
+            <span class="workspace-eyebrow">DOCUMENTATION <span aria-hidden="true">/</span> EVALUATION SYSTEM</span>
             <h1>How Evaluation Works</h1>
-            <span class="app-header-meta">Documentation · Last updated Aug 2026</span>
+            <p class="workspace-heading-meta">
+              Understand what happens after submission, how criteria become a score, and where to find feedback.
+            </p>
+          </div>
+          <div class="workspace-status how-status">
+            <span class="workspace-status-label">Evaluation</span>
+            <strong>6 criteria</strong>
+            <span class="workspace-status-note"><span class="status-dot" aria-hidden="true"></span> 5–10 sec</span>
           </div>
         </div>
 
-        <!-- DOCS LAYOUT: sidebar nav + content -->
-        <div class="app-content">
-
-          <!-- SIDEBAR NAV — sticky, section links -->
-          <aside class="app-sidebar">
-            <div class="sidebar-section">
-              <h3 class="sidebar-title">Sections</h3>
-              <ul class="doc-nav">
-                <li><a href="#process" class="active">Evaluation Process</a></li>
-                <li><a href="#scoring">Scoring</a></li>
-                <li><a href="#glossary">Glossary</a></li>
-                <li><a href="#example">Prompt Example</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#feedback">Feedback</a></li>
-              </ul>
+        <div class="app-content how-content">
+          <aside class="app-sidebar how-sidebar">
+            <div class="sidebar-section how-nav-panel">
+              <div class="sidebar-heading-row">
+                <div>
+                  <span class="section-eyebrow">DOCUMENTATION</span>
+                  <h2 class="sidebar-heading">On this page</h2>
+                </div>
+              </div>
+              <nav aria-label="How evaluation works sections">
+                <ol class="doc-nav numbered-doc-nav">
+                  <li><a href="#process" class="active"><span>01</span> Evaluation process</a></li>
+                  <li><a href="#criteria"><span>02</span> Scoring criteria</a></li>
+                  <li><a href="#glossary"><span>03</span> Glossary</a></li>
+                  <li><a href="#example"><span>04</span> Prompt example</a></li>
+                  <li><a href="#faq"><span>05</span> FAQ</a></li>
+                  <li><a href="#feedback"><span>06</span> Feedback</a></li>
+                </ol>
+              </nav>
             </div>
 
-            <div class="sidebar-section">
-              <h3 class="sidebar-title">On this page</h3>
-              <ul class="doc-subnav">
-                <li><a href="#step-1">1. Submission</a></li>
-                <li><a href="#step-2">2. Parsing</a></li>
-                <li><a href="#step-3">3. Comparison</a></li>
-                <li><a href="#step-4">4. Scoring</a></li>
-                <li><a href="#step-5">5. Aggregation</a></li>
-                <li><a href="#step-6">6. Tips</a></li>
-              </ul>
+            <div class="sidebar-section how-side-note">
+              <span class="section-eyebrow">SUPPORT</span>
+              <p class="sidebar-note-text">Still have questions after reading? Send us a message — we reply within 48 hours.</p>
+              <a href="#feedback" class="sidebar-inline-link">Go to feedback form <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
             </div>
           </aside>
 
-          <!-- MAIN CONTENT -->
-          <div class="app-main">
+          <div class="app-main how-main">
+            <section id="process" class="doc-section how-doc-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">01 / PROCESS</span>
+                  <h2 class="workspace-section-title">Evaluation process</h2>
+                </div>
+                <span class="section-meta">AFTER SUBMISSION</span>
+              </div>
+              <p class="doc-text section-lead">
+                Every prompt goes through six stages before you see the final score. The entire process takes 5–10 seconds.
+              </p>
 
-            <!-- EVALUATION PROCESS — dense, numbered list -->
-            <section id="process" class="doc-section">
-              <h2 class="doc-section-title">Evaluation Process</h2>
-              <p class="doc-text">Every prompt goes through six stages before you see the final score.</p>
-
-              <div class="process-list">
-                <div class="process-item" id="step-1">
+              <div class="process-list process-timeline">
+                <div class="process-item process-timeline-item" id="step-1">
                   <span class="process-num">01</span>
-                  <div class="process-body">
-                    <strong>Submission</strong>
-                    <span>You enter the prompt text in the task form and click "Check". The prompt is sent to the server.</span>
-                  </div>
+                  <div class="process-body"><strong>Submission</strong><span>You enter your prompt and click “Check”. The prompt is sent to the evaluation server.</span></div>
                 </div>
-                <div class="process-item" id="step-2">
+                <div class="process-item process-timeline-item" id="step-2">
                   <span class="process-num">02</span>
-                  <div class="process-body">
-                    <strong>Parsing</strong>
-                    <span>The system analyzes the prompt structure: role, output format, constraints, examples.</span>
-                  </div>
+                  <div class="process-body"><strong>Parsing</strong><span>The system extracts structure: role, format, constraints, examples, tone.</span></div>
                 </div>
-                <div class="process-item" id="step-3">
+                <div class="process-item process-timeline-item" id="step-3">
                   <span class="process-num">03</span>
-                  <div class="process-body">
-                    <strong>Comparison</strong>
-                    <span>Your prompt is checked against reference examples using atomic criteria.</span>
-                  </div>
+                  <div class="process-body"><strong>Comparison</strong><span>Your prompt is checked against reference examples using 4–6 independent criteria.</span></div>
                 </div>
-                <div class="process-item" id="step-4">
+                <div class="process-item process-timeline-item" id="step-4">
                   <span class="process-num">04</span>
-                  <div class="process-body">
-                    <strong>Scoring</strong>
-                    <span>Each criterion is scored 0–10 independently. Criteria are not compared to each other.</span>
-                  </div>
+                  <div class="process-body"><strong>Scoring</strong><span>Each criterion is scored 0–10 independently. Criteria are never compared to each other.</span></div>
                 </div>
-                <div class="process-item" id="step-5">
+                <div class="process-item process-timeline-item" id="step-5">
                   <span class="process-num">05</span>
-                  <div class="process-body">
-                    <strong>Aggregation</strong>
-                    <span>Scores are weighted and summed. The system runs 2–3 passes and takes the median.</span>
-                  </div>
+                  <div class="process-body"><strong>Aggregation</strong><span>Scores are weighted and summed. The system runs 2–3 passes and takes the median to reduce noise.</span></div>
                 </div>
-                <div class="process-item" id="step-6">
+                <div class="process-item process-timeline-item" id="step-6">
                   <span class="process-num">06</span>
-                  <div class="process-body">
-                    <strong>Tips</strong>
-                    <span>Personalized suggestions on what to improve and how.</span>
-                  </div>
+                  <div class="process-body"><strong>Results</strong><span>You see your score, per-criterion breakdown, and personalized tips on <a href="task.html">the task page</a>.</span></div>
                 </div>
               </div>
             </section>
 
-            <hr class="doc-divider">
+            <hr class="doc-divider" />
 
-            <!-- SCORING -->
-            <section id="scoring" class="doc-section">
-              <h2 class="doc-section-title">How Scores Are Calculated</h2>
-              <p class="doc-text">
-                Each solution is evaluated on <strong>4–6 atomic criteria</strong> — independent
-                checks like "is there a role?" or "is the format specified?". Each is scored 0–10.
-              </p>
-              <p class="doc-text">
-                The final score is a <strong>weighted average</strong>. The system runs 2–3
-                evaluation passes and takes the <strong>median</strong> to reduce noise from
-                the LLM judge.
+            <section id="criteria" class="doc-section how-doc-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">02 / RUBRIC</span>
+                  <h2 class="workspace-section-title">Scoring criteria</h2>
+                </div>
+                <span class="section-meta">WEIGHTED</span>
+              </div>
+              <p class="doc-text section-lead">
+                Each solution is evaluated on <strong>4–6 atomic criteria</strong> — independent yes/no checks. The final score is a <strong>weighted average</strong> of all criteria.
               </p>
 
-              <div class="code-block-label">Example criteria breakdown</div>
-              <pre class="terminal-block"><code>{
-  "task_id": "summarize_sales",
-  "criteria": [
-    { "name": "role_defined",    "weight": 0.20, "score": 10 },
-    { "name": "format_specified", "weight": 0.25, "score": 8  },
-    { "name": "length_constraint", "weight": 0.15, "score": 6  },
-    { "name": "examples_given",  "weight": 0.20, "score": 10 },
-    { "name": "tone_specified",  "weight": 0.10, "score": 8  },
-    { "name": "task_clarity",    "weight": 0.10, "score": 9  }
-  ],
-  "final_score": 8.35
-}</code></pre>
+              <div class="table-container criteria-table-container">
+                <table class="table-dense criteria-rubric criteria-rubric-modern">
+                  <caption class="visually-hidden">Evaluation rubric showing each criterion, what it checks, and example values.</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Criterion</th>
+                      <th scope="col">What it checks</th>
+                      <th scope="col">Weight</th>
+                      <th scope="col">Example (good)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-criterion="role" data-weight="0.20"><th scope="row">Role defined</th><td>Is there an explicit role for the model?</td><td class="mono">20%</td><td><code>You are a data analyst</code></td></tr>
+                    <tr data-criterion="format" data-weight="0.25"><th scope="row">Output format</th><td>Is the response format specified?</td><td class="mono">25%</td><td><code>Format: numbered list</code></td></tr>
+                    <tr data-criterion="constraint" data-weight="0.15"><th scope="row">Constraints</th><td>Are length or content limits set?</td><td class="mono">15%</td><td><code>no more than 150 words</code></td></tr>
+                    <tr data-criterion="examples" data-weight="0.20"><th scope="row">Examples</th><td>Are few-shot examples provided?</td><td class="mono">20%</td><td><code>Example: 1. Revenue grew 12%</code></td></tr>
+                    <tr data-criterion="tone" data-weight="0.10"><th scope="row">Tone</th><td>Is the communication style defined?</td><td class="mono">10%</td><td><code>Tone: professional, no filler</code></td></tr>
+                    <tr data-criterion="clarity" data-weight="0.10"><th scope="row">Task clarity</th><td>Is the main task unambiguous?</td><td class="mono">10%</td><td><code>Write a brief summary</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="doc-text section-note"><small>The same rubric is used on <a href="task.html">every task page</a>. JS reads the <code>data-criterion</code> and <code>data-weight</code> attributes to calculate your final score.</small></p>
             </section>
 
-            <hr class="doc-divider">
+            <hr class="doc-divider" />
 
-            <!-- GLOSSARY -->
-            <section id="glossary" class="doc-section">
-              <h2 class="doc-section-title">Glossary</h2>
+            <section id="glossary" class="doc-section how-doc-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">03 / TERMS</span>
+                  <h2 class="workspace-section-title">Glossary</h2>
+                </div>
+                <span class="section-meta">CORE CONCEPTS</span>
+              </div>
 
-              <dl class="glossary-dense">
-                <dt>Zero-shot</dt>
-                <dd>No examples — just a task and a response. Simplest approach.</dd>
-
-                <dt>Few-shot</dt>
-                <dd>1–5 examples to guide the model's output format and style.</dd>
-
-                <dt>Chain-of-thought</dt>
-                <dd>Step-by-step reasoning. Improves accuracy on complex problems.</dd>
-
-                <dt>Temperature</dt>
-                <dd>0 = deterministic, 1 = creative. Controls response diversity.</dd>
-
-                <dt>System prompt</dt>
-                <dd>Hidden instruction setting role, tone, and constraints.</dd>
+              <dl class="glossary-dense glossary-modern">
+                <div class="glossary-entry"><dt>Zero-shot</dt><dd>A prompt with no examples — just the task. On PromptForge, zero-shot prompts are the baseline difficulty level.</dd></div>
+                <div class="glossary-entry"><dt>Few-shot</dt><dd>1–5 examples to guide the model’s output format and style. Tasks marked <mark>intermediate</mark> or <mark>advanced</mark> expect few-shot prompts.</dd></div>
+                <div class="glossary-entry"><dt><abbr title="Chain-of-thought">CoT</abbr></dt><dd>Step-by-step reasoning inside the prompt. Improves accuracy on complex tasks. The evaluation system detects CoT by looking for sequential markers (first, then, therefore).</dd></div>
+                <div class="glossary-entry"><dt>Temperature</dt><dd>Controls response diversity: <code>0</code> = deterministic, <code>1</code> = creative. Most PromptForge tasks are designed for <code>temperature = 0</code>.</dd></div>
+                <div class="glossary-entry"><dt>System prompt</dt><dd>A hidden instruction that sets the model’s role, tone, and constraints. PromptForge tasks are evaluated against system-level instructions, not user-facing text.</dd></div>
               </dl>
             </section>
 
-            <hr class="doc-divider">
+            <hr class="doc-divider" />
 
-            <!-- PROMPT EXAMPLE -->
-            <section id="example" class="doc-section">
-              <h2 class="doc-section-title">Prompt Example</h2>
-              <p class="doc-text">A quality prompt for "Sales data summarization":</p>
+            <section id="example" class="doc-section how-doc-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">04 / EXAMPLE</span>
+                  <h2 class="workspace-section-title">Prompt example</h2>
+                </div>
+                <span class="section-meta mono">9.2 / 10</span>
+              </div>
+              <p class="doc-text section-lead">A quality prompt for “Sales data summarization”:</p>
 
-              <div class="code-block-label">prompt.txt</div>
-              <pre class="terminal-block"><code>You are a data analyst. Write a brief summary
+              <div class="code-window">
+                <div class="code-window-topbar">
+                  <div class="code-window-file"><span class="code-window-dot" aria-hidden="true"></span>prompt.txt</div>
+                  <span class="code-window-badge mono">SCORE 9.2</span>
+                </div>
+                <pre class="terminal-block"><code>You are a data analyst. Write a brief summary
 of the sales table for September 2026.
 
 Format: numbered list of 5 items.
@@ -197,109 +213,70 @@ Tone: professional, no filler.
 Constraint: no more than 150 words.
 
 Example:
-1. Revenue grew 12% compared to August.
-2. Top 3 products account for 60% of sales...</code></pre>
+<span class="line-highlight">1. Revenue grew 12% compared to August.</span>
+<span class="line-highlight">2. Top 3 products account for 60% of sales...</span></code></pre>
+              </div>
 
-              <blockquote class="quote-dense">
-                <p>"Prompt engineering is about clarity of thinking. The more precisely you formulate a task, the better the result."</p>
-                <footer>— <cite>Ivan Petrov</cite>, <time datetime="2026-08-20">Aug 20, 2026</time></footer>
+              <p class="doc-text section-note">This prompt scores <strong>9.2/10</strong> because it includes a role, format, constraint, tone, and one example — all six criteria are satisfied.</p>
+
+              <blockquote class="quote-dense quote-modern">
+                <p>“Prompt engineering is about clarity of thinking. The more precisely you formulate a task, the better the result.”</p>
+                <footer>— <cite>Ivan Petrov</cite>, mentor, <time datetime="2026-08-20">Aug 20, 2026</time></footer>
               </blockquote>
             </section>
 
-            <hr class="doc-divider">
+            <hr class="doc-divider" />
 
-            <!-- FAQ -->
-            <section id="faq" class="doc-section">
-              <h2 class="doc-section-title">FAQ</h2>
+            <section id="faq" class="doc-section how-doc-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">05 / FAQ</span>
+                  <h2 class="workspace-section-title">Frequently asked</h2>
+                </div>
+                <span class="section-meta">COMMON QUESTIONS</span>
+              </div>
 
-              <div class="faq-list">
-                <details class="faq-item">
-                  <summary>Why did my prompt get a low score?</summary>
-                  <p>You may have missed the output format or the model's role. Check the tips after evaluation — they show which criteria scored low.</p>
-                </details>
-                <details class="faq-item">
-                  <summary>Can I submit a prompt multiple times?</summary>
-                  <p>Yes — improve and resubmit. All attempts are saved in history.</p>
-                </details>
-                <details class="faq-item">
-                  <summary>Which model is used for evaluation?</summary>
-                  <p>OpenAI and Anthropic LLMs. The target model is listed per task.</p>
-                </details>
-                <details class="faq-item">
-                  <summary>What are "atomic criteria"?</summary>
-                  <p>Separate yes/no checks: role present? format specified? length limited?</p>
-                </details>
-                <details class="faq-item">
-                  <summary>Why does the score differ on retry?</summary>
-                  <p>CoT judges vary slightly. The system takes the median of 2–3 runs.</p>
-                </details>
+              <div class="faq-list faq-list-modern">
+                <details class="faq-item"><summary>Can I submit a prompt multiple times?</summary><p>Yes — improve and resubmit. All attempts are saved in <a href="my-solutions.html">your history</a>. Your best score counts toward the <a href="leaderboard.html">leaderboard</a>.</p></details>
+                <details class="faq-item"><summary>Which model is used for evaluation?</summary><p>OpenAI and Anthropic <abbr title="Large Language Models">LLMs</abbr>. The target model is listed on each task page (e.g., “Target: GPT-4o”).</p></details>
+                <details class="faq-item"><summary>Why does the score differ on retry?</summary><p><abbr title="Chain-of-thought">CoT</abbr> judges vary slightly between runs. The system takes the <strong>median of 2–3 runs</strong> to reduce noise. If the difference exceeds 25%, the rubric is flagged for review.</p></details>
               </div>
             </section>
 
-            <hr class="doc-divider">
+            <hr class="doc-divider" />
 
-            <!-- FEEDBACK FORM -->
-            <section id="feedback" class="doc-section">
-              <h2 class="doc-section-title">Feedback</h2>
+            <section id="feedback" class="doc-section how-doc-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">06 / SUPPORT</span>
+                  <h2 class="workspace-section-title">Still have questions?</h2>
+                </div>
+                <span class="section-meta">48H RESPONSE</span>
+              </div>
+              <p class="doc-text section-lead">If the FAQ didn’t cover your case, send us a message. We respond within 48 hours.</p>
 
-              <form id="feedback-form" method="post" action="#" class="form-dense">
+              <form id="feedback-form" method="post" action="#" class="form-dense feedback-form-modern">
                 <fieldset>
-                  <legend>Your Message</legend>
+                  <legend>Your message</legend>
                   <div class="form-grid-2col">
-                    <div class="form-field">
-                      <label for="fb-name">Name</label>
-                      <input type="text" id="fb-name" name="name" required />
-                    </div>
-                    <div class="form-field">
-                      <label for="fb-email">Email</label>
-                      <input type="email" id="fb-email" name="email" required />
-                    </div>
-                    <div class="form-field">
-                      <label for="fb-phone">Phone</label>
-                      <input type="tel" id="fb-phone" name="phone" />
-                    </div>
-                    <div class="form-field">
-                      <label for="fb-priority">Priority</label>
-                      <input type="number" id="fb-priority" name="priority" min="1" max="5" value="3" />
-                    </div>
-                    <div class="form-field">
-                      <label for="fb-date">Date</label>
-                      <input type="date" id="fb-date" name="preferred_date" />
-                    </div>
-                    <div class="form-field">
-                      <label for="fb-topic">Subject</label>
-                      <select id="fb-topic" name="topic">
-                        <option value="">— Select —</option>
-                        <option value="bug">Report a bug</option>
-                        <option value="feature">Suggest a feature</option>
-                        <option value="task">Question about a task</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
+                    <div class="form-field"><label for="fb-name">Name</label><input type="text" id="fb-name" name="name" required /></div>
+                    <div class="form-field"><label for="fb-email">Email</label><input type="email" id="fb-email" name="email" required /></div>
+                    <div class="form-field"><label for="fb-phone">Phone</label><input type="tel" id="fb-phone" name="phone" /></div>
+                    <div class="form-field"><label for="fb-priority">Priority (1–5)</label><input type="number" id="fb-priority" name="priority" min="1" max="5" value="3" /></div>
+                    <div class="form-field"><label for="fb-date">Preferred contact date</label><input type="date" id="fb-date" name="preferred_date" /></div>
+                    <div class="form-field"><label for="fb-topic">Subject</label><select id="fb-topic" name="topic"><option value="">— Select —</option><option value="bug">Report a bug</option><option value="feature">Suggest a feature</option><option value="task">Question about a task</option><option value="other">Other</option></select></div>
                   </div>
                   <div class="form-inline">
                     <label><input type="radio" name="urgency" value="low" /> Low</label>
                     <label><input type="radio" name="urgency" value="medium" checked /> Medium</label>
                     <label><input type="radio" name="urgency" value="high" /> High</label>
-                    <label><input type="checkbox" name="subscribe" /> Subscribe</label>
+                    <label><input type="checkbox" name="subscribe" /> Subscribe to updates</label>
                   </div>
-                  <div class="form-field">
-                    <label for="fb-message">Message</label>
-                    <textarea id="fb-message" name="message" rows="4" required></textarea>
-                    <div class="api-params-bar">
-                      <span class="param"><span class="mono">T=0.7</span> (Creativity)</span>
-                      <span class="param"><span class="mono">Tokens:</span> ~0 / 4096</span>
-                      <span class="param badge-small">Target: GPT-4o</span>
-                    </div>
-                  </div>
-                  <div class="form-actions">
-                    <button type="submit">Send</button>
-                    <button type="reset" class="btn-ghost">Clear</button>
-                  </div>
+                  <div class="form-field"><label for="fb-message">Message</label><textarea id="fb-message" name="message" rows="4" required></textarea></div>
+                  <div class="form-actions"><button type="submit">Send</button><button type="reset" class="btn-ghost">Clear</button></div>
                 </fieldset>
               </form>
             </section>
-
           </div>
         </div>
       </div>
@@ -307,9 +284,7 @@ Example:
 
     <footer class="footer-compact">
       <div class="container">
-        <div class="footer-bottom">
-          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Prompt Forge. All rights reserved.</p></div>
       </div>
     </footer>
   </body>

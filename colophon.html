@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Colophon — how PromptForge is built: task template structure, Git workflow, and browser testing." />
+    <meta name="author" content="PromptForge team" />
+    <title>Colophon — PromptForge</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/student-c.css" />
+  </head>
+  <body class="how-page">
+    <!-- Author: PromptForge team
+         Comment: one meta page instead of ten footnotes — how the task template,
+         the Git workflow and the QA process are organised. Lives in the shared
+         workspace system so it ages together with the pages it describes. -->
+
+    <header>
+      <div class="container header-container">
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html" class="active" aria-current="page">Colophon</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <div class="container">
+        <div class="workspace-heading">
+          <div class="workspace-heading-copy">
+            <span class="workspace-eyebrow">PROJECT <span aria-hidden="true">/</span> META</span>
+            <h1>Colophon</h1>
+            <p class="workspace-heading-meta">
+              How PromptForge is put together — the single task template, the Git
+              workflow behind it, and how every page is verified before it ships.
+            </p>
+          </div>
+          <div class="workspace-status" aria-label="Project status">
+            <span class="workspace-status-label">Markup</span>
+            <strong>10 / 10 pages</strong>
+            <span class="workspace-status-note"><span class="status-dot" aria-hidden="true"></span> Valid</span>
+          </div>
+        </div>
+
+        <div class="app-main">
+          <section class="doc-section" id="structure">
+            <div class="section-heading-row">
+              <div>
+                <span class="section-eyebrow">01 / STUDENT A</span>
+                <h2 class="workspace-section-title">How we structured the tasks</h2>
+              </div>
+              <span class="section-meta">TASK TEMPLATE</span>
+            </div>
+            <p class="doc-text section-lead">
+              There is exactly one <code>task.html</code>. Every task card in the catalog points at it,
+              and JS later fills it from <code>?id=</code> — so the criteria table had to be designed
+              as data from day one: one row, one atomic check, one weight.
+            </p>
+            <div class="code-window">
+              <div class="code-window-topbar">
+                <div class="code-window-file"><span class="code-window-dot" aria-hidden="true"></span>task.html — criteria row</div>
+                <span class="code-window-badge mono">RUBRIC SCHEMA</span>
+              </div>
+              <pre class="terminal-block"><code>&lt;tr data-criterion="format" data-weight="0.25"&gt;
+  &lt;th scope="row"&gt;Output format&lt;/th&gt;
+  &lt;td&gt;Is the response format specified?&lt;/td&gt;
+  &lt;td class="mono"&gt;25%&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+            </div>
+            <p class="doc-text">
+              The <code>data-*</code> attributes are the contract with the future scorer:
+              the same attributes the JS engine reads when it aggregates a weighted median.
+            </p>
+          </section>
+
+          <hr class="doc-divider" />
+
+          <section class="doc-section" id="git">
+            <div class="section-heading-row">
+              <div>
+                <span class="section-eyebrow">02 / STUDENT B</span>
+                <h2 class="workspace-section-title">How we worked with Git</h2>
+              </div>
+              <span class="section-meta">WORKFLOW</span>
+            </div>
+            <p class="doc-text section-lead">
+              Three students, one stylesheet each, zero merge conflicts in CSS:
+              pages compose <code>base &rarr; shared &rarr; personal</code>, so a personal layer
+              never edits another student's selectors.
+            </p>
+            <div class="code-window">
+              <div class="code-window-topbar">
+                <div class="code-window-file"><span class="code-window-dot" aria-hidden="true"></span>terminal</div>
+                <span class="code-window-badge mono">GIT</span>
+              </div>
+              <pre class="terminal-block"><code><span class="line-highlight">$ git checkout -b feature/student-c-leaderboard</span>
+$ git add styles/student-c.css leaderboard.html
+$ git commit -m "leaderboard: workspace layout, rank legend"
+$ git push origin feature/student-c-leaderboard</code></pre>
+            </div>
+            <p class="doc-text">
+              Branch naming follows <code>feature/&lt;student&gt;-&lt;page&gt;</code>; every PR is reviewed
+              against the section 8 checklist in <code>tz.md</code> before merging into <code>main</code>.
+            </p>
+          </section>
+
+          <hr class="doc-divider" />
+
+          <section class="doc-section" id="testing">
+            <div class="section-heading-row">
+              <div>
+                <span class="section-eyebrow">03 / STUDENT C</span>
+                <h2 class="workspace-section-title">What the browser shows</h2>
+              </div>
+              <span class="section-meta">QA</span>
+            </div>
+            <p class="doc-text section-lead">
+              Every page is run through the W3C validator and a manual pass at
+              1440 / 1024 / 768 / 375&nbsp;px before it counts as done.
+            </p>
+            <div class="code-window">
+              <div class="code-window-topbar">
+                <div class="code-window-file"><span class="code-window-dot" aria-hidden="true"></span>validator.w3.org — output</div>
+                <span class="code-window-badge mono">PASS</span>
+              </div>
+              <pre class="terminal-block"><code><span class="line-highlight">Document checking completed. No errors or warnings to show.</span>
+Used the HTML parser.
+Total execution time: 0.32 seconds.</code></pre>
+            </div>
+            <p class="doc-text">
+              Checks that can't be automated: heading order (exactly one
+              <code>&lt;h1&gt;</code>, no skipped levels), visible keyboard focus, and alt text
+              that says something the image doesn't.
+            </p>
+          </section>
+
+          <div class="page-cta">
+            <div>
+              <span class="section-eyebrow">NEXT STEP</span>
+              <p>Enough meta — go solve a task.</p>
+            </div>
+            <a href="tasks.html" class="btn-primary">Browse Tasks <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer-compact">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -3,159 +3,221 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="My solved tasks — history of attempts and results." />
+    <meta name="description" content="Your solved tasks — history of attempts, scores, and improvement tips on PromptForge." />
     <meta name="author" content="Emil Sabirzhanov" />
     <title>My Solutions — PromptForge</title>
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/student-c.css" />
   </head>
-  <body>
+  <body class="solutions-page">
+    <!-- Author: Emil Sabirzhanov
+         Redesign: progress workspace focused on recent performance, concrete fixes,
+         and a readable history of submitted solutions. -->
+
     <header>
       <div class="container header-container">
-        <span class="logo">
-          <span class="logo-icon">⚡</span> Prompt Forge
-        </span>
-        <nav>
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-            <li><a href="tasks.html">Tasks</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="my-solutions.html" class="active">My Solutions</a></li>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html" class="active" aria-current="page">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
-          <button class="btn-ghost">Log in</button>
-          <button class="btn-primary">Register</button>
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
       </div>
     </header>
 
-    <main class="app-layout">
+    <main class="app-layout solutions-layout">
       <div class="container">
-        <!-- PAGE HEADER -->
-        <div class="app-header">
-          <div class="app-header-left">
+        <div class="workspace-heading">
+          <div class="workspace-heading-copy">
+            <span class="workspace-eyebrow">PERSONAL WORKSPACE <span aria-hidden="true">/</span> PROGRESS</span>
             <h1>My Solutions</h1>
-            <span class="app-header-meta">8 attempts · 7 solved · 1 in progress</span>
+            <p class="workspace-heading-meta">
+              Review previous attempts, spot recurring weaknesses, and return to active tasks without losing context.
+            </p>
+          </div>
+          <div class="workspace-status">
+            <span class="workspace-status-label">History</span>
+            <strong>8 attempts</strong>
+            <span class="workspace-status-note"><span class="status-dot status-dot--synced" aria-hidden="true"></span> Synced</span>
           </div>
         </div>
 
-        <!-- SIDEBAR + TABLE layout -->
-        <div class="app-content">
+        <section class="solutions-overview" aria-label="Solution overview">
+          <div class="overview-metric overview-metric-primary">
+            <span class="overview-metric-label">Solved</span>
+            <strong class="overview-metric-value mono">7</strong>
+            <span class="overview-metric-detail">completed tasks</span>
+          </div>
+          <div class="overview-metric">
+            <span class="overview-metric-label">Average</span>
+            <strong class="overview-metric-value mono">7.7</strong>
+            <span class="overview-metric-detail">across solved tasks</span>
+          </div>
+          <div class="overview-metric">
+            <span class="overview-metric-label">Best score</span>
+            <strong class="overview-metric-value mono">9.2</strong>
+            <span class="overview-metric-detail">current personal best</span>
+          </div>
+          <div class="overview-metric">
+            <span class="overview-metric-label">Active</span>
+            <strong class="overview-metric-value mono">1</strong>
+            <span class="overview-metric-detail">task needs attention</span>
+          </div>
+        </section>
 
-          <!-- SIDEBAR — stats, filters, tips -->
-          <aside class="app-sidebar">
-            <div class="sidebar-section">
-              <h3 class="sidebar-title">Stats</h3>
-              <div class="stat-grid">
-                <div class="stat-mini">
-                  <span class="stat-mini-value">7</span>
-                  <span class="stat-mini-label">Solved</span>
+        <div class="app-content solutions-content">
+          <aside class="app-sidebar solutions-sidebar">
+            <div class="sidebar-section solutions-focus-panel" id="tips">
+              <div class="sidebar-heading-row">
+                <div>
+                  <span class="section-eyebrow">CURRENT FOCUS</span>
+                  <h2 class="sidebar-heading">Improvement queue</h2>
                 </div>
-                <div class="stat-mini">
-                  <span class="stat-mini-value">8.0</span>
-                  <span class="stat-mini-label">Avg</span>
-                </div>
-                <div class="stat-mini">
-                  <span class="stat-mini-value">9.2</span>
-                  <span class="stat-mini-label">Best</span>
-                </div>
-                <div class="stat-mini">
-                  <span class="stat-mini-value">1</span>
-                  <span class="stat-mini-label">Active</span>
-                </div>
+                <span class="sidebar-count mono">03</span>
+              </div>
+
+              <div class="tips-specific">
+                <article class="tip-item">
+                  <div class="tip-item-topline">
+                    <span class="tip-index mono">01</span>
+                    <strong>Chatbot instruction</strong>
+                    <span class="tip-score mono">7.5</span>
+                  </div>
+                  <p>No output format specified.</p>
+                  <span class="tip-fix"><span aria-hidden="true">+</span> Add <code>Format: numbered list</code></span>
+                </article>
+
+                <article class="tip-item">
+                  <div class="tip-item-topline">
+                    <span class="tip-index mono">02</span>
+                    <strong>Marketplace description</strong>
+                    <span class="tip-score mono">6.8</span>
+                  </div>
+                  <p>Missing length constraint.</p>
+                  <span class="tip-fix"><span aria-hidden="true">+</span> Add <code>no more than 100 words</code></span>
+                </article>
+
+                <article class="tip-item tip-item-active">
+                  <div class="tip-item-topline">
+                    <span class="tip-index mono">03</span>
+                    <strong>Code review via AI</strong>
+                    <span class="tip-score tip-score-low mono">5.9</span>
+                  </div>
+                  <p>No role defined for the model.</p>
+                  <span class="tip-fix"><span aria-hidden="true">+</span> Start with <code>You are a senior developer</code></span>
+                </article>
               </div>
             </div>
 
-            <div class="sidebar-section">
-              <h3 class="sidebar-title">Filters</h3>
-              <ul class="filter-list">
-                <li class="filter-item active">All <span class="filter-count mono">8</span></li>
-                <li class="filter-item">Solved <span class="filter-count mono">7</span></li>
-                <li class="filter-item">In Progress <span class="filter-count mono">1</span></li>
-              </ul>
-            </div>
-
-            <div class="sidebar-section">
-              <h3 class="sidebar-title">Tips</h3>
-              <ul class="tips-compact">
-                <li>Clarify output format</li>
-                <li>Add constraints</li>
-                <li>Use Few-shot examples</li>
-                <li>Define the role</li>
-              </ul>
-            </div>
           </aside>
 
-          <!-- MAIN TABLE -->
-          <div class="app-main">
-            <div class="table-container">
-              <table id="solutions-table" class="table-dense">
-                <thead>
-                  <tr>
-                    <th class="col-task">Task</th>
-                    <th class="col-date">Date</th>
-                    <th class="col-score">Score</th>
-                    <th class="col-status">Status</th>
-                  </tr>
-                </thead>
-                <tbody id="solutions-body">
-                  <tr>
-                    <td class="col-task">Social media post copywriting</td>
-                    <td class="col-date mono"><time datetime="2026-09-14">2026-09-14</time></td>
-                    <td class="col-score mono">9.2</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">Sales data summarization</td>
-                    <td class="col-date mono"><time datetime="2026-09-13">2026-09-13</time></td>
-                    <td class="col-score mono">8.7</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">Chatbot instruction writing</td>
-                    <td class="col-date mono"><time datetime="2026-09-11">2026-09-11</time></td>
-                    <td class="col-score mono">7.5</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">Marketplace product description</td>
-                    <td class="col-date mono"><time datetime="2026-09-10">2026-09-10</time></td>
-                    <td class="col-score mono">6.8</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">Brainstorming prompt</td>
-                    <td class="col-date mono"><time datetime="2026-09-08">2026-09-08</time></td>
-                    <td class="col-score mono">8.1</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">Code review via AI</td>
-                    <td class="col-date mono"><time datetime="2026-09-06">2026-09-06</time></td>
-                    <td class="col-score mono">5.9</td>
-                    <td class="col-status"><span class="status-progress">active</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">Technical documentation translation</td>
-                    <td class="col-date mono"><time datetime="2026-09-04">2026-09-04</time></td>
-                    <td class="col-score mono">7.2</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                  <tr>
-                    <td class="col-task">JSON-structured response</td>
-                    <td class="col-date mono"><time datetime="2026-09-02">2026-09-02</time></td>
-                    <td class="col-score mono">6.5</td>
-                    <td class="col-status"><span class="status-solved">solved</span></td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="app-main" id="solutions-history">
+            <section class="workspace-section">
+              <div class="section-heading-row">
+                <div>
+                  <span class="section-eyebrow">SOLUTION HISTORY</span>
+                  <h2 class="workspace-section-title">Recent attempts</h2>
+                </div>
+                <span class="section-meta mono">08 RECORDS</span>
+              </div>
+
+              <div class="table-container solutions-table-container">
+                <table id="solutions-table" class="table-dense solutions-table">
+                  <caption class="visually-hidden">
+                    History of prompt submissions with task name, date, score, and status.
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th class="col-task" scope="col">Task</th>
+                      <th class="col-date" scope="col">Date</th>
+                      <th class="col-score" scope="col">Score</th>
+                      <th class="col-status" scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="solutions-body">
+                    <tr data-task-id="t001" data-score="9.2" data-status="solved">
+                      <td class="col-task">Social media post copywriting</td>
+                      <td class="col-date mono"><time datetime="2026-09-14">Sep 14</time></td>
+                      <td class="col-score mono score-good">9.2</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                    <tr data-task-id="t002" data-score="8.7" data-status="solved">
+                      <td class="col-task">Sales data summarization</td>
+                      <td class="col-date mono"><time datetime="2026-09-13">Sep 13</time></td>
+                      <td class="col-score mono score-good">8.7</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                    <tr data-task-id="t003" data-score="7.5" data-status="solved">
+                      <td class="col-task">Chatbot instruction writing</td>
+                      <td class="col-date mono"><time datetime="2026-09-11">Sep 11</time></td>
+                      <td class="col-score mono score-mid">7.5</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                    <tr data-task-id="t004" data-score="6.8" data-status="solved">
+                      <td class="col-task">Marketplace product description</td>
+                      <td class="col-date mono"><time datetime="2026-09-10">Sep 10</time></td>
+                      <td class="col-score mono score-mid">6.8</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                    <tr data-task-id="t005" data-score="8.1" data-status="solved">
+                      <td class="col-task">Brainstorming prompt</td>
+                      <td class="col-date mono"><time datetime="2026-09-08">Sep 8</time></td>
+                      <td class="col-score mono score-good">8.1</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                    <tr data-task-id="t006" data-score="5.9" data-status="active" class="row-active">
+                      <td class="col-task">
+                        <span class="task-title-inline">Code review via AI</span>
+                        <a href="task.html?id=t006" class="task-resume-link" title="Continue this task">Resume <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                      </td>
+                      <td class="col-date mono"><time datetime="2026-09-06">Sep 6</time></td>
+                      <td class="col-score mono score-low">5.9</td>
+                      <td class="col-status"><span class="status-progress">active</span></td>
+                    </tr>
+                    <tr data-task-id="t007" data-score="7.2" data-status="solved">
+                      <td class="col-task">Technical documentation translation</td>
+                      <td class="col-date mono"><time datetime="2026-09-04">Sep 4</time></td>
+                      <td class="col-score mono score-mid">7.2</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                    <tr data-task-id="t008" data-score="6.5" data-status="solved">
+                      <td class="col-task">JSON-structured response</td>
+                      <td class="col-date mono"><time datetime="2026-09-02">Sep 2</time></td>
+                      <td class="col-score mono score-mid">6.5</td>
+                      <td class="col-status"><span class="status-solved">solved</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <div class="page-cta solutions-cta">
+              <div>
+                <span class="section-eyebrow">NEXT STEP</span>
+                <p>Turn the lowest score into your next improvement.</p>
+              </div>
+              <a href="tasks.html" class="btn-primary">Solve Another Task <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
           </div>
-
         </div>
       </div>
     </main>

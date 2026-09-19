@@ -14,23 +14,30 @@
     <!-- HEADER -->
     <header>
       <div class="container header-container">
-        <span class="logo">
-          <span class="logo-icon">⚡</span> Prompt Forge
-        </span>
-        <nav>
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-            <li><a href="tasks.html" class="active">Tasks</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="my-solutions.html">My Solutions</a></li>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html" class="active" aria-current="page">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
-          <button class="btn-ghost">Log in</button>
-          <button class="btn-primary">Register</button>
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
       </div>
     </header>
@@ -44,7 +51,7 @@
             <span class="app-header-meta">847 challenges · 12 categories · Updated weekly</span>
           </div>
           <div class="app-header-right">
-            <span class="badge-small">📚 Catalog</span>
+            <span class="badge-small">Catalog</span>
           </div>
         </div>
 

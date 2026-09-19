@@ -3,150 +3,212 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Leaderboard — ranking of PromptForge participants." />
+    <meta
+      name="description"
+      content="PromptForge leaderboard — ranking of participants by prompt engineering skill."
+    />
     <meta name="author" content="Emil Sabirzhanov" />
     <title>Leaderboard — PromptForge</title>
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/student-c.css" />
   </head>
-  <body>
+  <body class="leaderboard-page">
+    <!-- Author: Emil Sabirzhanov
+         Redesign: focused leaderboard workspace. The page keeps the original
+         dataset and structure, but gives ranking context, personal position,
+         table hierarchy, and season metadata clearer visual priority. -->
+
     <header>
       <div class="container header-container">
-        <span class="logo">
-          <span class="logo-icon">⚡</span> Prompt Forge
-        </span>
-        <nav>
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-            <li><a href="tasks.html">Tasks</a></li>
-            <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
-            <li><a href="my-solutions.html">My Solutions</a></li>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="leaderboard.html" class="active" aria-current="page">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
-          <button class="btn-ghost">Log in</button>
-          <button class="btn-primary">Register</button>
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
       </div>
     </header>
 
-    <main class="app-layout">
+    <main class="app-layout leaderboard-layout">
       <div class="container">
-        <!-- PAGE HEADER — replaces hero -->
-        <div class="app-header">
-          <div class="app-header-left">
+        <div class="workspace-heading">
+          <div class="workspace-heading-copy">
+            <span class="workspace-eyebrow">SEASON 01 <span aria-hidden="true">/</span> GLOBAL RANKING</span>
             <h1>Leaderboard</h1>
-            <span class="app-header-meta">Updated daily · 10 participants</span>
+            <p class="workspace-heading-meta">
+              Score = sum of (criterion weight × score) across all solved tasks.
+              Rankings update daily at <abbr title="Coordinated Universal Time">UTC</abbr> midnight.
+            </p>
           </div>
-          <div class="app-header-right">
-            <span class="badge-small">🏆 Season 1</span>
-          </div>
-        </div>
-
-        <!-- RANK LEGEND — compact, above table -->
-        <div class="rank-legend">
-          <div class="rank-legend-item">
-            <span class="rank-dot rank-newcomer"></span> Newcomer <span class="mono">0–50</span>
-          </div>
-          <div class="rank-legend-item">
-            <span class="rank-dot rank-practitioner"></span> Practitioner <span class="mono">50–150</span>
-          </div>
-          <div class="rank-legend-item">
-            <span class="rank-dot rank-master"></span> Master <span class="mono">150–300</span>
-          </div>
-          <div class="rank-legend-item">
-            <span class="rank-dot rank-grandmaster"></span> Grandmaster <span class="mono">300+</span>
+          <div class="workspace-status" aria-label="Current season">
+            <span class="workspace-status-label">Current season</span>
+            <strong>Season 1</strong>
+            <span class="workspace-status-note"><span class="status-dot" aria-hidden="true"></span> Active</span>
           </div>
         </div>
 
-        <!-- TABLE — dense, compact -->
-        <div class="table-container">
-          <table id="leaderboard-table" class="table-dense">
-            <thead>
-              <tr>
-                <th class="col-rank">#</th>
-                <th class="col-user">User</th>
-                <th class="col-score">Score</th>
-                <th class="col-solved">Solved</th>
-                <th class="col-winrate">Win Rate</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-              <tr class="row-gold">
-                <td class="col-rank">1</td>
-                <td class="col-user"><span class="user-badge">★</span> Alex_P</td>
-                <td class="col-score mono">89</td>
-                <td class="col-solved mono">24</td>
-                <td class="col-winrate mono">96%</td>
-              </tr>
-              <tr class="row-silver">
-                <td class="col-rank">2</td>
-                <td class="col-user">MariaK</td>
-                <td class="col-score mono">76</td>
-                <td class="col-solved mono">21</td>
-                <td class="col-winrate mono">91%</td>
-              </tr>
-              <tr class="row-bronze">
-                <td class="col-rank">3</td>
-                <td class="col-user">DmitryAI</td>
-                <td class="col-score mono">71</td>
-                <td class="col-solved mono">19</td>
-                <td class="col-winrate mono">88%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">4</td>
-                <td class="col-user">Olga_S</td>
-                <td class="col-score mono">65</td>
-                <td class="col-solved mono">18</td>
-                <td class="col-winrate mono">85%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">5</td>
-                <td class="col-user">PromptMaster</td>
-                <td class="col-score mono">58</td>
-                <td class="col-solved mono">16</td>
-                <td class="col-winrate mono">82%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">6</td>
-                <td class="col-user">Ekaterina_N</td>
-                <td class="col-score mono">52</td>
-                <td class="col-solved mono">15</td>
-                <td class="col-winrate mono">78%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">7</td>
-                <td class="col-user">AI_Entusiast</td>
-                <td class="col-score mono">44</td>
-                <td class="col-solved mono">12</td>
-                <td class="col-winrate mono">73%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">8</td>
-                <td class="col-user">AndreyM</td>
-                <td class="col-score mono">37</td>
-                <td class="col-solved mono">10</td>
-                <td class="col-winrate mono">68%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">9</td>
-                <td class="col-user">Newbie_2026</td>
-                <td class="col-score mono">23</td>
-                <td class="col-solved mono">7</td>
-                <td class="col-winrate mono">55%</td>
-              </tr>
-              <tr>
-                <td class="col-rank">10</td>
-                <td class="col-user">Anna_K</td>
-                <td class="col-score mono">12</td>
-                <td class="col-solved mono">4</td>
-                <td class="col-winrate mono">40%</td>
-              </tr>
-            </tbody>
-          </table>
+
+        <section class="your-position" aria-labelledby="your-position-title">
+          <div class="position-main">
+            <div class="position-kicker" id="your-position-title">YOUR POSITION</div>
+            <div class="position-rank-row">
+              <strong class="your-position-rank">#9</strong>
+              <span class="your-position-score mono">34 pts</span>
+            </div>
+          </div>
+          <div class="position-progress" aria-label="Distance to Practitioner tier">
+            <div class="position-progress-label">
+              <span>16 points to Practitioner tier</span>
+              <span class="mono">34 / 50</span>
+            </div>
+            <div class="position-progress-track">
+              <span class="position-progress-fill"></span>
+            </div>
+          </div>
+          <a href="tasks.html" class="position-action">Improve rank <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </section>
+
+        <section class="ranking-section" aria-labelledby="ranking-title">
+          <div class="ranking-section-header">
+            <div>
+              <span class="section-eyebrow">RANKINGS</span>
+              <h2 id="ranking-title">Top participants</h2>
+            </div>
+          </div>
+
+          <div class="table-container leaderboard-table-container">
+            <table id="leaderboard-table" class="table-dense leaderboard-table">
+              <caption class="visually-hidden">
+                Participants ranked by total score. Columns: rank, user, total score, tasks solved.
+              </caption>
+              <thead>
+                <tr>
+                  <th class="col-rank" scope="col">#</th>
+                  <th class="col-user" scope="col">User</th>
+                  <th class="col-score" scope="col">Score</th>
+                  <th class="col-solved" scope="col">Solved</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+                <tr class="row-gold" data-user-id="u001" data-score="89" data-solved="24">
+                  <td class="col-rank" scope="row"><span class="rank-number">01</span></td>
+                  <td class="col-user"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Top rank"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Alex_P</td>
+                  <td class="col-score mono">89</td>
+                  <td class="col-solved mono">24</td>
+                </tr>
+                <tr class="row-silver" data-user-id="u002" data-score="76" data-solved="21">
+                  <td class="col-rank" scope="row"><span class="rank-number">02</span></td>
+                  <td class="col-user">MariaK</td>
+                  <td class="col-score mono">76</td>
+                  <td class="col-solved mono">21</td>
+                </tr>
+                <tr class="row-bronze" data-user-id="u003" data-score="71" data-solved="19">
+                  <td class="col-rank" scope="row"><span class="rank-number">03</span></td>
+                  <td class="col-user">DmitryAI</td>
+                  <td class="col-score mono">71</td>
+                  <td class="col-solved mono">19</td>
+                </tr>
+                <tr data-user-id="u004" data-score="65" data-solved="18">
+                  <td class="col-rank" scope="row"><span class="rank-number">04</span></td>
+                  <td class="col-user">Olga_S</td>
+                  <td class="col-score mono">65</td>
+                  <td class="col-solved mono">18</td>
+                </tr>
+                <tr data-user-id="u005" data-score="58" data-solved="16">
+                  <td class="col-rank" scope="row"><span class="rank-number">05</span></td>
+                  <td class="col-user">PromptMaster</td>
+                  <td class="col-score mono">58</td>
+                  <td class="col-solved mono">16</td>
+                </tr>
+                <tr data-user-id="u006" data-score="52" data-solved="15">
+                  <td class="col-rank" scope="row"><span class="rank-number">06</span></td>
+                  <td class="col-user">Ekaterina_N</td>
+                  <td class="col-score mono">52</td>
+                  <td class="col-solved mono">15</td>
+                </tr>
+                <tr data-user-id="u007" data-score="44" data-solved="12">
+                  <td class="col-rank" scope="row"><span class="rank-number">07</span></td>
+                  <td class="col-user">AI_Entusiast</td>
+                  <td class="col-score mono">44</td>
+                  <td class="col-solved mono">12</td>
+                </tr>
+                <tr data-user-id="u008" data-score="37" data-solved="10">
+                  <td class="col-rank" scope="row"><span class="rank-number">08</span></td>
+                  <td class="col-user">AndreyM</td>
+                  <td class="col-score mono">37</td>
+                  <td class="col-solved mono">10</td>
+                </tr>
+                <tr data-user-id="u009" data-score="34" data-solved="7">
+                  <td class="col-rank" scope="row"><span class="rank-number">09</span></td>
+                  <td class="col-user">Newbie_2026</td>
+                  <td class="col-score mono">34</td>
+                  <td class="col-solved mono">7</td>
+                </tr>
+                <tr data-user-id="u010" data-score="12" data-solved="4">
+                  <td class="col-rank" scope="row"><span class="rank-number">10</span></td>
+                  <td class="col-user">Anna_K</td>
+                  <td class="col-score mono">12</td>
+                  <td class="col-solved mono">4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="rank-system" aria-labelledby="rank-system-title">
+          <div class="rank-system-heading">
+            <div>
+              <span class="section-eyebrow">RANK SYSTEM</span>
+              <h2 id="rank-system-title">Skill tiers</h2>
+            </div>
+            <span class="rank-system-help">Based on total points</span>
+          </div>
+
+          <div class="rank-legend rank-legend-modern">
+            <div class="rank-legend-item">
+              <span class="rank-dot rank-newcomer" aria-hidden="true"></span>
+              <span><strong>Newcomer</strong><abbr title="0 to 50 points">0–50</abbr></span>
+            </div>
+            <div class="rank-legend-item">
+              <span class="rank-dot rank-practitioner" aria-hidden="true"></span>
+              <span><strong>Practitioner</strong><abbr title="50 to 150 points">50–150</abbr></span>
+            </div>
+            <div class="rank-legend-item">
+              <span class="rank-dot rank-master" aria-hidden="true"></span>
+              <span><strong>Master</strong><abbr title="150 to 300 points">150–300</abbr></span>
+            </div>
+            <div class="rank-legend-item">
+              <span class="rank-dot rank-grandmaster" aria-hidden="true"></span>
+              <span><strong>Grandmaster</strong><abbr title="over 300 points">300+</abbr></span>
+            </div>
+          </div>
+        </section>
+
+        <div class="page-cta leaderboard-cta">
+          <div>
+            <span class="section-eyebrow">NEXT STEP</span>
+            <p>Want to climb the ranking? Start with your first task.</p>
+          </div>
+          <a href="tasks.html" class="btn-primary">Browse Tasks <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </main>

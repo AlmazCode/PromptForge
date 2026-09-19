@@ -14,23 +14,30 @@
     <!-- HEADER -->
     <header>
       <div class="container header-container">
-        <span class="logo">
-          <span class="logo-icon">⚡</span> Prompt Forge
-        </span>
-        <nav>
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-            <li><a href="tasks.html" class="active">Tasks</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="my-solutions.html">My Solutions</a></li>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html" class="active" aria-current="page">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
-          <button class="btn-ghost">Log in</button>
-          <button class="btn-primary">Register</button>
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
       </div>
     </header>
@@ -85,7 +92,7 @@
             <!-- TASK DESCRIPTION -->
             <div class="task-desc-panel">
               <div class="panel-header">
-                <span class="panel-icon">📋</span>
+                <span class="panel-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>
                 <h2 class="panel-title">Task</h2>
               </div>
               <div class="panel-body">
@@ -122,7 +129,7 @@ Best region: NA (42% of total)</code></pre>
             <!-- PROMPT EDITOR -->
             <div class="task-prompt-editor">
               <div class="panel-header">
-                <span class="panel-icon">✏️</span>
+                <span class="panel-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
                 <h2 class="panel-title">Your Prompt</h2>
                 <span class="editor-line-count" id="char-count">0 / 2000</span>
               </div>
@@ -167,15 +174,13 @@ Example: [sample output]."
               <button class="btn-ghost" id="reset-btn" data-action="reset-prompt">
                 Clear
               </button>
-              <button class="btn-ghost" id="hint-btn" data-action="show-hint">
-                💡 Hint
-              </button>
+              <button class="btn-ghost" id="hint-btn" data-action="show-hint"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg> Hint</button>
             </div>
 
             <!-- HINT (hidden by default) -->
             <div class="task-hint-panel" id="hint-panel" hidden>
               <div class="panel-header">
-                <span class="panel-icon">💡</span>
+                <span class="panel-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg></span>
                 <h2 class="panel-title">Hint</h2>
                 <button class="hint-close" id="hint-close" aria-label="Close hint">×</button>
               </div>
@@ -196,7 +201,7 @@ Example: [sample output]."
             <!-- CRITERIA -->
             <div class="task-criteria-panel">
               <div class="panel-header">
-                <span class="panel-icon">🎯</span>
+                <span class="panel-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
                 <h2 class="panel-title">Evaluation Criteria</h2>
               </div>
               <div class="panel-body">
@@ -271,7 +276,7 @@ Example: [sample output]."
             <!-- RESULTS (hidden until submitted) -->
             <div class="task-results-panel" id="results-panel" hidden>
               <div class="panel-header">
-                <span class="panel-icon">📊</span>
+                <span class="panel-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></span>
                 <h2 class="panel-title">Results</h2>
               </div>
               <div class="panel-body">
@@ -336,12 +341,12 @@ Example: [sample output]."
             <!-- ATTEMPT HISTORY -->
             <div class="task-history-panel">
               <div class="panel-header">
-                <span class="panel-icon">🕐</span>
+                <span class="panel-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
                 <h2 class="panel-title">Your Attempts</h2>
               </div>
               <div class="panel-body">
                 <div class="history-empty" id="history-empty">
-                  <span class="history-empty-icon">📝</span>
+                  <span class="history-empty-icon"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
                   <p>No attempts yet. Write your first prompt above!</p>
                 </div>
                 <ul class="history-list" id="history-list" hidden>
@@ -597,13 +602,13 @@ Example: [sample output]."
         hintBtn.addEventListener('click', function() {
           hintVisible = !hintVisible;
           hintPanel.hidden = !hintVisible;
-          hintBtn.textContent = hintVisible ? '💡 Hide Hint' : '💡 Hint';
+          hintBtn.lastChild.textContent = hintVisible ? ' Hide hint' : ' Hint';
         });
 
         hintClose.addEventListener('click', function() {
           hintVisible = false;
           hintPanel.hidden = true;
-          hintBtn.textContent = '💡 Hint';
+          hintBtn.lastChild.textContent = ' Hint';
         });
 
         // =========================================

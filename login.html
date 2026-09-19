@@ -7,6 +7,7 @@
     <meta name="author" content="Student B">
     <title>Login — PromptForge</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/student-c.css">
     <link rel="stylesheet" href="styles/student-b.css">
 </head>
 <body>
@@ -17,26 +18,33 @@
          Comment: autofocus on email field so the user can start typing immediately -->
 
     <header>
-        <div class="container header-container">
-            <span class="logo">
-                <span class="logo-icon">⚡</span> Prompt Forge
-            </span>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="colophon.html">Colophon</a></li>
-                    <li><a href="tasks.html">Tasks</a></li>
-                    <li><a href="leaderboard.html">Leaderboard</a></li>
-                    <li><a href="my-solutions.html">My Solutions</a></li>
-                    <li><a href="how-it-works.html">How it works</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn-ghost">Log in</a>
-                <a href="register.html" class="btn-primary">Register</a>
-            </div>
+      <div class="container header-container">
+        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Prompt Forge
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
+        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </label>
+        <nav aria-label="Primary navigation">
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="colophon.html">Colophon</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="my-solutions.html">My Solutions</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="login.html" class="btn-ghost">Log in</a>
+          <a href="register.html" class="btn-primary">Register</a>
         </div>
+      </div>
     </header>
 
     <main class="app-layout">
