@@ -13,8 +13,8 @@
 
     <!-- Author: Student B
          Section: User Profile
-         Comment: profile-container uses the same app-content grid as my-solutions for visual consistency
-         Comment: table uses scope="row" on th cells so screen readers announce row headers correctly -->
+         Comment: app-content grid reused from student-c so sidebar+main layout stays consistent across pages
+         Comment: Recent Attempts links to my-solutions.html instead of duplicating the table that already lives there -->
 
     <header>
         <div class="container header-container">
@@ -46,14 +46,14 @@
             <div class="app-header">
                 <div class="app-header-left">
                     <h1>Alexandra Thompson</h1>
-                    <span class="app-header-meta">Member since Oct 2024 · Copywriting & Content</span>
+                    <span class="app-header-meta">Member since Oct 2024 · Copywriting &amp; Content</span>
                 </div>
                 <div class="app-header-right">
                     <span class="badge-small">● Active</span>
                 </div>
             </div>
 
-            <!-- PROFILE CARD — bio -->
+            <!-- BIO CARD -->
             <article class="profile-bio">
                 <figure class="profile-avatar">
                     <img src="src/avatar-thompson.jpg" alt="Profile photo of Alexandra Thompson">
@@ -88,10 +88,10 @@
                 </div>
             </div>
 
-            <!-- STATS TABLE + ACHIEVEMENTS -->
+            <!-- SIDEBAR + MAIN -->
             <div class="app-content">
 
-                <!-- LEFT: stats table + mentor quote -->
+                <!-- SIDEBAR: stats table, mentor quote, badge guide -->
                 <aside class="app-sidebar">
 
                     <div class="sidebar-section">
@@ -151,12 +151,13 @@
 
                 </aside>
 
-                <!-- RIGHT: achievements + recent attempts -->
+                <!-- MAIN: achievements + links to other pages -->
                 <div class="app-main">
 
+                    <!-- ACHIEVEMENTS -->
                     <section id="achievements" class="doc-section">
                         <h2 class="doc-section-title">Achievements</h2>
-                        <p class="doc-text"><small>Badges appear at certain milestones in your progress</small></p>
+                        <p class="doc-text"><small>Badges are awarded automatically at certain milestones.</small></p>
 
                         <div class="process-list">
                             <div class="process-item">
@@ -182,16 +183,16 @@
                             </div>
                         </div>
 
-                        <h3 class="sidebar-title" style="margin-top:16px">Upcoming</h3>
+                        <h3 class="sidebar-title profile-upcoming-label">Upcoming</h3>
                         <div class="process-list">
-                            <div class="process-item" style="opacity:0.45">
+                            <div class="process-item profile-locked">
                                 <span class="process-num">💎</span>
                                 <div class="process-body">
                                     <strong>Diamond</strong>
                                     <span>Reach Top-10 in leaderboard — 3 places to go</span>
                                 </div>
                             </div>
-                            <div class="process-item" style="opacity:0.45">
+                            <div class="process-item profile-locked">
                                 <span class="process-num">🏆</span>
                                 <div class="process-body">
                                     <strong>Master's Apprentice</strong>
@@ -203,49 +204,29 @@
 
                     <hr class="doc-divider">
 
+                    <!-- RECENT ATTEMPTS — links out, no duplicate table -->
                     <section id="recent" class="doc-section">
                         <h2 class="doc-section-title">Recent Attempts</h2>
+                        <p class="doc-text">
+                            Your last 3 submissions: <strong>"TED-Style Summary"</strong> (9.2),
+                            <strong>"Object Classification"</strong> (8.8),
+                            <strong>"Content Idea Generation"</strong> (9.0).
+                        </p>
+                        <a href="my-solutions.html" class="profile-cta-link">View full history in My Solutions →</a>
+                    </section>
 
-                        <div class="table-container">
-                            <table class="table-dense">
-                                <thead>
-                                    <tr>
-                                        <th class="col-task">Task</th>
-                                        <th class="col-score">Score</th>
-                                        <th class="col-status">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>"TED-Style Summary"</td>
-                                        <td class="mono">9.2</td>
-                                        <td><span class="status-solved">solved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>"Object Classification"</td>
-                                        <td class="mono">8.8</td>
-                                        <td><span class="status-solved">solved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>"Content Idea Generation"</td>
-                                        <td class="mono">9.0</td>
-                                        <td><span class="status-solved">solved</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <hr class="doc-divider">
 
-                        <aside style="margin-top:16px">
-                            <div class="sidebar-section">
-                                <h3 class="sidebar-title">Suggestions for Improvement</h3>
-                                <ul class="tips-compact">
-                                    <li><em>Structure</em>: add explicit role definition at the beginning</li>
-                                    <li><em>Examples</em>: use few-shot for classification tasks</li>
-                                    <li><em>Format</em>: specify output format (<abbr title="JavaScript Object Notation">JSON</abbr>, Markdown)</li>
-                                    <li><em>Difficulty</em>: ready to try "advanced" level tasks?</li>
-                                </ul>
-                            </div>
-                        </aside>
+                    <!-- SUGGESTIONS -->
+                    <section id="tips" class="doc-section">
+                        <h2 class="doc-section-title">Suggestions for Improvement</h2>
+                        <ul class="tips-compact">
+                            <li><em>Structure</em>: add an explicit role definition at the start of every prompt</li>
+                            <li><em>Examples</em>: use few-shot examples for classification tasks</li>
+                            <li><em>Format</em>: always specify the output format (<abbr title="JavaScript Object Notation">JSON</abbr>, Markdown, plain text)</li>
+                            <li><em>Difficulty</em>: your scores suggest you're ready for "advanced" tasks</li>
+                        </ul>
+                        <a href="tasks.html" class="profile-cta-link">Browse advanced tasks →</a>
                     </section>
 
                 </div>

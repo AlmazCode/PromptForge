@@ -147,6 +147,30 @@ main {
   border: 0;
 }
 
+/* --- Profile: locked (upcoming) achievements --- */
+.profile-locked {
+  opacity: 0.4;
+}
+
+/* --- Profile: "Upcoming" label spacing --- */
+.profile-upcoming-label {
+  margin-top: 16px;
+}
+
+/* --- Profile: CTA link below sections --- */
+.profile-cta-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.profile-cta-link:hover {
+  text-decoration: underline;
+}
+
 /* --- Responsive --- */
 @media (max-width: 600px) {
   .profile-bio {
