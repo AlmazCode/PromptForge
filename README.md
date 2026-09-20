@@ -23,7 +23,7 @@ styles/
   student-c.css     — pages C (leaderboard, my-solutions, how-it-works)
 
 src/
-  icon.png          — site icon
+  icon.png          — profile avatar icon (temp)
   icons/            — SVG icons
 ```
 
