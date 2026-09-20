@@ -327,7 +327,6 @@ Example: [sample output]."
                 <div class="results-tips" id="results-tips">
                   <h3 class="tips-heading">Personalized Tips</h3>
                   <ul class="tips-list" id="tips-list">
-                    <!-- populated by JS -->
                   </ul>
                 </div>
 
@@ -350,7 +349,6 @@ Example: [sample output]."
                   <p>No attempts yet. Write your first prompt above!</p>
                 </div>
                 <ul class="history-list" id="history-list" hidden>
-                  <!-- populated by JS -->
                 </ul>
               </div>
             </div>
@@ -371,14 +369,10 @@ Example: [sample output]."
       </div>
     </footer>
 
-    <!-- JS — task trainer logic -->
     <script>
       (function() {
         'use strict';
 
-        // =========================================
-        // CONFIG — task data (will come from server)
-        // =========================================
         var TASK = {
           id: 2,
           title: 'Sales Data Summarization',
@@ -403,9 +397,6 @@ Example: [sample output]."
         var attempts = [];
         var hintVisible = false;
 
-        // =========================================
-        // DOM REFS
-        // =========================================
         var promptInput   = document.getElementById('prompt-input');
         var charCount     = document.getElementById('char-count');
         var tokenEstimate = document.getElementById('token-estimate');
@@ -423,23 +414,15 @@ Example: [sample output]."
         var retryBtn      = document.getElementById('retry-btn');
         var nextTaskBtn   = document.getElementById('next-task-btn');
 
-        // =========================================
-        // CHAR COUNT + TOKEN ESTIMATE
-        // =========================================
         promptInput.addEventListener('input', function() {
           var len = promptInput.value.length;
           charCount.textContent = len + ' / 2000';
-          // rough estimate: ~4 chars per token
           var tokens = Math.ceil(len / 4);
           tokenEstimate.textContent = '~' + tokens;
 
-          // live criteria check (basic keyword detection)
           checkCriteria(promptInput.value);
         });
 
-        // =========================================
-        // CRITERIA CHECK (basic heuristic)
-        // =========================================
         function checkCriteria(text) {
           var lower = text.toLowerCase();
           var checks = {
@@ -467,9 +450,6 @@ Example: [sample output]."
           });
         }
 
-        // =========================================
-        // SUBMIT — mock scoring
-        // =========================================
         submitBtn.addEventListener('click', function() {
           var text = promptInput.value.trim();
           if (text.length < 10) {
@@ -479,7 +459,6 @@ Example: [sample output]."
             return;
           }
 
-          // Simulate evaluation (will be replaced by server call)
           var scores = {};
           var total = 0;
           TASK.criteria.forEach(function(c) {
@@ -494,9 +473,6 @@ Example: [sample output]."
           saveAttempt(text, scores, total);
         });
 
-        // =========================================
-        // DISPLAY RESULTS
-        // =========================================
         function displayResults(scores, total) {
           resultsPanel.hidden = false;
           finalScore.textContent = total.toFixed(2);
@@ -507,7 +483,6 @@ Example: [sample output]."
             el.textContent = scores[c.key].toFixed(1);
           });
 
-          // tips for low-scoring criteria
           tipsList.innerHTML = '';
           var hasTips = false;
           TASK.criteria.forEach(function(c) {
@@ -526,13 +501,9 @@ Example: [sample output]."
             tipsList.appendChild(li);
           }
 
-          // scroll to results
           resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // =========================================
-        // SAVE ATTEMPT
-        // =========================================
         function saveAttempt(text, scores, total) {
           var attempt = {
             id: attempts.length + 1,
@@ -545,9 +516,6 @@ Example: [sample output]."
           renderHistory();
         }
 
-        // =========================================
-        // RENDER HISTORY
-        // =========================================
         function renderHistory() {
           if (attempts.length === 0) {
             historyEmpty.hidden = false;
@@ -558,7 +526,6 @@ Example: [sample output]."
           historyList.hidden = false;
           historyList.innerHTML = '';
 
-          // render in reverse order (newest first)
           for (var i = attempts.length - 1; i >= 0; i--) {
             var a = attempts[i];
             var li = document.createElement('li');
@@ -577,15 +544,11 @@ Example: [sample output]."
           }
         }
 
-        // =========================================
-        // RESET
-        // =========================================
         resetBtn.addEventListener('click', function() {
           promptInput.value = '';
           charCount.textContent = '0 / 2000';
           tokenEstimate.textContent = '~0';
           resultsPanel.hidden = true;
-          // reset criteria icons
           TASK.criteria.forEach(function(c) {
             var icon = document.getElementById('icon-' + c.key);
             var item = document.querySelector('[data-criterion="' + c.key + '"]');
@@ -596,9 +559,6 @@ Example: [sample output]."
           promptInput.focus();
         });
 
-        // =========================================
-        // HINT TOGGLE
-        // =========================================
         hintBtn.addEventListener('click', function() {
           hintVisible = !hintVisible;
           hintPanel.hidden = !hintVisible;
@@ -611,35 +571,22 @@ Example: [sample output]."
           hintBtn.lastChild.textContent = ' Hint';
         });
 
-        // =========================================
-        // RETRY
-        // =========================================
         retryBtn.addEventListener('click', function() {
           resultsPanel.hidden = true;
           promptInput.focus();
           promptInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
 
-        // =========================================
-        // NEXT TASK (placeholder)
-        // =========================================
         nextTaskBtn.addEventListener('click', function() {
-          // window.location.href = '/task/' + (TASK.id + 1);
           alert('Next task coming soon!');
         });
 
-        // =========================================
-        // UTILS
-        // =========================================
         function escapeHtml(str) {
           var div = document.createElement('div');
           div.appendChild(document.createTextNode(str));
           return div.innerHTML;
         }
 
-        // =========================================
-        // INIT
-        // =========================================
         console.log('[TaskTrainer] Initialized — Task #' + TASK.id);
       })();
     </script>

@@ -613,9 +613,7 @@
       </div>
     </footer>
 
-    <!-- JS placeholder — ready for server integration -->
     <script>
-      // Task data store — will be replaced by server API calls
       window.TaskCatalog = {
         filters: {
           category: 'all',
@@ -632,7 +630,6 @@
           this.bindEvents();
         },
         bindEvents: function() {
-          // Filter clicks
           document.querySelectorAll('.filter-list').forEach(function(list) {
             list.addEventListener('click', function(e) {
               var item = e.target.closest('.filter-item');
@@ -644,7 +641,6 @@
             });
           });
 
-          // Search input
           var searchInput = document.getElementById('task-search');
           if (searchInput) {
             searchInput.addEventListener('input', function(e) {
@@ -652,23 +648,19 @@
             });
           }
 
-          // Start buttons
           document.querySelectorAll('[data-action="start-task"]').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
               var taskId = e.target.dataset.taskId;
               console.log('[TaskCatalog] Start task:', taskId);
-              // window.location.href = '/task/' + taskId;
             });
           });
 
-          // Pagination
           document.querySelectorAll('.pagination-page, .pagination-btn').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
               console.log('[TaskCatalog] Page:', e.target.dataset.page);
             });
           });
 
-          // Clear filters
           var clearBtn = document.getElementById('clear-filters');
           if (clearBtn) {
             clearBtn.addEventListener('click', function() {
