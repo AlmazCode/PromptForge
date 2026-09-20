@@ -1428,12 +1428,7 @@ hr {
 }
 
 
-/* ===========================================
-   SHARED APP CHROME (all pages)
-   Why: every page uses the same header markup (SVG logo, CSS burger,
-   link-based auth buttons). These rules are page-agnostic and live in
-   main.css so pages loading only main.css still get a working header.
-   =========================================== */
+/* Shared app chrome — header, nav, auth buttons */
 
 /* Header logo as link */
 header .logo {

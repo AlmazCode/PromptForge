@@ -1,9 +1,9 @@
 /* ============================================
-   PromptForge — student-c.css (consolidated)
+   PromptForge — student-c.css (Sabirzhanov Emil)
    Workspace pages: Leaderboard, My Solutions, How It Works,
    Colophon. Also provides shared app components used by
    task.html (panels) and student-b pages (forms, sidebar).
-   Load order: main.css → student-c.css → [student-a|student-b].css
+   Load order: main.css → student-c.css -> [student-a|student-b].css
    ============================================ */
 
 :root {
@@ -31,12 +31,12 @@ main.app-layout {
   margin: 0;
 }
 
-/* Reset global section padding from main.css (100px is too much for workspace pages) */
+/* workspace: reset section padding */
 main.app-layout section {
   padding: 0;
 }
 
-/* Reset global hr margin from main.css (40px is too much between workspace sections) */
+/* workspace: tighter hr */
 main.app-layout hr {
   margin: 20px 0;
 }
@@ -900,8 +900,7 @@ main.app-layout hr {
 
 .quote-modern footer { margin-top: 6px; font-size: 11px; font-style: normal; }
 
-/* Reset global footer element styles inside quotes
-   Why: main.css styles all <footer> as the page footer (padding, border, background). */
+/* blockquote footer ≠ page footer */
 blockquote footer {
   padding: 0;
   border: none;
@@ -1164,8 +1163,7 @@ blockquote footer {
 
 .page-cta p { margin: 4px 0 0; font-size: 13px; color: var(--primary-color); }
 
-/* Workspace buttons: restrained control language, not marketing gradient */
-/* Buttons now use global styles from main.css */
+/* page-cta buttons */
 
 .page-cta .btn-primary { padding: 9px 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
 
@@ -1180,7 +1178,7 @@ blockquote footer {
 
 .app-layout a:not(.btn-primary):not(.btn-ghost):hover { color: var(--primary-color); }
 
-/* Inline text links stay visibly links */
+/* inline links */
 .app-layout .doc-text a:not(.btn-primary):not(.btn-ghost),
 .app-layout .app-main p a:not(.btn-primary):not(.btn-ghost):not(.position-action):not(.task-resume-link):not(.sidebar-inline-link):not(.profile-cta-link) {
   text-decoration: underline;
