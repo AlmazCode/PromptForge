@@ -3,7 +3,7 @@
    Workspace pages: Leaderboard, My Solutions, How It Works,
    Colophon. Also provides shared app components used by
    task.html (panels) and student-b pages (forms, sidebar).
-   Load order: main.css → student-c.css -> [student-a|student-b].css
+   Load order: main.css -> student-c.css -> [student-a|student-b].css
    ============================================ */
 
 :root {
