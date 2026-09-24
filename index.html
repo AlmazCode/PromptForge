@@ -3,34 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="PromptForge — AI prompt engineering training platform. Practice, compete, and master prompt crafting." />
+    <meta
+      name="description"
+      content="PromptForge — AI prompt engineering training platform. Practice, compete, and master prompt crafting."
+    />
     <meta name="author" content="Emil Sabirzhanov" />
     <title>PromptForge — AI Prompt Training Platform</title>
     <link rel="stylesheet" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- HEADER -->
     <header>
       <div class="container header-container">
         <a class="logo" href="index.html" aria-label="Prompt Forge home">
-          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <svg
+            class="icon icon-lg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
           Prompt Forge
         </a>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
-        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+        <input
+          type="checkbox"
+          id="nav-toggle"
+          class="nav-toggle-input"
+          hidden
+        />
+        <label
+          for="nav-toggle"
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+        >
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
         </label>
         <nav aria-label="Primary navigation">
           <ul>
-          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-          <li><a href="colophon.html">Colophon</a></li>
-          <li><a href="tasks.html">Tasks</a></li>
-          <li><a href="leaderboard.html">Leaderboard</a></li>
-          <li><a href="my-solutions.html">My Solutions</a></li>
-          <li><a href="how-it-works.html">How it works</a></li>
-          <li><a href="profile.html">Profile</a></li>
+            <li>
+              <a href="index.html" class="active" aria-current="page">Home</a>
+            </li>
+            <li><a href="tasks.html">Tasks</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="my-solutions.html">My Solutions</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="profile.html">Profile</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
@@ -91,23 +121,37 @@
               <div class="editor-body">
                 <div class="editor-line">
                   <span class="line-num">1</span>
-                  <span class="line-content"><span class="kw">You are</span> a senior data analyst.</span>
+                  <span class="line-content"
+                    ><span class="kw">You are</span> a senior data
+                    analyst.</span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">2</span>
-                  <span class="line-content"><span class="kw">Task:</span> Summarize the Q3 sales data.</span>
+                  <span class="line-content"
+                    ><span class="kw">Task:</span> Summarize the Q3 sales
+                    data.</span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">3</span>
-                  <span class="line-content"><span class="kw">Format:</span> numbered list, 5 items max.</span>
+                  <span class="line-content"
+                    ><span class="kw">Format:</span> numbered list, 5 items
+                    max.</span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">4</span>
-                  <span class="line-content"><span class="kw">Tone:</span> professional, concise.</span>
+                  <span class="line-content"
+                    ><span class="kw">Tone:</span> professional, concise.</span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">5</span>
-                  <span class="line-content"><span class="kw">Constraint:</span> no more than 120 words.</span>
+                  <span class="line-content"
+                    ><span class="kw">Constraint:</span> no more than 120
+                    words.</span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">6</span>
@@ -115,20 +159,29 @@
                 </div>
                 <div class="editor-line">
                   <span class="line-num">7</span>
-                  <span class="line-content"><span class="kw">Example:</span></span>
+                  <span class="line-content"
+                    ><span class="kw">Example:</span></span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">8</span>
-                  <span class="line-content">  1. Revenue increased 12% MoM.</span>
+                  <span class="line-content">
+                    1. Revenue increased 12% MoM.</span
+                  >
                 </div>
                 <div class="editor-line">
                   <span class="line-num">9</span>
-                  <span class="line-content">  2. Top SKU accounts for 34%...</span>
+                  <span class="line-content">
+                    2. Top SKU accounts for 34%...</span
+                  >
                 </div>
                 <div class="editor-cursor"></div>
               </div>
               <div class="editor-footer">
-                <span class="editor-badge">Score: <strong class="text-gradient-gold">9.2</strong>/10</span>
+                <span class="editor-badge"
+                  >Score:
+                  <strong class="text-gradient-gold">9.2</strong>/10</span
+                >
                 <span class="editor-badge editor-badge-pass">✓ Passed</span>
               </div>
             </div>
@@ -165,7 +218,9 @@
                 Each prompt is evaluated against 4–6 independent criteria with
                 weighted scores — not a single vague "good/bad" rating.
               </p>
-              <a href="how-it-works.html" class="card-link">See how it works →</a>
+              <a href="how-it-works.html" class="card-link"
+                >See how it works →</a
+              >
             </div>
 
             <div class="feature-card">
@@ -198,8 +253,8 @@
             How It <span class="highlight">Works</span>
           </h2>
           <p class="section-subtitle">
-            Your prompt is evaluated by an LLM judge against strict atomic criteria.
-            Here's what happens under the hood:
+            Your prompt is evaluated by an LLM judge against strict atomic
+            criteria. Here's what happens under the hood:
           </p>
 
           <div class="how-layout">
@@ -295,7 +350,8 @@
           <div class="cta-box">
             <h2>Ready to Forge Your Skills?</h2>
             <p>
-              Join thousands of prompt engineers competing and learning together.
+              Join thousands of prompt engineers competing and learning
+              together.
             </p>
             <button class="btn-primary btn-large">
               Get Started — It's Free
@@ -310,8 +366,23 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <span class="logo-icon"><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Prompt Forge
-            <p>Train your AI communication skills through practical challenges.</p>
+            <span class="logo-icon"
+              ><svg
+                class="icon icon-lg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg
+            ></span>
+            Prompt Forge
+            <p>
+              Train your AI communication skills through practical challenges.
+            </p>
           </div>
           <div class="footer-links">
             <div class="link-group">
