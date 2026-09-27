@@ -1,89 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Register a new account on PromptForge — a platform for training prompt engineering skills">
     <meta name="author" content="Student B">
+    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
     <title>Register — PromptForge</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/student-c.css">
-    <link rel="stylesheet" href="styles/student-b.css">
+    <!-- Bootstrap 5.3.8 from jsDelivr; project CSS follows for brand styling. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/emil-bootstrap.css">
+    <link rel="stylesheet" href="styles/student-b.css">
 </head>
-<body>
+<body class="student-b-page register-page d-flex flex-column min-vh-100">
 
-    <header>
-      <div class="container header-container">
-        <a class="logo" href="index.html" aria-label="Prompt Forge home">
-          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <header class="navbar navbar-expand-lg sticky-top py-3">
+      <!-- Wide container keeps seven navigation links comfortable on desktop. -->
+      <div class="container-fluid px-3 px-lg-5">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html" aria-label="Prompt Forge home">
+          <img class="brand-mark" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">
           Prompt Forge
         </a>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden />
-        <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-        </label>
-        <nav aria-label="Primary navigation">
-          <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="tasks.html">Tasks</a></li>
-          <li><a href="leaderboard.html">Leaderboard</a></li>
-          <li><a href="my-solutions.html">My Solutions</a></li>
-          <li><a href="how-it-works.html">How it works</a></li>
-          <li><a href="profile.html">Profile</a></li>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#primary-navigation" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse justify-content-lg-end" id="primary-navigation" aria-label="Primary navigation">
+          <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
+            <li class="nav-item"><a class="nav-link px-lg-2" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-2" href="colophon.html">Colophon</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-2" href="tasks.html">Tasks</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-2" href="leaderboard.html">Leaderboard</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-2" href="my-solutions.html">My Solutions</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-2" href="how-it-works.html">How it works</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-2" href="profile.html">Profile</a></li>
           </ul>
+          <div class="d-flex gap-2 pb-2 pb-lg-0">
+            <a class="btn btn-outline-light btn-sm" href="login.html">Log in</a>
+            <a class="btn btn-primary btn-sm" href="register.html" aria-current="page">Register</a>
+          </div>
         </nav>
-        <div class="auth-buttons">
-          <a href="login.html" class="btn-ghost">Log in</a>
-          <a href="register.html" class="btn-primary">Register</a>
-        </div>
       </div>
     </header>
 
-    <main class="app-layout">
+    <main class="app-layout flex-grow-1 py-4">
         <div class="container">
 
-            <div class="app-header">
-                <div class="app-header-left">
-                    <h1>Create an Account</h1>
-                    <span class="app-header-meta">Free · No credit card required</span>
+            <div class="auth-heading row align-items-center g-3 border-bottom pb-3 mb-4">
+                <div class="col-12 col-md">
+                    <h1 class="display-6 fw-bold mb-1">Create an Account</h1>
+                    <span class="text-secondary">Free · No credit card required</span>
                 </div>
-                <div class="app-header-right">
-                    <span class="badge-small">Join 15,000+ engineers</span>
+                <div class="col-12 col-md-auto text-md-end">
+                    <span class="badge text-bg-secondary d-none d-md-inline-block">Join 15,000+ engineers</span>
                 </div>
             </div>
 
-            <div class="auth-wrap">
-                <form method="post" action="#" class="form-dense">
-                    <fieldset>
-                        <legend>Account Information</legend>
+            <div class="row justify-content-center">
+                <form method="post" action="#" class="auth-card col-12 col-lg-8 card p-4 shadow-sm">
+                    <fieldset class="auth-fieldset mb-4">
+                        <legend class="fs-5 fw-semibold mb-3">Account Information</legend>
 
-                        <div class="form-grid-2col">
-                            <div class="form-field">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="full_name" required>
+                        <div class="row g-3 mb-3">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="name">Full Name *</label>
+                                <input class="form-control" type="text" id="name" name="full_name" required>
                             </div>
-                            <div class="form-field">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input class="form-control" type="email" id="email" name="email" required>
                             </div>
-                            <div class="form-field">
-                                <label for="tel">Phone Number</label>
-                                <input type="tel" id="tel" name="phone" placeholder="+1 (XXX) XXX-XXXX">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="tel">Phone Number</label>
+                                <input class="form-control" type="tel" id="tel" name="phone" placeholder="+1 (XXX) XXX-XXXX">
                             </div>
-                            <div class="form-field">
-                                <label for="experience">Experience (years)</label>
-                                <input type="number" id="experience" name="experience_years" min="0" max="100">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="experience">Experience (years)</label>
+                                <input class="form-control" type="number" id="experience" name="experience_years" min="0" max="100">
                             </div>
-                            <div class="form-field">
-                                <label for="birthdate">Date of Birth</label>
-                                <input type="date" id="birthdate" name="birth_date">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="birthdate">Date of Birth</label>
+                                <input class="form-control" type="date" id="birthdate" name="birth_date">
                             </div>
-                            <div class="form-field">
-                                <label for="interest">Area of Interest *</label>
-                                <select id="interest" name="interest_area" required>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="interest">Area of Interest *</label>
+                                <select class="form-select" id="interest" name="interest_area" required>
                                     <option value="">— Select —</option>
                                     <option value="copywriting">Copywriting</option>
                                     <option value="data">Data Analysis</option>
@@ -94,55 +94,52 @@
                             </div>
                         </div>
 
-                        <div class="form-field" style="margin-bottom:12px">
-                            <label for="about">About You</label>
-                            <textarea id="about" name="bio" rows="3" placeholder="Tell us why PromptForge interests you..."></textarea>
+                        <div class="mb-3">
+                            <label class="form-label" for="about">About You</label>
+                            <textarea class="form-control" id="about" name="bio" rows="3" placeholder="Tell us why PromptForge interests you..."></textarea>
                         </div>
 
-                        <div class="form-inline">
-                            <label><input type="radio" name="level" value="beginner" required> Beginner</label>
-                            <label><input type="radio" name="level" value="intermediate"> Intermediate</label>
-                            <label><input type="radio" name="level" value="advanced"> Advanced</label>
+                        <div class="auth-levels d-flex flex-wrap gap-3">
+                            <label class="form-check-label"><input class="form-check-input me-1" type="radio" name="level" value="beginner" required> Beginner</label>
+                            <label class="form-check-label"><input class="form-check-input me-1" type="radio" name="level" value="intermediate"> Intermediate</label>
+                            <label class="form-check-label"><input class="form-check-input me-1" type="radio" name="level" value="advanced"> Advanced</label>
                         </div>
                     </fieldset>
 
-                    <fieldset>
-                        <legend>Agreements</legend>
-                        <div class="form-inline" style="flex-direction:column; gap:8px; align-items:flex-start">
+                    <fieldset class="auth-fieldset mb-4">
+                        <legend class="fs-5 fw-semibold mb-3">Agreements</legend>
+                        <div class="auth-agreements d-flex flex-column gap-2">
                             <label>
-                                <input type="checkbox" name="accept_rules" required>
+                                <input class="form-check-input me-1" type="checkbox" name="accept_rules" required>
                                 I agree with the <a href="how-it-works.html#faq">community guidelines</a> and understand that <abbr title="Artificial Intelligence">AI</abbr> can make mistakes
                             </label>
                             <label>
-                                <input type="checkbox" name="accept_privacy" required>
+                                <input class="form-check-input me-1" type="checkbox" name="accept_privacy" required>
                                 I accept the <strong>privacy policy</strong>
                             </label>
                             <label>
-                                <input type="checkbox" name="subscribe_newsletter">
+                                <input class="form-check-input me-1" type="checkbox" name="subscribe_newsletter">
                                 Subscribe to weekly task updates
                             </label>
                         </div>
                     </fieldset>
 
-                    <div class="form-actions">
-                        <button type="submit" class="btn-primary">Register</button>
-                        <button type="reset" class="btn-ghost">Clear</button>
+                    <div class="auth-actions d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                        <button type="reset" class="btn btn-outline-light">Clear</button>
                     </div>
                 </form>
 
-                <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+                <p class="col-12 col-lg-8 text-center text-secondary small mt-3">Already have an account? <a href="login.html">Log in</a></p>
             </div>
 
         </div>
     </main>
 
-    <footer class="footer-compact">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
-            </div>
-        </div>
+    <footer class="border-top py-3 mt-auto">
+      <div class="container"><p class="small text-secondary mb-0">&copy; 2026 Prompt Forge. All rights reserved.</p></div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
