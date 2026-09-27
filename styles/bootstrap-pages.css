@@ -1,0 +1,56 @@
+/* Bootstrap supplies layout, spacing, responsive columns, navigation, and controls.
+   This file contains only PromptForge colors and small visual details. */
+:root[data-bs-theme="dark"] {
+  --bs-body-bg: #141011;
+  --bs-body-color: #f2f0f2;
+  --bs-border-color: #383033;
+  --bs-primary: #ff6410;
+  --bs-primary-rgb: 255, 100, 16;
+  --bs-secondary-color: #aaa1a5;
+}
+body { font-family: Inter, system-ui, sans-serif; }
+.navbar { background: #141011; }
+.navbar-brand, .navbar-brand:hover { color: #f2f0f2; }
+.navbar .nav-link.active { color: #ff914f; }
+.btn-primary {
+  --bs-btn-bg: #ff6410;
+  --bs-btn-border-color: #ff6410;
+  --bs-btn-hover-bg: #e85200;
+  --bs-btn-hover-border-color: #e85200;
+  --bs-btn-color: #141011;
+  --bs-btn-hover-color: #141011;
+}
+.card, .editor-chrome, .panel-header { background: #1e191b; }
+.card { --bs-card-border-color: #383033; }
+.card[hidden] { display: none; }
+.highlight, .text-gradient-gold, .stat-number, .quick-stat-value { color: #ff914f; }
+.icon { width: 1.1em; height: 1.1em; vertical-align: -.12em; }
+.hero-editor > .editor-chrome, .hero-editor > .editor-body, .hero-editor > .editor-footer { background: #1e191b; }
+.hero-editor { font-family: ui-monospace, monospace; }
+.hero-editor .editor-body { padding: 1.5rem; overflow-x: auto; }
+.editor-line { white-space: pre-wrap; }
+.line-num { color: #867b80; padding-right: .75rem; }
+.kw { color: #ff914f; }
+.editor-footer { padding: .75rem 1.5rem; }
+.section-subtitle, .task-card-desc, .task-subtitle { color: #aaa1a5; }
+.section-title { margin-bottom: 1rem; }
+.feature-icon-mono, .how-step-num { color: #ff914f; font-family: ui-monospace, monospace; }
+.how-step { padding: .75rem 0; border-bottom: 1px solid #383033; }
+.how-step span:last-child { color: #aaa1a5; }
+.task-tag, .task-category-tag { color: #aaa1a5; }
+.diff-beginner { color: #51d987; }
+.diff-intermediate { color: #ffd166; }
+.diff-advanced { color: #ff6489; }
+.filter-list li { padding: .2rem 0; color: #aaa1a5; }
+.filter-list li.active { color: #ff914f; }
+.active-filter-tag { color: #ff914f; }
+.task-card .card { min-width: 0; }
+.task-card-meta span { font-size: .75rem; }
+.task-card-stats { color: #aaa1a5; font-size: .75rem; }
+.prompt-textarea { min-height: 20rem; background: #100d0e; }
+.terminal-block { max-width: 100%; overflow-x: auto; color: #ddd2d5; }
+.panel-header { border-bottom: 1px solid #383033; }
+.criteria-weight { color: #ff914f; }
+.criteria-desc { display: block; color: #aaa1a5; }
+.results-final-score { color: #ff914f; font-size: 2rem; }
+.footer-links a { display: block; }

@@ -1,115 +1,142 @@
 <!doctype html>
-<html lang="en">
+<html data-bs-theme="dark" lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta
-      name="description"
       content="PromptForge — AI prompt engineering training platform. Practice, compete, and master prompt crafting."
+      name="description"
     />
-    <meta name="author" content="Emil Sabirzhanov" />
+    <meta content="Emil Sabirzhanov" name="author" />
     <title>PromptForge — AI Prompt Training Platform</title>
-    <link rel="stylesheet" href="styles/main.css" />
+    <!-- Bootstrap 5.3.8 from jsDelivr; loaded before the brand correction layer. -->
     <link
-      rel="stylesheet"
+      crossorigin="anonymous"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
+      rel="stylesheet"
     />
+    <link href="styles/bootstrap-pages.css" rel="stylesheet" />
   </head>
   <body>
     <!-- HEADER -->
-    <header>
-      <div class="container header-container">
-        <a class="logo" href="index.html" aria-label="Prompt Forge home">
+    <header class="navbar navbar-expand-lg sticky-top border-bottom">
+      <div class="container">
+        <a
+          aria-label="Prompt Forge home"
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+          href="index.html"
+        >
           <svg
+            aria-hidden="true"
             class="icon icon-lg"
-            viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            aria-hidden="true"
+            stroke-width="2"
+            viewbox="0 0 24 24"
           >
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
           </svg>
           Prompt Forge
         </a>
-        <input
-          type="checkbox"
-          id="nav-toggle"
-          class="nav-toggle-input"
-          hidden
-        />
-        <label
-          for="nav-toggle"
-          class="nav-toggle"
+        <button
+          aria-controls="primary-navigation"
+          aria-expanded="false"
           aria-label="Toggle navigation"
+          class="navbar-toggler ms-auto"
+          data-bs-target="#primary-navigation"
+          data-bs-toggle="collapse"
+          type="button"
         >
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-        </label>
-        <nav aria-label="Primary navigation">
-          <ul>
-            <li>
-              <a href="index.html" class="active" aria-current="page">Home</a>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav
+          aria-label="Primary navigation"
+          class="collapse navbar-collapse justify-content-lg-end"
+          id="primary-navigation"
+        >
+          <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 gap-lg-1">
+            <li class="nav-item">
+              <a
+                aria-current="page"
+                class="active nav-link px-lg-2"
+                href="index.html"
+                >Home</a
+              >
             </li>
-            <li><a href="tasks.html">Tasks</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="my-solutions.html">My Solutions</a></li>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="profile.html">Profile</a></li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-2" href="tasks.html">Tasks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-2" href="leaderboard.html"
+                >Leaderboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-2" href="my-solutions.html"
+                >My Solutions</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-2" href="how-it-works.html"
+                >How it works</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-2" href="profile.html">Profile</a>
+            </li>
           </ul>
+          <div class="d-flex gap-2 ms-lg-3 mt-3 mt-lg-0">
+            <a class="btn btn-outline-light btn-sm" href="login.html">Log in</a>
+            <a class="btn btn-primary btn-sm" href="register.html">Register</a>
+          </div>
         </nav>
-        <div class="auth-buttons">
-          <a href="login.html" class="btn-ghost">Log in</a>
-          <a href="register.html" class="btn-primary">Register</a>
-        </div>
       </div>
     </header>
-
     <main>
       <!-- HERO SECTION — with terminal editor preview -->
-      <section class="hero">
+      <section class="hero py-5">
         <div class="hero-ambient-glow"></div>
         <div class="container">
-          <div class="hero-layout">
-            <div class="hero-content">
+          <div class="row align-items-center g-4">
+            <div class="hero-content col-12 col-lg-7">
               <span class="badge">New: GPT-5 Challenges Available</span>
-              <h1>
+              <h1 class="display-4 fw-bold mb-3">
                 Master the Art of
                 <span class="highlight">Prompt Engineering</span>
               </h1>
-              <p class="subtitle">
+              <p class="subtitle lead text-secondary mb-4">
                 Train your AI communication skills through practical challenges.
                 Compete with others, climb the leaderboard, and forge your path
                 to becoming a prompt master.
               </p>
-              <div class="hero-buttons">
-                <button class="btn-primary btn-large">Start Training</button>
-                <button class="btn-outline btn-large">View Tasks</button>
+              <div class="hero-buttons d-flex flex-wrap gap-2">
+                <a class="btn btn-lg btn-primary" href="tasks.html"
+                  >Start Training</a
+                >
+                <a class="btn btn-lg btn-outline-light" href="tasks.html"
+                  >View Tasks</a
+                >
               </div>
-
-              <div class="hero-stats">
-                <div class="stat-card">
-                  <span class="stat-number" data-target="15420">0</span>
+              <div class="hero-stats row g-3 mt-4">
+                <div class="stat-card col-12 col-sm-4">
+                  <span class="stat-number" data-target="15420">15420</span>
                   <span class="stat-label">Active Users</span>
                 </div>
-                <div class="stat-card">
-                  <span class="stat-number" data-target="847">0</span>
+                <div class="stat-card col-12 col-sm-4">
+                  <span class="stat-number" data-target="847">847</span>
                   <span class="stat-label">Challenges</span>
                 </div>
-                <div class="stat-card">
-                  <span class="stat-number" data-target="96">0</span>
+                <div class="stat-card col-12 col-sm-4">
+                  <span class="stat-number" data-target="96">96</span>
                   <span class="stat-label">Success Rate %</span>
                 </div>
               </div>
             </div>
-
             <!-- TERMINAL EDITOR — hero visual -->
-            <div class="hero-editor">
+            <div class="hero-editor col-12 col-lg-5">
               <div class="editor-chrome">
                 <div class="editor-dots">
                   <span class="dot dot-red"></span>
@@ -188,66 +215,70 @@
           </div>
         </div>
       </section>
-
       <!-- FEATURES SECTION — mono symbols -->
-      <section class="features">
+      <section class="features py-5">
         <div class="container">
-          <h2 class="section-title">
+          <h2 class="section-title text-center text-md-start">
             Why Choose <span class="highlight">Prompt Forge?</span>
           </h2>
           <p class="section-subtitle">
             A purpose-built training ground for prompt engineers — not another
             generic coding challenge platform.
           </p>
-
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon-mono">[ _ ]</div>
-              <h3>Practical Tasks</h3>
-              <p>
-                Real-world prompt challenges across copywriting, data analysis,
-                code generation, and system design. No toy examples.
-              </p>
-              <a href="tasks.html" class="card-link">Browse tasks →</a>
+          <div class="row g-3">
+            <div class="feature-card col-12 col-md-6 col-xl-3">
+              <div class="card h-100 shadow-sm p-4">
+                <div class="feature-icon-mono">[ _ ]</div>
+                <h3>Practical Tasks</h3>
+                <p>
+                  Real-world prompt challenges across copywriting, data
+                  analysis, code generation, and system design. No toy examples.
+                </p>
+                <a class="card-link" href="tasks.html">Browse tasks →</a>
+              </div>
             </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-mono">{ }</div>
-              <h3>Atomic Scoring</h3>
-              <p>
-                Each prompt is evaluated against 4–6 independent criteria with
-                weighted scores — not a single vague "good/bad" rating.
-              </p>
-              <a href="how-it-works.html" class="card-link"
-                >See how it works →</a
-              >
+            <div class="feature-card col-12 col-md-6 col-xl-3">
+              <div class="card h-100 shadow-sm p-4">
+                <div class="feature-icon-mono">{ }</div>
+                <h3>Atomic Scoring</h3>
+                <p>
+                  Each prompt is evaluated against 4–6 independent criteria with
+                  weighted scores — not a single vague "good/bad" rating.
+                </p>
+                <a class="card-link" href="how-it-works.html"
+                  >See how it works →</a
+                >
+              </div>
             </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-mono">/&gt;</div>
-              <h3>Instant Feedback</h3>
-              <p>
-                Get detailed breakdowns of what worked and what didn't — with
-                concrete tips for improvement on every attempt.
-              </p>
-              <a href="my-solutions.html" class="card-link">View solutions →</a>
+            <div class="feature-card col-12 col-md-6 col-xl-3">
+              <div class="card h-100 shadow-sm p-4">
+                <div class="feature-icon-mono">/&gt;</div>
+                <h3>Instant Feedback</h3>
+                <p>
+                  Get detailed breakdowns of what worked and what didn't — with
+                  concrete tips for improvement on every attempt.
+                </p>
+                <a class="card-link" href="my-solutions.html"
+                  >View solutions →</a
+                >
+              </div>
             </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-mono">▲</div>
-              <h3>Competitive Ranks</h3>
-              <p>
-                Climb from Newcomer to Grandmaster. The leaderboard updates
-                daily — every solved task moves you up.
-              </p>
-              <a href="leaderboard.html" class="card-link">View rankings →</a>
+            <div class="feature-card col-12 col-md-6 col-xl-3">
+              <div class="card h-100 shadow-sm p-4">
+                <div class="feature-icon-mono">▲</div>
+                <h3>Competitive Ranks</h3>
+                <p>
+                  Climb from Newcomer to Grandmaster. The leaderboard updates
+                  daily — every solved task moves you up.
+                </p>
+                <a class="card-link" href="leaderboard.html">View rankings →</a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
       <!-- HOW IT WORKS — mini criteria table -->
-      <section class="how-it-works">
+      <section class="how-it-works py-5">
         <div class="container">
           <h2 class="section-title">
             How It <span class="highlight">Works</span>
@@ -256,10 +287,9 @@
             Your prompt is evaluated by an LLM judge against strict atomic
             criteria. Here's what happens under the hood:
           </p>
-
-          <div class="how-layout">
+          <div class="row g-4 align-items-start">
             <!-- Left: steps -->
-            <div class="how-steps">
+            <div class="how-steps col-12 col-lg-5">
               <div class="how-step">
                 <span class="how-step-num">01</span>
                 <div>
@@ -289,11 +319,12 @@
                 </div>
               </div>
             </div>
-
             <!-- Right: mini criteria table -->
-            <div class="how-table-wrap">
+            <div class="how-table-wrap col-12 col-lg-7 table-responsive">
               <div class="code-block-label">Example evaluation</div>
-              <table class="table-dense table-mini">
+              <table
+                class="table-dense table-mini table table-striped align-middle"
+              >
                 <thead>
                   <tr>
                     <th>Criterion</th>
@@ -343,67 +374,70 @@
           </div>
         </div>
       </section>
-
       <!-- CTA SECTION -->
-      <section class="cta">
+      <section class="cta py-5">
         <div class="container">
-          <div class="cta-box">
+          <div class="cta-box card p-4 p-md-5 text-center shadow-sm">
             <h2>Ready to Forge Your Skills?</h2>
             <p>
               Join thousands of prompt engineers competing and learning
               together.
             </p>
-            <button class="btn-primary btn-large">
+            <a class="btn btn-lg btn-primary" href="register.html">
               Get Started — It's Free
-            </button>
+            </a>
           </div>
         </div>
       </section>
     </main>
-
     <!-- FOOTER -->
-    <footer>
+    <footer class="border-top py-4">
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
+        <div class="row g-4">
+          <div class="col-12 col-md-6">
             <span class="logo-icon"
               ><svg
+                aria-hidden="true"
                 class="icon icon-lg"
-                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                aria-hidden="true"
+                stroke-width="2"
+                viewbox="0 0 24 24"
               >
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg
             ></span>
             Prompt Forge
             <p>
               Train your AI communication skills through practical challenges.
             </p>
           </div>
-          <div class="footer-links">
-            <div class="link-group">
-              <h4>Platform</h4>
-              <a href="tasks.html">Tasks</a>
-              <a href="leaderboard.html">Leaderboard</a>
-              <a href="my-solutions.html">Solutions</a>
-            </div>
-            <div class="link-group">
-              <h4>Resources</h4>
-              <a href="how-it-works.html">How It Works</a>
-              <a href="colophon.html">Colophon</a>
+          <div class="col-12 col-md-6">
+            <div class="row g-3">
+              <div class="col-6">
+                <h4>Platform</h4>
+                <a href="tasks.html">Tasks</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="my-solutions.html">Solutions</a>
+              </div>
+              <div class="col-6">
+                <h4>Resources</h4>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="colophon.html">Colophon</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
+          <p>© 2026 Prompt Forge. All rights reserved.</p>
         </div>
       </div>
     </footer>
-
-    <script src="js/main.js"></script>
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
   </body>
 </html>

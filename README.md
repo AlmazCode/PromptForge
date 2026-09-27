@@ -22,6 +22,7 @@ styles/
   student-b.css     — pages B (register, login, profile)
   student-c.css     — shared workspace styles for the six non-Bootstrap pages that use them
   emil-bootstrap.css — visual system for Emil's Bootstrap pages
+  bootstrap-pages.css — brand corrections for index, tasks, and task
 
 src/
   brand/            — original Prompt Forge SVG mark
@@ -35,7 +36,7 @@ Open any `.html` file in a browser. No server needed.
 
 ## Dependencies
 
-Emil's `leaderboard.html`, `my-solutions.html`, and `how-it-works.html` use Bootstrap 5.3.8 from jsDelivr, so they need internet access for the CDN. Other pages still use the existing project CSS. No build tools or custom JavaScript are needed for Emil's pages; Bootstrap's bundle drives their collapsed navigation.
+`index.html`, `tasks.html`, and `task.html` now use Bootstrap 5.3.8 from jsDelivr, followed by `styles/bootstrap-pages.css`. They need internet access for the CDN. The search, pagination, and prompt checking interfaces are static previews until a backend is connected. Bootstrap's bundle drives the collapsed navigation.
 
 See `bootstrap-css-removal.md` for the CSS migration mapping and `AI_LOG.md` for assistance disclosure. The Bootstrap assignment's requirement to migrate all ten pages remains team work.
 
