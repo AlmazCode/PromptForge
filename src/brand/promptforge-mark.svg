@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Prompt Forge</title>
+  <path d="m25 3 1.9 6.1L33 11l-6.1 1.9L25 19l-1.9-6.1L17 11l6.1-1.9L25 3Z" fill="#FFB45C"/>
+  <path d="M10 21h27c2.2 0 4.2-.5 6-1.8-2.2 5.9-7.2 9.2-14.6 9.2H17.2L14 24H10a2 2 0 0 1 0-4Z" fill="#FF6410"/>
+  <path d="M18.8 28h13.5l-2.1 7H21L18.8 28Z" fill="#FF6410"/>
+  <path d="M14 35h22a2 2 0 0 1 2 2v2H12v-2a2 2 0 0 1 2-2Z" fill="#FF6410"/>
+</svg>

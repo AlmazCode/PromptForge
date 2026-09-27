@@ -100,7 +100,8 @@ main {
   margin: 10px 0 0 10px;
 }
 
-.profile-hero-avatar img {
+.profile-hero-avatar img,
+.profile-hero-avatar svg {
   width: 80px;
   height: 80px;
   border-radius: 50%;
