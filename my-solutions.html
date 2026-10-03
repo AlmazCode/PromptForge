@@ -1,250 +1,206 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Your solved tasks — history of attempts, scores, and improvement tips on PromptForge." />
-    <meta name="author" content="Emil Sabirzhanov" />
-    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg" />
+<html lang="en" data-bs-theme="dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your solved tasks — history of attempts, scores, and improvement tips on PromptForge.">
+    <meta name="author" content="PromptForge team">
+    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
     <title>My Solutions — PromptForge</title>
     <!-- Bootstrap 5.3.8 CDN; project CSS follows it for brand corrections. -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-    <link rel="stylesheet" href="styles/site.css" />
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/site.css">
   </head>
-  <body class="solutions-page">
-    <header class="navbar navbar-expand-lg sticky-top site-nav" data-bs-theme="dark">
-      <!-- container-fluid keeps the seven-link navigation comfortable on desktop. -->
-      <div class="container-fluid px-3 px-lg-5">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="" />
-          Prompt Forge
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <nav class="collapse navbar-collapse" id="primaryNav" aria-label="Primary navigation">
+  <body class="solutions-page d-flex flex-column min-vh-100">
+    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
+    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
+      <div class="container-fluid px-3 px-lg-5 flex-wrap">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
+          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
+        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
+        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Show navigation</span>
+        </label>
+        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
           <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="tasks.html">Tasks</a></li>
-              <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
-              <li class="nav-item"><a class="nav-link active" href="my-solutions.html" aria-current="page">My Solutions</a></li>
-              <li class="nav-item"><a class="nav-link" href="how-it-works.html">How it works</a></li>
-              <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+            <li class="nav-item">
+              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-tasks" class="nav-link small fw-medium p-2 text-decoration-none" href="tasks.html">Tasks</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-solutions" class="nav-link active small p-2 text-decoration-none fw-semibold" href="my-solutions.html" aria-current="page">My Solutions</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
+            </li>
           </ul>
           <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a href="login.html" class="btn btn-outline-light btn-sm">Log in</a>
-            <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
+            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
           </div>
         </nav>
       </div>
     </header>
-
-    <main class="app-layout solutions-layout py-3 py-lg-4">
+    <main class="app-layout solutions-layout py-3 py-lg-4 flex-grow-1" id="main-content" data-page="my-solutions" data-user-id="local-user">
       <!-- container centers reading content and caps line length. -->
       <div class="container">
         <div class="workspace-heading row align-items-center g-3 border-bottom pb-3 mb-3">
           <div class="workspace-heading-copy col-12 col-lg">
-            <span class="workspace-eyebrow eyebrow d-block mb-2">PERSONAL WORKSPACE <span aria-hidden="true">/</span> PROGRESS</span>
+            <span class="workspace-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">PERSONAL WORKSPACE <span aria-hidden="true">/</span> PROGRESS</span>
             <h1 class="h3 fw-bold mb-2">My Solutions</h1>
             <p class="workspace-heading-meta small text-body-secondary mb-0">
               Review previous attempts, spot recurring weaknesses, and return to active tasks without losing context.
             </p>
           </div>
-          <div class="workspace-status col-12 col-lg-auto ms-lg-auto card border-secondary rounded-3 shadow-sm p-2">
-            <span class="workspace-status-label small text-body-secondary">History</span>
-            <strong>8 attempts</strong>
-            <span class="workspace-status-note small text-body-secondary"><span class="status-dot status-dot--synced" aria-hidden="true"></span> Sample data</span>
+          <div class="workspace-status col-12 col-lg-auto ms-lg-auto card rounded-3 shadow-sm p-2 bg-body-tertiary d-flex flex-row flex-wrap align-items-center gap-1">
+            <span class="workspace-status-label small text-body-secondary font-monospace text-uppercase order-0">History</span>
+            <strong id="solutions-attempt-count" class="order-2 w-100 text-body">0 attempts</strong>
+            <span class="workspace-status-note small text-body-secondary font-monospace text-uppercase order-1 ms-auto text-nowrap">Your record</span>
           </div>
         </div>
-
-        <!-- Bootstrap grid component: four responsive progress metrics using sample data. -->
-        <section class="solutions-overview row row-cols-2 row-cols-lg-4 g-0 border border-secondary rounded-3 overflow-hidden mb-4" aria-label="Solution overview">
-          <div class="overview-metric overview-metric-primary col border-end border-secondary p-3">
-            <span class="overview-metric-label small text-body-secondary d-block">Solved</span>
-            <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
-  <path d="m16 9-5.5 5.5L8 12" />
-</svg>
-            <strong class="overview-metric-value mono fs-4 fw-bold d-block">7</strong>
+        <section class="solutions-overview row row-cols-2 row-cols-lg-4 g-0 border rounded-3 overflow-hidden mb-4" aria-label="Solution overview">
+          <div class="overview-metric overview-metric-primary col border-end p-3 bg-body-tertiary position-relative">
+            <span class="overview-metric-label small text-body-secondary d-block fw-bold text-uppercase">Solved</span>
+            <svg class="metric-icon position-absolute mt-3 me-3 top-0 end-0 text-primary" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="m16 9-5.5 5.5L8 12"></path>
+            </svg>
+            <strong class="overview-metric-value mono fs-4 fw-bold d-block font-monospace text-primary lh-sm" id="solutions-solved-count">0</strong>
             <span class="overview-metric-detail small text-body-secondary d-block">completed tasks</span>
           </div>
-          <div class="overview-metric col border-end border-secondary p-3">
-            <span class="overview-metric-label small text-body-secondary d-block">Average</span>
-            <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v5" />
-  <path d="M16 14.639V21" />
-  <path d="M20 10.656V21" />
-  <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" />
-  <path d="M4 18.463V21" />
-  <path d="M8 14.656V21" />
-</svg>
-            <strong class="overview-metric-value mono fs-4 fw-bold d-block">7.7</strong>
-            <span class="overview-metric-detail small text-body-secondary d-block">across solved tasks</span>
+          <div class="overview-metric col border-end p-3 bg-body-tertiary position-relative">
+            <span class="overview-metric-label small text-body-secondary d-block fw-bold text-uppercase">Average</span>
+            <svg class="metric-icon position-absolute mt-3 me-3 top-0 end-0 text-body-secondary" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 16v5"></path>
+              <path d="M16 14.639V21"></path>
+              <path d="M20 10.656V21"></path>
+              <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"></path>
+              <path d="M4 18.463V21"></path>
+              <path d="M8 14.656V21"></path>
+            </svg>
+            <strong class="overview-metric-value mono fs-4 fw-bold d-block font-monospace text-body lh-sm" id="solutions-average-score">0.0</strong>
+            <span class="overview-metric-detail small text-body-secondary d-block">no scores yet</span>
           </div>
-          <div class="overview-metric col border-end border-secondary p-3">
-            <span class="overview-metric-label small text-body-secondary d-block">Best score</span>
-            <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
-  <circle cx="12" cy="8" r="6" />
-</svg>
-            <strong class="overview-metric-value mono fs-4 fw-bold d-block">9.2</strong>
-            <span class="overview-metric-detail small text-body-secondary d-block">current personal best</span>
+          <div class="overview-metric col border-end p-3 bg-body-tertiary position-relative">
+            <span class="overview-metric-label small text-body-secondary d-block fw-bold text-uppercase">Best score</span>
+            <svg class="metric-icon position-absolute mt-3 me-3 top-0 end-0 text-body-secondary" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
+              <circle cx="12" cy="8" r="6"></circle>
+            </svg>
+            <strong class="overview-metric-value mono fs-4 fw-bold d-block font-monospace text-body lh-sm" id="solutions-best-score">0.0</strong>
+            <span class="overview-metric-detail small text-body-secondary d-block">no scores yet</span>
           </div>
-          <div class="overview-metric col border-end border-secondary p-3">
-            <span class="overview-metric-label small text-body-secondary d-block">Active</span>
-            <svg class="metric-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
-  <path d="M12 6v6h4" />
-</svg>
-            <strong class="overview-metric-value mono fs-4 fw-bold d-block">1</strong>
-            <span class="overview-metric-detail small text-body-secondary d-block">task needs attention</span>
+          <div class="overview-metric col border-end p-3 bg-body-tertiary position-relative">
+            <span class="overview-metric-label small text-body-secondary d-block fw-bold text-uppercase">Active</span>
+            <svg class="metric-icon position-absolute mt-3 me-3 top-0 end-0 text-body-secondary" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6h4"></path>
+            </svg>
+            <strong class="overview-metric-value mono fs-4 fw-bold d-block font-monospace text-body lh-sm" id="solutions-active-count">0</strong>
+            <span class="overview-metric-detail small text-body-secondary d-block">unfinished attempts</span>
           </div>
         </section>
-
         <div class="app-content solutions-content row g-4">
           <aside class="app-sidebar solutions-sidebar vstack gap-3 col-12 col-lg-3 order-2 order-lg-1">
             <!-- Bootstrap card component: improvement queue adapted to prompt feedback. -->
-            <div class="sidebar-section solutions-focus-panel card border-secondary rounded-3 p-3" id="tips">
+            <div class="sidebar-section solutions-focus-panel card rounded-3 p-3 bg-body-tertiary" id="solutions-tips">
               <div class="sidebar-heading-row d-flex justify-content-between align-items-end gap-2 mb-3">
                 <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2">CURRENT FOCUS</span>
-                  <h2 class="sidebar-heading h5 fw-semibold mb-0">Improvement queue</h2>
+                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">CURRENT FOCUS</span>
+                  <h2 class="sidebar-heading h5 fw-semibold mb-0 fw-bold">Improvement queue</h2>
                 </div>
-                <span class="sidebar-count mono small text-body-secondary">03</span>
+                <span class="sidebar-count mono small text-body-secondary font-monospace" id="solutions-tip-count">0</span>
               </div>
-
-              <div class="tips-specific vstack gap-2">
-                <article class="tip-item card border-secondary rounded-3 p-2">
-                  <div class="tip-item-topline">
-                    <span class="tip-index mono">01</span>
-                    <strong>Chatbot instruction</strong>
-                    <span class="tip-score mono">7.5</span>
-                  </div>
-                  <p>No output format specified.</p>
-                  <span class="tip-fix small text-accent d-block mt-1"><span aria-hidden="true">+</span> Add <code>Format: numbered list</code></span>
-                </article>
-
-                <article class="tip-item card border-secondary rounded-3 p-2">
-                  <div class="tip-item-topline">
-                    <span class="tip-index mono">02</span>
-                    <strong>Marketplace description</strong>
-                    <span class="tip-score mono">6.8</span>
-                  </div>
-                  <p>Missing length constraint.</p>
-                  <span class="tip-fix small text-accent d-block mt-1"><span aria-hidden="true">+</span> Add <code>no more than 100 words</code></span>
-                </article>
-
-                <article class="tip-item tip-item-active card border-secondary rounded-3 p-2">
-                  <div class="tip-item-topline">
-                    <span class="tip-index mono">03</span>
-                    <strong>Code review via AI</strong>
-                    <span class="tip-score tip-score-low mono">5.9</span>
-                  </div>
-                  <p>No role defined for the model.</p>
-                  <span class="tip-fix small text-accent d-block mt-1"><span aria-hidden="true">+</span> Start with <code>You are a senior developer</code></span>
-                </article>
-              </div>
+              <div id="solutions-tips-empty" class="small text-secondary">No revision suggestions yet. Review the <a id="solutions-rubric-link" href="how-it-works.html#criteria" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">six criteria</a> before your first attempt.</div>
+              <div id="solutions-tips-list" class="vstack gap-2 is-hidden"></div>
             </div>
-
           </aside>
-
           <div class="app-main col-12 col-lg-9 order-1 order-lg-2" id="solutions-history">
             <section class="workspace-section">
               <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
                 <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2">SOLUTION HISTORY</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0">Recent attempts</h2>
+                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">SOLUTION HISTORY</span>
+                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Recent attempts</h2>
                 </div>
-                <span class="section-meta mono small text-body-secondary">08 RECORDS</span>
+                <span class="section-meta mono small text-body-secondary font-monospace" id="solutions-record-count">0 RECORDS</span>
               </div>
-
-              <div class="table-container solutions-table-container table-responsive border border-secondary rounded-3 shadow-sm my-3">
+              <div class="table-container solutions-table-container table-responsive border rounded-3 shadow-sm my-3 bg-body-tertiary overflow-y-hidden">
                 <table id="solutions-table" class="table-dense solutions-table table table-dark table-hover table-sm small align-middle mb-0">
-                  <caption class="visually-hidden">
+                  <caption class="visually-hidden text-body-secondary">
                     History of prompt submissions with task name, date, score, and status.
                   </caption>
                   <thead>
                     <tr>
-                      <th class="col-task" scope="col">Task</th>
-                      <th class="col-date d-none d-sm-table-cell" scope="col">Date</th>
-                      <th class="col-score" scope="col">Score</th>
-                      <th class="col-status" scope="col">Status</th>
+                      <th class="col-task px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary" scope="col">Task</th>
+                      <th class="col-date d-none d-sm-table-cell px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary" scope="col">Date</th>
+                      <th class="col-score px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary fw-bold" scope="col">Score</th>
+                      <th class="col-status px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary" scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody id="solutions-body">
-                    <tr data-task-id="t001" data-score="9.2" data-status="solved">
-                      <th class="col-task" scope="row">Social media post copywriting</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-14">Sep 14</time></td>
-                      <td class="col-score mono score-good">9.2</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
-                    </tr>
-                    <tr data-task-id="t002" data-score="8.7" data-status="solved">
-                      <th class="col-task" scope="row">Sales data summarization</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-13">Sep 13</time></td>
-                      <td class="col-score mono score-good">8.7</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
-                    </tr>
-                    <tr data-task-id="t003" data-score="7.5" data-status="solved">
-                      <th class="col-task" scope="row">Chatbot instruction writing</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-11">Sep 11</time></td>
-                      <td class="col-score mono score-mid">7.5</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
-                    </tr>
-                    <tr data-task-id="t004" data-score="6.8" data-status="solved">
-                      <th class="col-task" scope="row">Marketplace product description</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-10">Sep 10</time></td>
-                      <td class="col-score mono score-mid">6.8</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
-                    </tr>
-                    <tr data-task-id="t005" data-score="8.1" data-status="solved">
-                      <th class="col-task" scope="row">Brainstorming prompt</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-08">Sep 8</time></td>
-                      <td class="col-score mono score-good">8.1</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
-                    </tr>
-                    <tr data-task-id="t006" data-score="5.9" data-status="active" class="row-active">
-                      <th class="col-task" scope="row">
-                        <span class="task-title-inline">Code review via AI</span>
-                        <a href="task.html?id=t006" class="task-resume-link" title="Continue this task">Resume <svg class="icon icon-sm" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg></a>
-                      </th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-06">Sep 6</time></td>
-                      <td class="col-score mono score-low">5.9</td>
-                      <td class="col-status"><span class="status-progress badge text-bg-warning">active</span></td>
-                    </tr>
-                    <tr data-task-id="t007" data-score="7.2" data-status="solved">
-                      <th class="col-task" scope="row">Technical documentation translation</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-04">Sep 4</time></td>
-                      <td class="col-score mono score-mid">7.2</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
-                    </tr>
-                    <tr data-task-id="t008" data-score="6.5" data-status="solved">
-                      <th class="col-task" scope="row">JSON-structured response</th>
-                      <td class="col-date mono d-none d-sm-table-cell"><time datetime="2026-09-02">Sep 2</time></td>
-                      <td class="col-score mono score-mid">6.5</td>
-                      <td class="col-status"><span class="status-solved badge text-bg-success">solved</span></td>
+                    <tr id="solutions-empty">
+                      <td colspan="4" class="px-3 py-3 align-middle">
+                        <p class="mb-2">No attempts recorded yet.</p>
+                        <a class="btn btn-primary btn-sm fw-semibold" id="solutions-first-task" href="tasks.html">Choose your first exercise</a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </section>
-
-            <div class="page-cta solutions-cta d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 border border-secondary rounded-3 p-3 mt-4">
+            <div class="page-cta solutions-cta d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 border rounded-3 p-3 mt-4">
               <div>
-                <span class="section-eyebrow eyebrow d-block mb-2">NEXT STEP</span>
-                <p>Turn the lowest score into your next improvement.</p>
+                <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">NEXT STEP</span>
+                <p class="mb-0">Build your practice record one exercise at a time.</p>
               </div>
-              <a href="tasks.html" class="btn-primary btn">Solve Another Task <svg class="icon icon-sm" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" />
-  <path d="m12 5 7 7-7 7" />
-</svg></a>
+              <a href="tasks.html" class="btn-primary btn fw-semibold" id="my-solutions-link-1">Solve Another Task <svg class="icon icon-sm" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </div>
+      <div id="solutions-error" class="is-error is-hidden alert alert-danger mb-0" role="alert"></div>
+      <template id="solution-row-template">
+        <tr>
+          <th scope="row" data-field="task-title"></th>
+          <td data-field="date"></td>
+          <td data-field="score" class="mono font-monospace"></td>
+          <td>
+            <span data-field="status" class="badge status-progress bg-warning-subtle text-warning"></span>
+            <a href="task.html" data-field="task-link" class="task-resume-link ms-2 small fw-bold text-nowrap text-warning" id="my-solutions-link-2">Resume</a>
+          </td>
+        </tr>
+      </template>
+      <template id="solution-tip-template">
+        <article class="tip-item card p-3 bg-body">
+          <strong data-field="task-title"></strong>
+          <p data-field="feedback" class="mt-2 mb-0 small text-body-secondary"></p>
+          <a data-field="task-link" href="task.html" class="small" id="my-solutions-link-3">Revise prompt</a>
+        </article>
+      </template>
     </main>
-
-    <footer class="footer-compact border-top border-secondary py-3 mt-5">
-      <div class="container">
-        <div class="footer-bottom text-body-secondary small">
-          <p>&copy; 2026 Prompt Forge. All rights reserved.</p>
-        </div>
+    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
+      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
+        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
+          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
+          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
+          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
+          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
+        </nav>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
-</html>
+
+
+</body></html>

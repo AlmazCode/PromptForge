@@ -1,62 +1,63 @@
 <!doctype html>
-<html data-bs-theme="dark" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      content="Browse all prompt engineering training tasks — filter by category, difficulty, and topic."
-      name="description"
-    />
-    <meta content="Emil Sabirzhanov" name="author" />
+<html data-bs-theme="dark" lang="en"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Browse all prompt engineering training tasks — filter by category, difficulty, and topic." name="description">
+    <meta content="PromptForge team" name="author">
     <title>Tasks — PromptForge</title>
-    <!-- Bootstrap 5.3.8 from jsDelivr; loaded before the brand correction layer. -->
-    <link
-      crossorigin="anonymous"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      rel="stylesheet"
-    />
-      <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg" />
-    <link rel="stylesheet" href="styles/site.css" />
+    <!-- Local Bootstrap 5.3.8 CSS, followed by the PromptForge theme. -->
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
+    <link rel="stylesheet" href="styles/site.css">
   </head>
-  <body class="tasks-page">
+  <body class="tasks-page d-flex flex-column min-vh-100">
+    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
     <!-- HEADER -->
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header" data-bs-theme="dark">
-      <!-- Wide header for seven links; content uses its own readable width. -->
-      <div class="container-fluid px-3 px-lg-5">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">
-          Prompt Forge
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <nav class="collapse navbar-collapse" id="primaryNav" aria-label="Primary navigation">
+    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
+      <div class="container-fluid px-3 px-lg-5 flex-wrap">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
+          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
+        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
+        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Show navigation</span>
+        </label>
+        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
           <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link active" href="tasks.html" aria-current="page">Tasks</a></li>
-              <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
-              <li class="nav-item"><a class="nav-link" href="my-solutions.html">My Solutions</a></li>
-              <li class="nav-item"><a class="nav-link" href="how-it-works.html">How it works</a></li>
-              <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+            <li class="nav-item">
+              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-tasks" class="nav-link active small p-2 text-decoration-none fw-semibold" href="tasks.html" aria-current="page">Tasks</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
+            </li>
           </ul>
           <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a href="login.html" class="btn btn-outline-light btn-sm">Log in</a>
-            <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
+            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
           </div>
         </nav>
       </div>
     </header>
-    <main class="app-layout py-4">
+    <main class="app-layout py-4 flex-grow-1" id="main-content" data-page="tasks">
       <!-- container-fluid gives the catalog and editor more room; the grid still controls column widths. -->
       <div class="container-fluid px-3 px-lg-5">
         <!-- PAGE HEADER -->
-        <div
-          class="app-header d-flex flex-column flex-sm-row justify-content-between gap-2 border-bottom pb-3 mb-4"
-        >
+        <div class="app-header d-flex flex-column flex-sm-row justify-content-between gap-2 border-bottom pb-3 mb-4">
           <div class="app-header-left">
             <h1 class="display-6 fw-bold">Training Tasks</h1>
-            <span class="app-header-meta text-secondary small"
-              >847 challenges · 12 categories · Updated weekly</span
-            >
+            <span class="app-header-meta text-secondary small">16 exercises · 9 skill areas · Six scoring criteria</span>
           </div>
           <div class="app-header-right d-none d-sm-block">
             <span class="badge-small">Catalog</span>
@@ -66,29 +67,19 @@
         <div class="tasks-search-bar mb-4">
           <div class="input-group mb-2">
             <span class="input-group-text">⌕</span>
-            <input
-              aria-label="Search tasks"
-              class="form-control"
-              disabled=""
-              id="task-search"
-              placeholder="Search becomes available with the catalog backend"
-              type="text"
-            />
+            <input aria-label="Search tasks" class="form-control" id="task-search" placeholder="Search by task title or skill" type="search" name="query" autocomplete="off" aria-invalid="false">
           </div>
-          <div
-            class="tasks-stats-row d-flex flex-wrap gap-3 small text-secondary"
-          >
-            <span class="tasks-stat"><span class="mono">847</span> total</span>
-            <span class="tasks-stat"
-              ><span class="mono">124</span> beginner</span
-            >
-            <span class="tasks-stat"
-              ><span class="mono">402</span> intermediate</span
-            >
-            <span class="tasks-stat"
-              ><span class="mono">321</span> advanced</span
-            >
+          <div class="tasks-stats-row d-flex flex-wrap gap-3 small text-secondary">
+            <span class="tasks-stat">
+              <span class="mono font-monospace" id="catalog-total-count">16</span> total</span>
+            <span class="tasks-stat">
+              <span class="mono font-monospace" id="catalog-beginner-count">5</span> beginner</span>
+            <span class="tasks-stat">
+              <span class="mono font-monospace" id="catalog-intermediate-count">6</span> intermediate</span>
+            <span class="tasks-stat">
+              <span class="mono font-monospace" id="catalog-advanced-count">5</span> advanced</span>
           </div>
+          <div id="catalog-error" class="is-error is-hidden alert alert-danger mb-0" role="alert"></div>
         </div>
         <!-- SIDEBAR + CONTENT layout -->
         <div class="row g-4">
@@ -96,118 +87,128 @@
           <aside class="app-sidebar col-12 col-lg-3">
             <div class="row g-3">
               <!-- Bootstrap card component adapted for the catalog filter groups. -->
-              <div class="sidebar-section col-12 col-sm-6 col-lg-12">
+              <div class="sidebar-section col-12 col-sm-6 col-lg-12 bg-body-tertiary">
                 <div class="card h-100 p-3">
-                  <h3 class="sidebar-title h6 fw-bold">Category</h3>
-                  <ul
-                    class="filter-list list-unstyled small mb-0"
-                    id="filter-category"
-                  >
-                    <li class="filter-item active">
-                      All <span class="filter-count mono">847</span>
+                  <h2 class="sidebar-title h6 fw-bold small mb-0">Category</h2>
+                  <ul class="filter-list list-unstyled small mb-0" id="filter-category">
+                    <li>
+                      <button class="filter-control is-selected btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-all" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="all" aria-pressed="true">All<span class="filter-count mono font-monospace">16</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Copywriting <span class="filter-count mono">156</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-copywriting" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="copywriting" aria-pressed="false">Copywriting<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Data Analysis <span class="filter-count mono">112</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-data-analysis" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="data-analysis" aria-pressed="false">Data Analysis<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Code Generation <span class="filter-count mono">134</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-code-generation" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="code-generation" aria-pressed="false">Code Generation<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      System Design <span class="filter-count mono">98</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-system-design" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="system-design" aria-pressed="false">System Design<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Translation <span class="filter-count mono">67</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-translation" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="translation" aria-pressed="false">Translation<span class="filter-count mono font-monospace">1</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Summarization <span class="filter-count mono">89</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-summarization" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="summarization" aria-pressed="false">Summarization<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Brainstorming <span class="filter-count mono">74</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-brainstorming" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="brainstorming" aria-pressed="false">Brainstorming<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Role-play <span class="filter-count mono">52</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-role-play" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="role-play" aria-pressed="false">Role-play<span class="filter-count mono font-monospace">2</span>
+                      </button>
                     </li>
-                    <li class="filter-item">
-                      Extraction <span class="filter-count mono">65</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-category-extraction" type="button" data-action="filter-tasks" data-filter-group="category" data-filter-value="extraction" aria-pressed="false">Extraction<span class="filter-count mono font-monospace">1</span>
+                      </button>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="sidebar-section col-12 col-sm-6 col-lg-12">
+              <div class="sidebar-section col-12 col-sm-6 col-lg-12 bg-body-tertiary">
                 <div class="card h-100 p-3">
-                  <h3 class="sidebar-title h6 fw-bold">Difficulty</h3>
-                  <ul
-                    class="filter-list list-unstyled small mb-0"
-                    id="filter-difficulty"
-                  >
-                    <li class="filter-item active">
-                      All <span class="filter-count mono">847</span>
+                  <h2 class="sidebar-title h6 fw-bold small mb-0">Difficulty</h2>
+                  <ul class="filter-list list-unstyled small mb-0" id="filter-difficulty">
+                    <li>
+                      <button class="filter-control is-selected btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-difficulty-all" type="button" data-action="filter-tasks" data-filter-group="difficulty" data-filter-value="all" aria-pressed="true">All<span class="filter-count mono font-monospace">16</span>
+                      </button>
                     </li>
-                    <li class="filter-item filter-beginner">
-                      Beginner <span class="filter-count mono">124</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-difficulty-beginner" type="button" data-action="filter-tasks" data-filter-group="difficulty" data-filter-value="beginner" aria-pressed="false">Beginner<span class="filter-count mono font-monospace">5</span>
+                      </button>
                     </li>
-                    <li class="filter-item filter-intermediate">
-                      Intermediate <span class="filter-count mono">402</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-difficulty-intermediate" type="button" data-action="filter-tasks" data-filter-group="difficulty" data-filter-value="intermediate" aria-pressed="false">Intermediate<span class="filter-count mono font-monospace">6</span>
+                      </button>
                     </li>
-                    <li class="filter-item filter-advanced">
-                      Advanced <span class="filter-count mono">321</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-difficulty-advanced" type="button" data-action="filter-tasks" data-filter-group="difficulty" data-filter-value="advanced" aria-pressed="false">Advanced<span class="filter-count mono font-monospace">5</span>
+                      </button>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="sidebar-section col-12 col-sm-6 col-lg-12">
+              <div class="sidebar-section col-12 col-sm-6 col-lg-12 bg-body-tertiary">
                 <div class="card h-100 p-3">
-                  <h3 class="sidebar-title h6 fw-bold">Target Model</h3>
-                  <ul
-                    class="filter-list list-unstyled small mb-0"
-                    id="filter-model"
-                  >
-                    <li class="filter-item active">All</li>
-                    <li class="filter-item">GPT-4o</li>
-                    <li class="filter-item">Claude 3.5</li>
-                    <li class="filter-item">Gemini Pro</li>
-                    <li class="filter-item">Llama 3</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="sidebar-section col-12 col-sm-6 col-lg-12">
-                <div class="card h-100 p-3">
-                  <h3 class="sidebar-title h6 fw-bold">Status</h3>
-                  <ul
-                    class="filter-list list-unstyled small mb-0"
-                    id="filter-status"
-                  >
-                    <li class="filter-item active">All</li>
-                    <li class="filter-item">
-                      Available <span class="filter-count mono">801</span>
+                  <h2 class="sidebar-title h6 fw-bold small mb-0">Target Model</h2>
+                  <ul class="filter-list list-unstyled small mb-0" id="filter-model">
+                    <li>
+                      <button class="filter-control is-selected btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-model-all" type="button" data-action="filter-tasks" data-filter-group="model" data-filter-value="all" aria-pressed="true">Any model</button>
                     </li>
-                    <li class="filter-item">
-                      Solved <span class="filter-count mono">7</span>
-                    </li>
-                    <li class="filter-item">
-                      In Progress <span class="filter-count mono">1</span>
-                    </li>
-                    <li class="filter-item">
-                      Locked <span class="filter-count mono">38</span>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-model-text" type="button" data-action="filter-tasks" data-filter-group="model" data-filter-value="text" aria-pressed="false">Text model</button>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="sidebar-section col-12 col-sm-6 col-lg-12">
+              <div class="sidebar-section col-12 col-sm-6 col-lg-12 bg-body-tertiary">
                 <div class="card h-100 p-3">
-                  <h3 class="sidebar-title h6 fw-bold">Sort By</h3>
-                  <ul
-                    class="filter-list list-unstyled small mb-0"
-                    id="filter-sort"
-                  >
-                    <li class="filter-item active">Newest</li>
-                    <li class="filter-item">Most Popular</li>
-                    <li class="filter-item">Difficulty ↑</li>
-                    <li class="filter-item">Difficulty ↓</li>
-                    <li class="filter-item">Success Rate</li>
+                  <h2 class="sidebar-title h6 fw-bold small mb-0">Status</h2>
+                  <ul class="filter-list list-unstyled small mb-0" id="filter-status">
+                    <li>
+                      <button class="filter-control is-selected btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-status-all" type="button" data-action="filter-tasks" data-filter-group="status" data-filter-value="all" aria-pressed="true">All<span class="filter-count mono font-monospace">16</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-status-available" type="button" data-action="filter-tasks" data-filter-group="status" data-filter-value="available" aria-pressed="false">Available<span class="filter-count mono font-monospace">16</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-status-solved" type="button" data-action="filter-tasks" data-filter-group="status" data-filter-value="solved" aria-pressed="false">Solved<span class="filter-count mono font-monospace">0</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-status-active" type="button" data-action="filter-tasks" data-filter-group="status" data-filter-value="active" aria-pressed="false">In progress<span class="filter-count mono font-monospace">0</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sidebar-section col-12 col-sm-6 col-lg-12 bg-body-tertiary">
+                <div class="card h-100 p-3">
+                  <h2 class="sidebar-title h6 fw-bold small mb-0">Sort By</h2>
+                  <ul class="filter-list list-unstyled small mb-0" id="filter-sort">
+                    <li>
+                      <button class="filter-control is-selected btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-sort-catalog" type="button" data-action="filter-tasks" data-filter-group="sort" data-filter-value="catalog" aria-pressed="true">Catalog order</button>
+                    </li>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-sort-title" type="button" data-action="filter-tasks" data-filter-group="sort" data-filter-value="title" aria-pressed="false">Title A–Z</button>
+                    </li>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-sort-difficulty-asc" type="button" data-action="filter-tasks" data-filter-group="sort" data-filter-value="difficulty-asc" aria-pressed="false">Difficulty ↑</button>
+                    </li>
+                    <li>
+                      <button class="filter-control btn btn-sm d-flex justify-content-between gap-2 w-100 text-start" id="filter-sort-difficulty-desc" type="button" data-action="filter-tasks" data-filter-group="sort" data-filter-value="difficulty-desc" aria-pressed="false">Difficulty ↓</button>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -216,761 +217,488 @@
           <!-- MAIN — task catalog -->
           <div class="app-main col-12 col-lg-9">
             <!-- ACTIVE FILTERS BAR -->
-            <div
-              class="active-filters d-flex flex-wrap align-items-center gap-2 mb-3"
-              id="active-filters"
-            >
-              <span class="active-filter-tag">All categories ×</span>
-              <span class="active-filter-tag">All difficulty ×</span>
-              <a
-                class="btn btn-outline-secondary btn-sm ms-auto"
-                href="tasks.html"
-                id="clear-filters"
-              >
+            <div class="active-filters d-flex flex-wrap align-items-center gap-2 mb-3" id="active-filters" aria-live="polite">
+              <span id="filters-summary" class="small text-secondary">All exercises</span>
+              <a class="btn btn-outline-secondary btn-sm ms-auto" href="tasks.html" id="clear-filters" data-action="clear-filters">
                 Clear all
               </a>
             </div>
             <!-- TASK CARDS GRID -->
-            <div class="row g-3" id="task-grid">
+            <p id="catalog-results-status" class="small text-secondary" role="status">16 exercises</p>
+            <div class="row g-3" id="task-grid" aria-describedby="catalog-results-status">
               <!-- TASK CARD 1 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="copywriting"
-                data-difficulty="beginner"
-                data-task-id="1"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="copywriting" data-difficulty="beginner" data-task-id="t001" id="task-card-t001" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#001</span>
-                    <span class="task-difficulty diff-beginner">beginner</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#001</span>
+                    <span class="task-difficulty diff-beginner text-success">beginner</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Social Media Post Copywriting
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Write a LinkedIn post announcing a new product feature. The
                     prompt must include tone, audience, hashtags, and a call to
                     action.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">copywriting</span>
-                    <span class="task-tag">social media</span>
-                    <span class="task-tag">marketing</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">copywriting</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">social media</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">marketing</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">1,240</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">89%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t001" id="task-start-t001" data-task-id="t001">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 2 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="data-analysis"
-                data-difficulty="intermediate"
-                data-task-id="2"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="data-analysis" data-difficulty="intermediate" data-task-id="t002" id="task-card-t002" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#002</span>
-                    <span class="task-difficulty diff-intermediate"
-                      >intermediate</span
-                    >
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#002</span>
+                    <span class="task-difficulty diff-intermediate text-warning">intermediate</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Sales Data Summarization
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Summarize a quarterly sales dataset into a 5-item numbered
                     list. Specify role, format, length constraint, and provide a
                     quality example.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">data analysis</span>
-                    <span class="task-tag">summarization</span>
-                    <span class="task-tag">business</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">data analysis</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">summarization</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">business</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">987</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">82%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t002" id="task-start-t002" data-task-id="t002">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 3 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="system-design"
-                data-difficulty="advanced"
-                data-task-id="3"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="system-design" data-difficulty="advanced" data-task-id="t003" id="task-card-t003" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#003</span>
-                    <span class="task-difficulty diff-advanced">advanced</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#003</span>
+                    <span class="task-difficulty diff-advanced text-danger">advanced</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Chatbot System Instruction
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Design a system prompt for a customer support chatbot that
                     handles refunds, escalations, and maintains brand tone
                     across 50+ scenarios.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">system design</span>
-                    <span class="task-tag">chatbot</span>
-                    <span class="task-tag">instruction</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">system design</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">chatbot</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">instruction</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">654</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">71%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t003" id="task-start-t003" data-task-id="t003">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 4 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="code-generation"
-                data-difficulty="intermediate"
-                data-task-id="4"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="code-generation" data-difficulty="intermediate" data-task-id="t004" id="task-card-t004" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#004</span>
-                    <span class="task-difficulty diff-intermediate"
-                      >intermediate</span
-                    >
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#004</span>
+                    <span class="task-difficulty diff-intermediate text-warning">intermediate</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Code Generation from Spec
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Write a prompt that generates a REST API endpoint in Python
                     (FastAPI) from a natural language specification. Include
                     validation, error handling, and tests.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">code generation</span>
-                    <span class="task-tag">API</span>
-                    <span class="task-tag">Python</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">code generation</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">API</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">Python</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">823</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">76%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t004" id="task-start-t004" data-task-id="t004">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 5 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="translation"
-                data-difficulty="beginner"
-                data-task-id="5"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="translation" data-difficulty="beginner" data-task-id="t005" id="task-card-t005" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#005</span>
-                    <span class="task-difficulty diff-beginner">beginner</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#005</span>
+                    <span class="task-difficulty diff-beginner text-success">beginner</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Technical Documentation Translation
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Translate a technical API documentation page from English to
                     Japanese, preserving formatting, code blocks, and
                     terminology consistency.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">translation</span>
-                    <span class="task-tag">documentation</span>
-                    <span class="task-tag">i18n</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">translation</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">documentation</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">i18n</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">412</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">92%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t005" id="task-start-t005" data-task-id="t005">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 6 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="brainstorming"
-                data-difficulty="beginner"
-                data-task-id="6"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="brainstorming" data-difficulty="beginner" data-task-id="t006" id="task-card-t006" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#006</span>
-                    <span class="task-difficulty diff-beginner">beginner</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#006</span>
+                    <span class="task-difficulty diff-beginner text-success">beginner</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Product Brainstorming
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Generate 10 startup ideas for an AI-powered fitness app.
                     Each idea must include target audience, key feature, and
                     monetization model.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">brainstorming</span>
-                    <span class="task-tag">product</span>
-                    <span class="task-tag">startup</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">brainstorming</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">product</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">startup</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">1,560</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">94%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t006" id="task-start-t006" data-task-id="t006">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 7 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="summarization"
-                data-difficulty="intermediate"
-                data-task-id="7"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="summarization" data-difficulty="intermediate" data-task-id="t007" id="task-card-t007" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#007</span>
-                    <span class="task-difficulty diff-intermediate"
-                      >intermediate</span
-                    >
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#007</span>
+                    <span class="task-difficulty diff-intermediate text-warning">intermediate</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Meeting Notes Compression
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Condense a 3-hour meeting transcript into 8 bullet points
                     with action items, decisions, and responsible persons.
                     Maintain factual accuracy.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">summarization</span>
-                    <span class="task-tag">meetings</span>
-                    <span class="task-tag">productivity</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">summarization</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">meetings</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">productivity</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">734</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">85%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t007" id="task-start-t007" data-task-id="t007">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 8 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="extraction"
-                data-difficulty="intermediate"
-                data-task-id="8"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="extraction" data-difficulty="intermediate" data-task-id="t008" id="task-card-t008" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#008</span>
-                    <span class="task-difficulty diff-intermediate"
-                      >intermediate</span
-                    >
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#008</span>
+                    <span class="task-difficulty diff-intermediate text-warning">intermediate</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Structured Data Extraction
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Extract product information from unstructured reviews into a
                     JSON schema with fields: name, price, rating, pros, cons,
                     and recommendation.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">extraction</span>
-                    <span class="task-tag">JSON</span>
-                    <span class="task-tag">NLP</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">extraction</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">JSON</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">NLP</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">589</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">78%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t008" id="task-start-t008" data-task-id="t008">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 9 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="role-play"
-                data-difficulty="advanced"
-                data-task-id="9"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="role-play" data-difficulty="advanced" data-task-id="t009" id="task-card-t009" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#009</span>
-                    <span class="task-difficulty diff-advanced">advanced</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#009</span>
+                    <span class="task-difficulty diff-advanced text-danger">advanced</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Interview Simulation
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Create a prompt that makes an AI act as a senior technical
                     interviewer for a backend engineer position. Include scoring
                     rubric and feedback format.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">role-play</span>
-                    <span class="task-tag">interview</span>
-                    <span class="task-tag">evaluation</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">role-play</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">interview</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">evaluation</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">345</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">64%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t009" id="task-start-t009" data-task-id="t009">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 10 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="copywriting"
-                data-difficulty="advanced"
-                data-task-id="10"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="copywriting" data-difficulty="advanced" data-task-id="t010" id="task-card-t010" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#010</span>
-                    <span class="task-difficulty diff-advanced">advanced</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#010</span>
+                    <span class="task-difficulty diff-advanced text-danger">advanced</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Email Sequence Design
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Write a 5-email onboarding sequence for a SaaS product. Each
                     email must have a subject line, CTA, and maintain
                     progressive engagement.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">copywriting</span>
-                    <span class="task-tag">email</span>
-                    <span class="task-tag">SaaS</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">copywriting</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">email</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">SaaS</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">478</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">69%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t010" id="task-start-t010" data-task-id="t010">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 11 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="code-generation"
-                data-difficulty="advanced"
-                data-task-id="11"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="code-generation" data-difficulty="advanced" data-task-id="t011" id="task-card-t011" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#011</span>
-                    <span class="task-difficulty diff-advanced">advanced</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#011</span>
+                    <span class="task-difficulty diff-advanced text-danger">advanced</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Database Schema from Requirements
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Design a PostgreSQL schema for an e-commerce platform from
                     natural language requirements. Include migrations, indexes,
                     and seed data.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">code generation</span>
-                    <span class="task-tag">database</span>
-                    <span class="task-tag">SQL</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">code generation</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">database</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">SQL</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">298</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">58%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t011" id="task-start-t011" data-task-id="t011">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 12 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="data-analysis"
-                data-difficulty="beginner"
-                data-task-id="12"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="data-analysis" data-difficulty="beginner" data-task-id="t012" id="task-card-t012" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#012</span>
-                    <span class="task-difficulty diff-beginner">beginner</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#012</span>
+                    <span class="task-difficulty diff-beginner text-success">beginner</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     CSV Data Interpretation
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Analyze a sales CSV file and produce a natural language
                     report with trends, outliers, and year-over-year comparisons
                     in under 200 words.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">data analysis</span>
-                    <span class="task-tag">CSV</span>
-                    <span class="task-tag">reporting</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">data analysis</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">CSV</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">reporting</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">1,087</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">91%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t012" id="task-start-t012" data-task-id="t012">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 13 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="system-design"
-                data-difficulty="intermediate"
-                data-task-id="13"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="system-design" data-difficulty="intermediate" data-task-id="t013" id="task-card-t013" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#013</span>
-                    <span class="task-difficulty diff-intermediate"
-                      >intermediate</span
-                    >
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#013</span>
+                    <span class="task-difficulty diff-intermediate text-warning">intermediate</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Multi-Agent Orchestration
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Design a prompt system for three collaborating AI agents:
                     researcher, writer, and editor. Define handoff protocols and
                     quality gates.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">system design</span>
-                    <span class="task-tag">multi-agent</span>
-                    <span class="task-tag">orchestration</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">system design</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">multi-agent</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">orchestration</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">412</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">73%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t013" id="task-start-t013" data-task-id="t013">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 14 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="brainstorming"
-                data-difficulty="intermediate"
-                data-task-id="14"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="brainstorming" data-difficulty="intermediate" data-task-id="t014" id="task-card-t014" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#014</span>
-                    <span class="task-difficulty diff-intermediate"
-                      >intermediate</span
-                    >
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#014</span>
+                    <span class="task-difficulty diff-intermediate text-warning">intermediate</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Competitive Analysis Framework
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Create a structured competitive analysis of 3 AI writing
                     tools. Use SWOT format with quantified strengths and market
                     positioning data.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">brainstorming</span>
-                    <span class="task-tag">analysis</span>
-                    <span class="task-tag">strategy</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">brainstorming</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">analysis</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">strategy</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">567</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">80%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t014" id="task-start-t014" data-task-id="t014">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 15 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="summarization"
-                data-difficulty="advanced"
-                data-task-id="15"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="summarization" data-difficulty="advanced" data-task-id="t015" id="task-card-t015" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#015</span>
-                    <span class="task-difficulty diff-advanced">advanced</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#015</span>
+                    <span class="task-difficulty diff-advanced text-danger">advanced</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Legal Contract Clause Extraction
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Extract key clauses from a 20-page legal contract and
                     produce a risk-rated summary table with clause type,
                     obligations, and deadlines.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">summarization</span>
-                    <span class="task-tag">legal</span>
-                    <span class="task-tag">extraction</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">summarization</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">legal</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">extraction</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">234</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">62%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t015" id="task-start-t015" data-task-id="t015">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
               <!-- TASK CARD 16 -->
-              <article
-                class="task-card col-12 col-md-6 col-xl-4"
-                data-category="role-play"
-                data-difficulty="beginner"
-                data-task-id="16"
-              >
+              <article class="task-card col-12 col-md-6 col-xl-4" data-category="role-play" data-difficulty="beginner" data-task-id="t016" id="task-card-t016" data-model="text" data-status="available">
                 <div class="card h-100 p-3 shadow-sm">
-                  <div
-                    class="task-card-header d-flex justify-content-between mb-2"
-                  >
-                    <span class="task-id mono">#016</span>
-                    <span class="task-difficulty diff-beginner">beginner</span>
+                  <div class="task-card-header d-flex justify-content-between mb-2">
+                    <span class="task-id mono font-monospace text-warning">#016</span>
+                    <span class="task-difficulty diff-beginner text-success">beginner</span>
                   </div>
                   <h3 class="task-card-title h5 fw-semibold">
                     Customer Support Persona
                   </h3>
-                  <p class="task-card-desc small text-secondary flex-grow-1">
+                  <p class="task-card-desc small text-secondary flex-grow-1 text-body-secondary">
                     Write a system prompt for a friendly customer support agent
                     that handles complaints with empathy, offers solutions, and
                     knows when to escalate.
                   </p>
                   <div class="task-card-meta d-flex flex-wrap gap-1 mb-3">
-                    <span class="task-tag">role-play</span>
-                    <span class="task-tag">support</span>
-                    <span class="task-tag">persona</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">role-play</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">support</span>
+                    <span class="task-tag badge bg-body-secondary text-body-secondary fw-normal">persona</span>
                   </div>
-                  <div
-                    class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3"
-                  >
-                    <div class="task-card-stats">
-                      <span title="Submissions"
-                        ><span class="mono">892</span> solved</span
-                      >
-                      <span title="Success rate"
-                        ><span class="mono">88%</span> rate</span
-                      >
-                    </div>
-                    <a class="btn btn-primary btn-sm" href="task.html">
+                  <div class="task-card-footer d-flex flex-wrap justify-content-between align-items-center gap-2 border-top pt-3">
+                    <div class="task-card-stats text-body-secondary">Six weighted criteria</div>
+                    <a class="btn btn-primary btn-sm fw-semibold" href="task.html?id=t016" id="task-start-t016" data-task-id="t016">
                       Start →
                     </a>
                   </div>
                 </div>
               </article>
             </div>
+            <div id="catalog-empty" class="status-panel is-hidden mt-3 bg-body-tertiary p-3 border rounded" role="status">
+              <h2 class="h5 fw-bold">No matching exercises</h2>
+              <p>Try another skill area or clear your filters.</p>
+              <a class="btn btn-outline-light btn-sm" id="catalog-empty-reset" href="tasks.html" data-action="clear-filters">Show all exercises</a>
+            </div>
             <!-- PAGINATION -->
-            <p class="text-secondary small mt-4">
-              Showing 16 sample tasks. More pages will be available with the
-              catalog backend.
-            </p>
+            <p class="text-secondary small mt-4">Choose an exercise to open the task workspace. Each card uses the same workspace layout.</p>
           </div>
         </div>
       </div>
     </main>
     <!-- FOOTER -->
-    <footer class="footer-compact">
-      <div class="container">
-        <div class="footer-bottom">
-          <p>© 2026 Prompt Forge. All rights reserved.</p>
-        </div>
+    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
+      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
+        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
+          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
+          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
+          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
+          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
+        </nav>
       </div>
     </footer>
     <!-- JS placeholder — ready for server integration -->
-    <script
-      crossorigin="anonymous"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    ></script>
-  </body>
-</html>
+
+
+</body></html>

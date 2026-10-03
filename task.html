@@ -1,75 +1,76 @@
 <!doctype html>
-<html data-bs-theme="dark" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      content="Solve a prompt engineering training task — write, test, and improve your prompts."
-      name="description"
-    />
-    <meta content="Emil Sabirzhanov" name="author" />
-    <title>#002 Sales Data Summarization — PromptForge</title>
-    <!-- Bootstrap 5.3.8 from jsDelivr; loaded before the brand correction layer. -->
-    <link
-      crossorigin="anonymous"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      rel="stylesheet"
-    />
-      <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg" />
-    <link rel="stylesheet" href="styles/site.css" />
+<html data-bs-theme="dark" lang="en"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Solve a prompt engineering training task — write, test, and improve your prompts." name="description">
+    <meta content="PromptForge team" name="author">
+    <title>Task Workspace — PromptForge</title>
+    <!-- Local Bootstrap 5.3.8 CSS, followed by the PromptForge theme. -->
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
+    <link rel="stylesheet" href="styles/site.css">
   </head>
-  <body class="task-page">
+  <body class="task-page d-flex flex-column min-vh-100">
+    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
     <!-- HEADER -->
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header" data-bs-theme="dark">
-      <!-- Wide header for seven links; content uses its own readable width. -->
-      <div class="container-fluid px-3 px-lg-5">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">
-          Prompt Forge
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <nav class="collapse navbar-collapse" id="primaryNav" aria-label="Primary navigation">
+    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
+      <div class="container-fluid px-3 px-lg-5 flex-wrap">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
+          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
+        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
+        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Show navigation</span>
+        </label>
+        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
           <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link active" href="tasks.html" aria-current="page">Tasks</a></li>
-              <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
-              <li class="nav-item"><a class="nav-link" href="my-solutions.html">My Solutions</a></li>
-              <li class="nav-item"><a class="nav-link" href="how-it-works.html">How it works</a></li>
-              <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+            <li class="nav-item">
+              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-tasks" class="nav-link active small p-2 text-decoration-none fw-semibold" href="tasks.html" aria-current="page">Tasks</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
+            </li>
           </ul>
           <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a href="login.html" class="btn btn-outline-light btn-sm">Log in</a>
-            <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
+            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
           </div>
         </nav>
       </div>
     </header>
-    <main class="app-layout py-4">
+    <main class="app-layout py-4 flex-grow-1" id="main-content" data-task-id="t002" data-page="task-template">
       <!-- container-fluid gives the catalog and editor more room; the grid still controls column widths. -->
       <div class="container-fluid px-3 px-lg-5">
         <!-- BREADCRUMB -->
         <nav aria-label="Breadcrumb" class="breadcrumb small mb-4">
-          <a href="tasks.html">Tasks</a>
+          <a href="tasks.html" id="task-link-1" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
           <span class="breadcrumb-sep">/</span>
-          <span class="breadcrumb-current">Sales Data Summarization</span>
+          <span class="breadcrumb-current" id="task-breadcrumb">Sales Data Summarization</span>
         </nav>
         <!-- TASK HEADER -->
-        <div
-          class="task-header row g-3 align-items-start border-bottom pb-3 mb-4"
-        >
+        <div class="task-header row g-3 align-items-start border-bottom pb-3 mb-4">
           <div class="col-12 col-md-8">
             <div class="task-header-row">
-              <span class="task-id-large mono">#002</span>
-              <span class="task-difficulty diff-intermediate"
-                >intermediate</span
-              >
-              <span class="task-category-tag">data analysis</span>
+              <span class="task-id-large mono font-monospace" id="task-number">#002</span>
+              <span class="task-difficulty diff-intermediate text-warning" id="task-difficulty">intermediate</span>
+              <span class="task-category-tag badge bg-body-secondary text-body-secondary fw-normal" id="task-category">data analysis</span>
             </div>
-            <h1 class="task-title display-6 fw-bold">
+            <h1 class="task-title display-6 fw-bold" id="task-title">
               Sales Data Summarization
             </h1>
-            <p class="task-subtitle lead text-secondary">
+            <p class="task-subtitle lead text-secondary text-body-secondary" id="task-description">
               Write a prompt that instructs an AI to summarize quarterly sales
               data into a concise numbered list.
             </p>
@@ -77,16 +78,16 @@
           <div class="col-12 col-md-4">
             <div class="task-quick-stats d-flex gap-3 justify-content-md-end">
               <div class="quick-stat">
-                <span class="quick-stat-value mono">987</span>
-                <span class="quick-stat-label">solved</span>
+                <span class="quick-stat-value mono font-monospace text-warning" id="task-criterion-count">6</span>
+                <span class="quick-stat-label">criteria</span>
               </div>
               <div class="quick-stat">
-                <span class="quick-stat-value mono">82%</span>
-                <span class="quick-stat-label">rate</span>
+                <span class="quick-stat-value mono font-monospace text-warning" id="task-character-limit">2000</span>
+                <span class="quick-stat-label">character limit</span>
               </div>
               <div class="quick-stat">
-                <span class="quick-stat-value mono">8.1</span>
-                <span class="quick-stat-label">avg score</span>
+                <span class="quick-stat-value mono font-monospace text-warning" id="task-attempt-count">0</span>
+                <span class="quick-stat-label">your attempts</span>
               </div>
             </div>
           </div>
@@ -96,27 +97,15 @@
           <!-- LEFT COLUMN — editor + description -->
           <div class="task-editor-col col-12 col-lg-8 d-grid gap-3">
             <!-- TASK DESCRIPTION -->
-            <div class="task-desc-panel card shadow-sm">
-              <div
-                class="panel-header card-header d-flex align-items-center gap-2"
-              >
-                <span class="panel-icon"
-                  ><svg
-                    aria-hidden="true"
-                    class="icon icon-sm"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewbox="0 0 24 24"
-                  >
+            <div class="task-desc-panel card shadow-sm" id="task-brief">
+              <div class="panel-header card-header d-flex align-items-center gap-2 bg-body-secondary border-bottom">
+                <span class="panel-icon text-warning">
+                  <svg aria-hidden="true" class="icon icon-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                     <rect height="4" rx="1" width="8" x="8" y="2"></rect>
-                    <path
-                      d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-                    ></path></svg
-                ></span>
-                <h2 class="panel-title">Task</h2>
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  </svg>
+                </span>
+                <h2 class="panel-title fw-bold small mb-0">Task</h2>
               </div>
               <div class="panel-body card-body">
                 <p>
@@ -125,8 +114,8 @@
                   AI produce a <strong>brief summary</strong>
                   of the key findings.
                 </p>
-                <h3 class="desc-heading">Requirements</h3>
-                <ul class="desc-list">
+                <h3 class="desc-heading small fw-bold mt-3">Requirements</h3>
+                <ul class="desc-list" id="task-requirements">
                   <li>
                     Define the AI's <strong>role</strong> (e.g., data analyst)
                   </li>
@@ -146,431 +135,298 @@
                     output
                   </li>
                 </ul>
-                <h3 class="desc-heading">Input Data</h3>
-                <div class="data-preview">
-                  <div class="code-block-label">sales_q3_2026.csv</div>
-                  <pre
-                    class="terminal-block"
-                  ><code>month,revenue,orders,top_sku,region
+                <h3 class="desc-heading small fw-bold mt-3">Input Data</h3>
+                <div class="data-preview mw-100 overflow-x-auto rounded" id="task-input-data">
+                  <div class="code-block-label text-warning font-monospace small mb-2">sales_q3_2026.csv</div>
+                  <pre class="terminal-block mw-100 overflow-x-auto rounded p-3 small">                    <code>month,revenue,orders,top_product,region
 Jul,142000,1840,Widget Pro A,NA
 Aug,158000,2100,Widget Pro A,EU
 Sep,135000,1720,Widget Lite B,APAC
----
-Total Q3: $435,000 | 5,660 orders
-Top SKU: Widget Pro A (34% of revenue)
-Best region: NA (42% of total)</code></pre>
+
+Q3 revenue: $435,000
+Q3 orders: 5,660
+August has the highest revenue and order count.
+September revenue is 14.6% lower than August.</code>
+                  </pre>
+                  <p class="small text-secondary mb-0">Practice dataset written for this exercise; amounts are in USD.</p>
                 </div>
               </div>
             </div>
             <!-- PROMPT EDITOR -->
-            <div class="task-prompt-editor card shadow-sm">
-              <div
-                class="panel-header card-header d-flex align-items-center gap-2"
-              >
-                <span class="panel-icon"
-                  ><svg
-                    aria-hidden="true"
-                    class="icon icon-sm"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewbox="0 0 24 24"
-                  >
+            <form class="task-prompt-editor card shadow-sm" id="prompt-form" method="post" action="task.html" aria-describedby="prompt-status">
+              <input id="prompt-task-id" type="hidden" name="task_id" value="t002">
+              <div class="panel-header card-header d-flex align-items-center gap-2 bg-body-secondary border-bottom">
+                <span class="panel-icon text-warning">
+                  <svg aria-hidden="true" class="icon icon-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M12 20h9"></path>
-                    <path
-                      d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
-                    ></path></svg
-                ></span>
-                <h2 class="panel-title">Your Prompt</h2>
+                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                  </svg>
+                </span>
+                <h2 class="panel-title fw-bold small mb-0">Your Prompt</h2>
                 <span class="editor-line-count" id="char-count">0 / 2000</span>
               </div>
-              <div class="editor-chrome">
-                <div class="editor-dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
+              <div class="editor-chrome d-flex align-items-center gap-3 px-3 py-2 border-bottom bg-body-secondary">
+                <div class="editor-dots d-flex gap-1">
+                  <span class="dot dot-red bg-danger d-block rounded-circle"></span>
+                  <span class="dot dot-yellow bg-warning d-block rounded-circle"></span>
+                  <span class="dot dot-green bg-success d-block rounded-circle"></span>
                 </div>
-                <span class="editor-title">prompt.txt</span>
+                <span class="editor-title font-monospace text-body-secondary">prompt.txt</span>
               </div>
-              <div class="editor-body-wrap">
-                <textarea
-                  class="form-control"
-                  disabled=""
-                  id="prompt-input"
-                  maxlength="2000"
-                  placeholder="Prompt checking requires the course backend."
-                  rows="18"
-                  spellcheck="false"
-                ></textarea>
+              <div class="editor-body-wrap p-3">
+                <label class="form-label visually-hidden" for="prompt-input">Your prompt</label>
+                <textarea class="form-control" id="prompt-input" maxlength="2000" placeholder="You are a data analyst. Summarize the table in up to five numbered items…" rows="18" spellcheck="false" name="prompt" required="" aria-describedby="prompt-help prompt-field-error" aria-invalid="false"></textarea>
+                <div class="invalid-feedback" id="prompt-field-error"></div>
               </div>
-              <div class="api-params-bar">
-                <span class="param"
-                  ><span class="mono">T=0.7</span> Creativity</span
-                >
-                <span class="param"
-                  ><span class="mono">Tokens:</span>
-                  <span id="token-estimate">~0</span> / 4096</span
-                >
-                <span class="param badge-small">Target: GPT-4o</span>
+              <div class="api-params-bar d-flex flex-wrap gap-2 p-3 small text-secondary">
+                <span class="param">Limit: <span id="prompt-limit">2000</span> characters</span>
+                <span class="param">Estimated tokens: <span id="token-estimate">0</span>
+                </span>
+                <span class="param badge-small" id="task-model">Any text model</span>
               </div>
-            </div>
-            <!-- SUBMIT -->
-            <div class="task-submit-row d-flex flex-wrap gap-2">
-              <button
-                class="btn btn-primary btn-lg"
-                data-action="submit-prompt"
-                disabled=""
-                id="submit-btn"
-              >
+              <div class="task-submit-row d-flex flex-wrap gap-2 p-3">
+                <button class="btn btn-primary btn-lg fw-semibold" data-action="submit-prompt" id="submit-btn" type="button">
                 Check Prompt
               </button>
-              <button
-                class="btn btn-outline-light btn-sm"
-                data-action="reset-prompt"
-                disabled=""
-                id="reset-btn"
-              >
+                <button class="btn btn-outline-light btn-sm" data-action="reset-prompt" id="reset-btn" type="reset" form="prompt-form">
                 Clear
               </button>
-              <button
-                class="btn btn-outline-light btn-sm"
-                data-action="show-hint"
-                disabled=""
-                id="hint-btn"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="icon icon-sm"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewbox="0 0 24 24"
-                >
-                  <path d="M9 18h6"></path>
-                  <path d="M10 22h4"></path>
-                  <path
-                    d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"
-                  ></path>
-                </svg>
-                Hint
-              </button>
-            </div>
-            <p class="small text-secondary mt-2">
-              This static page shows the training interface; checking a prompt
-              needs the course backend.
-            </p>
+                <a id="hint-btn" class="btn btn-outline-light btn-sm" href="#hint-panel">Read hint</a>
+              </div>
+              <div id="prompt-error" class="is-error is-hidden mt-3 alert alert-danger mb-0 mx-3 mb-3" role="alert"></div>
+            </form>
+            <!-- SUBMIT -->
+            <p class="small text-secondary mt-2" id="prompt-help">Use the requirements and the rubric to draft your prompt. A checked attempt includes a weighted score, criterion feedback, and a suggestion for your next revision.</p>
             <!-- HINT (hidden by default) -->
-            <div
-              class="task-hint-panel card shadow-sm"
-              hidden=""
-              id="hint-panel"
-            >
-              <div
-                class="panel-header card-header d-flex align-items-center gap-2"
-              >
-                <span class="panel-icon"
-                  ><svg
-                    aria-hidden="true"
-                    class="icon icon-sm"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewbox="0 0 24 24"
-                  >
-                    <path d="M9 18h6"></path>
-                    <path d="M10 22h4"></path>
-                    <path
-                      d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"
-                    ></path></svg
-                ></span>
-                <h2 class="panel-title">Hint</h2>
-                <button
-                  aria-label="Close hint"
-                  class="hint-close"
-                  id="hint-close"
-                >
-                  ×
-                </button>
+            <details id="hint-panel" class="task-hint-panel card shadow-sm">
+              <summary class="card-header fw-semibold" id="hint-toggle">Hint</summary>
+              <div class="card-body">
+                <p class="mb-0">Use <strong>ROLE → TASK → FORMAT → CONSTRAINT → EXAMPLE</strong>: assign a data analyst role, ask for a Q3 summary, request up to five numbered items and 150 words, set a professional tone, and include one example item based on the supplied data.</p>
               </div>
-              <div class="panel-body card-body">
-                <p>
-                  A strong prompt for this task typically follows the
-                  <strong>ROLE → TASK → FORMAT → CONSTRAINT → EXAMPLE</strong>
-                  pattern. Make sure you explicitly tell the AI <em>who</em> it
-                  is, <em>what</em> to produce, and <em>how</em> to structure
-                  the output.
-                </p>
-              </div>
-            </div>
+            </details>
           </div>
           <!-- RIGHT COLUMN — criteria + results + history -->
           <div class="task-side-col col-12 col-lg-4 d-grid gap-3">
             <!-- CRITERIA -->
             <div class="task-criteria-panel card shadow-sm">
-              <div
-                class="panel-header card-header d-flex align-items-center gap-2"
-              >
-                <span class="panel-icon"
-                  ><svg
-                    aria-hidden="true"
-                    class="icon icon-sm"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewbox="0 0 24 24"
-                  >
+              <div class="panel-header card-header d-flex align-items-center gap-2 bg-body-secondary border-bottom">
+                <span class="panel-icon text-warning">
+                  <svg aria-hidden="true" class="icon icon-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"></circle>
                     <circle cx="12" cy="12" r="6"></circle>
-                    <circle cx="12" cy="12" r="2"></circle></svg
-                ></span>
-                <h2 class="panel-title">Evaluation Criteria</h2>
+                    <circle cx="12" cy="12" r="2"></circle>
+                  </svg>
+                </span>
+                <h2 class="panel-title fw-bold small mb-0">Evaluation Criteria</h2>
               </div>
               <div class="panel-body card-body">
                 <p class="criteria-intro">
                   Your prompt will be scored on these criteria. Each is weighted
                   and scored 0–10.
                 </p>
-                <ul class="criteria-list" id="criteria-list">
-                  <li class="criteria-item" data-criterion="role">
-                    <div class="criteria-check">
+                <ul class="criteria-list list-unstyled mb-0" id="criteria-list">
+                  <li class="criteria-item d-flex align-items-start gap-2 py-3 border-bottom" data-criterion="role" id="criterion-role" data-weight="0.20">
+                    <div class="criteria-check text-warning flex-shrink-0">
                       <span class="criteria-icon" id="icon-role">○</span>
                     </div>
                     <div class="criteria-info">
                       <strong>Role Defined</strong>
-                      <span class="criteria-weight mono">weight: 0.20</span>
-                      <span class="criteria-desc"
-                        >Does the prompt assign a clear role to the AI?</span
-                      >
+                      <span class="criteria-weight mono font-monospace text-warning">weight: 0.20</span>
+                      <span class="criteria-desc text-body-secondary d-block">Does the prompt assign a clear role to the AI?</span>
                     </div>
                   </li>
-                  <li class="criteria-item" data-criterion="format">
-                    <div class="criteria-check">
+                  <li class="criteria-item d-flex align-items-start gap-2 py-3 border-bottom" data-criterion="format" id="criterion-format" data-weight="0.25">
+                    <div class="criteria-check text-warning flex-shrink-0">
                       <span class="criteria-icon" id="icon-format">○</span>
                     </div>
                     <div class="criteria-info">
                       <strong>Format Specified</strong>
-                      <span class="criteria-weight mono">weight: 0.25</span>
-                      <span class="criteria-desc"
-                        >Is the output format clearly defined?</span
-                      >
+                      <span class="criteria-weight mono font-monospace text-warning">weight: 0.25</span>
+                      <span class="criteria-desc text-body-secondary d-block">Is the output format clearly defined?</span>
                     </div>
                   </li>
-                  <li class="criteria-item" data-criterion="length">
-                    <div class="criteria-check">
+                  <li class="criteria-item d-flex align-items-start gap-2 py-3 border-bottom" data-criterion="length" id="criterion-length" data-weight="0.15">
+                    <div class="criteria-check text-warning flex-shrink-0">
                       <span class="criteria-icon" id="icon-length">○</span>
                     </div>
                     <div class="criteria-info">
                       <strong>Length Constraint</strong>
-                      <span class="criteria-weight mono">weight: 0.15</span>
-                      <span class="criteria-desc"
-                        >Is there a word/length limit?</span
-                      >
+                      <span class="criteria-weight mono font-monospace text-warning">weight: 0.15</span>
+                      <span class="criteria-desc text-body-secondary d-block">Is there a word/length limit?</span>
                     </div>
                   </li>
-                  <li class="criteria-item" data-criterion="examples">
-                    <div class="criteria-check">
+                  <li class="criteria-item d-flex align-items-start gap-2 py-3 border-bottom" data-criterion="examples" id="criterion-examples" data-weight="0.20">
+                    <div class="criteria-check text-warning flex-shrink-0">
                       <span class="criteria-icon" id="icon-examples">○</span>
                     </div>
                     <div class="criteria-info">
                       <strong>Examples Given</strong>
-                      <span class="criteria-weight mono">weight: 0.20</span>
-                      <span class="criteria-desc"
-                        >Does the prompt include at least one example?</span
-                      >
+                      <span class="criteria-weight mono font-monospace text-warning">weight: 0.20</span>
+                      <span class="criteria-desc text-body-secondary d-block">Does the prompt include at least one example?</span>
                     </div>
                   </li>
-                  <li class="criteria-item" data-criterion="tone">
-                    <div class="criteria-check">
+                  <li class="criteria-item d-flex align-items-start gap-2 py-3 border-bottom" data-criterion="tone" id="criterion-tone" data-weight="0.10">
+                    <div class="criteria-check text-warning flex-shrink-0">
                       <span class="criteria-icon" id="icon-tone">○</span>
                     </div>
                     <div class="criteria-info">
                       <strong>Tone Specified</strong>
-                      <span class="criteria-weight mono">weight: 0.10</span>
-                      <span class="criteria-desc"
-                        >Is the desired tone/style mentioned?</span
-                      >
+                      <span class="criteria-weight mono font-monospace text-warning">weight: 0.10</span>
+                      <span class="criteria-desc text-body-secondary d-block">Is the desired tone/style mentioned?</span>
                     </div>
                   </li>
-                  <li class="criteria-item" data-criterion="clarity">
-                    <div class="criteria-check">
+                  <li class="criteria-item d-flex align-items-start gap-2 py-3 border-bottom" data-criterion="clarity" id="criterion-clarity" data-weight="0.10">
+                    <div class="criteria-check text-warning flex-shrink-0">
                       <span class="criteria-icon" id="icon-clarity">○</span>
                     </div>
                     <div class="criteria-info">
                       <strong>Task Clarity</strong>
-                      <span class="criteria-weight mono">weight: 0.10</span>
-                      <span class="criteria-desc"
-                        >Is the task unambiguous and well-structured?</span
-                      >
+                      <span class="criteria-weight mono font-monospace text-warning">weight: 0.10</span>
+                      <span class="criteria-desc text-body-secondary d-block">Is the task unambiguous and well-structured?</span>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
             <!-- RESULTS (hidden until submitted) -->
-            <div
-              class="task-results-panel card shadow-sm"
-              hidden=""
-              id="results-panel"
-            >
-              <div
-                class="panel-header card-header d-flex align-items-center gap-2"
-              >
-                <span class="panel-icon"
-                  ><svg
-                    aria-hidden="true"
-                    class="icon icon-sm"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewbox="0 0 24 24"
-                  >
+            <div id="prompt-result-summary" class="status-panel bg-body-tertiary p-3 border rounded">
+              <h2 class="h5 fw-bold">Your result</h2>
+              <p id="prompt-status" class="small text-secondary">No prompt checked yet. Review the <a id="prompt-example-link" href="how-it-works.html#example" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">worked example</a> to see the complete score breakdown.</p>
+              <div id="prompt-success" class="is-success is-hidden alert alert-success mb-0" role="status"></div>
+              <div id="prompt-loading" class="is-loading is-hidden text-body-secondary border-start border-primary border-3 px-3 py-2" role="status">Checking the six criteria…</div>
+            </div>
+            <div class="task-results-panel card shadow-sm is-hidden" id="results-panel" aria-live="polite">
+              <div class="panel-header card-header d-flex align-items-center gap-2 bg-body-secondary border-bottom">
+                <span class="panel-icon text-warning">
+                  <svg aria-hidden="true" class="icon icon-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                     <line x1="12" x2="12" y1="20" y2="10"></line>
                     <line x1="18" x2="18" y1="20" y2="4"></line>
-                    <line x1="6" x2="6" y1="20" y2="16"></line></svg
-                ></span>
-                <h2 class="panel-title">Results</h2>
+                    <line x1="6" x2="6" y1="20" y2="16"></line>
+                  </svg>
+                </span>
+                <h2 class="panel-title fw-bold small mb-0">Results</h2>
               </div>
               <div class="panel-body card-body">
-                <div class="results-score-block">
+                <div class="results-score-block d-flex flex-wrap gap-2 align-items-baseline mb-3">
                   <span class="results-final-label">Final Score</span>
-                  <span class="results-final-score" id="final-score">—</span>
+                  <span class="results-final-score text-warning fs-2" id="final-score">—</span>
                   <span class="results-final-max">/ 10</span>
                 </div>
                 <div class="results-breakdown" id="results-breakdown">
-                  <div class="result-row">
-                    <span>Role Defined</span>
-                    <span class="mono result-weight">0.20</span>
-                    <span class="mono result-score" id="score-role">—</span>
+                  <div class="result-row row gx-2 border-bottom py-2" data-criterion="role" data-weight="0.20">
+                    <span class="col-6">Role Defined</span>
+                    <span class="mono result-weight col-3 text-end font-monospace">0.20</span>
+                    <span class="mono result-score col-3 text-end font-monospace" id="score-role">—</span>
+                    <p id="feedback-role" class="small text-secondary mb-0 col-12 mt-2" data-field="feedback"></p>
                   </div>
-                  <div class="result-row">
-                    <span>Format Specified</span>
-                    <span class="mono result-weight">0.25</span>
-                    <span class="mono result-score" id="score-format">—</span>
+                  <div class="result-row row gx-2 border-bottom py-2" data-criterion="format" data-weight="0.25">
+                    <span class="col-6">Format Specified</span>
+                    <span class="mono result-weight col-3 text-end font-monospace">0.25</span>
+                    <span class="mono result-score col-3 text-end font-monospace" id="score-format">—</span>
+                    <p id="feedback-format" class="small text-secondary mb-0 col-12 mt-2" data-field="feedback"></p>
                   </div>
-                  <div class="result-row">
-                    <span>Length Constraint</span>
-                    <span class="mono result-weight">0.15</span>
-                    <span class="mono result-score" id="score-length">—</span>
+                  <div class="result-row row gx-2 border-bottom py-2" data-criterion="length" data-weight="0.15">
+                    <span class="col-6">Length Constraint</span>
+                    <span class="mono result-weight col-3 text-end font-monospace">0.15</span>
+                    <span class="mono result-score col-3 text-end font-monospace" id="score-length">—</span>
+                    <p id="feedback-length" class="small text-secondary mb-0 col-12 mt-2" data-field="feedback"></p>
                   </div>
-                  <div class="result-row">
-                    <span>Examples Given</span>
-                    <span class="mono result-weight">0.20</span>
-                    <span class="mono result-score" id="score-examples">—</span>
+                  <div class="result-row row gx-2 border-bottom py-2" data-criterion="examples" data-weight="0.20">
+                    <span class="col-6">Examples Given</span>
+                    <span class="mono result-weight col-3 text-end font-monospace">0.20</span>
+                    <span class="mono result-score col-3 text-end font-monospace" id="score-examples">—</span>
+                    <p id="feedback-examples" class="small text-secondary mb-0 col-12 mt-2" data-field="feedback"></p>
                   </div>
-                  <div class="result-row">
-                    <span>Tone Specified</span>
-                    <span class="mono result-weight">0.10</span>
-                    <span class="mono result-score" id="score-tone">—</span>
+                  <div class="result-row row gx-2 border-bottom py-2" data-criterion="tone" data-weight="0.10">
+                    <span class="col-6">Tone Specified</span>
+                    <span class="mono result-weight col-3 text-end font-monospace">0.10</span>
+                    <span class="mono result-score col-3 text-end font-monospace" id="score-tone">—</span>
+                    <p id="feedback-tone" class="small text-secondary mb-0 col-12 mt-2" data-field="feedback"></p>
                   </div>
-                  <div class="result-row">
-                    <span>Task Clarity</span>
-                    <span class="mono result-weight">0.10</span>
-                    <span class="mono result-score" id="score-clarity">—</span>
+                  <div class="result-row row gx-2 border-bottom py-2" data-criterion="clarity" data-weight="0.10">
+                    <span class="col-6">Task Clarity</span>
+                    <span class="mono result-weight col-3 text-end font-monospace">0.10</span>
+                    <span class="mono result-score col-3 text-end font-monospace" id="score-clarity">—</span>
+                    <p id="feedback-clarity" class="small text-secondary mb-0 col-12 mt-2" data-field="feedback"></p>
                   </div>
-                  <div class="result-row result-row-total">
-                    <span><strong>Final</strong></span>
-                    <span class="mono">1.00</span>
-                    <span class="mono" id="score-total"
-                      ><strong>—</strong></span
-                    >
+                  <div class="result-row result-row-total row gx-2 border-bottom py-2">
+                    <span class="col-6">
+                      <strong>Final</strong>
+                    </span>
+                    <span class="mono col-3 text-end font-monospace">1.00</span>
+                    <span class="mono col-3 text-end font-monospace" id="score-total">
+                      <strong>—</strong>
+                    </span>
                   </div>
                 </div>
                 <div class="results-tips" id="results-tips">
                   <h3 class="tips-heading">Personalized Tips</h3>
                   <ul class="tips-list" id="tips-list"></ul>
                 </div>
-                <div class="results-actions">
-                  <button
-                    class="btn btn-primary btn-sm"
-                    data-action="retry"
-                    disabled=""
-                    id="retry-btn"
-                  >
+                <div class="results-actions d-flex flex-wrap gap-2 mt-3">
+                  <button class="btn btn-primary btn-sm fw-semibold" data-action="retry" id="retry-btn" type="button">
                     Try Again
                   </button>
-                  <button
-                    class="btn btn-outline-light btn-sm"
-                    data-action="next-task"
-                    disabled=""
-                    id="next-task-btn"
-                  >
-                    Next Task →
-                  </button>
+                  <a id="next-task-btn" class="btn btn-outline-light btn-sm" href="tasks.html" data-action="next-task">Choose another task →</a>
                 </div>
               </div>
             </div>
             <!-- ATTEMPT HISTORY -->
             <div class="task-history-panel card shadow-sm">
-              <div
-                class="panel-header card-header d-flex align-items-center gap-2"
-              >
-                <span class="panel-icon"
-                  ><svg
-                    aria-hidden="true"
-                    class="icon icon-sm"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewbox="0 0 24 24"
-                  >
+              <div class="panel-header card-header d-flex align-items-center gap-2 bg-body-secondary border-bottom">
+                <span class="panel-icon text-warning">
+                  <svg aria-hidden="true" class="icon icon-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline></svg
-                ></span>
-                <h2 class="panel-title">Your Attempts</h2>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </span>
+                <h2 class="panel-title fw-bold small mb-0">Your Attempts</h2>
               </div>
               <div class="panel-body card-body">
                 <div class="history-empty" id="history-empty">
-                  <span class="history-empty-icon"
-                    ><svg
-                      aria-hidden="true"
-                      class="icon icon-sm"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                      ></path>
+                  <span class="history-empty-icon">
+                    <svg aria-hidden="true" class="icon icon-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                       <polyline points="14 2 14 8 20 8"></polyline>
                       <line x1="16" x2="8" y1="13" y2="13"></line>
-                      <line x1="16" x2="8" y1="17" y2="17"></line></svg
-                  ></span>
+                      <line x1="16" x2="8" y1="17" y2="17"></line>
+                    </svg>
+                  </span>
                   <p>No attempts yet. Write your first prompt above!</p>
                 </div>
-                <ul class="history-list" hidden="" id="history-list"></ul>
+                <ul class="history-list is-hidden" id="history-list"></ul>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <template id="attempt-template">
+        <li class="attempt-record status-panel bg-body-tertiary p-3 border rounded mb-3">
+          <strong data-field="score"></strong>
+          <span data-field="date" class="d-block small text-body-secondary"></span>
+          <p data-field="prompt" class="text-break"></p>
+          <p data-field="feedback" class="text-break"></p>
+        </li>
+      </template>
+      <template id="feedback-tip-template">
+        <li class="tip-item rounded p-2 bg-body">
+          <strong data-field="criterion"></strong>
+          <p data-field="feedback" class="mt-2 mb-0 small text-body-secondary"></p>
+        </li>
+      </template>
     </main>
     <!-- FOOTER -->
-    <footer class="footer-compact">
-      <div class="container">
-        <div class="footer-bottom">
-          <p>© 2026 Prompt Forge. All rights reserved.</p>
-        </div>
+    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
+      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
+        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
+          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
+          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
+          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
+          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
+        </nav>
       </div>
     </footer>
-    <script
-      crossorigin="anonymous"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    ></script>
-  </body>
-</html>
+
+
+</body></html>
