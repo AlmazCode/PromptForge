@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">PromptForge — перо на наковальне</title>
+  <desc id="desc">Резное перо над кузнечной наковальней: текст обретает форму через практику.</desc>
+  <path fill="#FF914F" fill-rule="evenodd" clip-rule="evenodd" d="M31 76c9-15 9-34 22-48C66 14 86 8 108 7c-4 8-7 16-9 24l-14 7 12-1c-4 12-10 22-19 29l-12-1 6 6c-9 5-18 7-28 6l-8 12-7-3 8-11-6 1Zm7 3C51 55 69 33 96 18 74 37 56 59 45 79h-7Z"/>
+  <path fill="#FF6410" d="M23 78h73c10 0 18-3 26-8-3 14-13 24-32 26H77c-2 6 0 11 7 14h9c5 0 8 4 8 9H25c0-5 4-9 9-9h8c7-4 9-9 6-14H34l-9-9H15C9 87 5 84 5 80v-2h18Z"/>
+  <path fill="#FFB17A" d="M25 78h71c10 0 18-3 26-8-3 6-12 13-24 14H29l-4-6Z"/>
+  <path fill="#FF914F" d="M35 110h49c-2 1-4 3-5 5H31c1-2 2-4 4-5Z"/>
+</svg>

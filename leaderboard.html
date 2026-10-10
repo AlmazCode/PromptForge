@@ -1,203 +1,118 @@
-<!doctype html>
-<html lang="en" data-bs-theme="dark"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your personal best-attempt leaderboard and practice skill tiers on PromptForge.">
-    <meta name="author" content="PromptForge team">
-    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
-    <title>Leaderboard — PromptForge</title>
-    <!-- Bootstrap 5.3.8 CDN; project CSS follows it for brand corrections. -->
-    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/site.css">
-  </head>
-  <body class="leaderboard-page d-flex flex-column min-vh-100">
-    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
-      <div class="container-fluid px-3 px-lg-5 flex-wrap">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
-        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
-        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
-          <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Show navigation</span>
-        </label>
-        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
-          <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-            <li class="nav-item">
-              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-tasks" class="nav-link small fw-medium p-2 text-decoration-none" href="tasks.html">Tasks</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-leaderboard" class="nav-link active small p-2 text-decoration-none fw-semibold" href="leaderboard.html" aria-current="page">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
-            </li>
-          </ul>
-          <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
-            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <main class="app-layout leaderboard-layout py-3 py-lg-4 flex-grow-1" id="main-content" data-page="leaderboard" data-user-id="local-user">
-      <!-- container centers reading content and caps line length. -->
-      <div class="container">
-        <div class="workspace-heading row align-items-center g-3 border-bottom pb-3 mb-3">
-          <div class="workspace-heading-copy col-12 col-lg">
-            <span class="workspace-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">PERSONAL PRACTICE / BEST ATTEMPTS</span>
-            <h1 class="h3 fw-bold mb-2">Leaderboard</h1>
-            <p class="workspace-heading-meta small text-body-secondary mb-0">Your practice leaderboard orders your own best attempts by score. Progress points are the sum of the best score for each exercise; the same total appears in your profile.</p>
-          </div>
-          <div class="workspace-status col-12 col-lg-auto ms-lg-auto card rounded-3 shadow-sm p-2 bg-body-tertiary d-flex flex-row flex-wrap align-items-center gap-1" role="group" aria-label="Current skill tier">
-            <span class="workspace-status-label small text-body-secondary font-monospace text-uppercase order-0">Current tier</span>
-            <strong id="leaderboard-tier" class="order-2 w-100 text-body">Newcomer</strong>
-            <span class="workspace-status-note small text-body-secondary font-monospace text-uppercase order-1 ms-auto text-nowrap">Your record</span>
-          </div>
-        </div>
-        <section class="your-position row align-items-center g-2 card-accent rounded-3 px-3 py-1 mb-4 border border-warning-subtle border-start border-3" aria-labelledby="your-position-title">
-          <div class="position-main col-12 col-md-auto">
-            <h2 class="position-kicker eyebrow fw-bold font-monospace text-uppercase lh-sm text-primary" id="your-position-title">YOUR PROGRESS</h2>
-            <div class="position-rank-row d-flex align-items-baseline gap-2">
-              <strong class="your-position-rank fs-3 fw-bold text-accent text-warning" id="leaderboard-current-tier">Newcomer</strong>
-              <span class="your-position-score mono small font-monospace" id="leaderboard-total-points">0 pts</span>
-            </div>
-          </div>
-          <div class="position-progress col-12 col-md-4" role="group" aria-label="Distance to Practitioner tier">
-            <div class="position-progress-label d-flex justify-content-between gap-2 small text-body-secondary">
-              <span id="leaderboard-next-tier">50 points to Practitioner tier</span>
-              <span class="mono font-monospace" id="leaderboard-progress-label">0 / 50</span>
-            </div>
-            <div class="position-progress-track progress" role="progressbar" aria-label="Progress to Practitioner tier" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0" id="leaderboard-progress">
-              <span class="position-progress-fill progress-bar" id="leaderboard-progress-fill"></span>
-            </div>
-          </div>
-          <a href="tasks.html" class="position-action col-auto ms-md-auto btn btn-outline-warning btn-sm text-center" id="leaderboard-link-1">Improve rank <svg class="icon icon-sm" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
-            </svg>
-          </a>
-        </section>
-        <section class="ranking-section mb-4" aria-labelledby="ranking-title">
-          <div class="ranking-section-header">
-            <div>
-              <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">RANKINGS</span>
-              <h2 class="ranking-title h4 fw-semibold fw-bold" id="ranking-title">Your best attempts</h2>
-            </div>
-          </div>
-          <!-- Bootstrap table component: dark hoverable ranking rows with the existing score data. -->
-          <div class="table-container leaderboard-table-container table-responsive border rounded-3 shadow-sm my-3 bg-body-tertiary overflow-y-hidden">
-            <table id="leaderboard-table" class="table-dense leaderboard-table table table-dark table-hover small align-middle mb-0">
-              <caption class="visually-hidden text-body-secondary">Your exercises ranked by best score. No other participants are required.</caption>
-              <thead>
-                <tr>
-                  <th class="col-rank px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary" scope="col">#</th>
-                  <th class="col-user px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary fw-medium" scope="col">Exercise</th>
-                  <th class="col-score px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary fw-bold text-end" scope="col">Score</th>
-                  <th class="col-solved px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary text-end" scope="col">Attempts</th>
-                </tr>
-              </thead>
-              <tbody id="leaderboard-body">
-                <tr id="leaderboard-empty">
-                  <td colspan="4" class="px-3 py-3 align-middle">
-                    <p class="mb-2">No scored attempts yet.</p>
-                    <a id="leaderboard-first-task" href="tasks.html" class="btn btn-primary btn-sm fw-semibold">Choose an exercise</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-        <section class="rank-system my-4" aria-labelledby="rank-system-title">
-          <div class="rank-system-heading d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-            <div>
-              <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">RANK SYSTEM</span>
-              <h2 id="rank-system-title" class="fw-bold">Skill tiers</h2>
-            </div>
-            <span class="rank-system-help text-body-secondary">Based on total points</span>
-          </div>
-          <!-- Bootstrap component: responsive grid of skill-tier cards, adapted to PromptForge ranks. -->
-          <div class="rank-legend rank-legend-modern row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-2">
-            <div class="rank-legend-item col">
-              <div class="border rounded-3 p-3 h-100 d-flex align-items-center gap-2 bg-body-tertiary">
-                <span class="rank-dot rank-newcomer d-inline-block rounded-circle flex-shrink-0" aria-hidden="true"></span>
-                <span class="d-flex justify-content-between align-items-center w-100 gap-2">
-                  <strong>Newcomer</strong>
-                  <abbr class="small text-body-secondary text-decoration-none" title="0 to less than 50 points">0–&lt;50</abbr>
-                </span>
-              </div>
-            </div>
-            <div class="rank-legend-item col">
-              <div class="border rounded-3 p-3 h-100 d-flex align-items-center gap-2 bg-body-tertiary">
-                <span class="rank-dot rank-practitioner d-inline-block rounded-circle flex-shrink-0 bg-success" aria-hidden="true"></span>
-                <span class="d-flex justify-content-between align-items-center w-100 gap-2">
-                  <strong>Practitioner</strong>
-                  <abbr class="small text-body-secondary text-decoration-none" title="50 to less than 100 points">50–&lt;100</abbr>
-                </span>
-              </div>
-            </div>
-            <div class="rank-legend-item col">
-              <div class="border rounded-3 p-3 h-100 d-flex align-items-center gap-2 bg-body-tertiary">
-                <span class="rank-dot rank-master d-inline-block rounded-circle flex-shrink-0 bg-primary" aria-hidden="true"></span>
-                <span class="d-flex justify-content-between align-items-center w-100 gap-2">
-                  <strong>Master</strong>
-                  <abbr class="small text-body-secondary text-decoration-none" title="100 to less than 150 points">100–&lt;150</abbr>
-                </span>
-              </div>
-            </div>
-            <div class="rank-legend-item col">
-              <div class="border rounded-3 p-3 h-100 d-flex align-items-center gap-2 bg-body-tertiary">
-                <span class="rank-dot rank-grandmaster d-inline-block rounded-circle flex-shrink-0 bg-warning" aria-hidden="true"></span>
-                <span class="d-flex justify-content-between align-items-center w-100 gap-2">
-                  <strong>Grandmaster</strong>
-                  <abbr class="small text-body-secondary text-decoration-none" title="150 points or more">150+</abbr>
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="page-cta leaderboard-cta d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 border rounded-3 p-3 mt-4">
-          <div>
-            <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">NEXT STEP</span>
-            <p class="mb-0">Start your first exercise or improve a previous best score to work toward the next tier.</p>
-          </div>
-          <a href="tasks.html" class="btn-primary btn fw-semibold" id="leaderboard-link-2">Browse Tasks <svg class="icon icon-sm" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div id="leaderboard-error" class="is-error is-hidden alert alert-danger mb-0" role="alert"></div>
-      <template id="leaderboard-row-template">
-        <tr>
-          <th scope="row" data-field="rank"></th>
-          <td data-field="task-title"></td>
-          <td class="mono font-monospace" data-field="score"></td>
-          <td class="mono font-monospace" data-field="attempt-count"></td>
-        </tr>
-      </template>
-    </main>
-    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
-      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
-        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
-        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
-          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
-          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
-          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
-          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
-        </nav>
-      </div>
-    </footer>
-
-
-</body></html>
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Compare real practice results and work towards your next place." name="description"/>
+  <meta content="#141416" name="theme-color"/>
+  <title>
+   Leaderboard — PromptForge
+  </title>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
+  <script src="js/theme.js"></script>
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="styles/site.css" rel="stylesheet"/>
+  <script src="js/main.js" type="module">
+  </script>
+ </head>
+ <body class="leaderboard-page">
+  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
+   Skip to content
+  </a>
+  <header class="site-header" id="site-header">
+   <div class="header-inner">
+    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
+     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+    </a>
+    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
+     <div class="nav-links">
+      <a class="nav-link" href="tasks.html" id="nav-tasks">
+       Exercises
+      </a>
+      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
+       Attempt history
+      </a>
+      <a class="nav-link" href="progress.html" id="nav-progress">
+       Progress
+      </a>
+      <a aria-current="page" class="nav-link active" href="leaderboard.html" id="nav-leaderboard">
+       Leaderboard
+      </a>
+      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
+       Guide
+      </a>
+     </div>
+     <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html" id="nav-login">
+       Log in
+      </a>
+      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
+       Create an account
+      </a>
+      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
+       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
+       <span>Profile</span>
+      </a>
+     </div>
+    </nav>
+    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
+     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
+      <path d="M4 6h16M4 12h16M4 18h16">
+      </path>
+     </svg>
+    </button>
+   </div>
+  </header>
+  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  </button>
+  <main class="page-shell" data-page="leaderboard" id="main-content">
+   <header class="page-heading">
+    <div><h1>Leaderboard</h1><p class="page-intro">Compare your best results with other participants. Every new exercise can improve your position.</p></div>
+    <a class="text-link" href="progress.html">Personal progress</a>
+   </header>
+   <section id="ranking-personal" class="ranking-personal" aria-label="Your ranking"></section>
+   <section class="section-panel" aria-labelledby="ranking-title">
+    <header class="section-heading"><h2 id="ranking-title">All participants</h2><button class="btn btn-quiet" id="ranking-refresh" type="button">Refresh ranking</button></header>
+    <p class="ranking-count" id="ranking-count" role="status"></p>
+    <div class="alert is-hidden" id="ranking-error" role="alert"></div>
+    <div class="ranking-table-wrap">
+     <table class="table ranking-table" id="ranking-table">
+      <caption class="visually-hidden">Participants ranked by their best exercise scores</caption>
+      <thead><tr><th scope="col">Place</th><th scope="col">Participant</th><th scope="col">Points</th><th scope="col">Mastered</th></tr></thead>
+      <tbody id="ranking-body"></tbody>
+     </table>
+    </div>
+    <div id="ranking-empty" class="practice-empty is-hidden"><h2>No results in the leaderboard yet</h2><p>Participants appear after joining and completing their first check.</p></div>
+    <button id="ranking-more" type="button" class="btn btn-secondary is-hidden">Show more participants</button>
+   </section>
+   <details class="disclosure ranking-rules">
+    <summary>How places are calculated</summary>
+    <p>Your points are the sum of your best saved score in each exercise: up to 160 across 16 exercises. Equal totals share a place.</p>
+    <p>Repeating an exercise adds points only when your best score improves. Pro changes the check limit, not the scoring rules.</p>
+    <p>Participation is optional. Only your display name, level and aggregate results are public. Leave in profile settings at any time.</p>
+   </details>
+  </main>
+  <footer class="site-footer" id="site-footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     PromptForge
+     <span>
+      &copy; 2026
+     </span>
+    </a>
+    <nav aria-label="Footer navigation" id="footer-nav">
+     <a href="how-it-works.html">
+      Guide
+     </a>
+     <a href="how-it-works.html#feedback">
+      Feedback
+     </a>
+     <a href="how-it-works.html#privacy-policy">
+      Privacy
+     </a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>

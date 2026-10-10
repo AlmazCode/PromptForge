@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PromptForge — концепты знака</title>
+  <link rel="stylesheet" href="../../../vendor/fonts/fonts.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #141416; color: #f4f2ef; font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; }
+    main { max-width: 1440px; padding: 54px 48px 44px; margin: auto; }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 36px; }
+    h1 { margin: 0 0 10px; font-size: 32px; letter-spacing: -.04em; font-weight: 650; }
+    .intro p { margin: 0; color: #adb2b8; font-size: 15px; line-height: 1.6; }
+    .format { font-size: 12px; color: #adb2b8; white-space: nowrap; letter-spacing: .07em; }
+    .grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+    article { min-width: 0; background: #1d1f22; border: 1px solid #343438; border-radius: 14px; overflow: hidden; }
+    .drawing { height: 235px; display: grid; place-items: center; background: #191a1c; }
+    .drawing img { width: 170px; height: 170px; }
+    .copy { padding: 24px 25px; }
+    .number { color: #ff914f; font-size: 12px; margin-bottom: 10px; font-weight: 600; }
+    h2 { margin: 0 0 12px; font-size: 21px; letter-spacing: -.035em; font-weight: 650; }
+    .description { color: #b8bbc0; font-size: 14px; line-height: 1.7; margin: 0; min-height: 96px; }
+    .lockup { display: flex; gap: 12px; align-items: center; margin: 22px 0; padding: 20px 0; border-block: 1px solid #343438; white-space: nowrap; }
+    .lockup img { width: 36px; height: 36px; flex-shrink: 0; }
+    .wordmark { font-weight: 700; font-size: 23px; letter-spacing: -.05em; }
+    .wordmark span { color: #ff914f; font-weight: 650; }
+    .caption { font-size: 11px; color: #9ca2aa; margin: 0 0 14px; }
+    .samples { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .sizes { display: flex; align-items: center; gap: 16px; min-height: 40px; }
+    .light { width: 44px; height: 44px; border-radius: 6px; background: #f4f2ef; display: grid; place-items: center; }
+    footer { color: #9ca2aa; font-size: 12px; line-height: 1.6; margin-top: 25px; }
+    @media(max-width: 1050px) { main { padding: 32px 24px; } .grid { gap: 14px; } .copy { padding: 20px 16px; } .wordmark { font-size: 20px; } .lockup { gap: 8px; } }
+    @media(max-width: 760px) { .grid { grid-template-columns: 1fr; } .intro { align-items: start; flex-direction: column; gap: 12px; } h1 { font-size: 28px; } .description { min-height: 0; } .wordmark { font-size: 24px; } .copy { padding: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <div><h1>PromptForge. Три характера одного имени</h1><p>Промпт как материал. Практика как ремесло. Хороший результат как работа мастера.</p></div>
+      <span class="format">SVG · ЭСКИЗЫ ЗНАКА</span>
+    </header>
+    <div class="grid">
+      <article>
+        <div class="drawing"><img src="01-quill-anvil.svg" alt="Перо на кузнечной наковальне"></div>
+        <div class="copy">
+          <div class="number">01 / РЕМЕСЛО</div><h2>Перо на наковальне</h2>
+          <p class="description">Перо отвечает за текст, наковальня — за его доработку. Знак мастерской, где учатся придавать словам точную форму.</p>
+          <div class="lockup"><img src="01-quill-anvil.svg" alt=""><span class="wordmark">Prompt<span>Forge</span></span></div>
+          <p class="caption">В МАЛЕНЬКОМ РАЗМЕРЕ · 16 / 24 / 32 PX</p>
+          <div class="samples"><div class="sizes"><img src="01-quill-anvil.svg" width="16" height="16" alt="16 пикселей"><img src="01-quill-anvil.svg" width="24" height="24" alt="24 пикселя"><img src="01-quill-anvil.svg" width="32" height="32" alt="32 пикселя"></div><div class="light"><img src="01-quill-anvil.svg" width="28" height="28" alt="На светлом фоне"></div></div>
+        </div>
+      </article>
+      <article>
+        <div class="drawing"><img src="02-wordsmith.svg" alt="Кузнец в защитных очках, рядом молот"></div>
+        <div class="copy">
+          <div class="number">02 / МАСТЕРСТВО</div><h2>Мастер слова</h2>
+          <p class="description">Кузнец как персонаж тренажёра. Рисунок в духе резной печати: ремесленный характер и образ человека, который осваивает навык.</p>
+          <div class="lockup"><img src="02-wordsmith.svg" alt=""><span class="wordmark">Prompt<span>Forge</span></span></div>
+          <p class="caption">В МАЛЕНЬКОМ РАЗМЕРЕ · 16 / 24 / 32 PX</p>
+          <div class="samples"><div class="sizes"><img src="02-wordsmith.svg" width="16" height="16" alt="16 пикселей"><img src="02-wordsmith.svg" width="24" height="24" alt="24 пикселя"><img src="02-wordsmith.svg" width="32" height="32" alt="32 пикселя"></div><div class="light"><img src="02-wordsmith.svg" width="28" height="28" alt="На светлом фоне"></div></div>
+        </div>
+      </article>
+      <article>
+        <div class="drawing"><img src="03-message-forge.svg" alt="Пламя с вырезом в форме сообщения"></div>
+        <div class="copy">
+          <div class="number">03 / ПРЕОБРАЗОВАНИЕ</div><h2>Горн</h2>
+          <p class="description">Сообщение внутри живого пламени. Идея проходит через работу и становится готовым промптом. Самый компактный силуэт из трёх.</p>
+          <div class="lockup"><img src="03-message-forge.svg" alt=""><span class="wordmark">Prompt<span>Forge</span></span></div>
+          <p class="caption">В МАЛЕНЬКОМ РАЗМЕРЕ · 16 / 24 / 32 PX</p>
+          <div class="samples"><div class="sizes"><img src="03-message-forge.svg" width="16" height="16" alt="16 пикселей"><img src="03-message-forge.svg" width="24" height="24" alt="24 пикселя"><img src="03-message-forge.svg" width="32" height="32" alt="32 пикселя"></div><div class="light"><img src="03-message-forge.svg" width="28" height="28" alt="На светлом фоне"></div></div>
+        </div>
+      </article>
+    </div>
+    <footer>Авторские SVG-эскизы с редактируемыми контурами. Для выбранного направления можно отдельно упростить иконку вкладки и уточнить детали большого знака.</footer>
+  </main>
+</body>
+</html>

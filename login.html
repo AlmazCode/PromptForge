@@ -1,107 +1,142 @@
-<!doctype html>
-<html lang="en" data-bs-theme="dark"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Log in to your PromptForge account — a platform for training prompt engineering skills">
-    <meta name="author" content="PromptForge team">
-    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
-    <title>Login — PromptForge</title>
-    <!-- Bootstrap 5.3.8 from jsDelivr; project CSS follows for brand styling. -->
-    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/site.css">
-  </head>
-  <body class="account-page login-page d-flex flex-column min-vh-100">
-    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
-      <div class="container-fluid px-3 px-lg-5 flex-wrap">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
-        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
-        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
-          <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Show navigation</span>
-        </label>
-        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
-          <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-            <li class="nav-item">
-              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-tasks" class="nav-link small fw-medium p-2 text-decoration-none" href="tasks.html">Tasks</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
-            </li>
-          </ul>
-          <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none" aria-current="page">Log in</a>
-            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
-          </div>
-        </nav>
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Log in to access your drafts, attempts and subscription." name="description"/>
+  <meta content="#141416" name="theme-color"/>
+  <title>
+   Log in &mdash; PromptForge
+  </title>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
+  <script src="js/theme.js"></script>
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="styles/site.css" rel="stylesheet"/>
+  <script src="js/main.js" type="module">
+  </script>
+ </head>
+ <body class="login-page">
+  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
+   Skip to content
+  </a>
+  <header class="site-header" id="site-header">
+   <div class="header-inner">
+    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
+     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+    </a>
+    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
+     <div class="nav-links">
+      <a class="nav-link" href="tasks.html" id="nav-tasks">
+       Exercises
+      </a>
+      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
+       Attempt history
+      </a>
+      <a class="nav-link" href="progress.html" id="nav-progress">
+       Progress
+      </a>
+      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
+       Leaderboard
+      </a>
+      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
+       Guide
+      </a>
+     </div>
+     <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html" id="nav-login">
+       Log in
+      </a>
+      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
+       Create an account
+      </a>
+      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
+       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
+       <span>Profile</span>
+      </a>
+     </div>
+    </nav>
+    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
+     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
+      <path d="M4 6h16M4 12h16M4 18h16">
+      </path>
+     </svg>
+    </button>
+   </div>
+  </header>
+  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  </button>
+  <main class="page-shell" data-page="login" id="main-content">
+   <section class="auth-layout">
+    <div class="auth-panel">
+     <header class="page-heading">
+      <div>
+       <h1>
+        Log in
+       </h1>
+       <p class="page-intro">
+        Access your drafts and saved attempts.
+       </p>
       </div>
-    </header>
-    <main class="app-layout flex-grow-1 py-4" id="main-content" data-page="login">
-      <div class="container">
-        <div class="auth-heading border-bottom pb-3 mb-4">
-          <div>
-            <h1 class="display-6 fw-bold mb-1">Log In</h1>
-            <span class="text-secondary">Welcome back — enter your credentials</span>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <form method="post" action="login.html" class="auth-card col-12 col-md-8 col-lg-5 card p-4 shadow-sm rounded-3" id="login-form" aria-describedby="login-status">
-            <fieldset class="auth-fieldset mb-4 p-3 border-start border-primary border-2 rounded-end">
-              <legend class="fs-5 fw-semibold mb-3 text-body">Your Credentials</legend>
-              <div class="mb-3">
-                <label class="form-label small fw-semibold" for="login-email">Email Address *</label>
-                <input class="form-control rounded" type="email" id="login-email" name="email" required="" autofocus="" autocomplete="email" aria-describedby="login-email-error" aria-invalid="false">
-                <div class="invalid-feedback" id="login-email-error"></div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label small fw-semibold" for="login-password">Password *</label>
-                <input class="form-control rounded" type="password" id="login-password" name="password" required="" autocomplete="current-password" aria-describedby="login-password-error" aria-invalid="false">
-                <div class="invalid-feedback" id="login-password-error"></div>
-              </div>
-            </fieldset>
-            <div class="auth-actions d-flex flex-wrap gap-2 pt-3 border-top">
-              <button type="button" class="btn btn-primary btn-lg fw-semibold fs-6 fw-bold" id="login-submit" data-action="login">Log In</button>
-              <button type="reset" class="btn btn-outline-light" id="login-reset">Clear</button>
-            </div>
-            <section class="form-outcome status-panel mt-3 bg-body-tertiary p-3 border rounded" id="login-result" aria-labelledby="login-result-title">
-              <h2 class="h6 fw-bold" id="login-result-title">What happens next</h2>
-              <p class="small text-secondary mb-0" id="login-status">After sign-in, return to your profile or your saved attempts. Sign-in feedback appears in this area.</p>
-              <div class="is-error is-hidden mt-3 alert alert-danger mb-0" id="login-error" role="alert"></div>
-              <div class="is-success is-hidden mt-3 alert alert-success mb-0" id="login-success" role="status">
-                <p class="mb-0">Sign-in complete. Continue to your practice profile.</p>
-                <a class="btn btn-outline-light btn-sm mt-2" href="profile.html" id="login-continue">Open profile</a>
-              </div>
-            </section>
-          </form>
-          <p class="col-12 text-center text-secondary small mt-3">Don't have an account? <a href="register.html" id="login-link-1" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Create one here</a>
-          </p>
-        </div>
+     </header>
+     <form class="auth-form" id="login-form" novalidate="">
+      <div class="form-field">
+       <label class="form-label" for="login-email">
+        Email address
+       </label>
+       <input aria-describedby="login-email-error" aria-invalid="false" autocomplete="email" class="form-control" id="login-email" name="email" required="" type="email"/>
+       <div class="invalid-feedback" id="login-email-error">
+       </div>
       </div>
-    </main>
-    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
-      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
-        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
-        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
-          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
-          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
-          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
-          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
-        </nav>
+      <div class="form-field">
+       <label class="form-label" for="login-password">
+        Password
+       </label>
+       <input aria-describedby="login-password-error" aria-invalid="false" autocomplete="current-password" class="form-control" id="login-password" name="password" required="" type="password"/>
+       <div class="invalid-feedback" id="login-password-error">
+       </div>
       </div>
-    </footer>
-
-
-</body></html>
+      <button class="btn btn-primary w-100" id="login-submit" type="submit">
+       Log in
+      </button>
+      <p class="form-status" id="login-status" role="status">
+      </p>
+      <div class="alert alert-danger is-hidden" id="login-error" role="alert">
+      </div>
+      <div class="alert alert-success is-hidden" id="login-success" role="status">
+      </div>
+      <p class="auth-switch">
+       <span>
+        New to PromptForge?
+       </span>
+       <a href="register.html" id="login-link-1">
+        Create an account
+       </a>
+      </p>
+     </form>
+    </div>
+   </section>
+  </main>
+  <footer class="site-footer" id="site-footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     PromptForge
+     <span>
+      &copy; 2026
+     </span>
+    </a>
+    <nav aria-label="Footer navigation" id="footer-nav">
+     <a href="how-it-works.html">
+      Guide
+     </a>
+     <a href="how-it-works.html#feedback">
+      Feedback
+     </a>
+     <a href="how-it-works.html#privacy-policy">
+      Privacy
+     </a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>

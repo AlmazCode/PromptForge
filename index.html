@@ -1,325 +1,232 @@
-<!doctype html>
-<html data-bs-theme="dark" lang="en"><head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="PromptForge — AI prompt engineering training platform. Practice, compete, and master prompt crafting." name="description">
-    <meta content="PromptForge team" name="author">
-    <title>Home — PromptForge</title>
-    <!-- Local Bootstrap 5.3.8 CSS, followed by the PromptForge theme. -->
-    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
-    <link rel="stylesheet" href="styles/site.css">
-  </head>
-  <body class="home-page d-flex flex-column min-vh-100">
-    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
-    <!-- HEADER -->
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
-      <div class="container-fluid px-3 px-lg-5 flex-wrap">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
-        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
-        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
-          <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Show navigation</span>
-        </label>
-        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
-          <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-            <li class="nav-item">
-              <a id="nav-home" class="nav-link active small p-2 text-decoration-none fw-semibold" href="index.html" aria-current="page">Home</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-tasks" class="nav-link small fw-medium p-2 text-decoration-none" href="tasks.html">Tasks</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
-            </li>
-          </ul>
-          <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
-            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
-          </div>
-        </nav>
-      </div>
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Practise writing AI prompts with exercises, feedback and attempt comparison." name="description"/>
+  <meta content="#141416" name="theme-color"/>
+  <title>
+   Home &mdash; PromptForge
+  </title>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
+  <script src="js/theme.js"></script>
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="styles/site.css" rel="stylesheet"/>
+  <script src="js/main.js" type="module">
+  </script>
+ </head>
+ <body class="index-page">
+  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
+   Skip to content
+  </a>
+  <header class="site-header" id="site-header">
+   <div class="header-inner">
+    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
+     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+    </a>
+    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
+     <div class="nav-links">
+      <a class="nav-link" href="tasks.html" id="nav-tasks">
+       Exercises
+      </a>
+      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
+       Attempt history
+      </a>
+      <a class="nav-link" href="progress.html" id="nav-progress">
+       Progress
+      </a>
+      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
+       Leaderboard
+      </a>
+      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
+       Guide
+      </a>
+     </div>
+     <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html" id="nav-login">
+       Log in
+      </a>
+      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
+       Create an account
+      </a>
+      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
+       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
+       <span>Profile</span>
+      </a>
+     </div>
+    </nav>
+    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
+     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
+      <path d="M4 6h16M4 12h16M4 18h16">
+      </path>
+     </svg>
+    </button>
+   </div>
+  </header>
+  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  </button>
+  <main class="page-shell" data-page="index" id="main-content">
+   <section class="workshop-home is-hidden" id="home-next-session">
+    <header class="page-heading"><div><div id="home-workshop-heading"></div><p class="page-intro" id="home-session-summary"></p></div><a class="text-link" href="my-solutions.html">Attempt history</a></header>
+    <div class="workshop-next" id="home-recommendation"></div>
+    <div class="hero-actions" id="home-session-links"></div>
+   </section>
+   <section class="home-hero">
+    <div class="hero-copy">
+     <h1>
+      Prompt writing practice
+     </h1>
+     <p class="hero-intro">
+      Practise giving AI clear instructions. Write a prompt for an exercise, get feedback, then improve it.
+     </p>
+     <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="task.html?id=t001" id="home-first-exercise">
+       Try the first exercise
+      </a>
+      <a class="text-link" href="tasks.html">
+       All exercises
+      </a>
+     </div>
+     <p class="hero-note">
+      Write a draft without an account. Log in to check it. Free includes 10 checks per 24 hours.
+     </p>
+     <p class="hero-facts">
+      <span>
+       <strong id="home-task-count">
+        16
+       </strong>
+       <span>
+        exercises
+       </span>
+      </span>
+      <span>
+       <strong id="home-category-count">
+        9
+       </strong>
+       <span>
+        skill areas
+       </span>
+      </span>
+      <span>
+       <strong id="home-criterion-count">
+        6
+       </strong>
+       <span>
+        scoring criteria
+       </span>
+      </span>
+     </p>
+    </div>
+   </section>
+   <section class="learning-routes" aria-labelledby="home-routes-title">
+    <header class="section-heading"><h2 id="home-routes-title">Courses</h2><a class="text-link" href="tasks.html">All exercises</a></header>
+    <div class="route-grid" id="home-routes"></div>
+    <p class="mastery-note">An exercise is mastered at 8/10 or higher.</p>
+   </section>
+   <section aria-labelledby="comparison-title" class="prompt-comparison" id="home-example">
+    <header class="section-heading">
+     <h2 id="comparison-title">
+      A prompt before and after revision
+     </h2>
+     <a class="text-link" href="task.html?id=t002">
+      Open this exercise
+     </a>
     </header>
-    <main id="main-content" class="flex-grow-1" data-page="index">
-      <!-- HERO SECTION — with terminal editor preview -->
-      <section class="hero py-5 position-relative overflow-hidden">
-        <div class="hero-ambient-glow position-absolute rounded-circle pe-none"></div>
-        <div class="container position-relative">
-          <div class="row align-items-center g-4">
-            <div class="hero-content col-12 col-lg-7">
-              <span class="badge bg-warning-subtle text-warning border border-warning-subtle mb-3 p-2">16 original prompt exercises</span>
-              <h1 class="display-4 fw-bold mb-3">
-                Master the Art of
-                <span class="highlight text-warning">Prompt Engineering</span>
-              </h1>
-              <p class="subtitle lead text-secondary mb-4 fs-6">Practice writing clear instructions through exercises in copywriting, data analysis, code generation, and more. Build a record of your own attempts and learn from each result.</p>
-              <div class="hero-buttons d-flex flex-wrap gap-2">
-                <a class="btn btn-lg btn-primary fw-semibold" href="tasks.html" id="index-link-1">Start Training</a>
-                <a class="btn btn-lg btn-outline-light" href="tasks.html" id="index-link-2">View Tasks</a>
-              </div>
-              <div class="hero-stats row g-3 mt-4">
-                <div class="stat-card d-flex flex-column col-4 gap-1">
-                  <span class="stat-number font-monospace text-warning fw-bold fs-4" data-target="16" id="home-task-count">16</span>
-                  <span class="stat-label text-body-secondary">Exercises</span>
-                </div>
-                <div class="stat-card d-flex flex-column col-4 gap-1">
-                  <span class="stat-number font-monospace text-warning fw-bold fs-4" data-target="9" id="home-category-count">9</span>
-                  <span class="stat-label text-body-secondary">Skill areas</span>
-                </div>
-                <div class="stat-card d-flex flex-column col-4 gap-1">
-                  <span class="stat-number font-monospace text-warning fw-bold fs-4" data-target="6" id="home-criterion-count">6</span>
-                  <span class="stat-label text-body-secondary">Scoring criteria</span>
-                </div>
-              </div>
-            </div>
-            <!-- TERMINAL EDITOR — hero visual -->
-            <div class="hero-editor col-12 col-lg-5 border rounded-3 overflow-hidden shadow-lg p-0 bg-body-tertiary">
-              <div class="editor-chrome d-flex align-items-center gap-3 px-3 py-2 border-bottom bg-body-secondary">
-                <div class="editor-dots d-flex gap-1">
-                  <span class="dot dot-red bg-danger d-block rounded-circle"></span>
-                  <span class="dot dot-yellow bg-warning d-block rounded-circle"></span>
-                  <span class="dot dot-green bg-success d-block rounded-circle"></span>
-                </div>
-                <span class="editor-title font-monospace text-body-secondary">prompt.txt</span>
-              </div>
-              <div class="editor-body p-3 overflow-x-auto bg-body-tertiary">
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">1</span>
-                  <span class="line-content text-break">
-                    <span class="kw text-warning">You are</span> a senior data
-                    analyst.</span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">2</span>
-                  <span class="line-content text-break">
-                    <span class="kw text-warning">Task:</span> Summarize the Q3 sales
-                    data.</span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">3</span>
-                  <span class="line-content text-break">
-                    <span class="kw text-warning">Format:</span> numbered list, 5 items
-                    max.</span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">4</span>
-                  <span class="line-content text-break">
-                    <span class="kw text-warning">Tone:</span> professional, concise.</span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">5</span>
-                  <span class="line-content text-break">
-                    <span class="kw text-warning">Constraint:</span> no more than 120
-                    words.</span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">6</span>
-                  <span class="line-content text-break"></span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">7</span>
-                  <span class="line-content text-break">
-                    <span class="kw text-warning">Example:</span>
-                  </span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">8</span>
-                  <span class="line-content text-break">1. Q3 revenue totals $435,000.</span>
-                </div>
-                <div class="editor-line font-monospace d-flex gap-2 mb-2">
-                  <span class="line-num flex-shrink-0 text-body-secondary">9</span>
-                  <span class="line-content text-break">2. August has the highest revenue: $158,000.</span>
-                </div>
-                <div class="editor-cursor"></div>
-              </div>
-              <div class="editor-footer font-monospace d-flex justify-content-between gap-3 p-3 border-top bg-body-tertiary">
-                <span>Worked example: 8.6 / 10</span>
-                <span>Weighted score</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- FEATURES SECTION — mono symbols -->
-      <section class="features py-5">
-        <div class="container">
-          <h2 class="section-title text-center text-md-start mb-3 fw-bold">
-            Why Choose <span class="highlight text-warning">Prompt Forge?</span>
-          </h2>
-          <p class="section-subtitle text-body-secondary mb-4">
-            A purpose-built training ground for prompt engineers — not another
-            generic coding challenge platform.
-          </p>
-          <div class="row g-3">
-            <div class="feature-card col-12 col-md-6 col-xl-3">
-              <div class="card h-100 shadow-sm p-4 rounded-3">
-                <div class="feature-icon-mono font-monospace text-warning fw-bold fs-4 mb-3">[ _ ]</div>
-                <h3 class="fs-6 fw-bold">Practical Tasks</h3>
-                <p class="small text-body-secondary">
-                  Real-world prompt challenges across copywriting, data
-                  analysis, code generation, and system design. No toy examples.
-                </p>
-                <a class="card-link small fw-semibold link-warning" href="tasks.html" id="index-link-3">Browse tasks →</a>
-              </div>
-            </div>
-            <div class="feature-card col-12 col-md-6 col-xl-3">
-              <div class="card h-100 shadow-sm p-4 rounded-3">
-                <div class="feature-icon-mono font-monospace text-warning fw-bold fs-4 mb-3">{ }</div>
-                <h3 class="fs-6 fw-bold">Atomic Scoring</h3>
-                <p class="small text-body-secondary">Use six independently scored criteria with explicit weights. Review the worked example to see how the final score is calculated.</p>
-                <a class="card-link small fw-semibold link-warning" href="how-it-works.html" id="index-link-4">See how it works →</a>
-              </div>
-            </div>
-            <div class="feature-card col-12 col-md-6 col-xl-3">
-              <div class="card h-100 shadow-sm p-4 rounded-3">
-                <div class="feature-icon-mono font-monospace text-warning fw-bold fs-4 mb-3">/&gt;</div>
-                <h3 class="fs-6 fw-bold">Instant Feedback</h3>
-                <p class="small text-body-secondary">Review the score breakdown and a concrete suggestion for each criterion before improving your next prompt.</p>
-                <a class="card-link small fw-semibold link-warning" href="my-solutions.html" id="index-link-5">View solutions →</a>
-              </div>
-            </div>
-            <div class="feature-card col-12 col-md-6 col-xl-3">
-              <div class="card h-100 shadow-sm p-4 rounded-3">
-                <div class="feature-icon-mono font-monospace text-warning fw-bold fs-4 mb-3">▲</div>
-                <h3 class="fs-6 fw-bold">Personal Progress</h3>
-                <p class="small text-body-secondary">Track your best attempt for each exercise and use the skill-tier thresholds to set your next goal.</p>
-                <a class="card-link small fw-semibold link-warning" href="leaderboard.html" id="index-link-6">View progress →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- HOW IT WORKS — mini criteria table -->
-      <section class="how-it-works py-5">
-        <div class="container">
-          <h2 class="section-title mb-3 fw-bold">
-            How It <span class="highlight text-warning">Works</span>
-          </h2>
-          <p class="section-subtitle text-body-secondary mb-4">The rubric scores six parts of a prompt independently. Their weights sum to 1.00; the worked example below shows the calculation.</p>
-          <div class="row g-4 align-items-start">
-            <!-- Left: steps -->
-            <div class="how-steps col-12 col-lg-5">
-              <div class="how-step d-flex gap-3 align-items-start py-3 border-bottom">
-                <span class="how-step-num font-monospace text-warning">01</span>
-                <div>
-                  <strong class="d-block">Submit</strong>
-                  <span class="text-body-secondary small">Write your prompt and hit "Check"</span>
-                </div>
-              </div>
-              <div class="how-step d-flex gap-3 align-items-start py-3 border-bottom">
-                <span class="how-step-num font-monospace text-warning">02</span>
-                <div>
-                  <strong class="d-block">Parse</strong>
-                  <span class="text-body-secondary small">System extracts role, format, constraints</span>
-                </div>
-              </div>
-              <div class="how-step d-flex gap-3 align-items-start py-3 border-bottom">
-                <span class="how-step-num font-monospace text-warning">03</span>
-                <div>
-                  <strong class="d-block">Evaluate</strong>
-                  <span class="text-body-secondary small">Each criterion scored 0–10 independently</span>
-                </div>
-              </div>
-              <div class="how-step d-flex gap-3 align-items-start py-3 border-bottom">
-                <span class="how-step-num font-monospace text-warning">04</span>
-                <div>
-                  <strong class="d-block">Result</strong>
-                  <span class="text-body-secondary small">Weighted score + personalized tips</span>
-                </div>
-              </div>
-            </div>
-            <!-- Right: mini criteria table -->
-            <div class="how-table-wrap col-12 col-lg-7 table-responsive overflow-y-hidden">
-              <div class="code-block-label text-warning font-monospace small mb-2">Example evaluation</div>
-              <table class="table-dense table-mini table table-striped align-middle" id="index-table">
-                <thead>
-                  <tr>
-                    <th class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Criterion</th>
-                    <th class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Weight</th>
-                    <th class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="px-3 py-3 align-middle">Role defined</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">0.20</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">10</td>
-                  </tr>
-                  <tr>
-                    <td class="px-3 py-3 align-middle">Format specified</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">0.25</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">8</td>
-                  </tr>
-                  <tr>
-                    <td class="px-3 py-3 align-middle">Length constraint</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">0.15</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">6</td>
-                  </tr>
-                  <tr>
-                    <td class="px-3 py-3 align-middle">Examples given</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">0.20</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">10</td>
-                  </tr>
-                  <tr>
-                    <td class="px-3 py-3 align-middle">Tone specified</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">0.10</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">8</td>
-                  </tr>
-                  <tr>
-                    <td class="px-3 py-3 align-middle">Task clarity</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">0.10</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">9</td>
-                  </tr>
-                  <tr class="row-total">
-                    <td class="px-3 py-3 align-middle">
-                      <strong>Final</strong>
-                    </td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">1.00</td>
-                    <td class="mono font-monospace px-3 py-3 align-middle">
-                      <strong>8.6</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- CTA SECTION -->
-      <section class="cta py-5">
-        <div class="container">
-          <div class="cta-box card p-4 p-md-5 text-center shadow-sm align-items-center border-warning-subtle">
-            <h2>Ready to Forge Your Skills?</h2>
-            <p class="text-body-secondary">Choose an exercise, study its requirements, and draft your first prompt.</p>
-            <a class="btn btn-lg btn-primary fw-semibold align-self-center" href="register.html" id="index-link-7">
-              Get Started — It's Free
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- FOOTER -->
-    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
-      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
-        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
-        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
-          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
-          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
-          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
-          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
-        </nav>
+    <div class="comparison-grid">
+     <div class="comparison-context">
+      <p class="comparison-task">
+       Quarterly sales summary
+      </p>
+      <p class="comparison-source">
+       Source data: Q3 revenue by month.
+      </p>
+      <dl class="sample-data">
+       <div>
+        <dt>
+         July
+        </dt>
+        <dd>
+         $142,000
+        </dd>
+       </div>
+       <div>
+        <dt>
+         August
+        </dt>
+        <dd>
+         $158,000
+        </dd>
+       </div>
+       <div>
+        <dt>
+         September
+        </dt>
+        <dd>
+         $135,000
+        </dd>
+       </div>
+      </dl>
+      <div class="original-prompt">
+       <h3>
+        First draft
+       </h3>
+       <p>
+        Summarize sales.
+       </p>
+       <p class="comparison-note">
+        The role, output format and scope are unspecified.
+       </p>
       </div>
-    </footer>
-
-
-</body></html>
+     </div>
+     <div class="revised-prompt">
+      <h3>
+       Revised prompt
+      </h3>
+      <div class="revision-text">
+       <p>
+        You are a data analyst. Use the supplied Q3 sales data.
+       </p>
+       <p>
+        Write up to five numbered points in at most 150 words. Include total revenue, the strongest month and the August-to-September change.
+       </p>
+       <p>
+        Use a concise professional tone. Do not invent causes.
+       </p>
+       <p>
+        Example: 1. Total Q3 revenue was $435,000.
+       </p>
+      </div>
+      <p class="comparison-note">
+       The revision specifies a role, output format, limits and an example.
+      </p>
+     </div>
+    </div>
+    <p class="comparison-caption">
+     Example revision, not an AI evaluation.
+    </p>
+   </section>
+  </main>
+  <footer class="site-footer" id="site-footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     PromptForge
+     <span>
+      &copy; 2026
+     </span>
+    </a>
+    <nav aria-label="Footer navigation" id="footer-nav">
+     <a href="how-it-works.html">
+      Guide
+     </a>
+     <a href="how-it-works.html#feedback">
+      Feedback
+     </a>
+     <a href="how-it-works.html#privacy-policy">
+      Privacy
+     </a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>

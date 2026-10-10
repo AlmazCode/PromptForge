@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Review course progress, levels and your best exercise results." name="description"/>
+  <meta content="#141416" name="theme-color"/>
+  <title>
+   Progress — PromptForge
+  </title>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
+  <script src="js/theme.js"></script>
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="styles/site.css" rel="stylesheet"/>
+  <script src="js/main.js" type="module">
+  </script>
+ </head>
+ <body class="progress-page">
+  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
+   Skip to content
+  </a>
+  <header class="site-header" id="site-header">
+   <div class="header-inner">
+    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
+     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+    </a>
+    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
+     <div class="nav-links">
+      <a class="nav-link" href="tasks.html" id="nav-tasks">
+       Exercises
+      </a>
+      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
+       Attempt history
+      </a>
+      <a aria-current="page" class="nav-link active" href="progress.html" id="nav-progress">
+       Progress
+      </a>
+      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
+       Leaderboard
+      </a>
+      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
+       Guide
+      </a>
+     </div>
+     <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html" id="nav-login">
+       Log in
+      </a>
+      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
+       Create an account
+      </a>
+      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
+       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
+       <span>Profile</span>
+      </a>
+     </div>
+    </nav>
+    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
+     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
+      <path d="M4 6h16M4 12h16M4 18h16">
+      </path>
+     </svg>
+    </button>
+   </div>
+  </header>
+  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  </button>
+  <main class="page-shell" data-page="progress" id="main-content">
+   <header class="page-heading">
+    <div>
+     <h1>
+      Progress
+     </h1>
+     <p class="page-intro">
+      Your level is based on the sum of your best scores.
+     </p>
+    </div>
+   </header>
+   <section class="learning-routes" aria-labelledby="progress-routes-title">
+    <header class="section-heading"><h2 id="progress-routes-title">Course progress</h2><span class="mastery-summary" id="progress-mastery-summary"></span></header>
+    <div class="route-grid" id="progress-routes"></div>
+    <p class="mastery-note">An exercise is mastered at 8/10 or higher.</p>
+   </section>
+   <section class="surface progress-overview">
+    <div class="progress-tier">
+     <div>
+      <p class="eyebrow">
+       Current level
+      </p>
+      <h2 id="leaderboard-current-tier">
+       Newcomer
+      </h2>
+      <span class="text-secondary" id="leaderboard-total-points">
+       0 pts
+      </span>
+     </div>
+    </div>
+    <div class="tier-progress">
+     <div class="progress-labels">
+      <span id="leaderboard-next-tier">
+      </span>
+      <span id="leaderboard-progress-label">
+      </span>
+     </div>
+     <div id="leaderboard-progress">
+     </div>
+     <p>
+      Points are the sum of your best score for each exercise.
+     </p>
+    </div>
+    <a class="btn btn-secondary" href="tasks.html">
+     Keep practising
+    </a>
+   </section>
+   <section aria-label="Skill tiers" class="skill-tiers">
+    <article data-tier="Newcomer">
+     <span class="tier-index">
+      01
+     </span>
+     <div>
+      <h3>
+       Newcomer
+      </h3>
+      <p>
+       0&ndash;49.99
+      </p>
+     </div>
+    </article>
+    <article data-tier="Practitioner">
+     <span class="tier-index">
+      02
+     </span>
+     <div>
+      <h3>
+       Practitioner
+      </h3>
+      <p>
+       50&ndash;99.99
+      </p>
+     </div>
+    </article>
+    <article data-tier="Master">
+     <span class="tier-index">
+      03
+     </span>
+     <div>
+      <h3>
+       Master
+      </h3>
+      <p>
+       100&ndash;149.99
+      </p>
+     </div>
+    </article>
+    <article data-tier="Grandmaster">
+     <span class="tier-index">
+      04
+     </span>
+     <div>
+      <h3>
+       Grandmaster
+      </h3>
+      <p>
+       150&ndash;160
+      </p>
+     </div>
+    </article>
+   </section>
+   <section class="section-panel">
+    <div class="section-heading">
+     <h2>
+      Your best attempts
+     </h2>
+     <span class="text-secondary small">
+      One result per exercise
+     </span>
+    </div>
+    <div class="history-table-wrap">
+     <table class="table history-table" id="leaderboard-table" role="table">
+      <thead role="rowgroup">
+       <tr role="row">
+        <th role="columnheader" scope="col">
+         #
+        </th>
+        <th role="columnheader" scope="col">
+         Exercise
+        </th>
+        <th role="columnheader" scope="col">
+         Score
+        </th>
+        <th role="columnheader" scope="col">
+         Attempts
+        </th>
+       </tr>
+      </thead>
+      <tbody id="leaderboard-body" role="rowgroup">
+      </tbody>
+     </table>
+    </div>
+    <div class="empty-action" id="progress-empty-action">
+     <a class="btn btn-secondary" href="tasks.html">
+      Choose your first exercise
+
+     </a>
+    </div>
+   </section>
+   <template id="leaderboard-row-template">
+    <tr role="row">
+     <th data-field="rank" role="rowheader" scope="row">
+     </th>
+     <td data-field="task-title" role="cell">
+     </td>
+     <td role="cell">
+      <span class="score-pill" data-field="score">
+      </span>
+     </td>
+     <td data-field="attempt-count" role="cell">
+     </td>
+    </tr>
+   </template>
+  </main>
+  <footer class="site-footer" id="site-footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     PromptForge
+     <span>
+      &copy; 2026
+     </span>
+    </a>
+    <nav aria-label="Footer navigation" id="footer-nav">
+     <a href="how-it-works.html">
+      Guide
+     </a>
+     <a href="how-it-works.html#feedback">
+      Feedback
+     </a>
+     <a href="how-it-works.html#privacy-policy">
+      Privacy
+     </a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>

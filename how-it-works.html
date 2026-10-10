@@ -1,510 +1,593 @@
-<!doctype html>
-<html lang="en" data-bs-theme="dark"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How prompt evaluation works in PromptForge — scoring criteria, glossary, and feedback form.">
-    <meta name="author" content="PromptForge team">
-    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
-    <title>How It Works — PromptForge</title>
-    <!-- Bootstrap 5.3.8 CDN; project CSS follows it for brand corrections. -->
-    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/site.css">
-  </head>
-  <body class="how-page d-flex flex-column min-vh-100">
-    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
-      <div class="container-fluid px-3 px-lg-5 flex-wrap">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
-        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
-        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
-          <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Show navigation</span>
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Learn how exercises, scoring and free check limits work in PromptForge." name="description"/>
+  <meta content="#141416" name="theme-color"/>
+  <title>
+   Guide &mdash; PromptForge
+  </title>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
+  <script src="js/theme.js"></script>
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="styles/site.css" rel="stylesheet"/>
+  <script src="js/main.js" type="module">
+  </script>
+ </head>
+ <body class="how-it-works-page">
+  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
+   Skip to content
+  </a>
+  <header class="site-header" id="site-header">
+   <div class="header-inner">
+    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
+     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+    </a>
+    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
+     <div class="nav-links">
+      <a class="nav-link" href="tasks.html" id="nav-tasks">
+       Exercises
+      </a>
+      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
+       Attempt history
+      </a>
+      <a class="nav-link" href="progress.html" id="nav-progress">
+       Progress
+      </a>
+      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
+       Leaderboard
+      </a>
+      <a aria-current="page" class="nav-link active" href="how-it-works.html" id="nav-how-it-works">
+       Guide
+      </a>
+     </div>
+     <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html" id="nav-login">
+       Log in
+      </a>
+      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
+       Create an account
+      </a>
+      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
+       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
+       <span>Profile</span>
+      </a>
+     </div>
+    </nav>
+    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
+     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
+      <path d="M4 6h16M4 12h16M4 18h16">
+      </path>
+     </svg>
+    </button>
+   </div>
+  </header>
+  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  </button>
+  <main class="page-shell" data-page="how-it-works" id="main-content">
+   <header class="page-heading">
+    <div>
+     <h1>
+      How PromptForge works
+     </h1>
+     <p class="page-intro">
+      Exercises, scoring criteria and an example prompt.
+     </p>
+    </div>
+   </header>
+   <nav aria-label="On this page" class="guide-jumps">
+    <a href="#process">
+     Getting started
+    </a>
+    <a href="#criteria">
+     Scoring criteria
+    </a>
+    <a href="#example">
+     Prompt example
+    </a>
+    <a href="#faq">
+     FAQ
+    </a>
+    <a href="#feedback">
+     Feedback
+    </a>
+   </nav>
+   <section class="guide-section" id="process">
+    <div class="section-heading">
+     <h2>
+      Completing an exercise
+     </h2>
+     <a class="text-link" href="tasks.html">
+      Try an exercise
+
+     </a>
+    </div>
+    <div class="workflow-grid">
+     <article>
+      <span class="step-number">
+       01
+      </span>
+      <h3>
+       Read the exercise brief
+      </h3>
+      <p>
+       Understand the task, the source data, and what the answer should contain.
+      </p>
+     </article>
+     <article>
+      <span class="step-number">
+       02
+      </span>
+      <h3>
+       Write a prompt
+      </h3>
+      <p>
+       Specify the AI role, response format and length. Include an example response.
+      </p>
+     </article>
+     <article>
+      <span class="step-number">
+       03
+      </span>
+      <h3>
+       Check and revise
+      </h3>
+      <p>
+       Improve the weakest part of your prompt and compare your next attempt.
+      </p>
+     </article>
+    </div>
+   </section>
+   <section class="guide-section" id="criteria">
+    <div class="section-heading">
+     <div>
+      <h2>
+       Scoring criteria
+      </h2>
+      <p>
+       Each criterion is scored from 0 to 10, then multiplied by its weight.
+      </p>
+     </div>
+    </div>
+    <div class="guide-rubric">
+     <article class="guide-criterion">
+      <div>
+       <h3>
+        AI role
+       </h3>
+       <span>
+        20%
+       </span>
+      </div>
+      <p>
+       Does the prompt assign a clear role to the AI?
+      </p>
+     </article>
+     <article class="guide-criterion">
+      <div>
+       <h3>
+        Response format
+       </h3>
+       <span>
+        25%
+       </span>
+      </div>
+      <p>
+       Is the output format clearly defined?
+      </p>
+     </article>
+     <article class="guide-criterion">
+      <div>
+       <h3>
+        Response length
+       </h3>
+       <span>
+        15%
+       </span>
+      </div>
+      <p>
+       Does the prompt limit the response length?
+      </p>
+     </article>
+     <article class="guide-criterion">
+      <div>
+       <h3>
+        Response examples
+       </h3>
+       <span>
+        20%
+       </span>
+      </div>
+      <p>
+       Does the prompt include at least one example?
+      </p>
+     </article>
+     <article class="guide-criterion">
+      <div>
+       <h3>
+        Tone and style
+       </h3>
+       <span>
+        10%
+       </span>
+      </div>
+      <p>
+       Does the prompt specify the tone and style?
+      </p>
+     </article>
+     <article class="guide-criterion">
+      <div>
+       <h3>
+        Instruction clarity
+       </h3>
+       <span>
+        10%
+       </span>
+      </div>
+      <p>
+       Is the task unambiguous and well-structured?
+      </p>
+     </article>
+    </div>
+    <p class="small text-secondary">
+     The weights sum to 100%. Your final score is out of 10.
+    </p>
+   </section>
+   <section class="guide-section" id="example">
+    <div class="section-heading">
+     <h2>
+      Example prompt
+     </h2>
+     <span class="small text-secondary">
+      Quarterly sales summary
+     </span>
+    </div>
+    <div class="guide-example-grid">
+     <div class="code-window surface">
+      <pre><code></code></pre>
+     </div>
+     <div class="worked-score surface">
+      <span class="eyebrow">
+       Worked example
+      </span>
+      <strong>
+       8.6
+       <span>
+        /10
+       </span>
+      </strong>
+      <p>
+       Illustrative scores, not a live AI result.
+      </p>
+      <div class="score-calculation">
+       <span>
+        Role
+       </span>
+       <span>
+        10 &times; 0.20
+       </span>
+       <span>
+        Format
+       </span>
+       <span>
+        8 &times; 0.25
+       </span>
+       <span>
+        Length
+       </span>
+       <span>
+        6 &times; 0.15
+       </span>
+       <span>
+        Examples
+       </span>
+       <span>
+        10 &times; 0.20
+       </span>
+       <span>
+        Tone
+       </span>
+       <span>
+        8 &times; 0.10
+       </span>
+       <span>
+        Clarity
+       </span>
+       <span>
+        9 &times; 0.10
+       </span>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="guide-section faq-section" id="faq">
+    <div class="section-heading"><h2>Frequently asked questions</h2></div>
+    <details class="disclosure">
+     <summary>When is an exercise mastered?</summary>
+     <p>The three courses group 16 exercises in a suggested order. An exercise is mastered when its best saved score is at least 8/10. A later lower score does not change this status. Deleting the best attempt may change it.</p>
+     <p>AI scores are approximate. Level points include the best result for every checked exercise, including scores below 8/10.</p>
+    </details>
+    <details class="disclosure">
+     <summary>How can I compare attempts?</summary>
+     <p>After two checks of the same exercise, you can compare scores and prompt text. Select two saved attempts to see the differences. Comparison does not use your check allowance.</p>
+    </details>
+    <details class="disclosure">
+     <summary>
+      Can I improve a prompt more than once?
+     </summary>
+     <p>
+      Yes. Revise your prompt and compare the feedback for each attempt.
+     </p>
+    </details>
+    <details class="disclosure">
+     <summary>
+      How are progress points calculated?
+     </summary>
+     <p>
+      Keep the best score for each exercise and add those scores. A later, lower-scoring attempt does not remove points.
+     </p>
+    </details>
+    <details class="disclosure">
+     <summary>
+      When do my free checks reset?
+     </summary>
+     <p>
+      Your 24-hour period starts with your first successful check. Failed checks do not use your allowance.
+     </p>
+    </details>
+    <details class="disclosure">
+     <summary>
+      What does test Pro include?
+     </summary>
+     <p>
+      Unlimited daily checks for 30 days. No payment, no automatic renewal.
+     </p>
+    </details>
+   </section>
+   <details class="surface disclosure guide-section" id="glossary">
+    <summary>
+     Glossary
+    </summary>
+    <dl class="glossary">
+     <div>
+      <dt>
+       Zero-shot
+      </dt>
+      <dd>
+       An instruction without examples of the desired response.
+      </dd>
+     </div>
+     <div>
+      <dt>
+       Few-shot
+      </dt>
+      <dd>
+       An instruction that includes examples to demonstrate the desired format or style.
+      </dd>
+     </div>
+     <div>
+      <dt>
+       System prompt
+      </dt>
+      <dd>
+       An instruction that sets the role, tone, and constraints for an AI conversation.
+      </dd>
+     </div>
+     <div>
+      <dt>
+       Temperature
+      </dt>
+      <dd>
+       A model setting that changes output variability. It is separate from the six criteria used to score a prompt.
+      </dd>
+     </div>
+    </dl>
+   </details>
+   <details class="guide-section disclosure feedback-disclosure" id="feedback">
+    <summary><h2>Feedback</h2></summary>
+    <div class="feedback-section">
+    <div class="feedback-intro">
+     <p>
+      Ask about a task, report a bug, or suggest an improvement.
+     </p>
+     <p class="small text-secondary">
+      Messages are saved on this site. No email or callback is sent.
+     </p>
+    </div>
+    <form class="feedback-form" id="feedback-form" novalidate="">
+     <div class="form-grid">
+      <div class="form-field">
+       <label class="form-label" for="fb-name">
+        Name
+       </label>
+       <input aria-describedby="fb-name-error" aria-invalid="false" autocomplete="name" class="form-control" id="fb-name" name="name" required="" type="text"/>
+       <div class="invalid-feedback" id="fb-name-error">
+       </div>
+      </div>
+      <div class="form-field">
+       <label class="form-label" for="fb-email">
+        Email
+       </label>
+       <input aria-describedby="fb-email-error" aria-invalid="false" autocomplete="email" class="form-control" id="fb-email" name="email" required="" type="email"/>
+       <div class="invalid-feedback" id="fb-email-error">
+       </div>
+      </div>
+     </div>
+     <div class="form-field">
+      <label class="form-label" for="fb-topic">
+       Subject
+      </label>
+      <select aria-describedby="fb-topic-error" aria-invalid="false" class="form-select" id="fb-topic" name="topic">
+       <option value="">
+        &mdash; Select &mdash;
+       </option>
+       <option value="bug">
+        Report a bug
+       </option>
+       <option value="feature">
+        Suggest a feature
+       </option>
+       <option value="task">
+        Question about a task
+       </option>
+       <option value="other">
+        Other
+       </option>
+      </select>
+      <div class="invalid-feedback" id="fb-topic-error">
+      </div>
+     </div>
+     <div class="form-field">
+      <label class="form-label" for="fb-message">
+       Message
+      </label>
+      <textarea aria-describedby="fb-message-error" aria-invalid="false" class="form-control" id="fb-message" maxlength="2000" name="message" required="" rows="3"></textarea>
+      <div class="invalid-feedback" id="fb-message-error">
+      </div>
+     </div>
+     <details class="optional-fields disclosure">
+      <summary>
+       Additional details
+       <span class="text-secondary">
+        Optional
+       </span>
+      </summary>
+      <div class="form-grid">
+       <div class="form-field">
+        <label class="form-label" for="fb-phone">
+         Phone
         </label>
-        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
-          <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-            <li class="nav-item">
-              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-tasks" class="nav-link small fw-medium p-2 text-decoration-none" href="tasks.html">Tasks</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-how-it-works" class="nav-link active small p-2 text-decoration-none fw-semibold" href="how-it-works.html" aria-current="page">How it works</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
-            </li>
-          </ul>
-          <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
-            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none">Register</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <main class="app-layout how-layout-page py-3 py-lg-4 flex-grow-1" id="main-content" data-page="how-it-works">
-      <!-- container centers reading content and caps line length. -->
-      <div class="container">
-        <div class="workspace-heading row align-items-center g-3 border-bottom pb-3 mb-3">
-          <div class="workspace-heading-copy col-12 col-lg">
-            <span class="workspace-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">DOCUMENTATION <span aria-hidden="true">/</span> EVALUATION SYSTEM</span>
-            <h1 class="h3 fw-bold mb-2">How Evaluation Works</h1>
-            <p class="workspace-heading-meta small text-body-secondary mb-0">
-              Understand what happens after submission, how criteria become a score, and where to find feedback.
-            </p>
-          </div>
-          <div class="workspace-status how-status col-12 col-lg-auto ms-lg-auto card rounded-3 shadow-sm p-2 bg-body-tertiary d-flex flex-row flex-wrap align-items-center gap-1">
-            <span class="workspace-status-label small text-body-secondary font-monospace text-uppercase order-0">Evaluation</span>
-            <strong class="order-2 w-100 text-body">6 criteria</strong>
-            <span class="workspace-status-note small text-body-secondary font-monospace text-uppercase order-1 ms-auto text-nowrap">Six criteria</span>
-          </div>
+        <input aria-describedby="fb-phone-error" aria-invalid="false" autocomplete="tel" class="form-control" id="fb-phone" name="phone" type="tel"/>
+        <div class="invalid-feedback" id="fb-phone-error">
         </div>
-        <div class="app-content how-content row g-4">
-          <aside class="app-sidebar how-sidebar vstack gap-3 col-12 col-lg-3 order-2 order-lg-1 align-self-start">
-            <div class="sidebar-section how-nav-panel card rounded-3 p-3 bg-body-tertiary">
-              <div class="sidebar-heading-row d-flex justify-content-between align-items-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">DOCUMENTATION</span>
-                  <h2 class="sidebar-heading h5 fw-semibold mb-0 fw-bold">On this page</h2>
-                </div>
-              </div>
-              <nav aria-label="How evaluation works sections">
-                <ol class="doc-nav numbered-doc-nav list-group list-group-flush" id="how-it-works-list-69">
-                  <li class="list-group-item bg-transparent border-0 px-0 py-1">
-                    <a href="#process" class="active link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-flex align-items-center gap-2 p-2 small text-decoration-none border-start border-primary border-2 fw-semibold" id="how-it-works-link-1">
-                      <span>01</span> Evaluation process</a>
-                  </li>
-                  <li class="list-group-item bg-transparent border-0 px-0 py-1">
-                    <a href="#criteria" id="how-it-works-link-2" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-flex align-items-center gap-2 p-2 small text-decoration-none">
-                      <span>02</span> Scoring criteria</a>
-                  </li>
-                  <li class="list-group-item bg-transparent border-0 px-0 py-1">
-                    <a href="#glossary" id="how-it-works-link-3" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-flex align-items-center gap-2 p-2 small text-decoration-none">
-                      <span>03</span> Glossary</a>
-                  </li>
-                  <li class="list-group-item bg-transparent border-0 px-0 py-1">
-                    <a href="#example" id="how-it-works-link-4" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-flex align-items-center gap-2 p-2 small text-decoration-none">
-                      <span>04</span> Prompt example</a>
-                  </li>
-                  <li class="list-group-item bg-transparent border-0 px-0 py-1">
-                    <a href="#faq" id="how-it-works-link-5" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-flex align-items-center gap-2 p-2 small text-decoration-none">
-                      <span>05</span> FAQ</a>
-                  </li>
-                  <li class="list-group-item bg-transparent border-0 px-0 py-1">
-                    <a href="#feedback" id="how-it-works-link-6" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-flex align-items-center gap-2 p-2 small text-decoration-none">
-                      <span>06</span> Feedback</a>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <div class="sidebar-section how-side-note card rounded-3 p-3 bg-body-tertiary">
-              <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">SUPPORT</span>
-              <p class="sidebar-note-text text-body-secondary small mb-2">Use the message form to describe a task question and review what to do next.</p>
-              <a href="#feedback" class="sidebar-inline-link small link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" id="how-it-works-link-7">Go to feedback form <svg class="icon icon-sm" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5v14"></path>
-                  <path d="m19 12-7 7-7-7"></path>
-                </svg>
-              </a>
-            </div>
-          </aside>
-          <div class="app-main how-main col-12 col-lg-9 order-1 order-lg-2">
-            <section id="process" class="doc-section how-doc-section mb-5">
-              <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">01 / PROCESS</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Evaluation process</h2>
-                </div>
-                <span class="section-meta small text-body-secondary">AFTER SUBMISSION</span>
-              </div>
-              <p class="doc-text section-lead text-body-secondary lead fs-6 mb-3">A complete attempt has a prompt, six criterion scores, a weighted total, and concrete revision advice.</p>
-              <div class="process-list process-timeline vstack gap-2 border-start ps-3">
-                <div class="process-item process-timeline-item d-flex gap-3 border rounded-3 p-2 bg-body-tertiary position-relative" id="step-1">
-                  <span class="process-num badge align-self-start bg-warning-subtle text-warning">01</span>
-                  <div class="process-body vstack gap-1 small">
-                    <strong class="text-body">Draft</strong>
-                    <span class="text-body-secondary lh-base">Read the task and enter a prompt in the workspace.</span>
-                  </div>
-                </div>
-                <div class="process-item process-timeline-item d-flex gap-3 border rounded-3 p-2 bg-body-tertiary position-relative" id="step-2">
-                  <span class="process-num badge align-self-start bg-warning-subtle text-warning">02</span>
-                  <div class="process-body vstack gap-1 small">
-                    <strong class="text-body">Review</strong>
-                    <span class="text-body-secondary lh-base">Check role, format, length, examples, tone, and clarity.</span>
-                  </div>
-                </div>
-                <div class="process-item process-timeline-item d-flex gap-3 border rounded-3 p-2 bg-body-tertiary position-relative" id="step-3">
-                  <span class="process-num badge align-self-start bg-warning-subtle text-warning">03</span>
-                  <div class="process-body vstack gap-1 small">
-                    <strong class="text-body">Score</strong>
-                    <span class="text-body-secondary lh-base">Rate each criterion from 0 to 10 against the task requirements.</span>
-                  </div>
-                </div>
-                <div class="process-item process-timeline-item d-flex gap-3 border rounded-3 p-2 bg-body-tertiary position-relative" id="step-4">
-                  <span class="process-num badge align-self-start bg-warning-subtle text-warning">04</span>
-                  <div class="process-body vstack gap-1 small">
-                    <strong class="text-body">Weight</strong>
-                    <span class="text-body-secondary lh-base">Multiply each criterion score by its fixed rubric weight.</span>
-                  </div>
-                </div>
-                <div class="process-item process-timeline-item d-flex gap-3 border rounded-3 p-2 bg-body-tertiary position-relative" id="step-5">
-                  <span class="process-num badge align-self-start bg-warning-subtle text-warning">05</span>
-                  <div class="process-body vstack gap-1 small">
-                    <strong class="text-body">Total</strong>
-                    <span class="text-body-secondary lh-base">Add the weighted scores. The weights sum to 1.00, so the final score is out of 10.</span>
-                  </div>
-                </div>
-                <div class="process-item process-timeline-item d-flex gap-3 border rounded-3 p-2 bg-body-tertiary position-relative" id="step-6">
-                  <span class="process-num badge align-self-start bg-warning-subtle text-warning">06</span>
-                  <div class="process-body vstack gap-1 small">
-                    <strong class="text-body">Revise</strong>
-                    <span class="text-body-secondary lh-base">Read the criterion feedback, improve your prompt, and compare your next attempt.</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <hr class="doc-divider my-4 opacity-100">
-            <section id="criteria" class="doc-section how-doc-section mb-5">
-              <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">02 / RUBRIC</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Scoring criteria</h2>
-                </div>
-                <span class="section-meta small text-body-secondary">WEIGHTED</span>
-              </div>
-              <p class="doc-text section-lead text-body-secondary lead fs-6 mb-3">Every exercise uses six criteria, each scored from 0 to 10. The weighted average produces the final score out of 10.</p>
-              <div class="table-container criteria-table-container table-responsive border rounded-3 shadow-sm my-3 bg-body-tertiary overflow-y-hidden">
-                <table class="table-dense criteria-rubric criteria-rubric-modern table table-dark table-hover table-sm small align-middle mb-0" id="how-it-works-table">
-                  <caption class="visually-hidden text-body-secondary">Evaluation rubric showing each criterion, what it checks, and example values.</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Criterion</th>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">What it checks</th>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Weight</th>
-                      <th class="d-none d-md-table-cell px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary" scope="col">Example (good)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr data-criterion="role" data-weight="0.20">
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium text-body">Role defined</th>
-                      <td class="px-3 py-3 align-middle">Is there an explicit role for the model?</td>
-                      <td class="mono font-monospace px-3 py-3 align-middle">20%</td>
-                      <td class="d-none d-md-table-cell px-3 py-3 align-middle">
-                        <code class="text-warning">You are a data analyst</code>
-                      </td>
-                    </tr>
-                    <tr data-criterion="format" data-weight="0.25">
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium text-body">Output format</th>
-                      <td class="px-3 py-3 align-middle">Is the response format specified?</td>
-                      <td class="mono font-monospace px-3 py-3 align-middle">25%</td>
-                      <td class="d-none d-md-table-cell px-3 py-3 align-middle">
-                        <code class="text-warning">Format: numbered list</code>
-                      </td>
-                    </tr>
-                    <tr data-criterion="length" data-weight="0.15">
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium text-body">Constraints</th>
-                      <td class="px-3 py-3 align-middle">Are length or content limits set?</td>
-                      <td class="mono font-monospace px-3 py-3 align-middle">15%</td>
-                      <td class="d-none d-md-table-cell px-3 py-3 align-middle">
-                        <code class="text-warning">no more than 150 words</code>
-                      </td>
-                    </tr>
-                    <tr data-criterion="examples" data-weight="0.20">
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium text-body">Examples</th>
-                      <td class="px-3 py-3 align-middle">Are few-shot examples provided?</td>
-                      <td class="mono font-monospace px-3 py-3 align-middle">20%</td>
-                      <td class="d-none d-md-table-cell px-3 py-3 align-middle">
-                        <code class="text-warning">Example: 1. Revenue grew 12%</code>
-                      </td>
-                    </tr>
-                    <tr data-criterion="tone" data-weight="0.10">
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium text-body">Tone</th>
-                      <td class="px-3 py-3 align-middle">Is the communication style defined?</td>
-                      <td class="mono font-monospace px-3 py-3 align-middle">10%</td>
-                      <td class="d-none d-md-table-cell px-3 py-3 align-middle">
-                        <code class="text-warning">Tone: professional, no filler</code>
-                      </td>
-                    </tr>
-                    <tr data-criterion="clarity" data-weight="0.10">
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium text-body">Task clarity</th>
-                      <td class="px-3 py-3 align-middle">Is the main task unambiguous?</td>
-                      <td class="mono font-monospace px-3 py-3 align-middle">10%</td>
-                      <td class="d-none d-md-table-cell px-3 py-3 align-middle">
-                        <code class="text-warning">Write a brief summary</code>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="doc-text section-note text-body-secondary">Use the same rubric when drafting a prompt, reading its result, and comparing attempts.</p>
-            </section>
-            <hr class="doc-divider my-4 opacity-100">
-            <section id="glossary" class="doc-section how-doc-section mb-5">
-              <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">03 / TERMS</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Glossary</h2>
-                </div>
-                <span class="section-meta small text-body-secondary">CORE CONCEPTS</span>
-              </div>
-              <dl class="glossary-dense glossary-modern vstack gap-2">
-                <div class="glossary-entry border rounded-3 p-3 bg-body-tertiary">
-                  <dt class="text-body">Zero-shot</dt>
-                  <dd class="text-body-secondary">An instruction without examples of the desired response.</dd>
-                </div>
-                <div class="glossary-entry border rounded-3 p-3 bg-body-tertiary">
-                  <dt class="text-body">Few-shot</dt>
-                  <dd class="text-body-secondary">An instruction that includes examples to demonstrate the desired format or style.</dd>
-                </div>
-                <div class="glossary-entry border rounded-3 p-3 bg-body-tertiary">
-                  <dt class="text-body">
-                    <abbr title="Chain-of-thought">CoT</abbr>
-                  </dt>
-                  <dd class="text-body-secondary">A step-by-step approach to a task. In these exercises, focus on clear instructions and verifiable results.</dd>
-                </div>
-                <div class="glossary-entry border rounded-3 p-3 bg-body-tertiary">
-                  <dt class="text-body">Temperature</dt>
-                  <dd class="text-body-secondary">A model setting that changes output variability. It is separate from the six criteria used to score a prompt.</dd>
-                </div>
-                <div class="glossary-entry border rounded-3 p-3 bg-body-tertiary">
-                  <dt class="text-body">System prompt</dt>
-                  <dd class="text-body-secondary">An instruction that sets the role, tone, and constraints for an AI conversation.</dd>
-                </div>
-              </dl>
-            </section>
-            <hr class="doc-divider my-4 opacity-100">
-            <section id="example" class="doc-section how-doc-section mb-5">
-              <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">04 / EXAMPLE</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Prompt example</h2>
-                </div>
-                <span class="section-meta mono small text-body-secondary font-monospace">WORKED EXAMPLE</span>
-              </div>
-              <p class="doc-text section-lead text-body-secondary lead fs-6 mb-3">A quality prompt for “Sales data summarization”:</p>
-              <div class="code-window border rounded-3 overflow-hidden my-3">
-                <div class="code-window-topbar d-flex justify-content-between align-items-center gap-2 px-3 py-2 border-bottom bg-body-secondary">
-                  <div class="code-window-file">
-                    <span class="code-window-dot" aria-hidden="true"></span>prompt.txt</div>
-                  <span class="code-window-badge mono font-monospace">6 CRITERIA</span>
-                </div>
-                <pre class="terminal-block p-3 mb-0 small mw-100 overflow-x-auto rounded">                  <code>You are a data analyst. Summarize the Q3 sales table.
-Format: a numbered list of up to five items.
-Tone: professional and concise.
-Length: no more than 150 words.
-Mention the total revenue, the strongest month,
-and the change from August to September.
-Example item: Q3 revenue totals $435,000.</code>
-                </pre>
-              </div>
-              <p class="doc-text section-note text-body-secondary">This example includes a role, a clear task, an output format, a constraint, a tone, and examples — covering all six criteria in the rubric.</p>
-              <div class="table-responsive overflow-y-hidden">
-                <table id="example-score-table" class="table table-dark table-sm">
-                  <caption class="text-body-secondary">Worked calculation using illustrative criterion scores, not an AI verdict.</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Criterion</th>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Weight</th>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Score</th>
-                      <th scope="col" class="px-3 py-2 text-uppercase fw-semibold text-nowrap bg-body-secondary text-body-secondary">Weighted</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium">Role</th>
-                      <td class="px-3 py-3 align-middle">0.20</td>
-                      <td class="px-3 py-3 align-middle">10</td>
-                      <td class="px-3 py-3 align-middle">2.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium">Format</th>
-                      <td class="px-3 py-3 align-middle">0.25</td>
-                      <td class="px-3 py-3 align-middle">8</td>
-                      <td class="px-3 py-3 align-middle">2.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium">Length</th>
-                      <td class="px-3 py-3 align-middle">0.15</td>
-                      <td class="px-3 py-3 align-middle">6</td>
-                      <td class="px-3 py-3 align-middle">0.90</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium">Examples</th>
-                      <td class="px-3 py-3 align-middle">0.20</td>
-                      <td class="px-3 py-3 align-middle">10</td>
-                      <td class="px-3 py-3 align-middle">2.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium">Tone</th>
-                      <td class="px-3 py-3 align-middle">0.10</td>
-                      <td class="px-3 py-3 align-middle">8</td>
-                      <td class="px-3 py-3 align-middle">0.80</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="px-3 py-3 align-middle fw-medium">Clarity</th>
-                      <td class="px-3 py-3 align-middle">0.10</td>
-                      <td class="px-3 py-3 align-middle">9</td>
-                      <td class="px-3 py-3 align-middle">0.90</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th scope="row">Final</th>
-                      <td>1.00</td>
-                      <td colspan="2">8.60 / 10</td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </section>
-            <hr class="doc-divider my-4 opacity-100">
-            <section id="faq" class="doc-section how-doc-section mb-5">
-              <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">05 / FAQ</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Frequently asked</h2>
-                </div>
-                <span class="section-meta small text-body-secondary">COMMON QUESTIONS</span>
-              </div>
-              <div class="faq-list faq-list-modern mb-3">
-                <details class="faq-item border rounded-3 p-3 mb-2" id="how-it-works-details-66">
-                  <summary>Can I improve a prompt more than once?</summary>
-                  <p>Yes. Draft a revision against the same rubric and compare the criterion feedback for each attempt.</p>
-                </details>
-                <details class="faq-item border rounded-3 p-3 mb-2" id="how-it-works-details-67">
-                  <summary>Do I need a particular AI model?</summary>
-                  <p>No. The exercises teach instruction structure and can be drafted without calling an AI service.</p>
-                </details>
-                <details class="faq-item border rounded-3 p-3 mb-2" id="how-it-works-details-68">
-                  <summary>How are progress points calculated?</summary>
-                  <p>Keep the best score for each exercise and add those scores. A later, lower-scoring attempt does not remove points.</p>
-                </details>
-              </div>
-            </section>
-            <hr class="doc-divider my-4 opacity-100">
-            <section id="feedback" class="doc-section how-doc-section mb-5">
-              <div class="section-heading-row d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-3">
-                <div>
-                  <span class="section-eyebrow eyebrow d-block mb-2 font-monospace text-uppercase fw-bold lh-sm text-primary">06 / SUPPORT</span>
-                  <h2 class="workspace-section-title h4 fw-semibold mb-0 fw-bold">Still have questions?</h2>
-                </div>
-                <span class="section-meta small text-body-secondary">MESSAGE SUMMARY</span>
-              </div>
-              <p class="doc-text section-lead text-body-secondary lead fs-6 mb-3">Describe the task and what you need clarified. The message outcome area contains a summary and the next step; you can continue practising on your own.</p>
-              <form id="feedback-form" method="post" action="how-it-works.html" class="form-dense feedback-form-modern mt-3" aria-describedby="feedback-status">
-                <fieldset class="border rounded-3 p-3">
-                  <legend class="float-none w-auto px-2 fs-5">Your message</legend>
-                  <div class="form-grid-2col row g-3">
-                    <div class="form-field col-12 col-md-6">
-                      <label class="form-label" for="fb-name">Name</label>
-                      <input class="form-control" type="text" id="fb-name" name="name" required="" aria-describedby="fb-name-error" aria-invalid="false">
-                      <div class="invalid-feedback" id="fb-name-error"></div>
-                    </div>
-                    <div class="form-field col-12 col-md-6">
-                      <label class="form-label" for="fb-email">Email</label>
-                      <input class="form-control" type="email" id="fb-email" name="email" required="" aria-describedby="fb-email-error" aria-invalid="false">
-                      <div class="invalid-feedback" id="fb-email-error"></div>
-                    </div>
-                    <div class="form-field col-12 col-md-6">
-                      <label class="form-label" for="fb-phone">Phone</label>
-                      <input class="form-control" type="tel" id="fb-phone" name="phone" aria-describedby="fb-phone-error" aria-invalid="false">
-                      <div class="invalid-feedback" id="fb-phone-error"></div>
-                    </div>
-                    <div class="form-field col-12 col-md-6">
-                      <label class="form-label" for="fb-priority">Priority (1–5)</label>
-                      <input class="form-control" type="number" id="fb-priority" name="priority" min="1" max="5" value="3" aria-describedby="fb-priority-error" aria-invalid="false">
-                      <div class="invalid-feedback" id="fb-priority-error"></div>
-                    </div>
-                    <div class="form-field col-12 col-md-6">
-                      <label class="form-label" for="fb-date">Preferred contact date</label>
-                      <input class="form-control" type="date" id="fb-date" name="preferred_date" aria-describedby="fb-date-error" aria-invalid="false">
-                      <div class="invalid-feedback" id="fb-date-error"></div>
-                    </div>
-                    <div class="form-field col-12 col-md-6">
-                      <label class="form-label" for="fb-topic">Subject</label>
-                      <select class="form-select" id="fb-topic" name="topic" aria-describedby="fb-topic-error" aria-invalid="false">
-                        <option value="">— Select —</option>
-                        <option value="bug">Report a bug</option>
-                        <option value="feature">Suggest a feature</option>
-                        <option value="task">Question about a task</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <div class="invalid-feedback" id="fb-topic-error"></div>
-                    </div>
-                  </div>
-                  <div class="form-inline d-flex flex-wrap gap-3 my-3">
-                    <label>
-                      <input class="form-check-input" type="radio" name="urgency" value="low" id="feedback-urgency-low"> Low</label>
-                    <label>
-                      <input class="form-check-input" type="radio" name="urgency" value="medium" checked="" id="feedback-urgency-medium"> Medium</label>
-                    <label>
-                      <input class="form-check-input" type="radio" name="urgency" value="high" id="feedback-urgency-high"> High</label>
-                    <label>
-                      <input class="form-check-input" type="checkbox" name="subscribe" id="feedback-subscribe"> Subscribe to updates</label>
-                  </div>
-                  <div class="form-field col-12">
-                    <label class="form-label" for="fb-message">Message</label>
-                    <textarea class="form-control" id="fb-message" name="message" rows="4" required="" aria-describedby="fb-message-error" aria-invalid="false"></textarea>
-                    <div class="invalid-feedback" id="fb-message-error"></div>
-                  </div>
-                  <div class="form-actions d-flex gap-2 mt-3">
-                    <button class="btn btn-primary fw-semibold" type="button" id="feedback-submit" data-action="prepare-feedback">Review message</button>
-                    <button type="reset" class="btn btn-outline-secondary" id="feedback-reset">Clear</button>
-                  </div>
-                </fieldset>
-                <section class="form-outcome status-panel mt-3 bg-body-tertiary p-3 border rounded" id="feedback-result" aria-labelledby="feedback-result-title">
-                  <h3 class="h6" id="feedback-result-title">What happens next</h3>
-                  <p class="small text-secondary mb-0" id="feedback-status">Review your message summary here, then return to the guide or choose another exercise. Completing an exercise never depends on a reply.</p>
-                  <div class="is-error is-hidden mt-3 alert alert-danger mb-0" id="feedback-error" role="alert"></div>
-                  <div class="is-success is-hidden mt-3 alert alert-success mb-0" id="feedback-success" role="status">
-                    <p class="mb-0">Your message summary is ready.</p>
-                    <a class="btn btn-outline-light btn-sm mt-2" href="tasks.html" id="feedback-continue">Continue practising</a>
-                  </div>
-                </section>
-                <dl id="feedback-summary" class="is-hidden mt-3">
-                  <dt>Subject</dt>
-                  <dd id="feedback-summary-subject"></dd>
-                  <dt>Message</dt>
-                  <dd id="feedback-summary-message"></dd>
-                </dl>
-              </form>
-            </section>
-            <section id="community-guidelines" class="doc-section card p-4 mb-4">
-              <h2 class="h4 fw-bold">Community guidelines</h2>
-              <ul id="how-it-works-list-70">
-                <li>Write your own prompts and explain your choices.</li>
-                <li>Use the rubric to review the instruction, not the person who wrote it.</li>
-                <li>Keep prompts respectful and relevant to the exercise.</li>
-                <li>Use the supplied practice data. Do not include private personal or confidential information.</li>
-                <li>Verify any AI output before relying on it.</li>
-              </ul>
-            </section>
-            <section id="privacy-policy" class="doc-section card p-4 mb-4">
-              <h2 class="h4 fw-bold">Privacy and form data</h2>
-              <p>This HTML/CSS version does not submit registration, sign-in, or feedback fields, and does not write account information to storage. Action buttons are prepared for the later JavaScript assignments. Clear a form to remove the values you typed.</p>
-              <p>Do not put private information in practice prompts. Interface styles and fonts are included with the project, so viewing the site does not require requests to an external asset service.</p>
-            </section>
-          </div>
+       </div>
+       <div class="form-field">
+        <label class="form-label" for="fb-date">
+         Preferred contact date
+        </label>
+        <input aria-describedby="fb-date-error" aria-invalid="false" class="form-control" id="fb-date" name="preferred_date" type="date"/>
+        <div class="invalid-feedback" id="fb-date-error">
         </div>
+       </div>
+       <div class="form-field">
+        <label class="form-label" for="fb-priority">
+         Priority (1&ndash;5)
+        </label>
+        <input aria-describedby="fb-priority-error" aria-invalid="false" class="form-control" id="fb-priority" max="5" min="1" name="priority" type="number" value="3"/>
+        <div class="invalid-feedback" id="fb-priority-error">
+        </div>
+       </div>
       </div>
-    </main>
-    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
-      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
-        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
-        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
-          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
-          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
-          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
-          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
-        </nav>
-      </div>
-    </footer>
-
-
-</body></html>
+      <fieldset class="experience-choice">
+       <legend>
+        Urgency
+       </legend>
+       <div class="radio-chips">
+        <label>
+         <input class="form-check-input" name="urgency" type="radio" value="low"/>
+         <span>
+          Low
+         </span>
+        </label>
+        <label>
+         <input checked="" class="form-check-input" name="urgency" type="radio" value="medium"/>
+         <span>
+          Medium
+         </span>
+        </label>
+        <label>
+         <input class="form-check-input" name="urgency" type="radio" value="high"/>
+         <span>
+          High
+         </span>
+        </label>
+       </div>
+      </fieldset>
+     </details>
+     <div class="form-actions">
+      <button class="btn btn-primary" id="feedback-submit" type="submit">
+       Save message
+      </button>
+      <button class="btn btn-quiet" id="feedback-reset" type="reset">
+       Clear
+      </button>
+     </div>
+     <p class="form-status" id="feedback-status" role="status">
+     </p>
+     <div class="alert alert-danger is-hidden" id="feedback-error" role="alert">
+     </div>
+     <div class="alert alert-success is-hidden" id="feedback-success" role="status">
+     </div>
+     <dl class="is-hidden feedback-summary" id="feedback-summary">
+      <dt>
+       Subject
+      </dt>
+      <dd id="feedback-summary-subject">
+      </dd>
+      <dt>
+       Message
+      </dt>
+      <dd id="feedback-summary-message">
+      </dd>
+     </dl>
+    </form>
+    </div>
+   </details>
+   <details class="disclosure legal-section" id="community-guidelines">
+    <summary>
+     Community guidelines
+    </summary>
+    <ul>
+     <li>
+      Write your own prompts and explain your choices.
+     </li>
+     <li>
+      Keep prompts respectful and relevant to the exercise.
+     </li>
+     <li>
+      Use the supplied practice data. Do not include private personal or confidential information.
+     </li>
+     <li>
+      Verify any AI output before relying on it.
+     </li>
+    </ul>
+   </details>
+   <details class="disclosure legal-section" id="privacy-policy">
+    <summary>
+     Privacy and form data
+    </summary>
+    <p>Leaderboard participation is optional. Joining publishes your display name, level and aggregate results, never your email, prompts or feedback. You can leave in profile settings without losing your private progress.</p>
+    <p>Practice streaks and weekly goals use calendar days in your device’s time zone. The weekly goal starts on Monday. Repeating an already mastered exercise does not count as new mastery.</p>
+    <p>
+     PromptForge stores your profile, saved attempts and feedback messages on its server. Passwords are stored in a protected form. Drafts are saved in your browser and synced to your account when you are logged in. Clearing a form does not delete saved records.
+    </p>
+    <p>
+     When you check a prompt, its text and the exercise brief are sent to OpenAI for evaluation. Do not include personal or confidential information. Feedback messages are saved on the PromptForge server; they do not send an email or request a callback.
+    </p>
+   </details>
+  </main>
+  <footer class="site-footer" id="site-footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     PromptForge
+     <span>
+      &copy; 2026
+     </span>
+    </a>
+    <nav aria-label="Footer navigation" id="footer-nav">
+     <a href="how-it-works.html">
+      Guide
+     </a>
+     <a href="how-it-works.html#feedback">
+      Feedback
+     </a>
+     <a href="how-it-works.html#privacy-policy">
+      Privacy
+     </a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>

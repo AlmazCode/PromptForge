@@ -2,3 +2,10 @@
 tz.md
 project_dump.txt
 dump.py
+.env
+.env.*
+!.env.example
+.data/
+node_modules/
+test-results/
+playwright-report/

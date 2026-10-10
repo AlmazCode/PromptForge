@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">PromptForge — горн</title>
+  <desc id="desc">Живое пламя с вырезанным сообщением и строками текста: промпт рождается в кузнице.</desc>
+  <path fill="#FF6410" fill-rule="evenodd" clip-rule="evenodd" d="M66 5c11 21-2 31 8 41 10-7 15-16 12-29 18 16 28 34 28 54 0 28-21 50-50 50-28 0-50-19-50-45 0-17 9-33 23-45-3 12 1 23 9 29C59 43 49 29 66 5ZM39 66c0-5 4-9 9-9h31c6 0 10 4 10 10v18c0 6-4 10-10 10H61l-15 12V95c-4-1-7-4-7-9V66Z"/>
+  <path fill="#FFB17A" d="M66 5c4 18-8 29-9 39-1 5 0 8 2 12-11-6-13-16-7-28L66 5Z"/>
+  <path fill="#FF914F" d="M27 71c-3 17 4 31 18 39-17-3-27-18-18-39Z"/>
+  <path stroke="#FF914F" stroke-width="5" stroke-linecap="round" d="M50 70h27M50 81h17"/>
+</svg>

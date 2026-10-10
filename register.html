@@ -1,180 +1,267 @@
-<!doctype html>
-<html lang="en" data-bs-theme="dark"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Register a new account on PromptForge — a platform for training prompt engineering skills">
-    <meta name="author" content="PromptForge team">
-    <link rel="icon" type="image/svg+xml" href="src/brand/promptforge-mark.svg">
-    <title>Register — PromptForge</title>
-    <!-- Bootstrap 5.3.8 from jsDelivr; project CSS follows for brand styling. -->
-    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/site.css">
-  </head>
-  <body class="account-page register-page d-flex flex-column min-vh-100">
-    <a class="skip-link visually-hidden-focusable position-fixed top-0 start-0 m-2 p-2 bg-warning text-dark rounded text-decoration-none" id="skip-navigation" href="#main-content">Skip to content</a>
-    <header class="navbar navbar-expand-lg sticky-top site-nav site-header py-0 border-bottom" id="site-header" data-bs-theme="dark">
-      <div class="container-fluid px-3 px-lg-5 flex-wrap">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap py-0" id="nav-brand" href="index.html" aria-label="Prompt Forge home">
-          <img class="brand-mark d-block flex-shrink-0" src="src/brand/promptforge-mark.svg" width="32" height="32" alt="">Prompt Forge</a>
-        <input class="visually-hidden nav-toggle-input" id="navigation-toggle" type="checkbox" aria-controls="primary-nav">
-        <label class="navbar-toggler" for="navigation-toggle" id="navigation-toggle-label">
-          <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Show navigation</span>
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Create an account to save your practice results. Free includes 10 checks per 24 hours." name="description"/>
+  <meta content="#141416" name="theme-color"/>
+  <title>
+   Register &mdash; PromptForge
+  </title>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
+  <script src="js/theme.js"></script>
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="styles/site.css" rel="stylesheet"/>
+  <script src="js/main.js" type="module">
+  </script>
+ </head>
+ <body class="register-page">
+  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
+   Skip to content
+  </a>
+  <header class="site-header" id="site-header">
+   <div class="header-inner">
+    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
+     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+    </a>
+    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
+     <div class="nav-links">
+      <a class="nav-link" href="tasks.html" id="nav-tasks">
+       Exercises
+      </a>
+      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
+       Attempt history
+      </a>
+      <a class="nav-link" href="progress.html" id="nav-progress">
+       Progress
+      </a>
+      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
+       Leaderboard
+      </a>
+      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
+       Guide
+      </a>
+     </div>
+     <div class="nav-actions">
+      <a class="btn btn-quiet" href="login.html" id="nav-login">
+       Log in
+      </a>
+      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
+       Create an account
+      </a>
+      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
+       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
+       <span>Profile</span>
+      </a>
+     </div>
+    </nav>
+    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
+     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
+      <path d="M4 6h16M4 12h16M4 18h16">
+      </path>
+     </svg>
+    </button>
+   </div>
+  </header>
+  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  </button>
+  <main class="page-shell" data-page="register" id="main-content">
+   <section class="auth-layout register-layout">
+    <div class="auth-panel">
+     <header class="page-heading">
+      <div>
+       <h1>
+        Create an account
+       </h1>
+       <p class="page-intro">
+        Save your prompts and results. Free includes 10 checks per 24 hours.
+       </p>
+      </div>
+     </header>
+     <form class="auth-form" id="register-form" novalidate="">
+     <div class="form-field">
+       <label class="form-label" for="register-name">
+        Full name
+       </label>
+       <input aria-describedby="register-name-error" aria-invalid="false" autocomplete="name" class="form-control" id="register-name" name="full_name" required="" type="text"/>
+       <div class="invalid-feedback" id="register-name-error">
+       </div>
+      </div>
+      <div class="form-field">
+       <label class="form-label" for="register-email">
+        Email address
+       </label>
+       <input aria-describedby="register-email-error" aria-invalid="false" autocomplete="email" class="form-control" id="register-email" name="email" required="" type="email"/>
+       <div class="invalid-feedback" id="register-email-error">
+       </div>
+      </div>
+      <div class="form-grid">
+       <div class="form-field">
+        <label class="form-label" for="register-password">
+         Password
         </label>
-        <nav class="navbar-collapse" id="primary-nav" aria-label="Primary navigation">
-          <ul class="navbar-nav mx-lg-auto mb-3 mb-lg-0 gap-lg-1">
-            <li class="nav-item">
-              <a id="nav-home" class="nav-link small fw-medium p-2 text-decoration-none" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-tasks" class="nav-link small fw-medium p-2 text-decoration-none" href="tasks.html">Tasks</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-leaderboard" class="nav-link small fw-medium p-2 text-decoration-none" href="leaderboard.html">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-solutions" class="nav-link small fw-medium p-2 text-decoration-none" href="my-solutions.html">My Solutions</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-how-it-works" class="nav-link small fw-medium p-2 text-decoration-none" href="how-it-works.html">How it works</a>
-            </li>
-            <li class="nav-item">
-              <a id="nav-profile" class="nav-link small fw-medium p-2 text-decoration-none" href="profile.html">Profile</a>
-            </li>
-          </ul>
-          <div class="d-flex gap-2 pb-2 pb-lg-0">
-            <a id="nav-login" href="login.html" class="btn btn-outline-light btn-sm text-decoration-none">Log in</a>
-            <a id="nav-register" href="register.html" class="btn btn-primary btn-sm fw-semibold text-decoration-none" aria-current="page">Register</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <main class="app-layout flex-grow-1 py-4" id="main-content" data-page="register">
-      <div class="container">
-        <div class="auth-heading row align-items-center g-3 border-bottom pb-3 mb-4">
-          <div class="col-12 col-md">
-            <h1 class="display-6 fw-bold mb-1">Create an Account</h1>
-            <span class="text-secondary">Free · No credit card required</span>
-          </div>
-          <div class="col-12 col-md-auto text-md-end">
-            <span class="badge text-bg-secondary d-none d-md-inline-block bg-warning-subtle text-warning border border-warning-subtle">Choose your first exercise</span>
-          </div>
+        <input aria-describedby="register-password-error" aria-invalid="false" autocomplete="new-password" class="form-control" id="register-password" name="password" required="" type="password"/>
+        <div class="invalid-feedback" id="register-password-error">
         </div>
-        <div class="row justify-content-center">
-          <form method="post" action="register.html" class="auth-card col-12 col-lg-8 card p-4 shadow-sm rounded-3" id="register-form" aria-describedby="register-status">
-            <fieldset class="auth-fieldset mb-4 p-3 border-start border-primary border-2 rounded-end">
-              <legend class="fs-5 fw-semibold mb-3 text-body">Account Information</legend>
-              <div class="row g-3 mb-3">
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-name">Full Name *</label>
-                  <input class="form-control rounded" type="text" id="register-name" name="full_name" required="" autocomplete="name" aria-describedby="register-name-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-name-error"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-email">Email Address *</label>
-                  <input class="form-control rounded" type="email" id="register-email" name="email" required="" autocomplete="email" aria-describedby="register-email-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-email-error"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-tel">Phone Number</label>
-                  <input class="form-control rounded" type="tel" id="register-tel" name="phone" placeholder="+7 700 123 45 67" autocomplete="tel" aria-describedby="register-tel-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-tel-error"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-experience">Experience (years)</label>
-                  <input class="form-control rounded" type="number" id="register-experience" name="experience_years" min="0" max="100" aria-describedby="register-experience-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-experience-error"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-birthdate">Date of Birth</label>
-                  <input class="form-control rounded" type="date" id="register-birthdate" name="birth_date" autocomplete="bday" aria-describedby="register-birthdate-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-birthdate-error"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-interest">Area of Interest *</label>
-                  <select class="form-select rounded" id="register-interest" name="interest_area" required="" aria-describedby="register-interest-error" aria-invalid="false">
-                    <option value="">— Select —</option>
-                    <option value="copywriting">Copywriting</option>
-                    <option value="data">Data Analysis</option>
-                    <option value="dev">Development</option>
-                    <option value="education">Education</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <div class="invalid-feedback" id="register-interest-error"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-password">Password *</label>
-                  <input class="form-control rounded" id="register-password" type="password" name="password" autocomplete="new-password" minlength="8" required="" aria-describedby="register-password-help register-password-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-password-error"></div>
-                  <p id="register-password-help" class="form-text">Use at least 8 characters.</p>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="form-label small fw-semibold" for="register-password-confirm">Confirm password *</label>
-                  <input class="form-control rounded" id="register-password-confirm" type="password" name="password_confirm" autocomplete="new-password" minlength="8" required="" aria-describedby="register-password-confirm-error" aria-invalid="false">
-                  <div class="invalid-feedback" id="register-password-confirm-error"></div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label small fw-semibold" for="register-about">About You</label>
-                <textarea class="form-control rounded" id="register-about" name="bio" rows="3" placeholder="Tell us why PromptForge interests you..." aria-describedby="register-about-error" aria-invalid="false"></textarea>
-                <div class="invalid-feedback" id="register-about-error"></div>
-              </div>
-              <div class="auth-levels d-flex flex-wrap gap-3 px-3 py-2 bg-body border rounded-3">
-                <label class="form-check-label small lh-base">
-                  <input class="form-check-input me-1" type="radio" name="level" value="beginner" required="" id="register-level-beginner"> Beginner</label>
-                <label class="form-check-label small lh-base">
-                  <input class="form-check-input me-1" type="radio" name="level" value="intermediate" id="register-level-intermediate"> Intermediate</label>
-                <label class="form-check-label small lh-base">
-                  <input class="form-check-input me-1" type="radio" name="level" value="advanced" id="register-level-advanced"> Advanced</label>
-              </div>
-            </fieldset>
-            <fieldset class="auth-fieldset mb-4 p-3 border-start border-primary border-2 rounded-end">
-              <legend class="fs-5 fw-semibold mb-3 text-body">Agreements</legend>
-              <div class="auth-agreements d-flex flex-column gap-2">
-                <label class="small lh-base">
-                  <input class="form-check-input me-1" type="checkbox" name="accept_rules" required="" id="register-accept-rules">
-                                I agree with the <a href="how-it-works.html#community-guidelines" id="register-link-1" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">community guidelines</a> and understand that <abbr title="Artificial Intelligence">AI</abbr> can make mistakes
-                            </label>
-                <label class="small lh-base">
-                  <input class="form-check-input me-1" type="checkbox" name="accept_privacy" required="" id="register-accept-privacy">
-                                I accept the <a id="register-privacy-link" href="how-it-works.html#privacy-policy" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">privacy policy</a>
-                </label>
-                <label class="small lh-base">
-                  <input class="form-check-input me-1" type="checkbox" name="subscribe_newsletter" id="register-subscribe-newsletter">
-                                Subscribe to weekly task updates
-                            </label>
-              </div>
-            </fieldset>
-            <div class="auth-actions d-flex flex-wrap gap-2 pt-3 border-top">
-              <button type="button" class="btn btn-primary btn-lg fw-semibold fs-6 fw-bold" id="register-submit" data-action="register">Register</button>
-              <button type="reset" class="btn btn-outline-light" id="register-reset">Clear</button>
-            </div>
-            <section class="form-outcome status-panel mt-3 bg-body-tertiary p-3 border rounded" id="register-result" aria-labelledby="register-result-title">
-              <h2 class="h6 fw-bold" id="register-result-title">What happens next</h2>
-              <p class="small text-secondary mb-0" id="register-status">After registration, review your profile and choose an exercise. Your confirmation and any field errors appear in this area.</p>
-              <div class="is-error is-hidden mt-3 alert alert-danger mb-0" id="register-error" role="alert"></div>
-              <div class="is-success is-hidden mt-3 alert alert-success mb-0" id="register-success" role="status">
-                <p class="mb-0">Your account details are ready.</p>
-                <a class="btn btn-outline-light btn-sm mt-2" href="profile.html" id="register-continue">Open profile</a>
-              </div>
-            </section>
-          </form>
-          <p class="col-12 text-center text-secondary small mt-3">Already have an account? <a href="login.html" id="register-link-2" class="link-warning link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Log in</a>
-          </p>
+       </div>
+       <div class="form-field">
+        <label class="form-label" for="register-password-confirm">
+         Confirm password
+        </label>
+        <input aria-describedby="register-password-confirm-error" aria-invalid="false" autocomplete="new-password" class="form-control" id="register-password-confirm" name="password_confirm" required="" type="password"/>
+        <div class="invalid-feedback" id="register-password-confirm-error">
         </div>
+       </div>
       </div>
-    </main>
-    <footer class="footer-compact border-top py-4 mt-auto bg-body" id="site-footer">
-      <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
-        <p class="small text-secondary mb-0 text-center">© 2026 Prompt Forge. Practice clear instructions.</p>
-        <nav class="d-flex flex-wrap gap-3 small" aria-label="Footer navigation" id="footer-nav">
-          <a id="footer-tasks" href="tasks.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Tasks</a>
-          <a id="footer-guide" href="how-it-works.html" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Guide</a>
-          <a id="footer-rules" href="how-it-works.html#community-guidelines" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Rules</a>
-          <a id="footer-privacy" href="how-it-works.html#privacy-policy" class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Privacy</a>
-        </nav>
+      <p class="form-text" id="register-password-help">
+      </p>
+      <div class="form-field">
+       <label class="form-label" for="register-interest">
+        What would you like to practise?
+       </label>
+       <select aria-describedby="register-interest-error" aria-invalid="false" class="form-select" id="register-interest" name="interest_area" required="">
+        <option value="">
+         &mdash; Select &mdash;
+        </option>
+       </select>
+       <div class="invalid-feedback" id="register-interest-error">
+       </div>
       </div>
-    </footer>
-
-
-</body></html>
+      <fieldset class="experience-choice">
+       <legend>
+        Your level
+       </legend>
+       <div class="radio-chips">
+        <label>
+         <input checked="" class="form-check-input" id="register-level-beginner" name="level" type="radio" value="beginner"/>
+         <span>
+          Beginner
+         </span>
+        </label>
+        <label>
+         <input class="form-check-input" id="register-level-intermediate" name="level" type="radio" value="intermediate"/>
+         <span>
+          Intermediate
+         </span>
+        </label>
+        <label>
+         <input class="form-check-input" id="register-level-advanced" name="level" type="radio" value="advanced"/>
+         <span>
+          Advanced
+         </span>
+        </label>
+       </div>
+      </fieldset>
+      <details class="optional-fields disclosure">
+       <summary>
+        More about you
+        <span class="text-secondary">
+         Optional
+        </span>
+       </summary>
+       <div class="form-grid">
+        <div class="form-field">
+         <label class="form-label" for="register-tel">
+          Phone number
+         </label>
+         <input aria-describedby="register-tel-error" aria-invalid="false" autocomplete="tel" class="form-control" id="register-tel" name="phone" type="tel"/>
+         <div class="invalid-feedback" id="register-tel-error">
+         </div>
+        </div>
+        <div class="form-field">
+         <label class="form-label" for="register-birthdate">
+          Date of birth
+         </label>
+         <input aria-describedby="register-birthdate-error" aria-invalid="false" autocomplete="bday" class="form-control" id="register-birthdate" name="birth_date" type="date"/>
+         <div class="invalid-feedback" id="register-birthdate-error">
+         </div>
+        </div>
+        <div class="form-field">
+         <label class="form-label" for="register-experience">
+          Experience (years)
+         </label>
+         <input aria-describedby="register-experience-error" aria-invalid="false" class="form-control" id="register-experience" max="100" min="0" name="experience_years" type="number"/>
+         <div class="invalid-feedback" id="register-experience-error">
+         </div>
+        </div>
+       </div>
+       <div class="form-field">
+        <label class="form-label" for="register-about">
+         About you
+        </label>
+        <textarea aria-describedby="register-about-error" aria-invalid="false" class="form-control" id="register-about" maxlength="1000" name="bio" rows="3"></textarea>
+        <div class="invalid-feedback" id="register-about-error">
+        </div>
+       </div>
+      </details>
+      <div class="registration-ranking">
+       <label class="ranking-choice"><input class="form-check-input" type="checkbox" name="leaderboard_visible" id="register-ranking-visible" aria-describedby="register-ranking-help"/><span>Show my name and results in the leaderboard</span></label>
+       <p class="small text-secondary" id="register-ranking-help">Optional. Only your display name, level and aggregate scores are public.</p>
+      </div>
+      <div class="auth-agreements">
+       <label>
+        <input class="form-check-input" id="register-accept-rules" name="accept_rules" required="" type="checkbox"/>
+        <span>
+         I agree to the
+         <a href="how-it-works.html#community-guidelines" target="_blank" rel="noopener">
+          community guidelines
+          <span class="visually-hidden">(opens in a new tab)</span>
+         </a>
+        </span>
+       </label>
+       <label>
+        <input class="form-check-input" id="register-accept-privacy" name="accept_privacy" required="" type="checkbox"/>
+        <span>
+         I accept the
+         <a href="how-it-works.html#privacy-policy" target="_blank" rel="noopener">
+          privacy policy
+          <span class="visually-hidden">(opens in a new tab)</span>
+         </a>
+        </span>
+       </label>
+      </div>
+      <button class="btn btn-primary w-100" id="register-submit" type="submit">
+       Register
+      </button>
+      <p class="form-status" id="register-status" role="status">
+      </p>
+      <div class="alert alert-danger is-hidden" id="register-error" role="alert">
+      </div>
+      <div class="alert alert-success is-hidden" id="register-success" role="status">
+      </div>
+      <p class="auth-switch">
+       <span>
+        Already have an account?
+       </span>
+       <a href="login.html" id="register-link-2">
+        Log in
+       </a>
+      </p>
+     </form>
+    </div>
+   </section>
+  </main>
+  <footer class="site-footer" id="site-footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     PromptForge
+     <span>
+      &copy; 2026
+     </span>
+    </a>
+    <nav aria-label="Footer navigation" id="footer-nav">
+     <a href="how-it-works.html">
+      Guide
+     </a>
+     <a href="how-it-works.html#feedback">
+      Feedback
+     </a>
+     <a href="how-it-works.html#privacy-policy">
+      Privacy
+     </a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>
