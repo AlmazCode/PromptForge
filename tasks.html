@@ -2,152 +2,227 @@
 <html data-bs-theme="dark" lang="en">
  <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta content="Choose from 16 prompt writing exercises. Filter by topic, difficulty and progress." name="description"/>
-  <meta content="#141416" name="theme-color"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Browse all prompt engineering training tasks — filter by category, difficulty, and topic." name="description"/>
+  <meta content="PromptForge team" name="author"/>
   <title>
-   Exercises — PromptForge
+   Tasks — PromptForge
   </title>
-  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
-  <script src="js/theme.js"></script>
+
   <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
   <link href="styles/site.css" rel="stylesheet"/>
-  <script src="js/main.js" type="module">
-  </script>
  </head>
- <body class="tasks-page">
-  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
-   Skip to content
+ <body class="tasks-page d-flex flex-column min-vh-100 bg-body-tertiary" data-bs-theme="dark">
+  <a class="skip-link visually-hidden-focusable position-absolute p-3 bg-body" href="#main-content" id="skip-navigation">
+   Skip to main content
   </a>
-  <header class="site-header" id="site-header">
-   <div class="header-inner">
-    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
-     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
-     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+  <header class="app-header-bar navbar navbar-expand-xl sticky-top border-bottom bg-body py-3 z-3" id="site-header">
+   <div class="container-fluid px-3 px-lg-4 px-xl-5 flex-wrap gap-3">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap me-0" href="index.html" id="nav-brand">
+     <img alt="" class="brand-mark" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     PromptForge
     </a>
-    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
-     <div class="nav-links">
-      <a aria-current="page" class="nav-link active" href="tasks.html" id="nav-tasks">
-       Exercises
+    <nav aria-label="Primary navigation" class="primary-nav col-12 col-xl order-3 order-xl-2 flex-column flex-xl-row align-items-xl-center gap-3 pt-3 pt-xl-0 d-xl-flex d-flex" id="primary-nav">
+     <ul class="navbar-nav mx-xl-auto gap-xl-2">
+      <li class="nav-item">
+       <a aria-current="page" class="nav-link small p-2 text-decoration-none active text-body-emphasis" href="tasks.html" id="nav-tasks">
+        Exercises
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="my-solutions.html" id="nav-solutions">
+        Attempts
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="leaderboard.html" id="nav-leaderboard">
+        Leaderboard
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="how-it-works.html" id="nav-how-it-works">
+        Guide
+       </a>
+      </li>
+     </ul>
+     <div class="d-flex flex-wrap gap-2 align-items-center">
+      <a class="btn btn-quiet btn-outline-light btn-sm border-0 text-body-secondary" href="login.html" id="nav-login">
+       Login demo
       </a>
-      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
-       Attempt history
+      <a class="btn btn-primary btn-sm px-3 py-2 rounded-3" href="register.html" id="nav-register">
+       Create demo profile
       </a>
-      <a class="nav-link" href="progress.html" id="nav-progress">
-       Progress
-      </a>
-      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
-       Leaderboard
-      </a>
-      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
-       Guide
-      </a>
-     </div>
-     <div class="nav-actions">
-      <a class="btn btn-quiet" href="login.html" id="nav-login">
-       Log in
-      </a>
-      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
-       Create an account
-      </a>
-      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
-       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
-       <span>Profile</span>
+      <a class="btn btn-outline-light btn-sm" href="profile.html" id="nav-profile">
+       Profile
       </a>
      </div>
     </nav>
-    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
-     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
-      <path d="M4 6h16M4 12h16M4 18h16">
-      </path>
-     </svg>
-    </button>
+    <div class="header-tools d-flex align-items-center gap-2 ms-auto order-2 order-xl-3">
+     <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="btn btn-outline-light rounded-3 p-2 d-xl-none" id="navigation-toggle" type="button">
+      <span aria-hidden="true" class="navbar-toggler-icon">
+      </span>
+     </button>
+    </div>
    </div>
   </header>
-  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  <button aria-label="Close navigation" class="position-fixed top-0 start-0 w-100 h-100 bg-dark opacity-50 border-0 z-2" hidden="" id="nav-backdrop" tabindex="-1" type="button">
   </button>
-  <main class="page-shell" data-page="tasks" id="main-content">
-   <header class="page-heading">
-    <div>
-     <h1>
-      Exercises
-     </h1>
-     <p class="page-intro">
-      Search by topic or choose a category.
-     </p>
-    </div>
+  <main class="container col-xl-11 col-xxl-10 flex-grow-1 px-3 px-md-4 py-4 py-lg-5" data-page="tasks" id="main-content" tabindex="-1">
+   <div class="alert alert-danger is-hidden" id="app-status" role="alert">
+   </div>
+   <header class="page-heading mb-4">
+    <h1 class="fw-bold mb-2">
+     Exercises
+    </h1>
+    <p class="text-body-secondary">
+     Search and filter the 16 exercises. Cards are generated from a JavaScript array.
+    </p>
    </header>
-   <section class="learning-routes catalog-courses" id="learning-routes" aria-label="Courses">
-    <details class="disclosure" id="catalog-courses">
-     <summary>Choose a course</summary>
-     <p class="mastery-note">Complete exercises in order or choose any topic. A best saved score of at least 8/10 marks an exercise as mastered.</p>
-     <div class="route-grid" id="catalog-routes"></div>
-     <button class="btn btn-quiet btn-sm" type="button" id="catalog-all-routes" aria-pressed="true">All exercises</button>
-    </details>
-    <div class="route-context is-hidden" id="route-context"></div>
-   </section>
-   <section aria-label="Exercise filters" class="catalog-controls">
-     <div class="search-field">
-      <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="20">
-       <circle cx="10.5" cy="10.5" r="6.5">
-       </circle>
-       <path d="m16 16 4 4">
-       </path>
-      </svg>
-      <label class="visually-hidden" for="task-search">
-       Search exercises
-      </label>
-      <input class="form-control" id="task-search" placeholder="Search by title or topic" type="search"/>
-     </div>
-    <div class="catalog-filter-grid">
-     <div><label class="form-label" for="catalog-category">Category</label><select class="form-select" id="catalog-category"><option value="all">All skills</option><option value="copywriting">Copywriting</option><option value="data-analysis">Data analysis</option><option value="code-generation">Code generation</option><option value="system-design">System design</option><option value="translation">Translation</option><option value="summarization">Summarization</option><option value="brainstorming">Brainstorming</option><option value="extraction">Extraction</option><option value="role-play">Role-play</option></select></div>
-     <div><label class="form-label" for="catalog-difficulty">Difficulty</label><select class="form-select" id="catalog-difficulty"><option value="all">All levels</option><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></div>
-     <div><label class="form-label" for="catalog-status">Status</label><select class="form-select" id="catalog-status"><option value="all">All statuses</option><option value="available">Not started</option><option value="active">Draft in progress</option><option value="solved">Checked</option><option value="needs-work">Needs revision</option><option value="mastered">Mastered</option></select></div>
-     <div><label class="form-label" for="catalog-sort">Sort order</label><select class="form-select" id="catalog-sort"><option value="catalog">Recommended order</option><option value="title">Title A–Z</option><option value="difficulty-asc">Easiest first</option><option value="difficulty-desc">Hardest first</option></select></div>
+   <label class="form-label" for="task-search">
+    Search exercises
+   </label>
+   <input class="form-control mb-3" id="task-search" placeholder="Try: LinkedIn or sales" type="search"/>
+   <div class="row g-3 mb-3">
+    <div class="col-6 col-lg-3">
+     <label class="form-label" for="catalog-category">
+      Topic
+     </label>
+     <select class="form-select" id="catalog-category">
+      <option value="all">
+       All topics
+      </option>
+      <option value="copywriting">
+       Copywriting
+      </option>
+      <option value="data-analysis">
+       Data analysis
+      </option>
+      <option value="code-generation">
+       Code generation
+      </option>
+      <option value="system-design">
+       System design
+      </option>
+      <option value="translation">
+       Translation
+      </option>
+      <option value="summarization">
+       Summarization
+      </option>
+      <option value="brainstorming">
+       Brainstorming
+      </option>
+      <option value="extraction">
+       Extraction
+      </option>
+      <option value="role-play">
+       Role play
+      </option>
+     </select>
     </div>
-    <button class="btn btn-quiet btn-sm" data-action="clear-filters" id="clear-filters" type="button">Clear filters</button>
-   </section>
-   <div class="catalog-result-line">
-    <p aria-live="polite" id="catalog-results-status" role="status">
-    </p>
-    <p class="text-secondary" id="filters-summary">
-    </p>
+    <div class="col-6 col-lg-3">
+     <label class="form-label" for="catalog-difficulty">
+      Difficulty
+     </label>
+     <select class="form-select" id="catalog-difficulty">
+      <option value="all">
+       All levels
+      </option>
+      <option value="beginner">
+       Beginner
+      </option>
+      <option value="intermediate">
+       Intermediate
+      </option>
+      <option value="advanced">
+       Advanced
+      </option>
+     </select>
+    </div>
+    <div class="col-6 col-lg-3">
+     <label class="form-label" for="catalog-status">
+      Progress
+     </label>
+     <select class="form-select" id="catalog-status">
+      <option value="all">
+       All exercises
+      </option>
+      <option value="available">
+       Not checked
+      </option>
+      <option value="solved">
+       Checked
+      </option>
+     </select>
+    </div>
+    <div class="col-6 col-lg-3">
+     <label class="form-label" for="catalog-sort">
+      Sort
+     </label>
+     <select class="form-select" id="catalog-sort">
+      <option value="catalog">
+       Catalog order
+      </option>
+      <option value="title">
+       Title
+      </option>
+      <option value="difficulty-asc">
+       Easiest first
+      </option>
+      <option value="difficulty-desc">
+       Hardest first
+      </option>
+     </select>
+    </div>
    </div>
-   <div class="catalog-grid" id="task-grid">
-   </div>
-   <section class="empty-state is-hidden" id="catalog-empty" role="status">
-
-    <h2>
-     No matching exercises
-    </h2>
-    <p>
-     Try another skill area or clear your filters.
+   <div class="d-flex justify-content-between gap-3 mb-3">
+    <p class="small text-body-secondary" id="catalog-results-status" role="status">
     </p>
-    <button class="btn btn-secondary" data-action="clear-filters" id="catalog-empty-reset" type="button">
-     Show all exercises
+    <button class="btn btn-outline-light btn-sm" data-action="clear-filters" type="button">
+     Clear filters
     </button>
-   </section>
+   </div>
+   <div class="row row-cols-1 row-cols-md-2 g-4" id="task-grid">
+   </div>
+   <p class="alert alert-secondary is-hidden" id="catalog-empty">
+    No matching exercises. Try another filter.
+   </p>
   </main>
-  <footer class="site-footer" id="site-footer">
-   <div class="footer-inner">
-    <a class="footer-brand" href="index.html">
-     PromptForge
-     <span>
-      &copy; 2026
-     </span>
-    </a>
-    <nav aria-label="Footer navigation" id="footer-nav">
-     <a href="how-it-works.html">
-      Guide
-     </a>
-     <a href="how-it-works.html#feedback">
-      Feedback
-     </a>
-     <a href="how-it-works.html#privacy-policy">
-      Privacy
-     </a>
-    </nav>
+  <footer class="footer-compact border-top py-4 mt-auto" id="site-footer">
+   <div class="container col-xl-11 col-xxl-10 px-3 px-md-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+     <p class="small text-body-secondary mb-0">
+      © 2026 PromptForge · Browser practice demonstration
+     </p>
+     <nav aria-label="Footer navigation" class="d-flex flex-wrap gap-3 small" id="footer-nav">
+      <a class="text-link link-offset-2 link-body-emphasis" href="tasks.html">
+       Exercises
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="leaderboard.html">
+       Best results
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html">
+       Guide
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html#feedback">
+       Feedback demo
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html#privacy-policy">
+       Browser data
+      </a>
+     </nav>
+    </div>
+    <aside aria-label="Demonstration information" class="border-top pt-3 mt-3" id="demo-notice">
+     <p class="small text-body-secondary mb-0">
+      Local learning demonstration. No real authentication, AI requests, payments or messages.
+     </p>
+    </aside>
    </div>
   </footer>
+  <script crossorigin="anonymous" defer="" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+  <script defer="" src="js/main.js" type="module">
+  </script>
  </body>
 </html>

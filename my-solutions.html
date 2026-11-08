@@ -2,220 +2,142 @@
 <html data-bs-theme="dark" lang="en">
  <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta content="Find saved attempts, compare results and revise your prompts." name="description"/>
-  <meta content="#141416" name="theme-color"/>
-  <title>
-   Attempt history — PromptForge
-  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Your solved tasks — history of attempts, scores, and improvement tips on PromptForge." name="description"/>
+  <meta content="PromptForge team" name="author"/>
   <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
-  <script src="js/theme.js"></script>
+  <title>
+   My Solutions — PromptForge
+  </title>
+
   <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
   <link href="styles/site.css" rel="stylesheet"/>
-  <script src="js/main.js" type="module">
-  </script>
  </head>
- <body class="my-solutions-page">
-  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
-   Skip to content
+ <body class="solutions-page d-flex flex-column min-vh-100 bg-body-tertiary" data-bs-theme="dark">
+  <a class="skip-link visually-hidden-focusable position-absolute p-3 bg-body" href="#main-content" id="skip-navigation">
+   Skip to main content
   </a>
-  <header class="site-header" id="site-header">
-   <div class="header-inner">
-    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
-     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
-     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+  <header class="app-header-bar navbar navbar-expand-xl sticky-top border-bottom bg-body py-3 z-3" id="site-header">
+   <div class="container-fluid px-3 px-lg-4 px-xl-5 flex-wrap gap-3">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap me-0" href="index.html" id="nav-brand">
+     <img alt="" class="brand-mark" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     PromptForge
     </a>
-    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
-     <div class="nav-links">
-      <a class="nav-link" href="tasks.html" id="nav-tasks">
-       Exercises
+    <nav aria-label="Primary navigation" class="primary-nav col-12 col-xl order-3 order-xl-2 flex-column flex-xl-row align-items-xl-center gap-3 pt-3 pt-xl-0 d-xl-flex d-flex" id="primary-nav">
+     <ul class="navbar-nav mx-xl-auto gap-xl-2">
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="tasks.html" id="nav-tasks">
+        Exercises
+       </a>
+      </li>
+      <li class="nav-item">
+       <a aria-current="page" class="nav-link small p-2 text-decoration-none active text-body-emphasis" href="my-solutions.html" id="nav-solutions">
+        Attempts
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="leaderboard.html" id="nav-leaderboard">
+        Leaderboard
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="how-it-works.html" id="nav-how-it-works">
+        Guide
+       </a>
+      </li>
+     </ul>
+     <div class="d-flex flex-wrap gap-2 align-items-center">
+      <a class="btn btn-quiet btn-outline-light btn-sm border-0 text-body-secondary" href="login.html" id="nav-login">
+       Login demo
       </a>
-      <a aria-current="page" class="nav-link active" href="my-solutions.html" id="nav-solutions">
-       Attempt history
+      <a class="btn btn-primary btn-sm px-3 py-2 rounded-3" href="register.html" id="nav-register">
+       Create demo profile
       </a>
-      <a class="nav-link" href="progress.html" id="nav-progress">
-       Progress
-      </a>
-      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
-       Leaderboard
-      </a>
-      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
-       Guide
-      </a>
-     </div>
-     <div class="nav-actions">
-      <a class="btn btn-quiet" href="login.html" id="nav-login">
-       Log in
-      </a>
-      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
-       Create an account
-      </a>
-      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
-       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
-       <span>Profile</span>
+      <a class="btn btn-outline-light btn-sm" href="profile.html" id="nav-profile">
+       Profile
       </a>
      </div>
     </nav>
-    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
-     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
-      <path d="M4 6h16M4 12h16M4 18h16">
-      </path>
-     </svg>
-    </button>
+    <div class="header-tools d-flex align-items-center gap-2 ms-auto order-2 order-xl-3">
+     <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="btn btn-outline-light rounded-3 p-2 d-xl-none" id="navigation-toggle" type="button">
+      <span aria-hidden="true" class="navbar-toggler-icon">
+      </span>
+     </button>
+    </div>
    </div>
   </header>
-  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  <button aria-label="Close navigation" class="position-fixed top-0 start-0 w-100 h-100 bg-dark opacity-50 border-0 z-2" hidden="" id="nav-backdrop" tabindex="-1" type="button">
   </button>
-  <main class="page-shell" data-page="my-solutions" id="main-content">
-   <header class="page-heading">
-    <div>
-     <h1>
-      Attempt history
-     </h1>
-     <p class="page-intro">
-      Review, revise or delete your saved attempts.
-     </p>
-    </div>
-    <a class="btn btn-primary" href="tasks.html">
-     New attempt
-    </a>
-   </header>
-   <div class="metrics-row">
-    <div>
-     <span class="metric-label">
-      Exercises checked
-     </span>
-     <strong id="solutions-solved-count">
-      0
-     </strong>
-    </div>
-    <div>
-     <span class="metric-label">
-      Average score
-     </span>
-     <strong id="solutions-average-score">
-      0
-     </strong>
-    </div>
-    <div>
-     <span class="metric-label">
-      Best score
-     </span>
-     <strong id="solutions-best-score">
-      0
-     </strong>
-    </div>
-    <div>
-     <span class="metric-label">
-      In progress
-     </span>
-     <strong id="solutions-active-count">
-      0
-     </strong>
-    </div>
+  <main class="container col-xl-11 col-xxl-10 flex-grow-1 px-3 px-md-4 py-4 py-lg-5" data-page="my-solutions" id="main-content" tabindex="-1">
+   <div class="alert alert-danger is-hidden" id="app-status" role="alert">
    </div>
-   <section class="section-panel" id="solutions-history">
-    <div class="section-heading">
-     <h2>
-      Recent attempts
-     </h2>
-     <span class="count-badge" id="solutions-attempt-count">
-     </span>
-    </div>
-    <div id="solutions-controls-slot">
-    </div>
-    <div class="history-table-wrap">
-     <table class="table history-table" id="solutions-table" role="table">
-      <thead role="rowgroup">
-       <tr role="row">
-        <th role="columnheader" scope="col">
-         Exercise
-        </th>
-        <th role="columnheader" scope="col">
-         Date
-        </th>
-        <th role="columnheader" scope="col">
-         Score
-        </th>
-        <th role="columnheader" scope="col">
-         Actions
-        </th>
-       </tr>
-      </thead>
-      <tbody id="solutions-body" role="rowgroup">
-      </tbody>
-     </table>
-    </div>
-    <p class="small text-secondary record-count" id="solutions-record-count" role="status">
+   <header class="page-heading mb-4">
+    <h1 class="fw-bold mb-2">
+     Saved attempts
+    </h1>
+    <p class="text-body-secondary">
+     Review or delete prompt attempts stored in this browser.
     </p>
-   </section>
-   <section class="revision-section" id="solutions-tips">
-    <div class="section-heading">
-     <h2>
-      What to improve next
-     </h2>
-     <span class="count-badge" id="solutions-tip-count">
-      0
-     </span>
-    </div>
-    <div class="text-secondary" id="solutions-tips-empty">
-     <p>
-      Feedback will appear here after your first check.
-     </p>
-    </div>
-    <div class="revision-grid is-hidden" id="solutions-tips-list">
-    </div>
-   </section>
-   <template id="solution-row-template">
-    <tr role="row">
-     <th data-field="task-title" role="rowheader" scope="row">
-     </th>
-     <td data-field="date" role="cell">
-     </td>
-     <td role="cell">
-      <span class="score-pill" data-field="score">
-      </span>
-     </td>
-     <td class="row-actions">
-      <a class="btn btn-secondary btn-sm" data-field="task-link" href="task.html">
-       Open attempt
-      </a>
-     </td>
-    </tr>
-   </template>
-   <template id="solution-tip-template">
-    <article class="surface revision-card">
-     <h3 data-field="task-title">
-     </h3>
-     <p class="text-secondary" data-field="feedback">
-     </p>
-     <a class="text-link" data-field="task-link" href="task.html">
-      Revise your prompt
-
-     </a>
-    </article>
-   </template>
+   </header>
+   <p class="text-body-secondary" id="solutions-attempt-count">
+   </p>
+   <div class="table-responsive">
+    <table class="table align-middle">
+     <thead>
+      <tr>
+       <th>
+        Exercise
+       </th>
+       <th>
+        Score
+       </th>
+       <th>
+        Date
+       </th>
+       <th>
+        Actions
+       </th>
+      </tr>
+     </thead>
+     <tbody id="solutions-body">
+     </tbody>
+    </table>
+   </div>
   </main>
-  <footer class="site-footer" id="site-footer">
-   <div class="footer-inner">
-    <a class="footer-brand" href="index.html">
-     PromptForge
-     <span>
-      &copy; 2026
-     </span>
-    </a>
-    <nav aria-label="Footer navigation" id="footer-nav">
-     <a href="how-it-works.html">
-      Guide
-     </a>
-     <a href="how-it-works.html#feedback">
-      Feedback
-     </a>
-     <a href="how-it-works.html#privacy-policy">
-      Privacy
-     </a>
-    </nav>
+  <footer class="footer-compact border-top py-4 mt-auto" id="site-footer">
+   <div class="container col-xl-11 col-xxl-10 px-3 px-md-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+     <p class="small text-body-secondary mb-0">
+      © 2026 PromptForge · Browser practice demonstration
+     </p>
+     <nav aria-label="Footer navigation" class="d-flex flex-wrap gap-3 small" id="footer-nav">
+      <a class="text-link link-offset-2 link-body-emphasis" href="tasks.html">
+       Exercises
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="leaderboard.html">
+       Best results
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html">
+       Guide
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html#feedback">
+       Feedback demo
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html#privacy-policy">
+       Browser data
+      </a>
+     </nav>
+    </div>
+    <aside aria-label="Demonstration information" class="border-top pt-3 mt-3" id="demo-notice">
+     <p class="small text-body-secondary mb-0">
+      Local learning demonstration. No real authentication, AI requests, payments or messages.
+     </p>
+    </aside>
    </div>
   </footer>
+  <script crossorigin="anonymous" defer="" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+  <script defer="" src="js/main.js" type="module">
+  </script>
  </body>
 </html>

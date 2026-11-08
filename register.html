@@ -2,266 +2,184 @@
 <html data-bs-theme="dark" lang="en">
  <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta content="Create an account to save your practice results. Free includes 10 checks per 24 hours." name="description"/>
-  <meta content="#141416" name="theme-color"/>
-  <title>
-   Register &mdash; PromptForge
-  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Register a new account on PromptForge — a platform for training prompt engineering skills" name="description"/>
+  <meta content="PromptForge team" name="author"/>
   <link href="src/brand/promptforge-mark.svg" rel="icon" type="image/svg+xml"/>
-  <script src="js/theme.js"></script>
+  <title>
+   Register — PromptForge
+  </title>
+
   <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
   <link href="styles/site.css" rel="stylesheet"/>
-  <script src="js/main.js" type="module">
-  </script>
  </head>
- <body class="register-page">
-  <a class="skip-link visually-hidden-focusable" href="#main-content" id="skip-navigation">
-   Skip to content
+ <body class="account-page register-page d-flex flex-column min-vh-100 bg-body-tertiary" data-bs-theme="dark">
+  <a class="skip-link visually-hidden-focusable position-absolute p-3 bg-body" href="#main-content" id="skip-navigation">
+   Skip to main content
   </a>
-  <header class="site-header" id="site-header">
-   <div class="header-inner">
-    <a aria-label="Prompt Forge home" class="brand" href="index.html" id="nav-brand">
-     <img alt="" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
-     <span class="brand-wordmark">Prompt<span class="brand-light">Forge</span></span>
+  <header class="app-header-bar navbar navbar-expand-xl sticky-top border-bottom bg-body py-3 z-3" id="site-header">
+   <div class="container-fluid px-3 px-lg-4 px-xl-5 flex-wrap gap-3">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-nowrap me-0" href="index.html" id="nav-brand">
+     <img alt="" class="brand-mark" height="32" src="src/brand/promptforge-mark.svg" width="32"/>
+     PromptForge
     </a>
-    <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
-     <div class="nav-links">
-      <a class="nav-link" href="tasks.html" id="nav-tasks">
-       Exercises
+    <nav aria-label="Primary navigation" class="primary-nav col-12 col-xl order-3 order-xl-2 flex-column flex-xl-row align-items-xl-center gap-3 pt-3 pt-xl-0 d-xl-flex d-flex" id="primary-nav">
+     <ul class="navbar-nav mx-xl-auto gap-xl-2">
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="tasks.html" id="nav-tasks">
+        Exercises
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="my-solutions.html" id="nav-solutions">
+        Attempts
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="leaderboard.html" id="nav-leaderboard">
+        Leaderboard
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link small p-2 text-decoration-none text-body-secondary" href="how-it-works.html" id="nav-how-it-works">
+        Guide
+       </a>
+      </li>
+     </ul>
+     <div class="d-flex flex-wrap gap-2 align-items-center">
+      <a class="btn btn-quiet btn-outline-light btn-sm border-0 text-body-secondary" href="login.html" id="nav-login">
+       Login demo
       </a>
-      <a class="nav-link" href="my-solutions.html" id="nav-solutions">
-       Attempt history
+      <a class="btn btn-primary btn-sm px-3 py-2 rounded-3" href="register.html" id="nav-register">
+       Create demo profile
       </a>
-      <a class="nav-link" href="progress.html" id="nav-progress">
-       Progress
-      </a>
-      <a class="nav-link" href="leaderboard.html" id="nav-leaderboard">
-       Leaderboard
-      </a>
-      <a class="nav-link" href="how-it-works.html" id="nav-how-it-works">
-       Guide
-      </a>
-     </div>
-     <div class="nav-actions">
-      <a class="btn btn-quiet" href="login.html" id="nav-login">
-       Log in
-      </a>
-      <a class="btn btn-primary btn-sm" href="register.html" id="nav-register">
-       Create an account
-      </a>
-      <a class="account-link is-hidden" id="nav-profile" href="profile.html">
-       <span aria-hidden="true" class="account-avatar" id="account-initial">P</span>
-       <span>Profile</span>
+      <a class="btn btn-outline-light btn-sm" href="profile.html" id="nav-profile">
+       Profile
       </a>
      </div>
     </nav>
-    <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="menu-toggle" id="navigation-toggle" type="button">
-     <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="22">
-      <path d="M4 6h16M4 12h16M4 18h16">
-      </path>
-     </svg>
-    </button>
+    <div class="header-tools d-flex align-items-center gap-2 ms-auto order-2 order-xl-3">
+     <button aria-controls="primary-nav" aria-expanded="false" aria-label="Show navigation" class="btn btn-outline-light rounded-3 p-2 d-xl-none" id="navigation-toggle" type="button">
+      <span aria-hidden="true" class="navbar-toggler-icon">
+      </span>
+     </button>
+    </div>
    </div>
   </header>
-  <button aria-label="Close navigation" class="nav-backdrop" hidden="" id="nav-backdrop" tabindex="-1" type="button">
+  <button aria-label="Close navigation" class="position-fixed top-0 start-0 w-100 h-100 bg-dark opacity-50 border-0 z-2" hidden="" id="nav-backdrop" tabindex="-1" type="button">
   </button>
-  <main class="page-shell" data-page="register" id="main-content">
-   <section class="auth-layout register-layout">
-    <div class="auth-panel">
-     <header class="page-heading">
-      <div>
-       <h1>
-        Create an account
-       </h1>
-       <p class="page-intro">
-        Save your prompts and results. Free includes 10 checks per 24 hours.
-       </p>
-      </div>
-     </header>
-     <form class="auth-form" id="register-form" novalidate="">
-     <div class="form-field">
-       <label class="form-label" for="register-name">
-        Full name
-       </label>
-       <input aria-describedby="register-name-error" aria-invalid="false" autocomplete="name" class="form-control" id="register-name" name="full_name" required="" type="text"/>
-       <div class="invalid-feedback" id="register-name-error">
-       </div>
-      </div>
-      <div class="form-field">
-       <label class="form-label" for="register-email">
-        Email address
-       </label>
-       <input aria-describedby="register-email-error" aria-invalid="false" autocomplete="email" class="form-control" id="register-email" name="email" required="" type="email"/>
-       <div class="invalid-feedback" id="register-email-error">
-       </div>
-      </div>
-      <div class="form-grid">
-       <div class="form-field">
-        <label class="form-label" for="register-password">
-         Password
-        </label>
-        <input aria-describedby="register-password-error" aria-invalid="false" autocomplete="new-password" class="form-control" id="register-password" name="password" required="" type="password"/>
-        <div class="invalid-feedback" id="register-password-error">
-        </div>
-       </div>
-       <div class="form-field">
-        <label class="form-label" for="register-password-confirm">
-         Confirm password
-        </label>
-        <input aria-describedby="register-password-confirm-error" aria-invalid="false" autocomplete="new-password" class="form-control" id="register-password-confirm" name="password_confirm" required="" type="password"/>
-        <div class="invalid-feedback" id="register-password-confirm-error">
-        </div>
-       </div>
-      </div>
-      <p class="form-text" id="register-password-help">
-      </p>
-      <div class="form-field">
-       <label class="form-label" for="register-interest">
-        What would you like to practise?
-       </label>
-       <select aria-describedby="register-interest-error" aria-invalid="false" class="form-select" id="register-interest" name="interest_area" required="">
-        <option value="">
-         &mdash; Select &mdash;
-        </option>
-       </select>
-       <div class="invalid-feedback" id="register-interest-error">
-       </div>
-      </div>
-      <fieldset class="experience-choice">
-       <legend>
-        Your level
-       </legend>
-       <div class="radio-chips">
-        <label>
-         <input checked="" class="form-check-input" id="register-level-beginner" name="level" type="radio" value="beginner"/>
-         <span>
-          Beginner
-         </span>
-        </label>
-        <label>
-         <input class="form-check-input" id="register-level-intermediate" name="level" type="radio" value="intermediate"/>
-         <span>
-          Intermediate
-         </span>
-        </label>
-        <label>
-         <input class="form-check-input" id="register-level-advanced" name="level" type="radio" value="advanced"/>
-         <span>
-          Advanced
-         </span>
-        </label>
-       </div>
-      </fieldset>
-      <details class="optional-fields disclosure">
-       <summary>
-        More about you
-        <span class="text-secondary">
-         Optional
-        </span>
-       </summary>
-       <div class="form-grid">
-        <div class="form-field">
-         <label class="form-label" for="register-tel">
-          Phone number
-         </label>
-         <input aria-describedby="register-tel-error" aria-invalid="false" autocomplete="tel" class="form-control" id="register-tel" name="phone" type="tel"/>
-         <div class="invalid-feedback" id="register-tel-error">
-         </div>
-        </div>
-        <div class="form-field">
-         <label class="form-label" for="register-birthdate">
-          Date of birth
-         </label>
-         <input aria-describedby="register-birthdate-error" aria-invalid="false" autocomplete="bday" class="form-control" id="register-birthdate" name="birth_date" type="date"/>
-         <div class="invalid-feedback" id="register-birthdate-error">
-         </div>
-        </div>
-        <div class="form-field">
-         <label class="form-label" for="register-experience">
-          Experience (years)
-         </label>
-         <input aria-describedby="register-experience-error" aria-invalid="false" class="form-control" id="register-experience" max="100" min="0" name="experience_years" type="number"/>
-         <div class="invalid-feedback" id="register-experience-error">
-         </div>
-        </div>
-       </div>
-       <div class="form-field">
-        <label class="form-label" for="register-about">
-         About you
-        </label>
-        <textarea aria-describedby="register-about-error" aria-invalid="false" class="form-control" id="register-about" maxlength="1000" name="bio" rows="3"></textarea>
-        <div class="invalid-feedback" id="register-about-error">
-        </div>
-       </div>
-      </details>
-      <div class="registration-ranking">
-       <label class="ranking-choice"><input class="form-check-input" type="checkbox" name="leaderboard_visible" id="register-ranking-visible" aria-describedby="register-ranking-help"/><span>Show my name and results in the leaderboard</span></label>
-       <p class="small text-secondary" id="register-ranking-help">Optional. Only your display name, level and aggregate scores are public.</p>
-      </div>
-      <div class="auth-agreements">
-       <label>
-        <input class="form-check-input" id="register-accept-rules" name="accept_rules" required="" type="checkbox"/>
-        <span>
-         I agree to the
-         <a href="how-it-works.html#community-guidelines" target="_blank" rel="noopener">
-          community guidelines
-          <span class="visually-hidden">(opens in a new tab)</span>
-         </a>
-        </span>
-       </label>
-       <label>
-        <input class="form-check-input" id="register-accept-privacy" name="accept_privacy" required="" type="checkbox"/>
-        <span>
-         I accept the
-         <a href="how-it-works.html#privacy-policy" target="_blank" rel="noopener">
-          privacy policy
-          <span class="visually-hidden">(opens in a new tab)</span>
-         </a>
-        </span>
-       </label>
-      </div>
-      <button class="btn btn-primary w-100" id="register-submit" type="submit">
-       Register
-      </button>
-      <p class="form-status" id="register-status" role="status">
-      </p>
-      <div class="alert alert-danger is-hidden" id="register-error" role="alert">
-      </div>
-      <div class="alert alert-success is-hidden" id="register-success" role="status">
-      </div>
-      <p class="auth-switch">
-       <span>
-        Already have an account?
-       </span>
-       <a href="login.html" id="register-link-2">
-        Log in
-       </a>
-      </p>
-     </form>
+  <main class="container col-xl-11 col-xxl-10 flex-grow-1 px-3 px-md-4 py-4 py-lg-5" data-page="register" id="main-content" tabindex="-1">
+   <div class="alert alert-danger is-hidden" id="app-status" role="alert">
+   </div>
+   <header class="page-heading mb-4">
+    <h1 class="fw-bold mb-2">
+     Create demo profile
+    </h1>
+    <p class="text-body-secondary">
+     Local demonstration only. No real account is created; passwords are checked and discarded.
+    </p>
+   </header>
+   <form class="border rounded p-4 col-lg-6" id="register-form">
+    <div class="form-field mb-3">
+     <label class="form-label" for="register-name">
+      Display name
+     </label>
+     <input aria-describedby="register-name-error" aria-invalid="false" class="form-control" id="register-name" name="name" required="" type="text"/>
+     <div class="invalid-feedback" id="register-name-error">
+     </div>
     </div>
-   </section>
+    <div class="form-field mb-3">
+     <label class="form-label" for="register-email">
+      Email
+     </label>
+     <input aria-describedby="register-email-error" aria-invalid="false" class="form-control" id="register-email" name="email" required="" type="email"/>
+     <div class="invalid-feedback" id="register-email-error">
+     </div>
+    </div>
+    <div class="form-field mb-3">
+     <label class="form-label" for="register-password">
+      Password (validation only)
+     </label>
+     <input aria-describedby="register-password-error" aria-invalid="false" class="form-control" id="register-password" name="password" required="" type="password"/>
+     <div class="invalid-feedback" id="register-password-error">
+     </div>
+    </div>
+    <div class="form-field mb-3">
+     <label class="form-label" for="register-password-confirm">
+      Confirm password
+     </label>
+     <input aria-describedby="register-password-confirm-error" aria-invalid="false" class="form-control" id="register-password-confirm" name="password_confirm" required="" type="password"/>
+     <div class="invalid-feedback" id="register-password-confirm-error">
+     </div>
+    </div>
+    <div class="form-field mb-3">
+     <label class="d-flex gap-2 align-items-start">
+      <input aria-describedby="register-accept-rules-error" aria-invalid="false" class="form-check-input" id="register-accept-rules" name="accept_rules" required="" type="checkbox"/>
+      I accept the
+      <a href="how-it-works.html#community-guidelines">
+       practice rules
+      </a>
+      .
+     </label>
+     <div class="invalid-feedback" id="register-accept-rules-error">
+     </div>
+    </div>
+    <div class="form-field mb-3">
+     <label class="d-flex gap-2 align-items-start">
+      <input aria-describedby="register-accept-privacy-error" aria-invalid="false" class="form-check-input" id="register-accept-privacy" name="accept_privacy" required="" type="checkbox"/>
+      I understand that progress is stored in this browser.
+     </label>
+     <div class="invalid-feedback" id="register-accept-privacy-error">
+     </div>
+    </div>
+    <div class="d-flex gap-3">
+     <button class="btn btn-primary" id="register-submit" type="submit">
+      Continue
+     </button>
+     <button class="btn btn-outline-light" type="reset">
+      Clear
+     </button>
+    </div>
+    <div class="alert alert-danger is-hidden mt-3" id="register-error" role="alert">
+    </div>
+    <div class="alert alert-success is-hidden mt-3" id="register-success" role="status">
+    </div>
+   </form>
   </main>
-  <footer class="site-footer" id="site-footer">
-   <div class="footer-inner">
-    <a class="footer-brand" href="index.html">
-     PromptForge
-     <span>
-      &copy; 2026
-     </span>
-    </a>
-    <nav aria-label="Footer navigation" id="footer-nav">
-     <a href="how-it-works.html">
-      Guide
-     </a>
-     <a href="how-it-works.html#feedback">
-      Feedback
-     </a>
-     <a href="how-it-works.html#privacy-policy">
-      Privacy
-     </a>
-    </nav>
+  <footer class="footer-compact border-top py-4 mt-auto" id="site-footer">
+   <div class="container col-xl-11 col-xxl-10 px-3 px-md-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+     <p class="small text-body-secondary mb-0">
+      © 2026 PromptForge · Browser practice demonstration
+     </p>
+     <nav aria-label="Footer navigation" class="d-flex flex-wrap gap-3 small" id="footer-nav">
+      <a class="text-link link-offset-2 link-body-emphasis" href="tasks.html">
+       Exercises
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="leaderboard.html">
+       Best results
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html">
+       Guide
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html#feedback">
+       Feedback demo
+      </a>
+      <a class="text-link link-offset-2 link-body-emphasis" href="how-it-works.html#privacy-policy">
+       Browser data
+      </a>
+     </nav>
+    </div>
+    <aside aria-label="Demonstration information" class="border-top pt-3 mt-3" id="demo-notice">
+     <p class="small text-body-secondary mb-0">
+      Local learning demonstration. No real authentication, AI requests, payments or messages.
+     </p>
+    </aside>
    </div>
   </footer>
+  <script crossorigin="anonymous" defer="" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+  <script defer="" src="js/main.js" type="module">
+  </script>
  </body>
 </html>
