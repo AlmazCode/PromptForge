@@ -137,7 +137,7 @@ test('all nine pages have working content and no console errors at mobile and de
         page.locator('[data-language], #catalog-routes, #open-profile-settings'),
       ).toHaveCount(0);
     }
-    await page.screenshot({ path: `/tmp/promptforge-study-guide-${width}.png`, fullPage: true });
+    await page.screenshot({ path: test.info().outputPath(`guide-${width}.png`), fullPage: true });
   }
   expect(errors).toEqual([]);
   await page.setViewportSize({ width: 375, height: 812 });
@@ -213,4 +213,49 @@ test('draft save fails after prior success without keeping a false saved status'
   await page.locator('#prompt-input').fill('An edited draft that cannot be saved');
   await expect(page.locator('#draft-status')).toContainText('not saved');
   await expect(page.locator('#app-status')).toBeVisible();
+});
+
+test('registration keeps unrelated errors and clears a corrected password confirmation', async ({ page }) => {
+  await open(page, '/register.html');
+  await page.locator('#register-submit').click();
+  await page.locator('#register-name').fill('Final Student');
+  await expect(page.locator('#register-name-error')).toBeEmpty();
+  await expect(page.locator('#register-email-error')).not.toBeEmpty();
+  await page.locator('#register-password').fill(' Practice!123 ');
+  await page.locator('#register-password-confirm').fill(' Different!123 ');
+  await page.locator('#register-submit').click();
+  await expect(page.locator('#register-password-confirm-error')).not.toBeEmpty();
+  await page.locator('#register-password').fill(' Different!123 ');
+  await expect(page.locator('#register-password-confirm-error')).toBeEmpty();
+  await expect(page.locator('#register-email-error')).not.toBeEmpty();
+  await page.locator('#register-accept-rules').check();
+  await expect(page.locator('#register-accept-rules-error')).toBeEmpty();
+  await expect(page.locator('#register-accept-privacy-error')).not.toBeEmpty();
+});
+
+test('login waits for its handlers and provides a safe task continuation without storing passwords', async ({ page }) => {
+  let release;
+  const gate = new Promise(resolve => { release = resolve; });
+  await page.route('**/js/auth.js', async route => { await gate; await route.continue(); }, { times: 1 });
+  await page.goto('/login.html?next=task.html%3Fid%3Dt002');
+  await expect(page.locator('#login-submit')).toBeDisabled();
+  await page.locator('#login-email').fill('student@example.com');
+  await page.locator('#login-password').fill(' Practice!123 ');
+  await page.locator('#login-form').evaluate(form => form.requestSubmit());
+  expect(page.url()).not.toContain('password=');
+  release();
+  await expect(page.locator('body')).toHaveAttribute('data-ready', 'true');
+  await expect(page.locator('#nav-register')).toHaveAttribute('href', 'register.html?next=task.html%3Fid%3Dt002');
+  await page.locator('#login-submit').click();
+  await expect(page.locator('#login-success a')).toHaveAttribute('href', 'task.html?id=t002');
+  await expect(page.locator('#login-password')).toHaveValue('');
+  expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).not.toContain('Practice!123');
+  await open(page, '/profile.html');
+  await expect(page.locator('#profile-average-score')).toHaveText('—');
+  await page.locator('#profile-logout').click();
+  await open(page, '/login.html?next=https%3A%2F%2Fexample.com');
+  await page.locator('#login-email').fill('student@example.com');
+  await page.locator('#login-password').fill('Practice!123');
+  await page.locator('#login-submit').click();
+  await expect(page.locator('#login-success a')).toHaveAttribute('href', 'profile.html');
 });

@@ -6,7 +6,7 @@ import { existsSync } from 'node:fs';
 export default defineConfig({
   testDir: './tests/browser',
   testMatch: 'frontend.spec.js',
-  outputDir: '/tmp/promptforge-frontend-tests',
+  outputDir: './test-results',
   timeout: 60000,
   workers: 1,
   use: {
@@ -21,7 +21,7 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
-    command: 'python3 -m http.server 3101 --bind 127.0.0.1',
+    command: 'node scripts/serve.mjs 3101',
     url: 'http://127.0.0.1:3101',
     reuseExistingServer: false,
     stdout: 'ignore',

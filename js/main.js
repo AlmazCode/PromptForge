@@ -3,6 +3,11 @@
 import { jqueryReady } from './jquery-runtime.js';
 import { loadData } from './storage.js';
 async function start() {
+  const authForm = document.querySelector('#login-form, #register-form');
+  const holdSubmit = (event) => event.preventDefault();
+  authForm?.addEventListener('submit', holdSubmit);
+  const authSubmit = authForm?.querySelector('[type="submit"]');
+  if (authSubmit) authSubmit.disabled = true;
   await jqueryReady();
   const { $ } = await import('./jquery-ui.js');
   const pages = {
@@ -42,6 +47,8 @@ async function start() {
   const moduleName = pages[$('#main-content').attr('data-page')];
   if (moduleName) (await import(`./${moduleName}.js`)).init();
   $('body').attr('data-ready', 'true');
+  authForm?.removeEventListener('submit', holdSubmit);
+  if (authSubmit) authSubmit.disabled = false;
 }
 start().catch((error) => {
   const status = document.getElementById('app-status');

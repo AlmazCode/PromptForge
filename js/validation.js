@@ -1,21 +1,27 @@
 'use strict';
 export const validEmail = (value) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
+  typeof value === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) && value.trim().length <= 254;
 export const validPhone = (value) =>
-  /^\+?[\d\s()-]{7,25}$/.test(value) && /^\d{7,15}$/.test(value.replace(/\D/g, ''));
+  typeof value === 'string' && /^\+?[\d ()-]{7,25}$/.test(value.trim()) && /^\d{7,15}$/.test(value.replace(/\D/g, ''));
 
-export function profileErrors(values, registration = false) {
+export function authDestination(value = '') {
+  return /^(?:(?:index|tasks|profile|my-solutions|leaderboard|how-it-works)\.html|task\.html\?id=t\d{3})$/.test(value)
+    ? value
+    : 'profile.html';
+}
+
+export function profileErrors(values = {}, registration = false) {
   const errors = {};
-  if (registration && (values.name.trim().length < 2 || values.name.trim().length > 80))
+  if (registration && (typeof values.name !== 'string' || values.name.trim().length < 2 || values.name.trim().length > 80))
     errors.name = 'Use 2–80 characters.';
-  if (!validEmail(values.email.trim())) errors.email = 'Enter a valid email address.';
-  if (values.password.length < 8 || values.password.length > 128)
+  if (!validEmail(values.email)) errors.email = 'Enter a valid email address.';
+  if (typeof values.password !== 'string' || values.password.length < 8 || values.password.length > 128)
     errors.password = 'Use 8–128 characters.';
   if (registration) {
-    if (values.password !== values.password_confirm)
+    if (!values.password_confirm || values.password !== values.password_confirm)
       errors.password_confirm = 'Passwords must match.';
-    if (!values.accept_rules) errors.accept_rules = 'Accept the practice rules.';
-    if (!values.accept_privacy) errors.accept_privacy = 'Accept the browser data notice.';
+    if (values.accept_rules !== 'on' && values.accept_rules !== true) errors.accept_rules = 'Accept the practice rules.';
+    if (values.accept_privacy !== 'on' && values.accept_privacy !== true) errors.accept_privacy = 'Accept the browser data notice.';
   }
   return errors;
 }

@@ -16,7 +16,7 @@ export function init() {
     const average = attempts.length
       ? attempts.reduce((sum, attempt) => sum + attempt.score, 0) / attempts.length
       : 0;
-    $('#profile-average-score').text(average.toFixed(2));
+    $('#profile-average-score').text(attempts.length ? average.toFixed(2) : '—');
   }
   $('#profile-logout').on('click', function () {
     try {

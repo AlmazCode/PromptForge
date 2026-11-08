@@ -51,7 +51,12 @@ export function bindForm(selector, validate, onValid) {
   });
   form.on('input change', '[name]', function () {
     const field = $(this);
-    if (!validate(formValues(form))[field.attr('name')]) clearField(field);
+    const errors = validate(formValues(form));
+    if (!errors[field.attr('name')]) clearField(field);
+    if (field.attr('name') === 'password') {
+      const confirmation = form.find('[name="password_confirm"]');
+      if (!errors.password_confirm) clearField(confirmation);
+    }
     hideMessage(`#${prefix}-success`);
     hideMessage(`#${prefix}-error`);
   });

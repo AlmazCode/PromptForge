@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { tasks } from '../js/data.js';
 import { evaluatePrompt, filterTasks, bestAttempts } from '../js/logic.js';
-import { feedbackErrors, profileErrors } from '../js/validation.js';
+import { authDestination, feedbackErrors, profileErrors, validPhone } from '../js/validation.js';
 import { loadData, writeData } from '../js/storage.js';
 
 const strong =
@@ -54,6 +54,20 @@ test('forms validate trimmed fields, phone digits and independent consent checkb
   );
   assert.ok(profile.accept_privacy);
   assert.ok(!profile.accept_rules);
+});
+
+test('auth validates missing confirmation, preserves password spaces and restricts return links', () => {
+  const values = { name: ' Student ', email: ' student@example.com ', password: ' Practice!123 ', password_confirm: ' Practice!123 ', accept_rules: true, accept_privacy: 'on' };
+  assert.deepEqual(profileErrors(values, true), {});
+  assert.ok(profileErrors({ ...values, password_confirm: values.password.trim() }, true).password_confirm);
+  assert.ok(profileErrors({ ...values, password: '', password_confirm: '' }, true).password_confirm);
+  assert.ok(profileErrors({}, true).email);
+  assert.ok(profileErrors({ ...values, accept_rules: 'false' }, true).accept_rules);
+  for (const phone of ['-------', '123456', '+1234567890123456', '123\n4567', null]) assert.equal(validPhone(phone), false);
+  for (const phone of ['1234567', '+7 (701) 123-45-67']) assert.equal(validPhone(phone), true);
+  assert.equal(authDestination('task.html?id=t002'), 'task.html?id=t002');
+  assert.equal(authDestination('my-solutions.html'), 'my-solutions.html');
+  for (const next of [null, '//example.com', 'https://example.com', 'javascript:alert(1)', '../profile.html', 'profile.html?secret=1']) assert.equal(authDestination(next), 'profile.html');
 });
 
 test('legacy local results are read and new writes keep only the study state', () => {
